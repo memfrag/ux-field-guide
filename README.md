@@ -24,10 +24,11 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 14 | Design Tokens | name the decision, not the value |
 | 15 | Forms & Input | where most apps actually lose people |
 | 16 | UX Writing | buttons, errors, empty states, platform casing |
-| 17 | What Not To Do | universal, iOS, and Android anti-patterns |
-| 18 | The Honest Trade-offs | where the pin sits, and what moves it |
-| 19 | The Screen Audit | a 12-point interactive checklist |
-| 20 | A Worked Example | one app idea, the whole process, both dialects |
+| 17 | Empty & Loading States | blank and waiting are where trust is won |
+| 18 | What Not To Do | universal, iOS, and Android anti-patterns |
+| 19 | The Honest Trade-offs | where the pin sits, and what moves it |
+| 20 | The Screen Audit | a 12-point interactive checklist |
+| 21 | A Worked Example | one app idea, the whole process, both dialects |
 
 Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's Material 3 (Expressive).
 

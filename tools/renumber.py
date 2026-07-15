@@ -240,8 +240,14 @@ def apply_safe_shifts(html, mapping):
         stats["ch_dot"] += 1
         return f"{lead}. {zpad(a)}"
 
+    # the trailing \b is load-bearing: without it, a greedy digit match that
+    # fails the no_decimal_tail lookahead can backtrack to a SHORTER digit
+    # sequence that spuriously satisfies it (e.g. "ch. NEW-mapping.2" backs
+    # off to "ch. NEW-mappin", or "ch. 10.2" backs off to "ch. 1", leaving
+    # "0.2" as literal trailing text — producing "ch. 010.2"). Mid-number is
+    # not a word boundary, so \b blocks exactly that spurious backtrack.
     html = re.sub(
-        rf'([Cc]h)\. ({label_alt}){no_decimal_tail}(?:–({label_alt}))?',
+        rf'([Cc]h)\. ({label_alt}){no_decimal_tail}\b(?:–({label_alt}))?',
         ch_dot_repl, html,
     )
 

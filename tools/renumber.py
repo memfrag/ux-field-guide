@@ -257,7 +257,10 @@ def apply_safe_shifts(html, mapping):
             stats["unresolved"].append(f"'{m.group(0)}' has no mapping")
             return m.group(0)
         stats["chapter_word"] += 1
-        return f"{m.group(1)} {new}"
+        # zero-padded to match "ch. NN" and the page's sec-num badges
+        # ("01".."37" everywhere) — a bare "Chapter 8" reads inconsistent
+        # right next to those.
+        return f"{m.group(1)} {zpad(new)}"
 
     html = re.sub(
         rf'\b([Cc]hapter) ({label_alt}){no_decimal_tail}\b',

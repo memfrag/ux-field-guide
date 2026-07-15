@@ -102,32 +102,76 @@
     background: var(--paper);
     border-bottom: 1px solid var(--rule);
     z-index: 10;
-    overflow-x: auto;
-    scrollbar-width: none;
   }
-  nav::-webkit-scrollbar { display: none; }
-  nav ol {
+  .nav-inner {
     display: flex;
-    list-style: none;
-    padding: 0 6vw;
-    min-width: max-content;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .75em 6vw;
   }
-  nav a {
-    display: block;
-    padding: .8em 1.1em .7em;
+  .nav-current {
     font-family: var(--mono);
     font-size: .68rem;
     letter-spacing: .1em;
     text-transform: uppercase;
-    text-decoration: none;
     color: var(--ink-soft);
-    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+  .nav-current b { color: var(--signal); font-weight: 600; margin-right: .8em; }
+  .toc-btn {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: none;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: .55em 1em;
+    cursor: pointer;
     white-space: nowrap;
     transition: color .15s, border-color .15s;
   }
-  nav a:hover, nav a.active { color: var(--signal); border-bottom-color: var(--signal); }
-  nav a b { color: var(--ink-faint); font-weight: 400; margin-right: .5em; }
-  nav a:hover b, nav a.active b { color: inherit; }
+  .toc-btn:hover { color: var(--signal); border-color: var(--signal); }
+  .toc-btn .chev { display: inline-block; transition: transform .2s; margin-left: .4em; }
+  nav.open .toc-btn { color: var(--signal); border-color: var(--signal); }
+  nav.open .toc-btn .chev { transform: rotate(180deg); }
+  .toc-panel {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--paper-deep);
+    border-bottom: 1px solid var(--rule);
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    display: none;
+  }
+  nav.open .toc-panel { display: block; }
+  .toc-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 0 3rem;
+    padding: 1.2rem 6vw 1.6rem;
+  }
+  .toc-grid a {
+    display: block;
+    padding: .55em 0;
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    transition: color .15s;
+  }
+  .toc-grid a:hover, .toc-grid a.active { color: var(--signal); }
+  .toc-grid a b { color: var(--ink-faint); font-weight: 400; margin-right: .8em; }
+  .toc-grid a:hover b, .toc-grid a.active b { color: inherit; }
 
   /* ---------- sections ---------- */
   section {
@@ -563,23 +607,29 @@
   <p>The working principles behind every critique and recommendation in this practice — and the process for taking an app idea to designs that feel native on both iOS and Android. Opinionated by design; grounded in Apple’s Human Interface Guidelines and Google’s Material 3.</p>
 </div>
 
-<nav>
-  <ol>
-    <li><a href="#posture"><b>01</b>Posture</a></li>
-    <li><a href="#laws"><b>02</b>Laws</a></li>
-    <li><a href="#heuristics"><b>03</b>Heuristics</a></li>
-    <li><a href="#gestalt"><b>04</b>Gestalt</a></li>
-    <li><a href="#hierarchy"><b>05</b>Hierarchy</a></li>
-    <li><a href="#mobile"><b>06</b>Mobile</a></li>
-    <li><a href="#process"><b>07</b>Process</a></li>
-    <li><a href="#modes"><b>08</b>Modes</a></li>
-    <li><a href="#platforms"><b>09</b>Dialects</a></li>
-    <li><a href="#systems"><b>10</b>Systems</a></li>
-    <li><a href="#tokens"><b>11</b>Tokens</a></li>
-    <li><a href="#antipatterns"><b>12</b>Don’ts</a></li>
-    <li><a href="#tradeoffs"><b>13</b>Trade-offs</a></li>
-    <li><a href="#checklist"><b>14</b>Checklist</a></li>
-  </ol>
+<nav id="nav">
+  <div class="nav-inner">
+    <span class="nav-current"><b id="curNum">01</b><span id="curTitle">Working Posture</span></span>
+    <button class="toc-btn" id="tocBtn" aria-expanded="false" aria-controls="tocPanel">Index<span class="chev">▾</span></button>
+  </div>
+  <div class="toc-panel" id="tocPanel">
+    <ol class="toc-grid">
+      <li><a href="#posture"><b>01</b>Working Posture</a></li>
+      <li><a href="#laws"><b>02</b>Laws of Interaction</a></li>
+      <li><a href="#heuristics"><b>03</b>Nielsen’s Ten</a></li>
+      <li><a href="#gestalt"><b>04</b>Gestalt Principles</a></li>
+      <li><a href="#hierarchy"><b>05</b>Visual Hierarchy</a></li>
+      <li><a href="#mobile"><b>06</b>Mobile Instincts</a></li>
+      <li><a href="#process"><b>07</b>The Process</a></li>
+      <li><a href="#modes"><b>08</b>Four Modes of Work</a></li>
+      <li><a href="#platforms"><b>09</b>One Design, Two Dialects</a></li>
+      <li><a href="#systems"><b>10</b>Design Systems</a></li>
+      <li><a href="#tokens"><b>11</b>Design Tokens</a></li>
+      <li><a href="#antipatterns"><b>12</b>What Not To Do</a></li>
+      <li><a href="#tradeoffs"><b>13</b>The Honest Trade-offs</a></li>
+      <li><a href="#checklist"><b>14</b>The Screen Audit</a></li>
+    </ol>
+  </div>
 </nav>
 
 <!-- ============ 01 POSTURE ============ -->
@@ -1499,12 +1549,30 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Active nav tracking
-  const links = [...document.querySelectorAll('nav a')];
+  // Index panel toggle
+  const nav = document.getElementById('nav');
+  const tocBtn = document.getElementById('tocBtn');
+  const closeToc = () => { nav.classList.remove('open'); tocBtn.setAttribute('aria-expanded', 'false'); };
+  tocBtn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    tocBtn.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeToc(); });
+  document.addEventListener('click', e => { if (!nav.contains(e.target)) closeToc(); });
+
+  // Active chapter tracking → sticky-bar label + index highlight
+  const links = [...document.querySelectorAll('.toc-grid a')];
+  const curNum = document.getElementById('curNum');
+  const curTitle = document.getElementById('curTitle');
+  links.forEach(l => l.addEventListener('click', closeToc));
   const secObs = new IntersectionObserver((entries) => {
     for (const e of entries) {
       if (e.isIntersecting) {
-        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        links.forEach(l => {
+          const active = l.getAttribute('href') === '#' + e.target.id;
+          l.classList.toggle('active', active);
+          if (active) { curNum.textContent = l.querySelector('b').textContent; curTitle.textContent = l.childNodes[1].textContent; }
+        });
       }
     }
   }, { rootMargin: '-30% 0px -60% 0px' });

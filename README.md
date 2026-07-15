@@ -1,0 +1,36 @@
+# The UX Field Manual
+
+An opinionated, self-contained reference for mobile-first UX/UI design — the working principles behind every critique and recommendation, and a process for taking an app idea to designs that feel native on **both iOS and Android**.
+
+**Read it here: https://memfrag.github.io/ux-field-guide/**
+
+## What's inside
+
+| # | Chapter | |
+|---|---------|---|
+| 01 | Working Posture | the default stance behind every decision |
+| 02 | Laws of Interaction | Fitts, Hick, Jakob, Miller, Tesler, peak–end |
+| 03 | Nielsen's Ten | the evaluation checklist, condensed |
+| 04 | Gestalt Principles | how the eye groups before the mind reads |
+| 05 | Visual Hierarchy | the five levers, with worked examples |
+| 06 | Mobile Instincts | thumb zones, touch targets, interruptions |
+| 07 | The Process | app idea → shipped design, in order |
+| 08 | Four Modes of Work | critique · diagnose · reason · produce |
+| 09 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
+| 10 | SwiftUI ↔ Compose | the dialect table as it compiles |
+| 11 | Design Systems | decisions made once |
+| 12 | Design Tokens | name the decision, not the value |
+| 13 | What Not To Do | universal, iOS, and Android anti-patterns |
+| 14 | The Honest Trade-offs | where the pin sits, and what moves it |
+| 15 | The Screen Audit | a 12-point interactive checklist |
+
+Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's Material 3 (Expressive).
+
+## Notes
+
+- **One file.** `index.html` is fully self-contained: no build step, no external fonts, scripts, or images — all illustrations are inline SVG themed by CSS variables.
+- **Deep links.** Every numbered entry is linkable (e.g. [§7.4](https://memfrag.github.io/ux-field-guide/#s7-4)).
+- **Printable.** A print stylesheet converts it to a light, paginated document.
+- **The checklist remembers.** Screen-audit ticks persist in `localStorage`.
+
+To work on it: open `index.html` in a browser. That's the whole toolchain.

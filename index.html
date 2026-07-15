@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UX Field Manual — Working Principles</title>
+<meta name="description" content="A self-contained field manual for mobile-first UX/UI design: laws, heuristics, visual hierarchy, a design process, and how to ship one design in two native dialects — iOS (HIG) and Android (Material 3).">
+<meta property="og:title" content="The UX Field Manual">
+<meta property="og:description" content="Laws, heuristics, process, and platform dialects — an opinionated reference for designing apps that feel native on both iOS and Android.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://memfrag.github.io/ux-field-guide/">
+<meta name="theme-color" content="#0c0e11">
 <style>
   /* ============================================================
      UX FIELD MANUAL — a design codex, set like a Swiss spec book.
@@ -236,6 +242,10 @@
     padding-top: .35rem;
   }
   .entry:hover .n { color: var(--signal); }
+  .entry .n a { color: inherit; text-decoration: none; }
+  .entry .n a:hover { text-decoration: underline; }
+  .entry:target { background: #ffffff08; box-shadow: inset 2.5px 0 0 var(--signal); }
+  section[id], .entry[id] { scroll-margin-top: 3.6rem; }
   .entry h3 {
     font-family: var(--display);
     font-weight: 600;
@@ -591,6 +601,29 @@
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
     html { scroll-behavior: auto; }
+  }
+
+  /* ---------- print: a field manual should survive paper ---------- */
+  @media print {
+    :root {
+      --paper: #ffffff;
+      --paper-deep: #f4f4f4;
+      --ink: #111111;
+      --ink-soft: #3a3a3a;
+      --ink-faint: #707070;
+      --signal: #c33c14;
+      --signal-soft: #c33c1422;
+      --rule: #11111133;
+    }
+    nav { display: none; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+    .sec-head { position: static; }
+    section { page-break-before: always; padding: 2rem 0; grid-template-columns: 1fr; gap: 1.5rem; }
+    section:first-of-type { page-break-before: avoid; }
+    .hero { padding: 2rem 0; }
+    header, footer { padding-left: 0; padding-right: 0; }
+    .entry, .card, .tradeoff, .checklist li, .gestalt-cell { page-break-inside: avoid; }
+    body { font-size: 10.5pt; }
   }
 </style>
 </head>
@@ -1656,9 +1689,37 @@
   }, { rootMargin: '-30% 0px -60% 0px' });
   document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
 
-  // Checklist toggling (session-only, deliberately ephemeral)
-  document.querySelectorAll('.checklist li').forEach(li => {
-    li.addEventListener('click', () => li.classList.toggle('done'));
+  // Deep-linkable entries: §7.4 → #s7-4
+  document.querySelectorAll('.entry .n').forEach(n => {
+    const num = n.textContent.trim();
+    if (!/^\d+\.\d+$/.test(num)) return;
+    const id = 's' + num.replace('.', '-');
+    n.closest('.entry').id = id;
+    const a = document.createElement('a');
+    a.href = '#' + id;
+    a.textContent = num;
+    n.textContent = '';
+    n.appendChild(a);
+  });
+  if (location.hash) {
+    const target = document.querySelector(CSS.escape ? '#' + CSS.escape(location.hash.slice(1)) : location.hash);
+    if (target) target.scrollIntoView();
+  }
+
+  // Checklist toggling, persisted across visits
+  const AUDIT_KEY = 'ux-fm-audit';
+  const auditItems = [...document.querySelectorAll('.checklist li')];
+  try {
+    const saved = JSON.parse(localStorage.getItem(AUDIT_KEY) || '[]');
+    auditItems.forEach((li, i) => { if (saved.includes(i)) li.classList.add('done'); });
+  } catch (e) { /* private mode etc. — degrade to session-only */ }
+  auditItems.forEach((li, i) => {
+    li.addEventListener('click', () => {
+      li.classList.toggle('done');
+      try {
+        localStorage.setItem(AUDIT_KEY, JSON.stringify(auditItems.flatMap((el, j) => el.classList.contains('done') ? [j] : [])));
+      } catch (e) { /* ignore */ }
+    });
   });
 </script>
 

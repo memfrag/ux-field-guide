@@ -49,6 +49,7 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 22 | Onboarding & First-Run | the shortest path to the first win |
 | 23 | Notifications & Interruptions | the trust economy of the lock screen |
 | 24 | Internationalization | text expansion, RTL, locale formats |
+| 25 | AI Interface Patterns | the autonomy ladder, streaming, uncertainty |
 
 **Part V — Judgment** · what to avoid, what to weigh, how to check
 

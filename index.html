@@ -723,6 +723,7 @@
       <li><a href="#onboarding"><b>22</b>Onboarding &amp; First-Run</a></li>
       <li><a href="#notifications"><b>23</b>Notifications &amp; Interruptions</a></li>
       <li><a href="#i18n"><b>24</b>Internationalization</a></li>
+      <li><a href="#ai"><b>25</b>AI Interface Patterns</a></li>
       <li class="part-head">Part V — Judgment</li>
       <li><a href="#antipatterns"><b>26</b>What Not To Do</a></li>
       <li><a href="#tradeoffs"><b>27</b>The Honest Trade-offs</a></li>
@@ -2709,6 +2710,91 @@
           <h3>Pseudo-localize before you translate</h3>
           <p>One build with elongated accented strings (“Àððð þļåñţ~~~”) and forced RTL finds the truncations, clippings, and concatenations before a single translator is paid.</p>
           <p class="apply">Run pseudo-localization as part of the screen audit (28) for any app going multilingual. And remember language ≠ region: a user can want English with metric units and euros — respect the system’s separate settings, and never guess locale from IP.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 25 AI INTERFACE PATTERNS ============ -->
+<section id="ai">
+  <div class="sec-head reveal">
+    <div class="sec-num">25</div>
+    <h2>AI Interface Patterns</h2>
+    <p class="kicker">Probabilistic features need deterministic UX</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>AI features break two assumptions the rest of this manual rests on: the output isn’t predictable, and it can be confidently wrong. The interface’s job is to wrap that uncertainty in deterministic guarantees — clear provenance, easy verification, and an undo for everything. The laws still hold; the stakes just went up.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 150" width="360" role="img" aria-label="The autonomy ladder: suggest, draft, act with undo, act autonomously — autonomy rises only as consequence falls">
+        <rect x="10" y="96" width="76" height="26" rx="4" fill="var(--signal-soft)" stroke="var(--signal)" stroke-width="1.2"/>
+        <text x="48" y="113" text-anchor="middle" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink)">SUGGEST</text>
+        <rect x="98" y="72" width="76" height="50" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.2"/>
+        <text x="136" y="100" text-anchor="middle" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink)">DRAFT</text>
+        <rect x="186" y="48" width="76" height="74" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.2"/>
+        <text x="224" y="88" text-anchor="middle" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink)">ACT + UNDO</text>
+        <rect x="274" y="24" width="76" height="98" rx="4" fill="none" stroke="var(--ink-faint)" stroke-width="1.2" stroke-dasharray="4 4"/>
+        <text x="312" y="76" text-anchor="middle" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-soft)">AUTONOMOUS</text>
+        <g font-family="Menlo, monospace" font-size="6.5" fill="var(--ink-faint)">
+          <text x="48" y="136" text-anchor="middle">SEND MONEY</text>
+          <text x="136" y="136" text-anchor="middle">WRITE EMAIL</text>
+          <text x="224" y="136" text-anchor="middle">FILE / TAG</text>
+          <text x="312" y="136" text-anchor="middle">SPELLING FIX</text>
+        </g>
+        <path d="M20,14 h320" stroke="var(--rule)" stroke-width="1"/>
+        <text x="20" y="10" font-family="Menlo, monospace" font-size="7" fill="var(--signal)">CONSEQUENCE DECIDES THE RUNG — NOT CAPABILITY</text>
+      </svg>
+      <div class="cap">The autonomy ladder — reversible trifles run free; irreversible acts only suggest</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">25.1</span>
+        <div>
+          <h3>Autonomy is earned per action, not per model</h3>
+          <p>How capable the model is doesn’t matter; how costly a mistake is does. A spelling fix can run autonomously; filing and tagging act with undo; an email is drafted; money only ever gets suggested.</p>
+          <p class="apply">Classify every AI-touchable action by reversibility and blast radius, then pin it to a rung. Let users promote actions they’ve grown to trust — never promote silently on their behalf (3.3, at machine speed).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">25.2</span>
+        <div>
+          <h3>Streaming is a loading state — design it</h3>
+          <p>Tokens arriving live beat a spinner (20’s ladder applies: generation usually lives in the 1–10s band), but streaming text is content that moves — the thing 20.3 forbids.</p>
+          <p class="apply">Reserve stable space for the response, keep actions pinned so nothing shifts under a poised finger, always show a Stop button, and cover pre-stream latency with a skeleton, not silence. When generation fails mid-stream, keep the partial and say so.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">25.3</span>
+        <div>
+          <h3>Uncertainty is content, not fine print</h3>
+          <p>Models state guesses in the grammar of facts. The interface has to restore the difference — because the user can’t hear the model’s confidence, only its tone.</p>
+          <p class="apply">Cite sources inline and make them tappable; use calibrated language for inference (“Looks like overwatering” vs. “Your plant has root rot”); separate retrieved facts from generated prose visually. Verification must cost one tap, or nobody pays it.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">25.4</span>
+        <div>
+          <h3>Show the work, keep the receipt</h3>
+          <p>When AI acts — renames, files, edits, replies — the user needs to see <em>what changed</em> and reverse it as one unit. Undo beats confirmation here more than anywhere (3.3), because confirmations would arrive constantly and get dismissed blindly.</p>
+          <p class="apply">Every AI action produces a visible, diff-style record (“Renamed 12 files — review · undo”); batch operations get a review screen before or a rollback after. An AI feature without undo is a trust incident on a timer.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">25.5</span>
+        <div>
+          <h3>Chat is the fallback, not the default</h3>
+          <p>A blank prompt box is Hick’s law inverted — infinite options produce paralysis, then three-word prompts, then disappointment. Chat earns its place only where intent is genuinely open-ended.</p>
+          <p class="apply">For known intents, give buttons, chips, and structured inputs that <em>invoke</em> the model invisibly (“Diagnose this leaf” beats “describe your problem”). Where chat is right, seed it with tappable example prompts — recognition over recall (3.6) applies to talking, too.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">25.6</span>
+        <div>
+          <h3>Label the machine, own its mistakes</h3>
+          <p>AI-generated content is labeled as such — not to cover the vendor, but because authorship is context users need. And when the model is wrong in your product, it’s your product that was wrong.</p>
+          <p class="apply">Mark generated content at the point of consumption, wire feedback controls to something real, and design the failure path with the same care as success (16.3): “I couldn’t tell from this photo — try one in daylight” beats a hallucinated diagnosis every single time.</p>
         </div>
       </div>
     </div>

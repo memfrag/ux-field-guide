@@ -6,6 +6,8 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 
 ## What's inside
 
+**Part I — Foundations** · how people perceive, decide, and touch
+
 | # | Chapter | |
 |---|---------|---|
 | 01 | Working Posture | the default stance behind every decision |
@@ -15,16 +17,36 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 05 | Visual Hierarchy | the five levers, with worked examples |
 | 06 | Mobile Instincts | thumb zones, touch targets, interruptions |
 | 07 | Accessibility | contrast, type scaling, screen readers, focus |
+
+**Part II — Method** · from idea to iteration
+
+| # | Chapter | |
+|---|---------|---|
 | 08 | The Process | app idea → shipped design, in order |
 | 09 | Four Modes of Work | critique · diagnose · reason · produce |
+
+**Part III — Platforms** · one design, expressed natively twice
+
+| # | Chapter | |
+|---|---------|---|
 | 10 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
 | 11 | Navigation | back semantics, tabs, modality, deep links |
 | 12 | SwiftUI ↔ Compose | the dialect table as it compiles |
+
+**Part IV — Systems & Craft** · the details that decide whether it ships well
+
+| # | Chapter | |
+|---|---------|---|
 | 13 | Design Systems | decisions made once |
 | 14 | Design Tokens | name the decision, not the value |
 | 15 | Forms & Input | where most apps actually lose people |
 | 16 | UX Writing | buttons, errors, empty states, platform casing |
 | 17 | Empty & Loading States | blank and waiting are where trust is won |
+
+**Part V — Judgment** · what to avoid, what to weigh, how to check
+
+| # | Chapter | |
+|---|---------|---|
 | 18 | What Not To Do | universal, iOS, and Android anti-patterns |
 | 19 | The Honest Trade-offs | where the pin sits, and what moves it |
 | 20 | The Screen Audit | a 12-point interactive checklist |

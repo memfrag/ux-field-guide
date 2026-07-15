@@ -179,6 +179,50 @@
   .toc-grid a:hover, .toc-grid a.active { color: var(--signal); }
   .toc-grid a b { color: var(--ink-faint); font-weight: 400; margin-right: .8em; }
   .toc-grid a:hover b, .toc-grid a.active b { color: inherit; }
+  .toc-grid .part-head {
+    grid-column: 1 / -1;
+    font-family: var(--mono);
+    font-size: .62rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--signal);
+    padding: 1.3em 0 .35em;
+  }
+  .toc-grid .part-head:first-child { padding-top: .2em; }
+
+  /* ---------- part dividers ---------- */
+  .part {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    padding: 3.4rem 6vw 2.8rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper-deep);
+  }
+  .part .roman {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1;
+    color: var(--signal);
+    min-width: 2ch;
+    text-align: center;
+  }
+  .part h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-size: 1.35rem;
+  }
+  .part p {
+    font-family: var(--mono);
+    font-size: .65rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: .45rem;
+  }
 
   /* ---------- sections ---------- */
   section {
@@ -617,6 +661,7 @@
       --rule: #11111133;
     }
     nav { display: none; }
+    .part { page-break-before: always; background: none; padding-left: 0; padding-right: 0; }
     .reveal { opacity: 1 !important; transform: none !important; transition: none; }
     .sec-head { position: static; }
     section { page-break-before: always; padding: 2rem 0; grid-template-columns: 1fr; gap: 1.5rem; }
@@ -648,6 +693,7 @@
   </div>
   <div class="toc-panel" id="tocPanel">
     <ol class="toc-grid">
+      <li class="part-head">Part I — Foundations</li>
       <li><a href="#posture"><b>01</b>Working Posture</a></li>
       <li><a href="#laws"><b>02</b>Laws of Interaction</a></li>
       <li><a href="#heuristics"><b>03</b>Nielsen’s Ten</a></li>
@@ -655,16 +701,20 @@
       <li><a href="#hierarchy"><b>05</b>Visual Hierarchy</a></li>
       <li><a href="#mobile"><b>06</b>Mobile Instincts</a></li>
       <li><a href="#accessibility"><b>07</b>Accessibility</a></li>
+      <li class="part-head">Part II — Method</li>
       <li><a href="#process"><b>08</b>The Process</a></li>
       <li><a href="#modes"><b>09</b>Four Modes of Work</a></li>
+      <li class="part-head">Part III — Platforms</li>
       <li><a href="#platforms"><b>10</b>One Design, Two Dialects</a></li>
       <li><a href="#navigation"><b>11</b>Navigation</a></li>
       <li><a href="#components"><b>12</b>SwiftUI ↔ Compose</a></li>
+      <li class="part-head">Part IV — Systems &amp; Craft</li>
       <li><a href="#systems"><b>13</b>Design Systems</a></li>
       <li><a href="#tokens"><b>14</b>Design Tokens</a></li>
       <li><a href="#forms"><b>15</b>Forms &amp; Input</a></li>
       <li><a href="#writing"><b>16</b>UX Writing</a></li>
       <li><a href="#states"><b>17</b>Empty &amp; Loading States</a></li>
+      <li class="part-head">Part V — Judgment</li>
       <li><a href="#antipatterns"><b>18</b>What Not To Do</a></li>
       <li><a href="#tradeoffs"><b>19</b>The Honest Trade-offs</a></li>
       <li><a href="#checklist"><b>20</b>The Screen Audit</a></li>
@@ -672,6 +722,14 @@
     </ol>
   </div>
 </nav>
+
+<div class="part" id="part-1">
+  <span class="roman">I</span>
+  <div>
+    <h2>Foundations</h2>
+    <p>How people perceive, decide, and touch · ch. 01–07</p>
+  </div>
+</div>
 
 <!-- ============ 01 POSTURE ============ -->
 <section id="posture">
@@ -1159,6 +1217,14 @@
   </div>
 </section>
 
+<div class="part" id="part-2">
+  <span class="roman">II</span>
+  <div>
+    <h2>Method</h2>
+    <p>From idea to iteration — how the work gets done · ch. 08–09</p>
+  </div>
+</div>
+
 <!-- ============ 08 PROCESS ============ -->
 <section id="process">
   <div class="sec-head reveal">
@@ -1304,6 +1370,14 @@
     </div>
   </div>
 </section>
+
+<div class="part" id="part-3">
+  <span class="roman">III</span>
+  <div>
+    <h2>Platforms</h2>
+    <p>One design, expressed natively twice · ch. 10–12</p>
+  </div>
+</div>
 
 <!-- ============ 10 DIALECTS ============ -->
 <section id="platforms">
@@ -1599,6 +1673,14 @@
     </div>
   </div>
 </section>
+
+<div class="part" id="part-4">
+  <span class="roman">IV</span>
+  <div>
+    <h2>Systems &amp; Craft</h2>
+    <p>The details that decide whether it ships well · ch. 13–17</p>
+  </div>
+</div>
 
 <!-- ============ 13 DESIGN SYSTEMS ============ -->
 <section id="systems">
@@ -1993,6 +2075,14 @@
     </div>
   </div>
 </section>
+
+<div class="part" id="part-5">
+  <span class="roman">V</span>
+  <div>
+    <h2>Judgment</h2>
+    <p>What to avoid, what to weigh, how to check · ch. 18–21</p>
+  </div>
+</div>
 
 <!-- ============ 18 ANTI-PATTERNS ============ -->
 <section id="antipatterns">

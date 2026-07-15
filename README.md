@@ -15,50 +15,52 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 03 | Nielsen's Ten | the evaluation checklist, condensed |
 | 04 | Gestalt Principles | how the eye groups before the mind reads |
 | 05 | Visual Hierarchy | the five levers, with worked examples |
-| 06 | Mobile Instincts | thumb zones, touch targets, interruptions |
-| 07 | Accessibility | contrast, type scaling, screen readers, focus |
+| 06 | Grid Systems | the invisible structure behind consistent hierarchy |
+| 07 | Mobile Instincts | thumb zones, touch targets, interruptions |
+| 08 | Accessibility | contrast, type scaling, screen readers, focus |
 
 **Part II — Method** · from idea to iteration
 
 | # | Chapter | |
 |---|---------|---|
-| 08 | The Process | app idea → shipped design, in order |
-| 09 | Four Modes of Work | critique · diagnose · reason · produce |
-| 10 | Research & Testing | tasks not opinions, five users, severity |
+| 09 | The Process | app idea → shipped design, in order |
+| 10 | Four Modes of Work | critique · diagnose · reason · produce |
+| 11 | Research & Testing | tasks not opinions, five users, severity |
 
 **Part III — Platforms** · one design, expressed natively twice
 
 | # | Chapter | |
 |---|---------|---|
-| 11 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
-| 12 | Navigation | back semantics, tabs, modality, deep links |
-| 13 | Adaptive Layout | size classes, list-detail, foldables |
-| 14 | Iconography & Imagery | SF Symbols vs Material Symbols, app icons |
-| 15 | SwiftUI ↔ Compose | the dialect table as it compiles |
+| 12 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
+| 13 | Navigation | back semantics, tabs, modality, deep links |
+| 14 | Adaptive Layout | size classes, list-detail, foldables |
+| 15 | Iconography & Imagery | SF Symbols vs Material Symbols, app icons |
+| 16 | SwiftUI ↔ Compose | the dialect table as it compiles |
+| 17 | Widgets & Live Surfaces | WidgetKit, Live Activities, Live Updates |
 
 **Part IV — Systems & Craft** · the details that decide whether it ships well
 
 | # | Chapter | |
 |---|---------|---|
-| 16 | Design Systems | decisions made once |
-| 17 | Design Tokens | name the decision, not the value |
-| 18 | Forms & Input | where most apps actually lose people |
-| 19 | UX Writing | buttons, errors, empty states, platform casing |
-| 20 | Empty & Loading States | blank and waiting are where trust is won |
-| 21 | Motion & Feedback | animation is information — or it's in the way |
-| 22 | Onboarding & First-Run | the shortest path to the first win |
-| 23 | Notifications & Interruptions | the trust economy of the lock screen |
-| 24 | Internationalization | text expansion, RTL, locale formats |
-| 25 | AI Interface Patterns | the autonomy ladder, streaming, uncertainty |
+| 18 | Design Systems | decisions made once |
+| 19 | Design Tokens | name the decision, not the value |
+| 20 | Forms & Input | where most apps actually lose people |
+| 21 | UX Writing | buttons, errors, tone of voice, platform casing |
+| 22 | Empty & Loading States | blank and waiting are where trust is won |
+| 23 | Motion & Feedback | animation is information — or it's in the way |
+| 24 | Onboarding & First-Run | the shortest path to the first win |
+| 25 | Notifications & Interruptions | the trust economy of the lock screen |
+| 26 | Internationalization | text expansion, RTL, locale formats |
+| 27 | AI Interface Patterns | the autonomy ladder, streaming, uncertainty |
 
 **Part V — Judgment** · what to avoid, what to weigh, how to check
 
 | # | Chapter | |
 |---|---------|---|
-| 26 | What Not To Do | universal, iOS, and Android anti-patterns |
-| 27 | The Honest Trade-offs | where the pin sits, and what moves it |
-| 28 | The Screen Audit | a 12-point interactive checklist |
-| 29 | A Worked Example | one app idea, the whole process, both dialects |
+| 28 | What Not To Do | universal, iOS, and Android anti-patterns |
+| 29 | The Honest Trade-offs | where the pin sits, and what moves it |
+| 30 | The Screen Audit | a 12-point interactive checklist |
+| 31 | A Worked Example | one app idea, the whole process, both dialects |
 | A | Sources & Further Reading | HIG, Material 3, WCAG, NN/g, the books |
 
 Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's Material 3 (Expressive).
@@ -66,7 +68,7 @@ Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's M
 ## Notes
 
 - **One file.** `index.html` is fully self-contained: no build step, no external fonts, scripts, or images — all illustrations are inline SVG themed by CSS variables.
-- **Deep links.** Every numbered entry is linkable (e.g. [§7.4](https://memfrag.github.io/ux-field-guide/#s7-4)).
+- **Deep links.** Every numbered entry is linkable (e.g. [§8.4](https://memfrag.github.io/ux-field-guide/#s8-4)).
 - **Printable.** A print stylesheet converts it to a light, paginated document.
 - **The checklist remembers.** Screen-audit ticks persist in `localStorage`.
 - **Cheat sheet.** [`cheatsheet.html`](https://memfrag.github.io/ux-field-guide/cheatsheet.html) is a print-first one-pager: laws, audit, numbers, dialect table.

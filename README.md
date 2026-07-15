@@ -46,6 +46,7 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 19 | UX Writing | buttons, errors, empty states, platform casing |
 | 20 | Empty & Loading States | blank and waiting are where trust is won |
 | 21 | Motion & Feedback | animation is information — or it's in the way |
+| 22 | Onboarding & First-Run | the shortest path to the first win |
 
 **Part V — Judgment** · what to avoid, what to weigh, how to check
 

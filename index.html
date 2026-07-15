@@ -720,6 +720,7 @@
       <li><a href="#writing"><b>19</b>UX Writing</a></li>
       <li><a href="#states"><b>20</b>Empty &amp; Loading States</a></li>
       <li><a href="#motion"><b>21</b>Motion &amp; Feedback</a></li>
+      <li><a href="#onboarding"><b>22</b>Onboarding &amp; First-Run</a></li>
       <li class="part-head">Part V — Judgment</li>
       <li><a href="#antipatterns"><b>26</b>What Not To Do</a></li>
       <li><a href="#tradeoffs"><b>27</b>The Honest Trade-offs</a></li>
@@ -2434,6 +2435,103 @@
           <h3>Motion is optional — still</h3>
           <p>Chapter 7.5 is law here too: Reduce Motion replaces movement with cross-fades, and no meaning may travel by motion alone.</p>
           <p class="apply">Pair every motion cue with a state change that survives its removal — the row is checked, not just bounced. Test the app with Reduce Motion on; if anything becomes confusing, motion was carrying information it never should have carried alone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 22 ONBOARDING & FIRST-RUN ============ -->
+<section id="onboarding">
+  <div class="sec-head reveal">
+    <div class="sec-num">22</div>
+    <h2>Onboarding &amp; First-Run</h2>
+    <p class="kicker">Most apps die in the first session — design the first five minutes hardest</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>The median app loses most of its new users within days, and the first session does the deciding. Onboarding is not a welcome carousel — it is the shortest designed path from install to the user’s first genuine success.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 128" width="360" role="img" aria-label="Wrong first-run order: sign-up wall, tour, three permission dialogs, then maybe value. Right order: value first, first win, then sign-up, then one permission in context">
+        <text x="10" y="20" font-family="Menlo, monospace" font-size="9" fill="var(--ink-faint)">✕</text>
+        <g fill="none" stroke="var(--ink-faint)" stroke-width="1.1" stroke-dasharray="3 3">
+          <rect x="24" y="8" width="70" height="20" rx="4"/>
+          <rect x="106" y="8" width="60" height="20" rx="4"/>
+          <rect x="178" y="8" width="88" height="20" rx="4"/>
+          <rect x="278" y="8" width="60" height="20" rx="4"/>
+        </g>
+        <g font-family="Menlo, monospace" font-size="6.8" fill="var(--ink-faint)">
+          <text x="59" y="21" text-anchor="middle">SIGN-UP WALL</text>
+          <text x="136" y="21" text-anchor="middle">3-PAGE TOUR</text>
+          <text x="222" y="21" text-anchor="middle">3 PERMISSION DIALOGS</text>
+          <text x="308" y="21" text-anchor="middle">VALUE?</text>
+        </g>
+        <text x="24" y="46" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">EVERY BOX SHEDS USERS BEFORE THEY’VE SEEN ANYTHING</text>
+        <text x="10" y="86" font-family="Menlo, monospace" font-size="9" fill="var(--signal)">✓</text>
+        <g fill="none" stroke="var(--signal)" stroke-width="1.3">
+          <rect x="24" y="74" width="60" height="20" rx="4" fill="var(--signal-soft)"/>
+          <rect x="96" y="74" width="66" height="20" rx="4" fill="var(--signal-soft)"/>
+          <rect x="174" y="74" width="60" height="20" rx="4"/>
+          <rect x="246" y="74" width="104" height="20" rx="4"/>
+        </g>
+        <g font-family="Menlo, monospace" font-size="6.8" fill="var(--ink)">
+          <text x="54" y="87" text-anchor="middle">SEE VALUE</text>
+          <text x="129" y="87" text-anchor="middle">FIRST WIN</text>
+          <text x="204" y="87" text-anchor="middle">SIGN-UP</text>
+          <text x="298" y="87" text-anchor="middle">PERMISSION, IN CONTEXT</text>
+        </g>
+        <text x="24" y="112" font-family="Menlo, monospace" font-size="7" fill="var(--signal)">EARN THE ASKS WITH THE WIN</text>
+      </svg>
+      <div class="cap">The first-session order — asks come after value, or they come at a discount</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">22.1</span>
+        <div>
+          <h3>Name the aha moment, then shorten the road</h3>
+          <p>Every product has one event after which people tend to stay — the first watering logged, the first message answered, the first file synced. That event, not the install, is what onboarding delivers.</p>
+          <p class="apply">Write it down next to the framing sentence (8.1), count the taps between first launch and it, and treat every one of them as a toll. Sprout’s is “first plant added, first task checked” — reachable in under a minute, no account required.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">22.2</span>
+        <div>
+          <h3>Value before identity</h3>
+          <p>A sign-up wall before any value is the app demanding trust it hasn’t earned (26 ✕). Let people taste the product anonymously wherever the architecture allows.</p>
+          <p class="apply">Ask for the account when it protects something of <em>theirs</em> — their plants, their history, their sync — and say so in the ask: “Create an account to keep your garden safe.” Offer the platform’s one-tap sign-in so the toll is one tap, not a form (18.1).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">22.3</span>
+        <div>
+          <h3>Teach by doing, not by carousel</h3>
+          <p>Three-swipe intro tours are skipped by the users who need them and forgotten by the ones who read them. Instruction that arrives before the situation it explains is noise.</p>
+          <p class="apply">The first-run empty state is the real syllabus (20.1): it says what belongs here and hands over the first action. Contextual hints appear at first contact with a feature — once, dismissible, never again (3.10).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">22.4</span>
+        <div>
+          <h3>One permission, one moment, one reason</h3>
+          <p>A cold-launch stack of system dialogs is answered <em>no</em> in self-defense — and iOS gives you exactly one shot at each. The system dialog is the contract; your priming screen is the pitch.</p>
+          <p class="apply">Ask at the moment the feature needs it, primed with the user’s own context: “Want a nudge when Monstera is thirsty?” (29.6). If they decline the pitch, don’t burn the system dialog — leave the door open in settings.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">22.5</span>
+        <div>
+          <h3>Disclose power progressively</h3>
+          <p>Advanced features shown on day one are clutter; the same features surfaced at the moment of relevance are delight (2.2, 6.1).</p>
+          <p class="apply">Gate discovery on behavior, not time: the user who adds a tenth plant gets shown bulk actions; the one who exports twice learns about automation. Feature discovery is a drip, not a firehose — and never a badge-covered “What’s New” museum.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">22.6</span>
+        <div>
+          <h3>Returning is also a first run</h3>
+          <p>Reinstalls, new phones, and second devices outnumber true first-times for mature products — and nothing insults a returning user like a welcome tour.</p>
+          <p class="apply">Detect the existing account and lead with restore: “Welcome back — your 12 plants are safe.” Skip the teaching, keep the permission re-asks (a new device reset them), and never make someone rebuild what sync should have carried.</p>
         </div>
       </div>
     </div>

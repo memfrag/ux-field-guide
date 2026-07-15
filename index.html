@@ -1889,6 +1889,39 @@
           <p class="apply">Fixed aspect-ratio containers so nothing jumps when they arrive (20.3); meaningful images get real accessibility descriptions and decorative ones get hidden (7.3); check every image against dark mode — a white-matte logo on graphite is the classic miss.</p>
         </div>
       </div>
+      <div class="entry">
+        <span class="n">14.7</span>
+        <div>
+          <h3>The two dictionaries barely overlap — and that’s fine</h3>
+          <p>SF Symbols runs past 7,000 glyphs; Material Symbols sits around 2,500–3,800 depending on how the variable-axis styles are counted. Only a few hundred are formally mapped one-to-one between them — cross-platform tooling like Expo’s symbol system ships roughly 570 confirmed pairs. That’s a small, concentrated core inside two much larger, mostly disjoint libraries.</p>
+          <div class="dia">
+            <svg viewBox="0 0 360 150" width="360" role="img" aria-label="Two overlapping circles: SF Symbols with about seven thousand icons, Material Symbols with about twenty-five hundred to thirty-eight hundred, overlapping in a small zone of roughly five hundred mapped universal actions">
+              <circle cx="140" cy="75" r="82" fill="none" stroke="var(--ink-soft)" stroke-width="1.4"/>
+              <circle cx="230" cy="75" r="58" fill="var(--signal-soft)" stroke="var(--signal)" stroke-width="1.4"/>
+              <text x="76" y="30" font-family="Menlo, monospace" font-size="8" fill="var(--ink-soft)">SF SYMBOLS</text>
+              <text x="76" y="41" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">~7,000+ · CARPLAY, HOMEKIT,</text>
+              <text x="76" y="51" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">HARDWARE STATES</text>
+              <text x="252" y="30" font-family="Menlo, monospace" font-size="8" fill="var(--ink)">MATERIAL</text>
+              <text x="252" y="41" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SYMBOLS ~2,500–3,800</text>
+              <text x="252" y="51" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">GENERIC BREADTH</text>
+              <text x="187" y="78" text-anchor="middle" font-family="Menlo, monospace" font-size="7.5" fill="var(--signal)">~570</text>
+              <text x="187" y="88" text-anchor="middle" font-family="Menlo, monospace" font-size="6" fill="var(--signal)">MAPPED 1:1</text>
+              <text x="30" y="132" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SEARCH · GEAR · TRASH · HEART · STAR — CONVERGENT METAPHOR</text>
+              <text x="30" y="144" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SHARE — SAME MEANING, DIFFERENT GLYPH (14.8)</text>
+            </svg>
+            <div class="cap">A small mapped core inside two mostly-disjoint libraries — depth diverges by design</div>
+          </div>
+          <p class="apply">For the dozen truly universal actions the metaphor usually <em>does</em> converge: magnifying glass, gear, trash can, heart, star, house, checkmark all read the same on both platforms — safe to treat as shared vocabulary. Past that dozen, don’t assume a match exists; look it up per icon rather than porting a Material glyph into an iOS toolbar or vice versa.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.8</span>
+        <div>
+          <h3>Same meaning, different glyph: share is the tell</h3>
+          <p>iOS draws share as a box with an arrow escaping upward — an object leaving through an opening, tied to the Action-sheet model since iOS 7. Android draws three connected dots forming a triangle with radiating lines — a one-to-many broadcast, inherited from a 2006 browser plugin. Same user intent, genuinely different mental model, not just a style difference.</p>
+          <p class="apply">This is the load-bearing example for chapter 11 (One Design, Two Dialects): render the platform’s own share glyph, never the other one. Recognition testing on the Android icon alone has landed around half — importing it into an iOS screen would cost that recognition twice over. When in doubt, ship the native symbol and let the dialect (11) do its job.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2296,9 +2329,45 @@
       <div class="entry">
         <span class="n">19.6</span>
         <div>
-          <h3>Voice is a token</h3>
-          <p>One voice (Sprout’s: calm, concrete, a little warm), with tone that flexes by context — brighter on success, sober on errors, silent where the UI already says it.</p>
-          <p class="apply">Write it into the design system (ch. 16) as a five-line sheet of “we say / we never say” pairs with examples. Five lines that get read beat fifty pages that don’t.</p>
+          <h3>Tone is four dials, not one switch</h3>
+          <p>“Friendly” isn’t a setting — tone moves independently along at least four axes (Nielsen Norman Group’s model): <b>formal↔casual</b>, <b>serious↔funny</b>, <b>respectful↔irreverent</b>, <b>matter-of-fact↔enthusiastic</b>. Two messages can carry identical information and land completely differently depending on where each dial sits.</p>
+          <div class="tradeoff" style="margin-top:1.3rem">
+            <div class="axis"><span>Formal</span><span>Casual</span></div>
+            <div class="axis-bar"><span class="pin" style="left:62%"></span></div>
+          </div>
+          <div class="tradeoff">
+            <div class="axis"><span>Serious</span><span>Funny</span></div>
+            <div class="axis-bar"><span class="pin" style="left:30%"></span></div>
+          </div>
+          <div class="tradeoff">
+            <div class="axis"><span>Respectful</span><span>Irreverent</span></div>
+            <div class="axis-bar"><span class="pin" style="left:20%"></span></div>
+          </div>
+          <div class="tradeoff">
+            <div class="axis"><span>Matter-of-fact</span><span>Enthusiastic</span></div>
+            <div class="axis-bar"><span class="pin" style="left:55%"></span></div>
+            <p>Sprout’s four dials — casual and warm, but rarely joking, never irreverent, and enthusiasm reserved for genuine wins.</p>
+          </div>
+          <p class="apply">Plot the product’s position on each axis deliberately, in the design system (ch. 16), before anyone writes a line of copy. An undefined dial doesn’t stay neutral — it drifts differently in every screen a different person writes.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">19.7</span>
+        <div>
+          <h3>One message, many possible tones</h3>
+          <p>The same failure, two settings of Sprout’s own dials:</p>
+          <div class="dia">
+            <svg viewBox="0 0 360 92" width="360" role="img" aria-label="Two versions of the same watering-reminder failure message: an overly casual joking version and Sprout's actual voice, matter-of-fact and warm">
+              <rect x="0" y="0" width="360" height="40" rx="7" fill="#ffffff08"/>
+              <text x="14" y="17" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">TOO FAR RIGHT — OFF-DIAL</text>
+              <text x="14" y="32" font-family="-apple-system, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="var(--ink-soft)">“Yikes 😬 we totally dropped the ball on your reminder.”</text>
+              <rect x="0" y="50" width="360" height="40" rx="7" fill="var(--signal-soft)"/>
+              <text x="14" y="67" font-family="Menlo, monospace" font-size="7" fill="var(--signal)">SPROUT’S DIALS — 19.6</text>
+              <text x="14" y="82" font-family="-apple-system, Helvetica, sans-serif" font-size="10.5" fill="var(--ink)">“Your reminder didn’t send. Monstera may need water today.”</text>
+            </svg>
+            <div class="cap">Same failure — one apologizes for the brand’s feelings, one respects the user’s plant</div>
+          </div>
+          <p class="apply">The top line isn’t wrong because it’s casual — casual is on-brand. It’s wrong because funny and self-focused overshoot the serious/respectful dials on a message that’s actually about a wilting plant. Test new copy against the plotted dials, not against “does this sound like us,” which is exactly vague enough to approve anything.</p>
         </div>
       </div>
     </div>
@@ -3173,14 +3242,15 @@
     <div class="entries">
       <div class="entry"><span class="n">A.5</span><div><h3><a href="https://www.nngroup.com/">Nielsen Norman Group</a></h3><p>The ten heuristics (ch. 03), the five-user argument (ch. 10), and decades of pattern research with receipts.</p></div></div>
       <div class="entry"><span class="n">A.6</span><div><h3><a href="https://www.nngroup.com/articles/design-pattern-guidelines/">NN/g Design-Pattern Guidelines</a></h3><p>An index into NN/g’s component-level research — checkboxes vs. radio buttons, menus, breadcrumbs, tooltips. The source behind 18.7’s control-selection rule; go here for the pattern this manual didn’t have room to cover.</p></div></div>
-      <div class="entry"><span class="n">A.7</span><div><h3><a href="https://lawsofux.com/">Laws of UX</a></h3><p>Fitts, Hick, Jakob, Miller, Tesler, and the peak–end rule (ch. 02), each traced to its original study.</p></div></div>
+      <div class="entry"><span class="n">A.7</span><div><h3><a href="https://www.nngroup.com/articles/tone-of-voice-dimensions/">NN/g — The Four Dimensions of Tone of Voice</a></h3><p>Formal↔casual, serious↔funny, respectful↔irreverent, matter-of-fact↔enthusiastic. The model behind 19.6–19.7.</p></div></div>
+      <div class="entry"><span class="n">A.8</span><div><h3><a href="https://lawsofux.com/">Laws of UX</a></h3><p>Fitts, Hick, Jakob, Miller, Tesler, and the peak–end rule (ch. 02), each traced to its original study.</p></div></div>
     </div>
 
     <div class="subhead">Books that survive rereading</div>
     <div class="entries">
-      <div class="entry"><span class="n">A.8</span><div><h3>Don Norman — <em>The Design of Everyday Things</em></h3><p>Affordances, signifiers, and mappings — the vocabulary underneath every chapter in Part I.</p></div></div>
-      <div class="entry"><span class="n">A.9</span><div><h3>Steve Krug — <em>Don’t Make Me Think</em></h3><p>The five-second test, self-evident screens, and testing without ceremony — chapters 05 and 10 in a friendlier voice.</p></div></div>
-      <div class="entry"><span class="n">A.10</span><div><h3>Josef Müller-Brockmann — <em>Grid Systems in Graphic Design</em></h3><p>Where alignment, hierarchy, and typographic discipline come from — the tradition this page’s own design borrows.</p></div></div>
+      <div class="entry"><span class="n">A.9</span><div><h3>Don Norman — <em>The Design of Everyday Things</em></h3><p>Affordances, signifiers, and mappings — the vocabulary underneath every chapter in Part I.</p></div></div>
+      <div class="entry"><span class="n">A.10</span><div><h3>Steve Krug — <em>Don’t Make Me Think</em></h3><p>The five-second test, self-evident screens, and testing without ceremony — chapters 05 and 10 in a friendlier voice.</p></div></div>
+      <div class="entry"><span class="n">A.11</span><div><h3>Josef Müller-Brockmann — <em>Grid Systems in Graphic Design</em></h3><p>Where alignment, hierarchy, and typographic discipline come from — the tradition this page’s own design borrows.</p></div></div>
     </div>
   </div>
 </section>

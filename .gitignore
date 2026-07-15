@@ -1,2 +1,4 @@
 .claude/
 *.renumbered-review.html
+__pycache__/
+*.pyc

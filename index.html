@@ -706,6 +706,7 @@
       <li class="part-head">Part II — Method</li>
       <li><a href="#process"><b>08</b>The Process</a></li>
       <li><a href="#modes"><b>09</b>Four Modes of Work</a></li>
+      <li><a href="#research"><b>10</b>Research &amp; Testing</a></li>
       <li class="part-head">Part III — Platforms</li>
       <li><a href="#platforms"><b>11</b>One Design, Two Dialects</a></li>
       <li><a href="#navigation"><b>12</b>Navigation</a></li>
@@ -1369,6 +1370,84 @@
           <li>Derive both dialects from the shared core (8.5)</li>
         </ol>
         <p class="rule">Never polish what hasn’t been validated one fidelity below.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 RESEARCH & TESTING ============ -->
+<section id="research">
+  <div class="sec-head reveal">
+    <div class="sec-num">10</div>
+    <h2>Research &amp; Testing</h2>
+    <p class="kicker">Opinions are hypotheses — here’s how they get tested</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>The process says “put it in front of real people” (8.7); this chapter is how. The method matters more than the sample size: a badly run test with twenty users produces confident nonsense, while five users and a disciplined script find most of what’s broken.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 128" width="360" role="img" aria-label="Evidence ladder: what people say is weakest, what they do in a test is stronger, what they do in production is strongest">
+        <rect x="10" y="88" width="340" height="26" rx="5" fill="var(--signal-soft)" stroke="var(--signal)" stroke-width="1.2"/>
+        <text x="24" y="105" font-family="Menlo, monospace" font-size="8.5" fill="var(--ink)">WHAT THEY DO IN PRODUCTION</text>
+        <text x="344" y="105" text-anchor="end" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">ANALYTICS · A/B</text>
+        <rect x="46" y="52" width="268" height="26" rx="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.2"/>
+        <text x="60" y="69" font-family="Menlo, monospace" font-size="8.5" fill="var(--ink)">WHAT THEY DO IN A TEST</text>
+        <text x="308" y="69" text-anchor="end" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">USABILITY · 5 USERS</text>
+        <rect x="82" y="16" width="196" height="26" rx="5" fill="none" stroke="var(--ink-faint)" stroke-width="1.2" stroke-dasharray="4 4"/>
+        <text x="96" y="33" font-family="Menlo, monospace" font-size="8.5" fill="var(--ink-soft)">WHAT THEY SAY</text>
+        <text x="272" y="33" text-anchor="end" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">INTERVIEWS · SURVEYS</text>
+      </svg>
+      <div class="cap">The evidence ladder — trust flows downward; never ship on the top rung alone</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">10.1</span>
+        <div>
+          <h3>Test tasks, not opinions</h3>
+          <p>“Do you like it?” produces politeness. “Book the cheapest room for Friday” produces behavior — and behavior is the only honest witness.</p>
+          <p class="apply">Write 3–5 tasks from the top flows (8.2), phrased as goals, never as UI directions: “find out when your plant needs water,” not “tap the Today tab.” Naming a UI element in the task erases the finding it was meant to produce.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.2</span>
+        <div>
+          <h3>Don’t lead the witness</h3>
+          <p>The moderator’s job is silence. Every hint, every “what do you think that button does?”, every rescued participant destroys the data they were recruited to provide.</p>
+          <p class="apply">Ask them to think aloud, then say nothing. When they stall, the answer to “what should I do?” is “what would you do if I weren’t here?” Let them fail — the failure <em>is</em> the finding. Debrief questions come after all tasks, never during.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.3</span>
+        <div>
+          <h3>Five users, then fix, then five more</h3>
+          <p>Five users surface most usability problems <em>of the version they saw</em>. The power isn’t the number — it’s the iteration: test, fix, retest beats one large study every time.</p>
+          <p class="apply">Budget three rounds of five over one round of fifteen. Test the wireframe (8.4) first, when findings cost minutes to act on. Stop recruiting when sessions stop surprising you.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.4</span>
+        <div>
+          <h3>Severity beats vote-counting</h3>
+          <p>“Two of five users struggled” is not a statistic — the sample is too small for math. Findings are judged by severity: does it block the task, slow it, or merely annoy?</p>
+          <p class="apply">Rate each finding blocker / friction / cosmetic, tied to the flow it damages. One user hitting a blocker on the core loop outranks four users disliking a color. This feeds straight into the critique ranking (Mode 1, 9).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.5</span>
+        <div>
+          <h3>A/B tests answer “which,” not “why”</h3>
+          <p>Production experiments are the bottom rung of the ladder — the strongest evidence, but only for comparing variants you already believed in. They can’t generate the insight that produces the variants.</p>
+          <p class="apply">Usability tests find the problem; A/B tests confirm the fix at scale. Don’t A/B what a five-user test settles in a day, and don’t trust a test without a success metric named <em>before</em> it runs (guardrails too — conversion up while retention quietly dies is a loss).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.6</span>
+        <div>
+          <h3>Analytics is the always-on usability test</h3>
+          <p>Funnels, drop-off points, rage taps, and dead-end screens are behavioral findings arriving continuously — Mode 2 (9) runs on them.</p>
+          <p class="apply">Instrument the flows you mapped in 8.2 — step by step, not just endpoints — so “where do we lose people?” has an answer before anyone asks. Then watch three real session recordings before believing any hypothesis; numbers locate, sessions explain.</p>
+        </div>
       </div>
     </div>
   </div>

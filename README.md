@@ -24,6 +24,7 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 |---|---------|---|
 | 08 | The Process | app idea → shipped design, in order |
 | 09 | Four Modes of Work | critique · diagnose · reason · produce |
+| 10 | Research & Testing | tasks not opinions, five users, severity |
 
 **Part III — Platforms** · one design, expressed natively twice
 

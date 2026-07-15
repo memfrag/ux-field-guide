@@ -21,10 +21,12 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 11 | SwiftUI ↔ Compose | the dialect table as it compiles |
 | 12 | Design Systems | decisions made once |
 | 13 | Design Tokens | name the decision, not the value |
-| 14 | What Not To Do | universal, iOS, and Android anti-patterns |
-| 15 | The Honest Trade-offs | where the pin sits, and what moves it |
-| 16 | The Screen Audit | a 12-point interactive checklist |
-| 17 | A Worked Example | one app idea, the whole process, both dialects |
+| 14 | Forms & Input | where most apps actually lose people |
+| 15 | UX Writing | buttons, errors, empty states, platform casing |
+| 16 | What Not To Do | universal, iOS, and Android anti-patterns |
+| 17 | The Honest Trade-offs | where the pin sits, and what moves it |
+| 18 | The Screen Audit | a 12-point interactive checklist |
+| 19 | A Worked Example | one app idea, the whole process, both dialects |
 
 Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's Material 3 (Expressive).
 

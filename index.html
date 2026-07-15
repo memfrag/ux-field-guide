@@ -661,10 +661,12 @@
       <li><a href="#components"><b>11</b>SwiftUI ↔ Compose</a></li>
       <li><a href="#systems"><b>12</b>Design Systems</a></li>
       <li><a href="#tokens"><b>13</b>Design Tokens</a></li>
-      <li><a href="#antipatterns"><b>14</b>What Not To Do</a></li>
-      <li><a href="#tradeoffs"><b>15</b>The Honest Trade-offs</a></li>
-      <li><a href="#checklist"><b>16</b>The Screen Audit</a></li>
-      <li><a href="#example"><b>17</b>A Worked Example</a></li>
+      <li><a href="#forms"><b>14</b>Forms &amp; Input</a></li>
+      <li><a href="#writing"><b>15</b>UX Writing</a></li>
+      <li><a href="#antipatterns"><b>16</b>What Not To Do</a></li>
+      <li><a href="#tradeoffs"><b>17</b>The Honest Trade-offs</a></li>
+      <li><a href="#checklist"><b>18</b>The Screen Audit</a></li>
+      <li><a href="#example"><b>19</b>A Worked Example</a></li>
     </ol>
   </div>
 </nav>
@@ -1163,7 +1165,7 @@
     <p class="kicker">From app idea to shipped design — in order, no skipping</p>
   </div>
   <div class="sec-body reveal">
-    <p>Screens are the last thing you draw, not the first. This sequence front-loads the decisions that are expensive to change (what it is, how it’s organized) and defers the ones that are cheap (colors, corner radii). Chapter 17 runs the whole sequence on one app idea, end to end.</p>
+    <p>Screens are the last thing you draw, not the first. This sequence front-loads the decisions that are expensive to change (what it is, how it’s organized) and defers the ones that are cheap (colors, corner radii). Chapter 19 runs the whole sequence on one app idea, end to end.</p>
     <div class="entries">
       <div class="entry">
         <span class="n">8.1</span>
@@ -1230,7 +1232,7 @@
         <span class="n">8.7</span>
         <div>
           <h3>Audit, test, iterate</h3>
-          <p>Run the screen audit (ch. 16), the thumb map (ch. 06), and put it in front of real people.</p>
+          <p>Run the screen audit (ch. 18), the thumb map (ch. 06), and put it in front of real people.</p>
           <p class="apply">Five users surface most usability problems — test the wireframe, not the polished mockup, so findings are cheap to act on. Then loop back to 8.4.</p>
         </div>
       </div>
@@ -1278,7 +1280,7 @@
         <h3>Reason a decision</h3>
         <p>“Should we do X or Y?” — a principle question in disguise.</p>
         <ol>
-          <li>Name the trade-off axis it sits on (ch. 15)</li>
+          <li>Name the trade-off axis it sits on (ch. 17)</li>
           <li>Find the governing law or heuristic</li>
           <li>Check three best-in-class apps — Jakob’s law sets expectations</li>
           <li>Decide, and write the reasoning down</li>
@@ -1480,7 +1482,7 @@
         <div>
           <h3>One codebase means one dialect</h3>
           <p>Compose Multiplatform renders Material on iPhones; Flutter renders Flutter everywhere. Write-once UI buys speed by giving every user the same dialect — which is precisely what chapter 10 spends itself avoiding.</p>
-          <p class="apply">A legitimate trade for tools, prototypes, and brand-heavy apps where the product <em>is</em> the interface everywhere. Make it as a decision (ch. 15), not as a default — and know Jakob’s law bills iOS users for Material controls either way.</p>
+          <p class="apply">A legitimate trade for tools, prototypes, and brand-heavy apps where the product <em>is</em> the interface everywhere. Make it as a decision (ch. 17), not as a default — and know Jakob’s law bills iOS users for Material controls either way.</p>
         </div>
       </div>
     </div>
@@ -1625,10 +1627,175 @@
   </div>
 </section>
 
-<!-- ============ 14 ANTI-PATTERNS ============ -->
-<section id="antipatterns">
+<!-- ============ 14 FORMS & INPUT ============ -->
+<section id="forms">
   <div class="sec-head reveal">
     <div class="sec-num">14</div>
+    <h2>Forms &amp; Input</h2>
+    <p class="kicker">Where most apps actually lose people</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>A form is a conversation where one side does all the work. Every field is a demand on the user’s patience, memory, and thumbs — and checkout, sign-up, and onboarding funnels leak more users at forms than anywhere else. Design them like they cost money, because they do.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 190" width="360" role="img" aria-label="Anatomy of a form field: visible label, field with format hint, helper text, and an error state with icon and specific message beside the field">
+        <text x="10" y="18" font-family="-apple-system, Helvetica, sans-serif" font-size="10" font-weight="600" fill="var(--ink)">Email</text>
+        <rect x="10" y="26" width="216" height="34" rx="7" fill="#14171c" stroke="var(--ink-soft)" stroke-width="1.3"/>
+        <text x="22" y="47" font-family="-apple-system, Helvetica, sans-serif" font-size="10" fill="var(--ink-faint)" font-style="italic">name@example.com</text>
+        <text x="10" y="76" font-family="-apple-system, Helvetica, sans-serif" font-size="8.5" fill="var(--ink-faint)">Used only for receipts.</text>
+        <line x1="236" y1="16" x2="256" y2="16" stroke="var(--signal)" stroke-width="1"/>
+        <text x="262" y="19" font-family="Menlo, monospace" font-size="7.5" fill="var(--signal)">LABEL — ALWAYS VISIBLE</text>
+        <line x1="236" y1="44" x2="256" y2="44" stroke="var(--signal)" stroke-width="1"/>
+        <text x="262" y="47" font-family="Menlo, monospace" font-size="7.5" fill="var(--signal)">HINT — FORMAT ONLY</text>
+        <line x1="236" y1="73" x2="256" y2="73" stroke="var(--signal)" stroke-width="1"/>
+        <text x="262" y="76" font-family="Menlo, monospace" font-size="7.5" fill="var(--signal)">HELP — BEFORE ERRORS</text>
+        <text x="10" y="112" font-family="-apple-system, Helvetica, sans-serif" font-size="10" font-weight="600" fill="var(--ink)">Card number</text>
+        <rect x="10" y="120" width="216" height="34" rx="7" fill="#14171c" stroke="var(--signal)" stroke-width="1.5"/>
+        <text x="22" y="141" font-family="Menlo, monospace" font-size="10" fill="var(--ink)">4242 4242 4242 424</text>
+        <text x="10" y="172" font-family="-apple-system, Helvetica, sans-serif" font-size="8.5" fill="var(--signal)">⚠ One digit short — card numbers have 16.</text>
+        <line x1="236" y1="168" x2="256" y2="168" stroke="var(--signal)" stroke-width="1"/>
+        <text x="262" y="171" font-family="Menlo, monospace" font-size="7.5" fill="var(--signal)">ERROR — WHAT + NEXT,</text>
+        <text x="262" y="182" font-family="Menlo, monospace" font-size="7.5" fill="var(--signal)">BESIDE THE FIELD</text>
+      </svg>
+      <div class="cap">Anatomy of a field — input preserved, problem named, fix stated</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">14.1</span>
+        <div>
+          <h3>Ask less</h3>
+          <p>Every field costs completions. Derive what you can — card type from its number, city from the postcode — and treat “optional” as a synonym for “cut it.”</p>
+          <p class="apply">Fight for each field’s removal; make the requester prove its value in data. If the business genuinely needs it, stage it for later (progressive profiling) instead of taxing the first session.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.2</span>
+        <div>
+          <h3>One column, labels on top</h3>
+          <p>Multi-column forms break the scan line (4.4) and get skipped fields; placeholder-as-label vanishes the moment typing starts — a recall burden mid-task (2.4).</p>
+          <p class="apply">Single column, related fields grouped (4.1), label above the field, placeholder reserved for format examples only. The eye should travel one straight line from first field to submit.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.3</span>
+        <div>
+          <h3>The right keyboard, the right autofill</h3>
+          <p>An email field that opens the default keyboard, or a code field that blocks paste, is self-inflicted friction.</p>
+          <p class="apply">Set <code>keyboardType</code> + <code>textContentType</code> (iOS) / <code>KeyboardOptions</code> + autofill hints (Android) on every field — that’s what makes one-tap credential, address, and OTP autofill work. Test the whole form with a password manager before shipping.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.4</span>
+        <div>
+          <h3>Validate at the right moment</h3>
+          <p>Keystroke validation yells at half-typed input; submit-only validation ambushes at the end. Neither is a conversation.</p>
+          <p class="apply">Format checks on blur, cross-field checks on submit, and quiet positive ticks on hard fields (IBAN, password rules). Keep submit enabled — let the tap point precisely at what’s missing rather than leaving a dead button to decode (16 ✕).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.5</span>
+        <div>
+          <h3>Errors are directions, not verdicts</h3>
+          <p>An error state has one job: get the user to the fixed state with everything they typed intact.</p>
+          <p class="apply">Never clear the form. Name the field, the problem, and the fix, next to the field (“One digit short — card numbers have 16”), not in a toast that vanishes. “Something went wrong” is a shrug, not a message (see ch. 15).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.6</span>
+        <div>
+          <h3>Defaults do the work</h3>
+          <p>Tesler’s law (2.5) applied: every default the system supplies is a decision the user doesn’t make.</p>
+          <p class="apply">Default to the most common answer, remember last-used choices, prefill from context (country from locale, date from today) — and never pre-select anything destructive, consent-granting, or paid.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 15 UX WRITING ============ -->
+<section id="writing">
+  <div class="sec-head reveal">
+    <div class="sec-num">15</div>
+    <h2>UX Writing</h2>
+    <p class="kicker">Strip the visuals and an interface is words — write them like a designer</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Every label, button, and error is interface. Words are the cheapest material in the product to change and the most expensive to get wrong — a vague button costs more taps than a misaligned one.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Instead of</th><th>Say</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>“OK” / “Yes”</td><td>“Delete photo” — the button alone states the outcome</td></tr>
+          <tr><td>“Submit”</td><td>“Create account” — name the result, not the mechanism</td></tr>
+          <tr><td>“Are you sure?”</td><td>“This deletes 3 photos. Delete them?” — consequences, then the question</td></tr>
+          <tr><td>“Error 402”</td><td>“Card declined — no charge was made. Try another card.”</td></tr>
+          <tr><td>“Invalid input”</td><td>“Enter the 16-digit number on the front of your card.”</td></tr>
+          <tr><td>“Welcome to the future of plant care!”</td><td>“Water Monstera today.” — the job, front-loaded</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="entries" style="margin-top:2.5rem">
+      <div class="entry">
+        <span class="n">15.1</span>
+        <div>
+          <h3>Buttons say what they do</h3>
+          <p>Verb + object. A person should know the outcome from the button alone, without reading the dialog above it — because that’s exactly how dialogs get read.</p>
+          <p class="apply">“Delete photo”, “Save changes”, “Start free trial”. Reserve “Cancel” for exactly one meaning: nothing happens. Never pair two vague siblings (“OK” / “Cancel”) on a destructive choice.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">15.2</span>
+        <div>
+          <h3>Front-load every string</h3>
+          <p>Scanning eyes take the first two words and move on (5.4). The meaning must live there.</p>
+          <p class="apply">“Water Monstera today” — not “Today you might want to consider watering”. Delete throat-clearing openers on sight: “Please note that…”, “In order to…”, “It looks like…”.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">15.3</span>
+        <div>
+          <h3>Errors: what, why-it-matters, next</h3>
+          <p>The template is three moves: what happened, the consequence the user cares about, the next step. Plain language, no codes, no blame.</p>
+          <p class="apply">“Card declined — no charge was made. Try another card.” The middle clause kills the scariest question (“was I charged?”) before it forms. If you can’t name a next step, the error isn’t designed yet (3.9).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">15.4</span>
+        <div>
+          <h3>Empty states teach</h3>
+          <p>The first-run empty screen is the onboarding most users actually read. A blank list reads as broken (19.7 learned this the hard way).</p>
+          <p class="apply">Say what will live here and hand over the first action: “Your plants will appear here — add your first one.” Success-empty states celebrate instead: “All watered — see you Thursday.”</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">15.5</span>
+        <div>
+          <h3>Speak the platform’s casing</h3>
+          <p>Even capitalization is a dialect: iOS uses Title Case for buttons, tabs, and nav titles; Material uses sentence case nearly everywhere. Both say “tap,” never “click.”</p>
+          <p class="apply">“Add Plant” on iOS, “Add plant” on Android — same words, native accent. Put casing rules in the shared copy sheet so translations inherit them too.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">15.6</span>
+        <div>
+          <h3>Voice is a token</h3>
+          <p>One voice (Sprout’s: calm, concrete, a little warm), with tone that flexes by context — brighter on success, sober on errors, silent where the UI already says it.</p>
+          <p class="apply">Write it into the design system (ch. 12) as a five-line sheet of “we say / we never say” pairs with examples. Five lines that get read beat fifty pages that don’t.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 16 ANTI-PATTERNS ============ -->
+<section id="antipatterns">
+  <div class="sec-head reveal">
+    <div class="sec-num">16</div>
     <h2>What Not To Do</h2>
     <p class="kicker">Universal sins, plus the don’ts Apple and Google spell out themselves</p>
   </div>
@@ -1668,10 +1835,10 @@
   </div>
 </section>
 
-<!-- ============ 15 TRADE-OFFS ============ -->
+<!-- ============ 17 TRADE-OFFS ============ -->
 <section id="tradeoffs">
   <div class="sec-head reveal">
-    <div class="sec-num">15</div>
+    <div class="sec-num">17</div>
     <h2>The Honest Trade-offs</h2>
     <p class="kicker">Where the pin sits by default — and what moves it</p>
   </div>
@@ -1710,10 +1877,10 @@
   </div>
 </section>
 
-<!-- ============ 16 CHECKLIST ============ -->
+<!-- ============ 18 CHECKLIST ============ -->
 <section id="checklist">
   <div class="sec-head reveal">
-    <div class="sec-num">16</div>
+    <div class="sec-num">18</div>
     <h2>The Screen Audit</h2>
     <p class="kicker">Run any screen through these twelve — click to check off</p>
   </div>
@@ -1735,10 +1902,10 @@
   </div>
 </section>
 
-<!-- ============ 17 WORKED EXAMPLE ============ -->
+<!-- ============ 19 WORKED EXAMPLE ============ -->
 <section id="example">
   <div class="sec-head reveal">
-    <div class="sec-num">17</div>
+    <div class="sec-num">19</div>
     <h2>A Worked Example</h2>
     <p class="kicker">The whole manual, run once — “Sprout,” a plant-care tracker, from idea to two dialects</p>
   </div>
@@ -1747,7 +1914,7 @@
 
     <div class="entries" style="margin-top:1.5rem">
       <div class="entry">
-        <span class="n">17.1</span>
+        <span class="n">19.1</span>
         <div>
           <h3>Frame it <span style="color:var(--ink-faint)">— runs 8.1</span></h3>
           <p>“For apartment plant owners who forget care schedules, Sprout tracks watering and feeding — and it is brilliant at answering <em>what needs me today?</em>”</p>
@@ -1756,7 +1923,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">17.2</span>
+        <span class="n">19.2</span>
         <div>
           <h3>Map the flows <span style="color:var(--ink-faint)">— runs 8.2</span></h3>
           <p>Three journeys: the daily loop (check &amp; mark done), setup (add a plant), and the occasional rescue (diagnose a sad plant). The daily loop is the 80% flow, so it gets the step budget.</p>
@@ -1781,7 +1948,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">17.3</span>
+        <span class="n">19.3</span>
         <div>
           <h3>Choose the IA <span style="color:var(--ink-faint)">— runs 8.3</span></h3>
           <p>Three peer destinations, each one word: <b>Today</b> (the loop), <b>Plants</b> (the collection), <b>Learn</b> (the rescue guides). Tab/nav-bar model on both platforms.</p>
@@ -1790,7 +1957,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">17.4</span>
+        <span class="n">19.4</span>
         <div>
           <h3>Wireframe the core loop <span style="color:var(--ink-faint)">— runs 8.4</span></h3>
           <p>One grayscale, platform-neutral pass with real content — real plant names, real task verbs.</p>
@@ -1821,7 +1988,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">17.5</span>
+        <span class="n">19.5</span>
         <div>
           <h3>Split into dialects <span style="color:var(--ink-faint)">— runs 8.5</span></h3>
           <p>Same core — same three rows, same words, same reading order — expressed twice. Every visible difference below is a chapter 10 table row, not a whim.</p>
@@ -1904,7 +2071,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">17.6</span>
+        <span class="n">19.6</span>
         <div>
           <h3>Design the edges <span style="color:var(--ink-faint)">— runs 8.6</span></h3>
           <p>The two edge states that matter most here: the <em>success-empty</em> state (all plants tended — Today’s most common state in a healthy habit) and the notification permission ask.</p>
@@ -1913,10 +2080,10 @@
       </div>
 
       <div class="entry">
-        <span class="n">17.7</span>
+        <span class="n">19.7</span>
         <div>
           <h3>Audit &amp; iterate <span style="color:var(--ink-faint)">— runs 8.7</span></h3>
-          <p>Running the chapter 16 checklist against the mockups caught three real issues before any polish was spent.</p>
+          <p>Running the chapter 18 checklist against the mockups caught three real issues before any polish was spent.</p>
           <p class="apply">① “Delete plant” initially sat as a swipe action on Today rows — destructive within thumb reach of the daily tap; moved into the plant detail screen behind a confirm. ② Check circles were 32pt — below target; hit areas padded to 44/48 while glyphs stayed small. ③ The empty state failed the 5-second test (a blank list reads as “broken”) and gained its celebratory copy. Then back to 8.4 with the findings.</p>
         </div>
       </div>

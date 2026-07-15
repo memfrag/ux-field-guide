@@ -1,6 +1,6 @@
-# The UX Field Manual
+# The UX/UI Field Manual
 
-An opinionated, self-contained reference for mobile-first UX/UI design — the working principles behind every critique and recommendation, and a process for taking an app idea to designs that feel native on **both iOS and Android**.
+An opinionated, self-contained reference for mobile-first UX/UI design — the working principles behind every critique and recommendation, interaction and visual craft both, and a process for taking an app idea to designs that feel native on **both iOS and Android**.
 
 **Read it here: https://memfrag.github.io/ux-field-guide/**
 

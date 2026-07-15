@@ -14,15 +14,16 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 04 | Gestalt Principles | how the eye groups before the mind reads |
 | 05 | Visual Hierarchy | the five levers, with worked examples |
 | 06 | Mobile Instincts | thumb zones, touch targets, interruptions |
-| 07 | The Process | app idea → shipped design, in order |
-| 08 | Four Modes of Work | critique · diagnose · reason · produce |
-| 09 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
-| 10 | SwiftUI ↔ Compose | the dialect table as it compiles |
-| 11 | Design Systems | decisions made once |
-| 12 | Design Tokens | name the decision, not the value |
-| 13 | What Not To Do | universal, iOS, and Android anti-patterns |
-| 14 | The Honest Trade-offs | where the pin sits, and what moves it |
-| 15 | The Screen Audit | a 12-point interactive checklist |
+| 07 | Accessibility | contrast, type scaling, screen readers, focus |
+| 08 | The Process | app idea → shipped design, in order |
+| 09 | Four Modes of Work | critique · diagnose · reason · produce |
+| 10 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
+| 11 | SwiftUI ↔ Compose | the dialect table as it compiles |
+| 12 | Design Systems | decisions made once |
+| 13 | Design Tokens | name the decision, not the value |
+| 14 | What Not To Do | universal, iOS, and Android anti-patterns |
+| 15 | The Honest Trade-offs | where the pin sits, and what moves it |
+| 16 | The Screen Audit | a 12-point interactive checklist |
 
 Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's Material 3 (Expressive).
 

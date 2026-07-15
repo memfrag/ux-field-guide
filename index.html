@@ -654,15 +654,16 @@
       <li><a href="#gestalt"><b>04</b>Gestalt Principles</a></li>
       <li><a href="#hierarchy"><b>05</b>Visual Hierarchy</a></li>
       <li><a href="#mobile"><b>06</b>Mobile Instincts</a></li>
-      <li><a href="#process"><b>07</b>The Process</a></li>
-      <li><a href="#modes"><b>08</b>Four Modes of Work</a></li>
-      <li><a href="#platforms"><b>09</b>One Design, Two Dialects</a></li>
-      <li><a href="#components"><b>10</b>SwiftUI ↔ Compose</a></li>
-      <li><a href="#systems"><b>11</b>Design Systems</a></li>
-      <li><a href="#tokens"><b>12</b>Design Tokens</a></li>
-      <li><a href="#antipatterns"><b>13</b>What Not To Do</a></li>
-      <li><a href="#tradeoffs"><b>14</b>The Honest Trade-offs</a></li>
-      <li><a href="#checklist"><b>15</b>The Screen Audit</a></li>
+      <li><a href="#accessibility"><b>07</b>Accessibility</a></li>
+      <li><a href="#process"><b>08</b>The Process</a></li>
+      <li><a href="#modes"><b>09</b>Four Modes of Work</a></li>
+      <li><a href="#platforms"><b>10</b>One Design, Two Dialects</a></li>
+      <li><a href="#components"><b>11</b>SwiftUI ↔ Compose</a></li>
+      <li><a href="#systems"><b>12</b>Design Systems</a></li>
+      <li><a href="#tokens"><b>13</b>Design Tokens</a></li>
+      <li><a href="#antipatterns"><b>14</b>What Not To Do</a></li>
+      <li><a href="#tradeoffs"><b>15</b>The Honest Trade-offs</a></li>
+      <li><a href="#checklist"><b>16</b>The Screen Audit</a></li>
     </ol>
   </div>
 </nav>
@@ -1069,10 +1070,94 @@
   </div>
 </section>
 
-<!-- ============ 07 PROCESS ============ -->
-<section id="process">
+<!-- ============ 07 ACCESSIBILITY ============ -->
+<section id="accessibility">
   <div class="sec-head reveal">
     <div class="sec-num">07</div>
+    <h2>Accessibility</h2>
+    <p class="kicker">Not a compliance checkbox — part of the definition of done</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Roughly one person in four has a disability, and everyone is situationally impaired daily — sunlight on the screen, one occupied hand, a loud train, tired eyes. Accessible design isn’t a separate discipline; it’s the same design, done thoroughly. And because both platforms build it into their components, most of it is free — until you draw something custom.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 118" width="360" role="img" aria-label="Contrast ratios of this page's own text colors on its graphite background: 15 to 1 passes, 7.5 to 1 passes AAA, 3.5 to 1 fails for body text">
+        <rect x="0" y="0" width="360" height="118" rx="8" fill="#0c0e11" stroke="var(--rule)" stroke-width="1"/>
+        <text x="18" y="30" font-family="-apple-system, Helvetica, sans-serif" font-size="13" fill="#e3e8ee">Primary text on this page</text>
+        <text x="344" y="30" text-anchor="end" font-family="Menlo, monospace" font-size="9" fill="var(--signal)">≈15:1 ✓ AAA</text>
+        <text x="18" y="66" font-family="-apple-system, Helvetica, sans-serif" font-size="13" fill="#9aa4b1">Secondary text on this page</text>
+        <text x="344" y="66" text-anchor="end" font-family="Menlo, monospace" font-size="9" fill="var(--signal)">≈7.5:1 ✓ AAA</text>
+        <text x="18" y="102" font-family="-apple-system, Helvetica, sans-serif" font-size="13" fill="#5b6470">Faint text on this page</text>
+        <text x="344" y="102" text-anchor="end" font-family="Menlo, monospace" font-size="9" fill="var(--ink-faint)">≈3.5:1 ✕ body · ✓ large only</text>
+      </svg>
+      <div class="cap">The page grading its own inks — WCAG: ≥4.5:1 body · ≥3:1 large text &amp; UI parts</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">7.1</span>
+        <div>
+          <h3>Contrast is arithmetic, not taste</h3>
+          <p>WCAG minimums: 4.5:1 for body text, 3:1 for large text (≥18pt, or 14pt bold) and essential UI parts. Aim for 7:1 where reading is sustained.</p>
+          <p class="apply">Measure, don’t eyeball — dark themes fail more often than light ones because desaturated gray-on-graphite feels tasteful at 2.8:1. Check both appearances; a color that passes in light mode can fail in dark.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.2</span>
+        <div>
+          <h3>Type must scale — layout is the real test</h3>
+          <p>Dynamic Type (iOS) and sp units (Android) mean users choose their text size, up to accessibility sizes ~3× the default. The font scales automatically; your layout is what breaks.</p>
+          <p class="apply">Use the platform text styles and sp everywhere, then test at the largest AX size: rows must grow, side-by-side must stack, and nothing may truncate. A label that ellipsizes at AX3 is a layout bug, not a copy problem.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.3</span>
+        <div>
+          <h3>The screen reader hears your hierarchy</h3>
+          <p>VoiceOver and TalkBack turn every screen into a sequence: label, role, value, hint. If that sequence is chaos, the visual hierarchy usually is too — the two audits find each other’s bugs.</p>
+          <p class="apply">Every control gets a real label (“Delete invoice”, not “trash”). Group related elements so a card reads as one stop, not seven. Hide decorative images. Then run your core flow eyes-closed — it’s the cheapest expert review you’ll ever do.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.4</span>
+        <div>
+          <h3>Color never carries meaning alone</h3>
+          <p>About 1 in 12 men has a color-vision deficiency; every user loses color fidelity in sunlight. Red-vs-green as the only signal is invisible to millions.</p>
+          <p class="apply">Pair color with a second channel — icon, label, weight, position. An error is a red border <em>plus</em> an icon <em>plus</em> a message. Verify by viewing the screen in grayscale; the meaning should survive.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.5</span>
+        <div>
+          <h3>Motion is optional</h3>
+          <p>Parallax, zooms, and springs can trigger vestibular disorders. Both platforms expose a Reduce Motion setting; honoring it is not negotiable.</p>
+          <p class="apply">Respect <code>prefers-reduced-motion</code> (this page does), <code>accessibilityReduceMotion</code> in SwiftUI, and the animator duration scale on Android. The fallback is a cross-fade — never “no feedback at all.”</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.6</span>
+        <div>
+          <h3>Focus is navigation too</h3>
+          <p>Hardware keyboards on iPads, switch control, full keyboard access, and every web user who tabs: focus order is a first-class navigation path.</p>
+          <p class="apply">Focus order follows visual order; the focus indicator stays visible (never <code>outline: none</code> without a replacement); modals trap focus and return it on dismiss. If you can’t complete the core flow with a keyboard, it isn’t done.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.7</span>
+        <div>
+          <h3>Built-ins are accessible by default</h3>
+          <p>System components ship with labels, roles, focus behavior, Dynamic Type, and contrast-checked colors. Every custom control re-earns all of it by hand — or silently ships without it.</p>
+          <p class="apply">This is the accessibility case for chapters 11–12: restyle built-ins rather than rebuild them, and put accessibility in the definition of done for any custom component. Retrofits cost multiples of doing it now.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 PROCESS ============ -->
+<section id="process">
+  <div class="sec-head reveal">
+    <div class="sec-num">08</div>
     <h2>The Process</h2>
     <p class="kicker">From app idea to shipped design — in order, no skipping</p>
   </div>
@@ -1080,7 +1165,7 @@
     <p>Screens are the last thing you draw, not the first. This sequence front-loads the decisions that are expensive to change (what it is, how it’s organized) and defers the ones that are cheap (colors, corner radii).</p>
     <div class="entries">
       <div class="entry">
-        <span class="n">7.1</span>
+        <span class="n">8.1</span>
         <div>
           <h3>Frame the product</h3>
           <p>Who is it for, what job does it do, and what is the one thing it must do brilliantly. One sentence, written down.</p>
@@ -1088,7 +1173,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">7.2</span>
+        <span class="n">8.2</span>
         <div>
           <h3>Map the flows</h3>
           <p>The top three user journeys as task flows — before any screen exists.</p>
@@ -1096,7 +1181,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">7.3</span>
+        <span class="n">8.3</span>
         <div>
           <h3>Choose the information architecture</h3>
           <p>What lives where, and which navigation model carries it. The most expensive decision in the whole process.</p>
@@ -1104,7 +1189,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">7.4</span>
+        <span class="n">8.4</span>
         <div>
           <h3>Wireframe the core loop</h3>
           <p>Low fidelity, grayscale, one platform-neutral pass over the 20% of screens that serve 80% of sessions.</p>
@@ -1112,11 +1197,11 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">7.5</span>
+        <span class="n">8.5</span>
         <div>
           <h3>Split into dialects</h3>
           <p>One shared core — IA, flows, vocabulary, brand — expressed through two idiomatic layers: HIG for iOS, Material 3 for Android.</p>
-          <p class="apply">The user should recognize the app across platforms but never feel it was ported. Chapter 09 is the mapping table.</p>
+          <p class="apply">The user should recognize the app across platforms but never feel it was ported. Chapter 10 is the mapping table.</p>
           <div class="dia">
             <svg viewBox="0 0 360 120" width="360" role="img" aria-label="One shared core forks into an iOS HIG layer and an Android Material 3 layer">
               <rect x="10" y="38" width="120" height="44" rx="6" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
@@ -1133,7 +1218,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">7.6</span>
+        <span class="n">8.6</span>
         <div>
           <h3>Design the edges</h3>
           <p>Empty, loading, error, offline, interrupted, first-run. The happy path is a minority of real sessions.</p>
@@ -1141,21 +1226,21 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">7.7</span>
+        <span class="n">8.7</span>
         <div>
           <h3>Audit, test, iterate</h3>
-          <p>Run the screen audit (ch. 15), the thumb map (ch. 06), and put it in front of real people.</p>
-          <p class="apply">Five users surface most usability problems — test the wireframe, not the polished mockup, so findings are cheap to act on. Then loop back to 7.4.</p>
+          <p>Run the screen audit (ch. 16), the thumb map (ch. 06), and put it in front of real people.</p>
+          <p class="apply">Five users surface most usability problems — test the wireframe, not the polished mockup, so findings are cheap to act on. Then loop back to 8.4.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 08 MODES ============ -->
+<!-- ============ 09 MODES ============ -->
 <section id="modes">
   <div class="sec-head reveal">
-    <div class="sec-num">08</div>
+    <div class="sec-num">09</div>
     <h2>Four Modes of Work</h2>
     <p class="kicker">Every design engagement is one of these — know which one you’re in</p>
   </div>
@@ -1170,7 +1255,7 @@
           <li>Ask the goal and audience before judging anything</li>
           <li>Five-second test: what reads first, what’s the assumed action?</li>
           <li>Walk Nielsen’s ten (ch. 03) against each screen</li>
-          <li>Thumb map + platform dialect audit (ch. 06, 09)</li>
+          <li>Thumb map + platform dialect audit (ch. 06, 10)</li>
           <li>Rank findings by severity × effort to fix</li>
         </ol>
         <p class="rule">Every criticism ships with a concrete recommendation.</p>
@@ -1192,7 +1277,7 @@
         <h3>Reason a decision</h3>
         <p>“Should we do X or Y?” — a principle question in disguise.</p>
         <ol>
-          <li>Name the trade-off axis it sits on (ch. 14)</li>
+          <li>Name the trade-off axis it sits on (ch. 15)</li>
           <li>Find the governing law or heuristic</li>
           <li>Check three best-in-class apps — Jakob’s law sets expectations</li>
           <li>Decide, and write the reasoning down</li>
@@ -1207,7 +1292,7 @@
           <li>Match fidelity to the question being asked</li>
           <li>Sketch answers <em>flow</em> · wireframe answers <em>layout</em> · mockup answers <em>style</em> · prototype answers <em>feel</em></li>
           <li>Real content from the first sketch</li>
-          <li>Derive both dialects from the shared core (7.5)</li>
+          <li>Derive both dialects from the shared core (8.5)</li>
         </ol>
         <p class="rule">Never polish what hasn’t been validated one fidelity below.</p>
       </div>
@@ -1215,10 +1300,10 @@
   </div>
 </section>
 
-<!-- ============ 09 DIALECTS ============ -->
+<!-- ============ 10 DIALECTS ============ -->
 <section id="platforms">
   <div class="sec-head reveal">
-    <div class="sec-num">09</div>
+    <div class="sec-num">10</div>
     <h2>One Design, Two Dialects</h2>
     <p class="kicker">HIG for iOS · Material 3 for Android — same app, native accent</p>
   </div>
@@ -1316,23 +1401,23 @@
       </table>
     </div>
     <div class="entries" style="margin-top:2.5rem">
-      <div class="entry"><span class="n">9.1</span><div><h3>The iOS accent, in one breath</h3><p>Controls float above content on Liquid Glass; the content owns the screen.</p><p class="apply">No custom bar backgrounds or tints — use the scroll edge effect. Monochromatic bar icons, one tinted prominent action. Large titles that collapse on scroll. Sheets with medium/large detents for scoped tasks. Semantic colors, both appearances, always.</p></div></div>
-      <div class="entry"><span class="n">9.2</span><div><h3>The Android accent, in one breath</h3><p>Build on tokens — color roles, type scale, shape scale — so the app inherits Material You personalization for free.</p><p class="apply">Nav bar → rail as the window widens. The FAB carries <em>the</em> action. Bottom sheets over menus on compact. Predictive back everywhere. Save expressive moves — springs, shape morphs, emphasized type — for one or two hero moments.</p></div></div>
-      <div class="entry"><span class="n">9.3</span><div><h3>Desktop is not a big phone</h3><p class="apply">Density, hover, multi-window, drag-and-drop, and keyboard-first flows are desktop’s native strengths. A stretched mobile layout on a 27″ display wastes the medium.</p></div></div>
-      <div class="entry"><span class="n">9.4</span><div><h3>Web is the ambiguous middle</h3><p class="apply">Assume both touch and cursor. Deep-linkable URLs, working browser back, and responsive reflow are the web’s conventions — break them and the platform breaks you.</p></div></div>
+      <div class="entry"><span class="n">10.1</span><div><h3>The iOS accent, in one breath</h3><p>Controls float above content on Liquid Glass; the content owns the screen.</p><p class="apply">No custom bar backgrounds or tints — use the scroll edge effect. Monochromatic bar icons, one tinted prominent action. Large titles that collapse on scroll. Sheets with medium/large detents for scoped tasks. Semantic colors, both appearances, always.</p></div></div>
+      <div class="entry"><span class="n">10.2</span><div><h3>The Android accent, in one breath</h3><p>Build on tokens — color roles, type scale, shape scale — so the app inherits Material You personalization for free.</p><p class="apply">Nav bar → rail as the window widens. The FAB carries <em>the</em> action. Bottom sheets over menus on compact. Predictive back everywhere. Save expressive moves — springs, shape morphs, emphasized type — for one or two hero moments.</p></div></div>
+      <div class="entry"><span class="n">10.3</span><div><h3>Desktop is not a big phone</h3><p class="apply">Density, hover, multi-window, drag-and-drop, and keyboard-first flows are desktop’s native strengths. A stretched mobile layout on a 27″ display wastes the medium.</p></div></div>
+      <div class="entry"><span class="n">10.4</span><div><h3>Web is the ambiguous middle</h3><p class="apply">Assume both touch and cursor. Deep-linkable URLs, working browser back, and responsive reflow are the web’s conventions — break them and the platform breaks you.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ============ 10 SWIFTUI ↔ COMPOSE ============ -->
+<!-- ============ 11 SWIFTUI ↔ COMPOSE ============ -->
 <section id="components">
   <div class="sec-head reveal">
-    <div class="sec-num">10</div>
+    <div class="sec-num">11</div>
     <h2>SwiftUI ↔ Compose</h2>
     <p class="kicker">The dialect table as it compiles — iOS 26 SDK · Compose Material 3 1.4</p>
   </div>
   <div class="sec-body reveal">
-    <p>Chapter 09 mapped intents to components; this chapter maps them to the APIs you actually type. Both frameworks are declarative state-driven trees — the difference is what each gives you for free, and what each refuses to give you at all.</p>
+    <p>Chapter 10 mapped intents to components; this chapter maps them to the APIs you actually type. Both frameworks are declarative state-driven trees — the difference is what each gives you for free, and what each refuses to give you at all.</p>
 
     <div class="table-scroll">
       <table>
@@ -1366,7 +1451,7 @@
 
     <div class="entries" style="margin-top:2.5rem">
       <div class="entry">
-        <span class="n">10.1</span>
+        <span class="n">11.1</span>
         <div>
           <h3>Same paradigm, different gifts</h3>
           <p>Both are declarative trees re-rendered from state. What differs is the free lunch: SwiftUI gives platform behavior implicitly — Dynamic Type, edge-swipe back, Liquid Glass, dark mode. Compose gives Material behavior explicitly through <code>Scaffold</code> slots — snackbars, FAB placement, predictive back, dynamic color.</p>
@@ -1374,7 +1459,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">10.2</span>
+        <span class="n">11.2</span>
         <div>
           <h3>Styling vs. slots</h3>
           <p>SwiftUI customizes by <em>restyling semantics</em> — one <code>Button</code>, many <code>ButtonStyle</code>s. Compose customizes by <em>filling slots</em> — distinct composables per emphasis level, each with content lambdas.</p>
@@ -1382,29 +1467,29 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">10.3</span>
+        <span class="n">11.3</span>
         <div>
           <h3>The gaps run in opposite directions — on purpose</h3>
-          <p>SwiftUI has no FAB and no snackbar; Compose has no stepper and no grouped-list style. These aren’t omissions — they’re the dialects (ch. 09) enforced at the API level.</p>
+          <p>SwiftUI has no FAB and no snackbar; Compose has no stepper and no grouped-list style. These aren’t omissions — they’re the dialects (ch. 10) enforced at the API level.</p>
           <p class="apply">Reaching for a component the framework refuses to provide is a design smell: you’re usually importing the other platform’s idiom. Check the intent row in the table above and use the native answer instead.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">10.4</span>
+        <span class="n">11.4</span>
         <div>
           <h3>One codebase means one dialect</h3>
-          <p>Compose Multiplatform renders Material on iPhones; Flutter renders Flutter everywhere. Write-once UI buys speed by giving every user the same dialect — which is precisely what chapter 09 spends itself avoiding.</p>
-          <p class="apply">A legitimate trade for tools, prototypes, and brand-heavy apps where the product <em>is</em> the interface everywhere. Make it as a decision (ch. 14), not as a default — and know Jakob’s law bills iOS users for Material controls either way.</p>
+          <p>Compose Multiplatform renders Material on iPhones; Flutter renders Flutter everywhere. Write-once UI buys speed by giving every user the same dialect — which is precisely what chapter 10 spends itself avoiding.</p>
+          <p class="apply">A legitimate trade for tools, prototypes, and brand-heavy apps where the product <em>is</em> the interface everywhere. Make it as a decision (ch. 15), not as a default — and know Jakob’s law bills iOS users for Material controls either way.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 11 DESIGN SYSTEMS ============ -->
+<!-- ============ 12 DESIGN SYSTEMS ============ -->
 <section id="systems">
   <div class="sec-head reveal">
-    <div class="sec-num">11</div>
+    <div class="sec-num">12</div>
     <h2>Design Systems</h2>
     <p class="kicker">Decisions made once, so screens don’t relitigate them</p>
   </div>
@@ -1430,7 +1515,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">11.1</span>
+        <span class="n">12.1</span>
         <div>
           <h3>A system is rules, not a UI kit</h3>
           <p>A Figma library without usage guidance is a parts bin. The system is the components <em>plus</em> when-to-use, when-not-to, and who decides.</p>
@@ -1438,7 +1523,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">11.2</span>
+        <span class="n">12.2</span>
         <div>
           <h3>Start from the platform’s system</h3>
           <p>HIG components and Material 3 are mature, accessible, user-tested design systems you get for free — with dark mode, Dynamic Type, and predictive back already solved.</p>
@@ -1446,7 +1531,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">11.3</span>
+        <span class="n">12.3</span>
         <div>
           <h3>Detach rate is the health metric</h3>
           <p>When designers keep overriding a component or spawning one-off variants, that isn’t indiscipline — it’s the system telling you a decision is wrong or missing.</p>
@@ -1454,15 +1539,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">11.4</span>
+        <span class="n">12.4</span>
         <div>
           <h3>One system, two dialects</h3>
-          <p>The system mirrors chapter 09: a shared semantic layer (tokens, naming, patterns) with per-platform component implementations.</p>
+          <p>The system mirrors chapter 10: a shared semantic layer (tokens, naming, patterns) with per-platform component implementations.</p>
           <p class="apply">One token sheet feeds both platforms; “primary action” resolves to a prominent toolbar button on iOS and a FAB or filled button on Android. Share the decision, not the pixels.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">11.5</span>
+        <span class="n">12.5</span>
         <div>
           <h3>Governance or decay — pick one</h3>
           <p>A system nobody can change becomes a cage; a system anybody can change becomes noise. Both end with teams ignoring it.</p>
@@ -1473,10 +1558,10 @@
   </div>
 </section>
 
-<!-- ============ 12 DESIGN TOKENS ============ -->
+<!-- ============ 13 DESIGN TOKENS ============ -->
 <section id="tokens">
   <div class="sec-head reveal">
-    <div class="sec-num">12</div>
+    <div class="sec-num">13</div>
     <h2>Design Tokens</h2>
     <p class="kicker">Name the decision, not the value — the value will change</p>
   </div>
@@ -1504,7 +1589,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">12.1</span>
+        <span class="n">13.1</span>
         <div>
           <h3>Three tiers, strict direction</h3>
           <p>Primitives hold raw values (<code>blue-500</code>, <code>space-4</code>). Semantic tokens give them meaning (<code>color.accent</code>, <code>space.inset.card</code>). Component tokens bind them to parts (<code>button.fill</code>).</p>
@@ -1512,7 +1597,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">12.2</span>
+        <span class="n">13.2</span>
         <div>
           <h3>Name by role, never by value</h3>
           <p>If the name would be wrong after the value changes, the name is wrong now. <code>accent</code> survives a rebrand; <code>blue</code> doesn’t.</p>
@@ -1520,7 +1605,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">12.3</span>
+        <span class="n">13.3</span>
         <div>
           <h3>Tokens make theming free</h3>
           <p>Dark mode, Material You dynamic color, high-contrast, density, white-labeling — each is just a different value set behind the same names.</p>
@@ -1528,7 +1613,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">12.4</span>
+        <span class="n">13.4</span>
         <div>
           <h3>Tokenize more than color</h3>
           <p>Type styles, the spacing scale, corner radii, elevation, motion durations and springs, z-order — anything decided more than once deserves a name.</p>
@@ -1539,10 +1624,10 @@
   </div>
 </section>
 
-<!-- ============ 13 ANTI-PATTERNS ============ -->
+<!-- ============ 14 ANTI-PATTERNS ============ -->
 <section id="antipatterns">
   <div class="sec-head reveal">
-    <div class="sec-num">13</div>
+    <div class="sec-num">14</div>
     <h2>What Not To Do</h2>
     <p class="kicker">Universal sins, plus the don’ts Apple and Google spell out themselves</p>
   </div>
@@ -1582,10 +1667,10 @@
   </div>
 </section>
 
-<!-- ============ 14 TRADE-OFFS ============ -->
+<!-- ============ 15 TRADE-OFFS ============ -->
 <section id="tradeoffs">
   <div class="sec-head reveal">
-    <div class="sec-num">14</div>
+    <div class="sec-num">15</div>
     <h2>The Honest Trade-offs</h2>
     <p class="kicker">Where the pin sits by default — and what moves it</p>
   </div>
@@ -1624,10 +1709,10 @@
   </div>
 </section>
 
-<!-- ============ 15 CHECKLIST ============ -->
+<!-- ============ 16 CHECKLIST ============ -->
 <section id="checklist">
   <div class="sec-head reveal">
-    <div class="sec-num">15</div>
+    <div class="sec-num">16</div>
     <h2>The Screen Audit</h2>
     <p class="kicker">Run any screen through these twelve — click to check off</p>
   </div>

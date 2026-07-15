@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UX Field Manual — Working Principles</title>
+<style>
+  /* ============================================================
+     UX FIELD MANUAL — a design codex, set like a Swiss spec book.
+     Paper, ink, one signal color. No network dependencies.
+     ============================================================ */
+  :root {
+    --paper: #0c0e11;           /* graphite near-black */
+    --paper-deep: #08090b;
+    --ink: #e3e8ee;             /* cool light gray */
+    --ink-soft: #9aa4b1;
+    --ink-faint: #5b6470;
+    --signal: #4cc2ff;          /* ice blue — the one accent */
+    --signal-soft: #4cc2ff26;
+    --rule: #e3e8ee1f;
+    --mono: "SF Mono", Menlo, Consolas, monospace;
+    --display: "Futura", "Avenir Next", "Century Gothic", sans-serif;
+    --body: "Charter", "Iowan Old Style", Georgia, serif;
+    --measure: 62ch;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  ::selection { background: var(--signal); color: var(--paper); }
+  code { font-family: var(--mono); font-size: .85em; color: var(--ink); }
+
+  /* ---------- masthead ---------- */
+  header {
+    border-bottom: 3px solid var(--signal);
+    padding: 1.25rem 6vw 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .doc-id {
+    font-family: var(--mono);
+    font-size: .7rem;
+    letter-spacing: .12em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  .doc-id b { color: var(--signal); font-weight: 600; }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding: 9vh 6vw 7vh;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: -.015em;
+    font-size: clamp(2.6rem, 8.5vw, 6.5rem);
+    line-height: .95;
+    max-width: 14ch;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--signal);
+  }
+  .hero p {
+    margin-top: 2rem;
+    max-width: 46ch;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+  .hero .stamp {
+    position: absolute;
+    right: 6vw; top: 8vh;
+    font-family: var(--mono);
+    font-size: .65rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--signal);
+    border: 1.5px solid var(--signal);
+    padding: .5em .9em;
+    transform: rotate(6deg);
+  }
+
+  /* ---------- chapter nav ---------- */
+  nav {
+    position: sticky; top: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    z-index: 10;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav ol {
+    display: flex;
+    list-style: none;
+    padding: 0 6vw;
+    min-width: max-content;
+  }
+  nav a {
+    display: block;
+    padding: .8em 1.1em .7em;
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-soft);
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: color .15s, border-color .15s;
+  }
+  nav a:hover, nav a.active { color: var(--signal); border-bottom-color: var(--signal); }
+  nav a b { color: var(--ink-faint); font-weight: 400; margin-right: .5em; }
+  nav a:hover b, nav a.active b { color: inherit; }
+
+  /* ---------- sections ---------- */
+  section {
+    padding: 6rem 6vw;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
+    gap: 3rem 5rem;
+  }
+  @media (max-width: 900px) {
+    section { grid-template-columns: 1fr; padding: 4rem 6vw; }
+  }
+
+  .sec-head { position: sticky; top: 4.2rem; align-self: start; }
+  @media (max-width: 900px) { .sec-head { position: static; } }
+  .sec-num {
+    font-family: var(--display);
+    font-size: clamp(3.5rem, 6vw, 5rem);
+    line-height: 1;
+    color: var(--signal);
+    font-weight: 500;
+  }
+  .sec-head h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    font-size: 1.5rem;
+    margin-top: .5rem;
+    line-height: 1.2;
+  }
+  .sec-head .kicker {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 1rem;
+    max-width: 24ch;
+    line-height: 1.7;
+  }
+
+  .sec-body > p { max-width: var(--measure); color: var(--ink-soft); }
+  .sec-body > p + p { margin-top: 1rem; }
+
+  /* ---------- entry cards (numbered law/heuristic entries) ---------- */
+  .entries { margin-top: 1.5rem; }
+  .entry {
+    border-top: 1px solid var(--rule);
+    padding: 1.4rem 0 1.5rem;
+    display: grid;
+    grid-template-columns: 3.2rem minmax(0, 1fr);
+    gap: 1.2rem;
+    transition: background .2s;
+  }
+  .entry:hover { background: #ffffff08; }
+  .entry:last-child { border-bottom: 1px solid var(--rule); }
+  .entry .n {
+    font-family: var(--mono);
+    font-size: .75rem;
+    color: var(--ink-faint);
+    padding-top: .35rem;
+  }
+  .entry:hover .n { color: var(--signal); }
+  .entry h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: .01em;
+  }
+  .entry p { margin-top: .4rem; color: var(--ink-soft); max-width: var(--measure); }
+  .entry .apply {
+    margin-top: .6rem;
+    font-size: .9rem;
+    padding-left: .9rem;
+    border-left: 2.5px solid var(--signal);
+    color: var(--ink);
+    max-width: var(--measure);
+  }
+  .entry .apply::before {
+    content: "In practice — ";
+    font-family: var(--mono);
+    font-size: .65rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--signal);
+  }
+  .entry .apply.fix::before { content: "Instead — "; }
+  .entry .n.x { font-size: .95rem; color: var(--signal); }
+  .subhead {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin: 2.4rem 0 .5rem;
+  }
+  .subhead:first-of-type { margin-top: 1.5rem; }
+  .card ol {
+    margin: .7rem 0 0 1.1rem;
+    font-size: .88rem;
+    color: var(--ink-soft);
+  }
+  .card ol li { padding: .18rem 0; }
+  .card ul {
+    margin: .7rem 0 0 0;
+    list-style: none;
+    font-size: .88rem;
+    color: var(--ink-soft);
+  }
+  .card ul li { padding: .3rem 0; border-top: 1px solid var(--rule); }
+  .card ul li:first-child { border-top: 0; }
+  .card .rule {
+    margin-top: .9rem;
+    font-size: .85rem;
+    border-left: 2.5px solid var(--signal);
+    padding-left: .8rem;
+    color: var(--ink);
+  }
+  .card .rule::before {
+    content: "Rule — ";
+    font-family: var(--mono);
+    font-size: .62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--signal);
+  }
+
+  /* ---------- posture cards ---------- */
+  .posture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 1.5rem;
+  }
+  .posture-grid .card {
+    background: var(--paper);
+    padding: 1.6rem 1.4rem;
+    transition: background .2s;
+  }
+  .posture-grid .card:hover { background: #ffffff0a; }
+  .card .glyph {
+    font-family: var(--display);
+    font-size: 1.7rem;
+    color: var(--signal);
+    line-height: 1;
+  }
+  .card h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: .9rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .card p { margin-top: .5rem; font-size: .92rem; color: var(--ink-soft); }
+
+  /* ---------- thumb-zone diagram ---------- */
+  .figure {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .phone {
+    width: 200px; height: 400px;
+    flex: none;
+    border: 2.5px solid var(--ink);
+    border-radius: 26px;
+    position: relative;
+    overflow: hidden;
+    background: #14171c;
+  }
+  .zone { position: absolute; inset: auto 0 0 0; }
+  .zone.easy   { height: 42%; background: var(--signal-soft); }
+  .zone.strain { height: 72%; background: #4cc2ff11; }
+  .zone.hard   { height: 100%; background: #ffffff05; }
+  .zone-label {
+    position: absolute;
+    left: 12px;
+    font-family: var(--mono);
+    font-size: .58rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .zone-label.l-easy   { bottom: 20%; color: var(--signal); }
+  .zone-label.l-strain { bottom: 58%; color: #6ea9cc; }
+  .zone-label.l-hard   { top: 14px; color: var(--ink-faint); }
+  .thumb-arc {
+    position: absolute;
+    right: -70px; bottom: -70px;
+    width: 260px; height: 260px;
+    border: 1.5px dashed var(--signal);
+    border-radius: 50%;
+    opacity: .7;
+  }
+  .fig-notes { flex: 1 1 16rem; max-width: 34ch; }
+  .fig-notes h4 {
+    font-family: var(--mono);
+    font-size: .68rem;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--signal);
+  }
+  .fig-notes ul { list-style: none; margin-top: 1rem; }
+  .fig-notes li {
+    padding: .7rem 0;
+    border-top: 1px solid var(--rule);
+    font-size: .92rem;
+    color: var(--ink-soft);
+  }
+  .fig-notes li b { color: var(--ink); font-family: var(--display); font-weight: 600; }
+
+  /* ---------- inline diagrams ---------- */
+  .dia { margin-top: 1.1rem; max-width: var(--measure); }
+  .dia svg { display: block; max-width: 100%; height: auto; }
+  .cap {
+    font-family: var(--mono);
+    font-size: .6rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: .5rem;
+  }
+  .gestalt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 1.8rem;
+  }
+  .gestalt-cell {
+    background: var(--paper);
+    padding: 1.2rem 1rem 1rem;
+    text-align: center;
+    transition: background .2s;
+  }
+  .gestalt-cell:hover { background: #ffffff08; }
+  .gestalt-cell svg { display: inline-block; }
+  .gestalt-cell .cap { color: var(--ink-soft); margin-top: .7rem; }
+  .plat-figs {
+    display: flex;
+    gap: 3rem 4rem;
+    flex-wrap: wrap;
+    margin-top: 2.2rem;
+    align-items: flex-start;
+  }
+  .plat-fig { text-align: center; }
+
+  /* ---------- touch target demo ---------- */
+  .target-demo {
+    margin-top: 2.5rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+  .target {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .6rem;
+    font-family: var(--mono);
+    font-size: .62rem;
+    letter-spacing: .1em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  .target .dot {
+    border-radius: 8px;
+    border: 1.5px solid var(--ink);
+    display: grid;
+    place-items: center;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: transform .12s, background .12s;
+    background: #14171c;
+  }
+  .target .dot:hover { background: var(--signal); color: #0c0e11; transform: scale(1.05); }
+  .t-bad .dot  { width: 28px; height: 28px; border-style: dashed; color: var(--ink-faint); }
+  .t-min .dot  { width: 44px; height: 44px; }
+  .t-good .dot { width: 48px; height: 48px; border-color: var(--signal); border-width: 2px; }
+  .target.ok { color: var(--signal); }
+
+  /* ---------- platform table ---------- */
+  table {
+    width: 100%;
+    margin-top: 1.5rem;
+    border-collapse: collapse;
+    font-size: .92rem;
+  }
+  th {
+    font-family: var(--mono);
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: .8em .9em;
+    border-bottom: 2.5px solid var(--signal);
+    color: var(--ink);
+  }
+  th:first-child { color: var(--ink-faint); }
+  td {
+    padding: .85em .9em;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+    color: var(--ink-soft);
+  }
+  td:first-child {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: .85rem;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  tr:hover td { background: #ffffff08; }
+  .table-scroll { overflow-x: auto; }
+
+  /* ---------- trade-off sliders ---------- */
+  .tradeoff {
+    border-top: 1px solid var(--rule);
+    padding: 1.6rem 0;
+  }
+  .tradeoff:last-child { border-bottom: 1px solid var(--rule); }
+  .axis {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: .95rem;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+  }
+  .axis-bar {
+    margin-top: .8rem;
+    height: 3px;
+    background: var(--rule);
+    position: relative;
+  }
+  .axis-bar .pin {
+    position: absolute;
+    top: 50%;
+    width: 13px; height: 13px;
+    background: var(--signal);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 4px var(--paper), 0 0 0 5.5px var(--signal-soft);
+  }
+  .tradeoff p {
+    margin-top: 1rem;
+    font-size: .92rem;
+    color: var(--ink-soft);
+    max-width: var(--measure);
+  }
+  .tradeoff p b { color: var(--ink); }
+
+  /* ---------- checklist ---------- */
+  .checklist { margin-top: 1.5rem; list-style: none; counter-reset: chk; }
+  .checklist li {
+    counter-increment: chk;
+    border-top: 1px solid var(--rule);
+    padding: 1rem 0 1rem 3.4rem;
+    position: relative;
+    max-width: var(--measure);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: color .15s;
+  }
+  .checklist li:last-child { border-bottom: 1px solid var(--rule); }
+  .checklist li::before {
+    content: counter(chk, decimal-leading-zero);
+    position: absolute;
+    left: 0; top: 1.1rem;
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--ink-faint);
+  }
+  .checklist li::after {
+    content: "";
+    position: absolute;
+    left: 1.9rem; top: 1.15rem;
+    width: .85rem; height: .85rem;
+    border: 1.5px solid var(--ink-soft);
+    border-radius: 3px;
+    transition: background .15s, border-color .15s;
+  }
+  .checklist li.done { color: var(--ink-faint); text-decoration: line-through; }
+  .checklist li.done::after {
+    background: var(--signal);
+    border-color: var(--signal);
+  }
+  .checklist li b { color: var(--ink); }
+  .checklist li.done b { color: var(--ink-faint); }
+
+  /* ---------- footer ---------- */
+  footer {
+    padding: 3rem 6vw 4rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-family: var(--mono);
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  footer b { color: var(--signal); font-weight: 600; }
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="doc-id"><b>UX/FM-02</b> · Field Manual · Rev. 2026-07</span>
+  <span class="doc-id">Mobile · Web · Desktop</span>
+</header>
+
+<div class="hero">
+  <span class="stamp">Working copy</span>
+  <h1>The UX<br>Field <em>Manual</em></h1>
+  <p>The working principles behind every critique and recommendation in this practice — and the process for taking an app idea to designs that feel native on both iOS and Android. Opinionated by design; grounded in Apple’s Human Interface Guidelines and Google’s Material 3.</p>
+</div>
+
+<nav>
+  <ol>
+    <li><a href="#posture"><b>01</b>Posture</a></li>
+    <li><a href="#laws"><b>02</b>Laws</a></li>
+    <li><a href="#heuristics"><b>03</b>Heuristics</a></li>
+    <li><a href="#gestalt"><b>04</b>Gestalt</a></li>
+    <li><a href="#hierarchy"><b>05</b>Hierarchy</a></li>
+    <li><a href="#mobile"><b>06</b>Mobile</a></li>
+    <li><a href="#process"><b>07</b>Process</a></li>
+    <li><a href="#modes"><b>08</b>Modes</a></li>
+    <li><a href="#platforms"><b>09</b>Dialects</a></li>
+    <li><a href="#systems"><b>10</b>Systems</a></li>
+    <li><a href="#tokens"><b>11</b>Tokens</a></li>
+    <li><a href="#antipatterns"><b>12</b>Don’ts</a></li>
+    <li><a href="#tradeoffs"><b>13</b>Trade-offs</a></li>
+    <li><a href="#checklist"><b>14</b>Checklist</a></li>
+  </ol>
+</nav>
+
+<!-- ============ 01 POSTURE ============ -->
+<section id="posture">
+  <div class="sec-head reveal">
+    <div class="sec-num">01</div>
+    <h2>Working Posture</h2>
+    <p class="kicker">How every design question gets approached before any pixel moves</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Principles are worthless without a posture — a default stance that decides what to reach for first. These four govern everything below.</p>
+    <div class="posture-grid">
+      <div class="card">
+        <div class="glyph">☝</div>
+        <h3>Mobile-first instincts</h3>
+        <p>Thumb reach, one-handed use, and platform conventions come before layout aesthetics. If it fails on a phone held in one hand on a moving train, it fails.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">→</div>
+        <h3>Opinionated, not neutral</h3>
+        <p>A recommendation with reasoning beats a survey of options. “It depends” is only acceptable when immediately followed by <em>what</em> it depends on and which way to lean.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">§</div>
+        <h3>Grounded in the classics</h3>
+        <p>Nielsen, Fitts, Hick, gestalt — applied pragmatically, not recited. Theory earns its place only when it changes a decision.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">⇄</div>
+        <h3>Honest about trade-offs</h3>
+        <p>Every design choice buys something and pays for it. Name both sides. A critique that lists only benefits is marketing, not design.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 LAWS ============ -->
+<section id="laws">
+  <div class="sec-head reveal">
+    <div class="sec-num">02</div>
+    <h2>Laws of Interaction</h2>
+    <p class="kicker">The physics of interfaces — they apply whether you believe in them or not</p>
+  </div>
+  <div class="sec-body reveal">
+    <div class="entries">
+      <div class="entry">
+        <span class="n">2.1</span>
+        <div>
+          <h3>Fitts’s Law</h3>
+          <p>Time to acquire a target is a function of distance to and size of the target. Small, far-away targets are slow and error-prone.</p>
+          <p class="apply">Primary actions get big targets near the thumb or cursor rest position. Screen edges and corners are effectively infinite-size targets on desktop — use them.</p>
+          <div class="dia">
+            <svg viewBox="0 0 360 104" width="360" role="img" aria-label="Fitts's law: a long path to a small target is slow; a short path to a large target is fast">
+              <circle cx="18" cy="28" r="5" fill="var(--signal)"/>
+              <line x1="28" y1="28" x2="296" y2="24" stroke="var(--ink-faint)" stroke-width="1.5" stroke-dasharray="4 5"/>
+              <rect x="300" y="18" width="12" height="12" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+              <text x="322" y="30" font-family="Menlo, monospace" font-size="9" fill="var(--ink-faint)">SLOW</text>
+              <circle cx="18" cy="76" r="5" fill="var(--signal)"/>
+              <line x1="28" y1="76" x2="66" y2="76" stroke="var(--ink-faint)" stroke-width="1.5"/>
+              <rect x="70" y="60" width="32" height="32" fill="var(--signal-soft)" stroke="var(--signal)" stroke-width="1.5"/>
+              <text x="112" y="80" font-family="Menlo, monospace" font-size="9" fill="var(--signal)">FAST</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">2.2</span>
+        <div>
+          <h3>Hick’s Law</h3>
+          <p>Decision time grows with the number and complexity of choices. Every added option taxes every user, every time.</p>
+          <p class="apply">One primary action per screen. Cut, bury, or stage everything else via progressive disclosure. A menu of 5 beats a menu of 12, even for power users.</p>
+          <div class="dia">
+            <svg viewBox="0 0 360 118" width="360" role="img" aria-label="Hick's law: three choices decide fast, twelve choices decide slowly">
+              <rect x="10" y="10" width="120" height="18" rx="3" fill="var(--signal-soft)" stroke="var(--signal)" stroke-width="1.2"/>
+              <rect x="10" y="36" width="120" height="18" rx="3" fill="none" stroke="var(--ink-soft)" stroke-width="1.2"/>
+              <rect x="10" y="62" width="120" height="18" rx="3" fill="none" stroke="var(--ink-soft)" stroke-width="1.2"/>
+              <text x="10" y="104" font-family="Menlo, monospace" font-size="9" fill="var(--signal)">3 CHOICES — FAST</text>
+              <g fill="none" stroke="var(--ink-faint)" stroke-width="1.1">
+                <rect x="210" y="10" width="42" height="12" rx="2"/><rect x="260" y="10" width="42" height="12" rx="2"/><rect x="310" y="10" width="42" height="12" rx="2"/>
+                <rect x="210" y="30" width="42" height="12" rx="2"/><rect x="260" y="30" width="42" height="12" rx="2"/><rect x="310" y="30" width="42" height="12" rx="2"/>
+                <rect x="210" y="50" width="42" height="12" rx="2"/><rect x="260" y="50" width="42" height="12" rx="2"/><rect x="310" y="50" width="42" height="12" rx="2"/>
+                <rect x="210" y="70" width="42" height="12" rx="2"/><rect x="260" y="70" width="42" height="12" rx="2"/><rect x="310" y="70" width="42" height="12" rx="2"/>
+              </g>
+              <text x="210" y="104" font-family="Menlo, monospace" font-size="9" fill="var(--ink-faint)">12 CHOICES — SLOW</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">2.3</span>
+        <div>
+          <h3>Jakob’s Law</h3>
+          <p>Users spend most of their time in <em>other</em> apps. They arrive with expectations formed elsewhere and your interface inherits them.</p>
+          <p class="apply">Deviate from convention only where your product’s core differentiation lives. Spend novelty budget on the one thing that matters; keep everything else boring.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">2.4</span>
+        <div>
+          <h3>Miller’s Limit</h3>
+          <p>Working memory holds roughly 4–7 chunks. Interfaces that require remembering state across screens are leaking cognition.</p>
+          <p class="apply">Recognition over recall: show the selected plan, the applied filter, the cart total. Never make the user carry information from one screen to the next in their head.</p>
+          <div class="dia">
+            <svg viewBox="0 0 360 78" width="360" role="img" aria-label="Miller's limit: ten items in a row are hard to hold; the same items in three chunks are easy">
+              <g fill="var(--ink-faint)">
+                <circle cx="16" cy="18" r="5"/><circle cx="34" cy="18" r="5"/><circle cx="52" cy="18" r="5"/><circle cx="70" cy="18" r="5"/><circle cx="88" cy="18" r="5"/><circle cx="106" cy="18" r="5"/><circle cx="124" cy="18" r="5"/><circle cx="142" cy="18" r="5"/><circle cx="160" cy="18" r="5"/><circle cx="178" cy="18" r="5"/>
+              </g>
+              <text x="200" y="22" font-family="Menlo, monospace" font-size="9" fill="var(--ink-faint)">10 ITEMS — OVERLOAD</text>
+              <g fill="var(--signal)">
+                <circle cx="16" cy="56" r="5"/><circle cx="34" cy="56" r="5"/><circle cx="52" cy="56" r="5"/>
+                <circle cx="82" cy="56" r="5"/><circle cx="100" cy="56" r="5"/><circle cx="118" cy="56" r="5"/>
+                <circle cx="148" cy="56" r="5"/><circle cx="166" cy="56" r="5"/><circle cx="184" cy="56" r="5"/><circle cx="202" cy="56" r="5"/>
+              </g>
+              <text x="224" y="60" font-family="Menlo, monospace" font-size="9" fill="var(--signal)">3 CHUNKS — HELD</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">2.5</span>
+        <div>
+          <h3>Tesler’s Law</h3>
+          <p>Every process has irreducible complexity. It can be moved — to the user or into the system — but not deleted.</p>
+          <p class="apply">Absorb complexity into defaults, smart detection, and sensible presets. Ask the user only what the system genuinely cannot know.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">2.6</span>
+        <div>
+          <h3>Peak–End Rule</h3>
+          <p>Experiences are judged by their most intense moment and their ending — not the average.</p>
+          <p class="apply">Polish the success state, the confirmation, the empty state after completing a task. A rough middle is forgivable; a rough ending is remembered.</p>
+          <div class="dia">
+            <svg viewBox="0 0 360 104" width="360" role="img" aria-label="Peak–end rule: the experience curve is judged by its highest peak and its final moment">
+              <line x1="10" y1="88" x2="350" y2="88" stroke="var(--rule)" stroke-width="1"/>
+              <path d="M10,70 C50,62 80,74 110,66 C150,56 170,18 200,18 C230,18 250,62 280,58 C305,55 320,40 344,32"
+                    fill="none" stroke="var(--ink-soft)" stroke-width="1.8"/>
+              <line x1="200" y1="18" x2="200" y2="88" stroke="var(--signal)" stroke-width="1" stroke-dasharray="3 4"/>
+              <circle cx="200" cy="18" r="5.5" fill="var(--signal)"/>
+              <text x="212" y="16" font-family="Menlo, monospace" font-size="9" fill="var(--signal)">PEAK</text>
+              <circle cx="344" cy="32" r="5.5" fill="var(--signal)"/>
+              <text x="316" y="18" font-family="Menlo, monospace" font-size="9" fill="var(--signal)">END</text>
+            </svg>
+            <div class="cap">Judged here and here — not the average</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 HEURISTICS ============ -->
+<section id="heuristics">
+  <div class="sec-head reveal">
+    <div class="sec-num">03</div>
+    <h2>Nielsen’s Ten, Condensed</h2>
+    <p class="kicker">The evaluation checklist — every screen answers to these</p>
+  </div>
+  <div class="sec-body reveal">
+    <div class="entries">
+      <div class="entry"><span class="n">3.1</span><div><h3>Visibility of system status</h3><p class="apply">Every action gets feedback within 100 ms. Loading states, progress, confirmation. Silence is a bug.</p></div></div>
+      <div class="entry"><span class="n">3.2</span><div><h3>Match the real world</h3><p class="apply">Speak the user’s vocabulary, not the schema’s. “Trip” not “itinerary_record”.</p></div></div>
+      <div class="entry"><span class="n">3.3</span><div><h3>User control &amp; freedom</h3><p class="apply">Undo beats confirmation dialogs. Every wizard needs an exit. Every destructive action needs a way back.</p></div></div>
+      <div class="entry"><span class="n">3.4</span><div><h3>Consistency &amp; standards</h3><p class="apply">Internal consistency first, platform convention second, industry pattern third. Break ties in that order.</p></div></div>
+      <div class="entry"><span class="n">3.5</span><div><h3>Error prevention</h3><p class="apply">Disable the invalid, constrain the input, confirm the irreversible. Design so the error can’t happen, then handle it anyway.</p></div></div>
+      <div class="entry"><span class="n">3.6</span><div><h3>Recognition over recall</h3><p class="apply">Show options, history, and context inline. The interface remembers so the user doesn’t have to.</p></div></div>
+      <div class="entry"><span class="n">3.7</span><div><h3>Flexibility &amp; efficiency</h3><p class="apply">Accelerators for experts — shortcuts, gestures, recents — that stay invisible to novices.</p></div></div>
+      <div class="entry"><span class="n">3.8</span><div><h3>Aesthetic &amp; minimalist design</h3><p class="apply">Every element competes with every other element. If it doesn’t serve the task, it costs the task.</p></div></div>
+      <div class="entry"><span class="n">3.9</span><div><h3>Help users recover from errors</h3><p class="apply">Error messages state what happened, why, and the next step — in plain language, near the problem.</p></div></div>
+      <div class="entry"><span class="n">3.10</span><div><h3>Help &amp; documentation</h3><p class="apply">The best help is contextual and just-in-time. If users need the manual, the screen has already failed once.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 GESTALT ============ -->
+<section id="gestalt">
+  <div class="sec-head reveal">
+    <div class="sec-num">04</div>
+    <h2>Gestalt Principles</h2>
+    <p class="kicker">How the eye groups before the mind reads</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Users perceive structure before they read a single word. Spacing, alignment, and enclosure are doing information architecture whether you intend it or not.</p>
+
+    <div class="gestalt-grid">
+      <div class="gestalt-cell">
+        <svg viewBox="0 0 120 72" width="120" role="img" aria-label="Proximity: two clusters of dots read as two groups">
+          <g fill="var(--ink-soft)">
+            <circle cx="22" cy="24" r="5"/><circle cx="40" cy="24" r="5"/><circle cx="22" cy="42" r="5"/><circle cx="40" cy="42" r="5"/>
+            <circle cx="82" cy="24" r="5"/><circle cx="100" cy="24" r="5"/><circle cx="82" cy="42" r="5"/><circle cx="100" cy="42" r="5"/>
+          </g>
+        </svg>
+        <div class="cap">Proximity</div>
+      </div>
+      <div class="gestalt-cell">
+        <svg viewBox="0 0 120 72" width="120" role="img" aria-label="Similarity: alternating columns of filled and outlined dots read as columns">
+          <g>
+            <circle cx="24" cy="16" r="5" fill="var(--signal)"/><circle cx="48" cy="16" r="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/><circle cx="72" cy="16" r="5" fill="var(--signal)"/><circle cx="96" cy="16" r="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+            <circle cx="24" cy="36" r="5" fill="var(--signal)"/><circle cx="48" cy="36" r="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/><circle cx="72" cy="36" r="5" fill="var(--signal)"/><circle cx="96" cy="36" r="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+            <circle cx="24" cy="56" r="5" fill="var(--signal)"/><circle cx="48" cy="56" r="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/><circle cx="72" cy="56" r="5" fill="var(--signal)"/><circle cx="96" cy="56" r="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+          </g>
+        </svg>
+        <div class="cap">Similarity</div>
+      </div>
+      <div class="gestalt-cell">
+        <svg viewBox="0 0 120 72" width="120" role="img" aria-label="Common region: dots inside a border group together, stronger than spacing">
+          <rect x="8" y="20" width="48" height="34" rx="7" fill="none" stroke="var(--signal)" stroke-width="1.5"/>
+          <rect x="64" y="20" width="48" height="34" rx="7" fill="none" stroke="var(--signal)" stroke-width="1.5"/>
+          <circle cx="24" cy="37" r="5" fill="var(--ink-soft)"/><circle cx="42" cy="37" r="5" fill="var(--ink-soft)"/>
+          <circle cx="80" cy="37" r="5" fill="var(--ink-soft)"/><circle cx="98" cy="37" r="5" fill="var(--ink-soft)"/>
+        </svg>
+        <div class="cap">Common region</div>
+      </div>
+      <div class="gestalt-cell">
+        <svg viewBox="0 0 120 72" width="120" role="img" aria-label="Continuity: dots along a curve are read as one line">
+          <g fill="var(--ink-soft)">
+            <circle cx="10" cy="52" r="4.5"/><circle cx="26" cy="42" r="4.5"/><circle cx="42" cy="32" r="4.5"/><circle cx="58" cy="26" r="4.5"/><circle cx="74" cy="24" r="4.5"/><circle cx="90" cy="27" r="4.5"/><circle cx="106" cy="34" r="4.5"/>
+          </g>
+          <g fill="var(--signal)">
+            <circle cx="34" cy="14" r="4.5"/><circle cx="46" cy="30" r="4.5"/><circle cx="58" cy="46" r="4.5"/><circle cx="70" cy="60" r="4.5"/>
+          </g>
+        </svg>
+        <div class="cap">Continuity</div>
+      </div>
+      <div class="gestalt-cell">
+        <svg viewBox="0 0 120 72" width="120" role="img" aria-label="Figure and ground: a bright card reads as content over a dimmed scrim">
+          <rect x="6" y="6" width="108" height="60" rx="5" fill="#ffffff10"/>
+          <rect x="32" y="18" width="56" height="36" rx="6" fill="var(--ink)"/>
+          <rect x="40" y="26" width="32" height="4" rx="2" fill="var(--paper)"/>
+          <rect x="40" y="36" width="40" height="3" rx="1.5" fill="var(--paper)" opacity=".55"/>
+        </svg>
+        <div class="cap">Figure / ground</div>
+      </div>
+      <div class="gestalt-cell">
+        <svg viewBox="0 0 120 72" width="120" role="img" aria-label="Closure: a dashed incomplete circle still reads as a circle">
+          <circle cx="60" cy="36" r="26" fill="none" stroke="var(--ink-soft)" stroke-width="2" stroke-dasharray="16 12" stroke-linecap="round"/>
+        </svg>
+        <div class="cap">Closure</div>
+      </div>
+    </div>
+
+    <div class="entries">
+      <div class="entry"><span class="n">4.1</span><div><h3>Proximity</h3><p class="apply">Whitespace is the strongest grouping tool you have. Related items sit closer together than unrelated ones — labels hug their fields, not the field above.</p></div></div>
+      <div class="entry"><span class="n">4.2</span><div><h3>Similarity</h3><p class="apply">Things that look alike are assumed to behave alike. If two buttons look the same, they’d better be the same weight of action.</p></div></div>
+      <div class="entry"><span class="n">4.3</span><div><h3>Common region</h3><p class="apply">A border or background groups more strongly than proximity. Use cards sparingly — every enclosure adds visual weight and fragments scanning.</p></div></div>
+      <div class="entry"><span class="n">4.4</span><div><h3>Continuity &amp; alignment</h3><p class="apply">The eye follows lines. A single strong left-alignment edge scans faster than centered fragments. Break alignment only to signal a break in meaning.</p></div></div>
+      <div class="entry"><span class="n">4.5</span><div><h3>Figure / ground</h3><p class="apply">Contrast and elevation decide what reads as content and what reads as chrome. Modals, sheets, and scrims work by manipulating this deliberately.</p></div></div>
+      <div class="entry"><span class="n">4.6</span><div><h3>Closure</h3><p class="apply">A partially visible card at the screen edge is the strongest scroll affordance there is — stronger than any arrow or dot indicator.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 HIERARCHY ============ -->
+<section id="hierarchy">
+  <div class="sec-head reveal">
+    <div class="sec-num">05</div>
+    <h2>Visual Hierarchy</h2>
+    <p class="kicker">The order the eye receives things is a design decision — make it on purpose</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Every screen is read in <em>some</em> order. Hierarchy is choosing that order: what is seen first, second, third — and what is barely seen at all. When everything is emphasized, nothing is; emphasis is a zero-sum budget.</p>
+
+    <div class="plat-figs">
+      <div class="plat-fig">
+        <svg viewBox="0 0 230 178" width="230" role="img" aria-label="A hotel card where every line has the same size and weight — nothing stands out">
+          <rect x="1" y="1" width="228" height="176" rx="12" fill="#14171c" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="18" y="36" font-family="-apple-system, Helvetica, sans-serif" font-size="13" fill="var(--ink-soft)">Hotel Meridian</text>
+          <text x="18" y="62" font-family="-apple-system, Helvetica, sans-serif" font-size="13" fill="var(--ink-soft)">Oslo · 4.8 · Free cancellation</text>
+          <text x="18" y="88" font-family="-apple-system, Helvetica, sans-serif" font-size="13" fill="var(--ink-soft)">$249 per night</text>
+          <text x="18" y="114" font-family="-apple-system, Helvetica, sans-serif" font-size="13" fill="var(--ink-soft)">Breakfast included</text>
+          <rect x="18" y="132" width="92" height="28" rx="7" fill="none" stroke="var(--ink-soft)" stroke-width="1.3"/>
+          <text x="64" y="150" text-anchor="middle" font-family="-apple-system, Helvetica, sans-serif" font-size="12" fill="var(--ink-soft)">Book now</text>
+        </svg>
+        <div class="cap">Flat — five things shout equally</div>
+      </div>
+      <div class="plat-fig">
+        <svg viewBox="0 0 230 178" width="230" role="img" aria-label="The same hotel card with hierarchy: large title read first, price second, book button third">
+          <rect x="1" y="1" width="228" height="176" rx="12" fill="#14171c" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="18" y="40" font-family="-apple-system, Helvetica, sans-serif" font-size="18" font-weight="700" fill="var(--ink)">Hotel Meridian</text>
+          <text x="18" y="60" font-family="Menlo, monospace" font-size="8.5" letter-spacing="1" fill="var(--ink-faint)">OSLO · 4.8★ · FREE CANCELLATION</text>
+          <text x="18" y="98" font-family="-apple-system, Helvetica, sans-serif" font-size="20" font-weight="700" fill="var(--signal)">$249</text>
+          <text x="70" y="98" font-family="-apple-system, Helvetica, sans-serif" font-size="11" fill="var(--ink-faint)">/ night · breakfast incl.</text>
+          <rect x="18" y="126" width="112" height="32" rx="8" fill="var(--signal)"/>
+          <text x="74" y="146" text-anchor="middle" font-family="-apple-system, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#0c0e11">Book now</text>
+          <circle cx="206" cy="34" r="9" fill="none" stroke="var(--signal)" stroke-width="1.3"/>
+          <text x="206" y="38" text-anchor="middle" font-family="Menlo, monospace" font-size="10" fill="var(--signal)">1</text>
+          <circle cx="206" cy="93" r="9" fill="none" stroke="var(--signal)" stroke-width="1.3"/>
+          <text x="206" y="97" text-anchor="middle" font-family="Menlo, monospace" font-size="10" fill="var(--signal)">2</text>
+          <circle cx="206" cy="142" r="9" fill="none" stroke="var(--signal)" stroke-width="1.3"/>
+          <text x="206" y="146" text-anchor="middle" font-family="Menlo, monospace" font-size="10" fill="var(--signal)">3</text>
+        </svg>
+        <div class="cap">Hierarchy — 1 what · 2 cost · 3 act</div>
+      </div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">5.1</span>
+        <div>
+          <h3>Size</h3>
+          <p>The largest element is read first — no exceptions. A type scale exists to make this cheap and consistent.</p>
+          <p class="apply">One hero size per screen. The platform scales encode this already: Large Title 34pt over Body 17pt on iOS; Headline L 32sp over Body L 16sp in Material. If two elements tie for biggest, the screen has no first sentence.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">5.2</span>
+        <div>
+          <h3>Weight &amp; contrast</h3>
+          <p>Bold and high-contrast advances; light and low-contrast recedes. This lever is stronger than size at equal sizes.</p>
+          <p class="apply">De-emphasize with gray before you shrink — a 13pt secondary-gray label beats a 10pt black one for both hierarchy and legibility. That’s exactly what <code>secondaryLabel</code> (iOS) and <code>onSurfaceVariant</code> (M3) are for.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">5.3</span>
+        <div>
+          <h3>Space</h3>
+          <p>Whitespace confers importance — margin is a spotlight. Crowding levels everything to the same rank.</p>
+          <p class="apply">Give the primary element roughly twice the breathing room of anything secondary. Spacing is also grouping (proximity, 4.1), so it does hierarchy and structure with one move.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">5.4</span>
+        <div>
+          <h3>Position</h3>
+          <p>Scanning starts top-leading and follows an F or Z path; the thumb finishes at the bottom.</p>
+          <p class="apply">Message at the top, action at the bottom. First position in any list is the cheapest emphasis available — spend it on the most likely choice, not the alphabetically first one.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">5.5</span>
+        <div>
+          <h3>Color — the accent budget</h3>
+          <p>On a restrained canvas, the accent color means “this matters, this is interactive.” Spend it like money.</p>
+          <p class="apply">Tint the one primary action and the key datum — nothing decorative. Both platforms enforce this: HIG wants monochromatic bars with a single tinted action; M3 routes emphasis through the <code>primary</code> role. This page does it too — one ice-blue, everywhere it counts.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">5.6</span>
+        <div>
+          <h3>The squint test</h3>
+          <p>The verification step: squint at the screen (or blur a screenshot) until the words disappear.</p>
+          <p class="apply">Three levels should survive the blur: one hero, a support layer, and a whisper of detail. If the primary action doesn’t survive, the hierarchy failed — no amount of polish rescues it.</p>
+          <div class="dia">
+            <svg viewBox="0 0 360 66" width="360" role="img" aria-label="Action hierarchy: one filled primary button, one outlined secondary, a text-only tertiary">
+              <rect x="10" y="12" width="104" height="36" rx="9" fill="var(--signal)"/>
+              <text x="62" y="35" text-anchor="middle" font-family="-apple-system, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#0c0e11">Book</text>
+              <rect x="130" y="12" width="104" height="36" rx="9" fill="none" stroke="var(--ink-soft)" stroke-width="1.4"/>
+              <text x="182" y="35" text-anchor="middle" font-family="-apple-system, Helvetica, sans-serif" font-size="12.5" fill="var(--ink)">Preview</text>
+              <text x="290" y="35" text-anchor="middle" font-family="-apple-system, Helvetica, sans-serif" font-size="12.5" fill="var(--ink-faint)">Cancel</text>
+            </svg>
+            <div class="cap">Same rule for actions — one filled · one outlined · text for the rest</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 MOBILE ============ -->
+<section id="mobile">
+  <div class="sec-head reveal">
+    <div class="sec-num">06</div>
+    <h2>Mobile Instincts</h2>
+    <p class="kicker">The phone is held, not sat at — design for the hand first</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Roughly half of phone use is one-handed. The bottom half of the screen belongs to the thumb; the top corners are hostile territory reserved for rare actions.</p>
+
+    <div class="figure">
+      <div class="phone" aria-label="Thumb-reach diagram: comfort zones on a phone screen">
+        <div class="zone hard"></div>
+        <div class="zone strain"></div>
+        <div class="zone easy"></div>
+        <div class="thumb-arc"></div>
+        <span class="zone-label l-hard">Hard · rare actions</span>
+        <span class="zone-label l-strain">Stretch · secondary</span>
+        <span class="zone-label l-easy">Natural · primary</span>
+      </div>
+      <div class="fig-notes">
+        <h4>Rules of the hand</h4>
+        <ul>
+          <li><b>Primary actions live at the bottom.</b> Tab bars, FABs, and sticky CTAs exist because of this map.</li>
+          <li><b>Destructive actions go out of easy reach</b> — or behind a deliberate gesture. Reachability cuts both ways.</li>
+          <li><b>Top-left back button is a stretch.</b> Support the edge-swipe gesture; never make the corner the only way home.</li>
+          <li><b>Reachability degrades with screen size.</b> What was “natural” on 5.4″ is “stretch” on 6.7″.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="target-demo">
+      <div class="target t-bad"><span class="dot">✕</span>28px — misses taps</div>
+      <div class="target t-min"><span class="dot">✓</span>44pt — HIG minimum</div>
+      <div class="target t-good ok"><span class="dot">✓</span>48dp — Material min.</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.5rem">
+      <div class="entry"><span class="n">6.1</span><div><h3>Progressive disclosure over density</h3><p class="apply">Show the 20% that serves 80% of visits; stage the rest behind clear, honest entry points. Density is a desktop luxury.</p></div></div>
+      <div class="entry"><span class="n">6.2</span><div><h3>Gestures need visible fallbacks</h3><p class="apply">Swipe-to-delete, pull-to-refresh, long-press: fine as accelerators, never as the only path. Undiscoverable ≠ elegant.</p></div></div>
+      <div class="entry"><span class="n">6.3</span><div><h3>Respect the keyboard</h3><p class="apply">The keyboard eats half the screen. Keep the focused field and the submit action visible above it; use the right keyboard type per field.</p></div></div>
+      <div class="entry"><span class="n">6.4</span><div><h3>Design the interruptions</h3><p class="apply">Mobile sessions are 30-second fragments. Preserve state ruthlessly — a form that loses input to a phone call has failed.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 PROCESS ============ -->
+<section id="process">
+  <div class="sec-head reveal">
+    <div class="sec-num">07</div>
+    <h2>The Process</h2>
+    <p class="kicker">From app idea to shipped design — in order, no skipping</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Screens are the last thing you draw, not the first. This sequence front-loads the decisions that are expensive to change (what it is, how it’s organized) and defers the ones that are cheap (colors, corner radii).</p>
+    <div class="entries">
+      <div class="entry">
+        <span class="n">7.1</span>
+        <div>
+          <h3>Frame the product</h3>
+          <p>Who is it for, what job does it do, and what is the one thing it must do brilliantly. One sentence, written down.</p>
+          <p class="apply">“For [person] in [situation], this app [does job] — and it is brilliant at [one thing].” Every later design dispute gets resolved against this sentence.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.2</span>
+        <div>
+          <h3>Map the flows</h3>
+          <p>The top three user journeys as task flows — before any screen exists.</p>
+          <p class="apply">Boxes are user intentions (“capture expense”, “find last invoice”), not screens. Count the steps in the most frequent flow; that number is your budget to beat.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.3</span>
+        <div>
+          <h3>Choose the information architecture</h3>
+          <p>What lives where, and which navigation model carries it. The most expensive decision in the whole process.</p>
+          <p class="apply">2–5 peer destinations → tab/nav bar. One dominant feed plus actions → single screen with modals. Deep hierarchy → drill-down list. If you can’t name a tab in one word, it isn’t a tab.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.4</span>
+        <div>
+          <h3>Wireframe the core loop</h3>
+          <p>Low fidelity, grayscale, one platform-neutral pass over the 20% of screens that serve 80% of sessions.</p>
+          <p class="apply">Real content, never lorem ipsum — layout decisions made against fake content are fake decisions. If the hierarchy needs color to work, the hierarchy is broken.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.5</span>
+        <div>
+          <h3>Split into dialects</h3>
+          <p>One shared core — IA, flows, vocabulary, brand — expressed through two idiomatic layers: HIG for iOS, Material 3 for Android.</p>
+          <p class="apply">The user should recognize the app across platforms but never feel it was ported. Chapter 09 is the mapping table.</p>
+          <div class="dia">
+            <svg viewBox="0 0 360 120" width="360" role="img" aria-label="One shared core forks into an iOS HIG layer and an Android Material 3 layer">
+              <rect x="10" y="38" width="120" height="44" rx="6" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+              <text x="70" y="56" text-anchor="middle" font-family="Menlo, monospace" font-size="9" fill="var(--ink)">SHARED CORE</text>
+              <text x="70" y="70" text-anchor="middle" font-family="Menlo, monospace" font-size="8" fill="var(--ink-faint)">IA · FLOWS · WORDS</text>
+              <path d="M130,60 C165,60 165,28 200,28" fill="none" stroke="var(--signal)" stroke-width="1.5"/>
+              <path d="M130,60 C165,60 165,92 200,92" fill="none" stroke="var(--signal)" stroke-width="1.5"/>
+              <rect x="204" y="10" width="146" height="36" rx="6" fill="var(--signal-soft)" stroke="var(--signal)" stroke-width="1.2"/>
+              <text x="277" y="32" text-anchor="middle" font-family="Menlo, monospace" font-size="9" fill="var(--ink)">iOS · HIG LAYER</text>
+              <rect x="204" y="74" width="146" height="36" rx="6" fill="var(--signal-soft)" stroke="var(--signal)" stroke-width="1.2"/>
+              <text x="277" y="96" text-anchor="middle" font-family="Menlo, monospace" font-size="9" fill="var(--ink)">ANDROID · M3 LAYER</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.6</span>
+        <div>
+          <h3>Design the edges</h3>
+          <p>Empty, loading, error, offline, interrupted, first-run. The happy path is a minority of real sessions.</p>
+          <p class="apply">The empty state is the first screen most users ever meet — make it teach. An error state that only says “something went wrong” is a design task abandoned, not completed.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">7.7</span>
+        <div>
+          <h3>Audit, test, iterate</h3>
+          <p>Run the screen audit (ch. 14), the thumb map (ch. 06), and put it in front of real people.</p>
+          <p class="apply">Five users surface most usability problems — test the wireframe, not the polished mockup, so findings are cheap to act on. Then loop back to 7.4.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 MODES ============ -->
+<section id="modes">
+  <div class="sec-head reveal">
+    <div class="sec-num">08</div>
+    <h2>Four Modes of Work</h2>
+    <p class="kicker">Every design engagement is one of these — know which one you’re in</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Misdiagnosing the mode wastes the session: you can’t wireframe your way out of a strategy question, and a philosophical debate won’t fix a broken checkout. Name the mode, then run its playbook.</p>
+    <div class="posture-grid">
+      <div class="card">
+        <div class="glyph">◎</div>
+        <h3>Critique a project</h3>
+        <p>A screen, flow, or product exists and needs expert eyes.</p>
+        <ol>
+          <li>Ask the goal and audience before judging anything</li>
+          <li>Five-second test: what reads first, what’s the assumed action?</li>
+          <li>Walk Nielsen’s ten (ch. 03) against each screen</li>
+          <li>Thumb map + platform dialect audit (ch. 06, 09)</li>
+          <li>Rank findings by severity × effort to fix</li>
+        </ol>
+        <p class="rule">Every criticism ships with a concrete recommendation.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">⌖</div>
+        <h3>Diagnose a problem</h3>
+        <p>Something feels off — confusion, drop-off, low conversion.</p>
+        <ol>
+          <li>Locate the drop-off precisely: which step, which screen</li>
+          <li>Hypothesize against the laws — choice overload (Hick)? missing feedback (3.1)? recall burden (2.4)?</li>
+          <li>Watch three real sessions before changing anything</li>
+          <li>Fix the smallest plausible cause first; measure; repeat</li>
+        </ol>
+        <p class="rule">Symptoms lie; funnels and session recordings don’t.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">§</div>
+        <h3>Reason a decision</h3>
+        <p>“Should we do X or Y?” — a principle question in disguise.</p>
+        <ol>
+          <li>Name the trade-off axis it sits on (ch. 13)</li>
+          <li>Find the governing law or heuristic</li>
+          <li>Check three best-in-class apps — Jakob’s law sets expectations</li>
+          <li>Decide, and write the reasoning down</li>
+        </ol>
+        <p class="rule">A decision without written reasoning gets relitigated forever.</p>
+      </div>
+      <div class="card">
+        <div class="glyph">✎</div>
+        <h3>Produce artifacts</h3>
+        <p>Wireframes, mockups, prototypes — something to look at and test.</p>
+        <ol>
+          <li>Match fidelity to the question being asked</li>
+          <li>Sketch answers <em>flow</em> · wireframe answers <em>layout</em> · mockup answers <em>style</em> · prototype answers <em>feel</em></li>
+          <li>Real content from the first sketch</li>
+          <li>Derive both dialects from the shared core (7.5)</li>
+        </ol>
+        <p class="rule">Never polish what hasn’t been validated one fidelity below.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 DIALECTS ============ -->
+<section id="platforms">
+  <div class="sec-head reveal">
+    <div class="sec-num">09</div>
+    <h2>One Design, Two Dialects</h2>
+    <p class="kicker">HIG for iOS · Material 3 for Android — same app, native accent</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Cross-platform consistency matters less than platform fluency. Users compare your app to the other apps on <em>their</em> phone, not to your app on the other platform. Keep the core identical; translate the expression.</p>
+
+    <div class="posture-grid">
+      <div class="card">
+        <div class="glyph">＝</div>
+        <h3>The shared core — never forks</h3>
+        <ul>
+          <li>Information architecture &amp; task flows</li>
+          <li>Feature set, vocabulary, and copy</li>
+          <li>Brand color, illustration, iconography meaning</li>
+          <li>Mental model — what the app <em>is</em></li>
+          <li>Data, sync, and account behavior</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="glyph">≠</div>
+        <h3>The dialect layer — always forks</h3>
+        <ul>
+          <li>Navigation components &amp; back model</li>
+          <li>Type system and scale</li>
+          <li>Component swaps (sheet ↔ dialog, etc.)</li>
+          <li>Motion physics and feedback</li>
+          <li>How color is applied (tint vs. roles)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="plat-figs">
+      <div class="plat-fig">
+        <svg viewBox="0 0 150 300" width="150" role="img" aria-label="iOS screen anatomy: large title, inset grouped list, bottom tab bar">
+          <rect x="2" y="2" width="146" height="296" rx="20" fill="#14171c" stroke="var(--ink)" stroke-width="2"/>
+          <path d="M16,24 l-6,7 6,7" fill="none" stroke="var(--signal)" stroke-width="2" stroke-linecap="round"/>
+          <rect x="14" y="46" width="76" height="12" rx="3" fill="var(--ink)"/>
+          <rect x="14" y="74" width="122" height="52" rx="10" fill="#ffffff0d"/>
+          <rect x="24" y="86" width="60" height="5" rx="2.5" fill="var(--ink-soft)"/>
+          <rect x="24" y="104" width="84" height="5" rx="2.5" fill="var(--ink-faint)"/>
+          <rect x="14" y="136" width="122" height="52" rx="10" fill="#ffffff0d"/>
+          <rect x="24" y="148" width="70" height="5" rx="2.5" fill="var(--ink-soft)"/>
+          <rect x="24" y="166" width="52" height="5" rx="2.5" fill="var(--ink-faint)"/>
+          <line x1="2" y1="252" x2="148" y2="252" stroke="var(--rule)" stroke-width="1.5"/>
+          <circle cx="30" cy="270" r="6" fill="var(--signal)"/>
+          <circle cx="60" cy="270" r="6" fill="none" stroke="var(--ink-faint)" stroke-width="1.5"/>
+          <circle cx="90" cy="270" r="6" fill="none" stroke="var(--ink-faint)" stroke-width="1.5"/>
+          <circle cx="120" cy="270" r="6" fill="none" stroke="var(--ink-faint)" stroke-width="1.5"/>
+        </svg>
+        <div class="cap">iOS — large title · inset lists · tab bar</div>
+      </div>
+      <div class="plat-fig">
+        <svg viewBox="0 0 150 300" width="150" role="img" aria-label="Android screen anatomy: top app bar, cards, floating action button, navigation bar">
+          <rect x="2" y="2" width="146" height="296" rx="14" fill="#14171c" stroke="var(--ink)" stroke-width="2"/>
+          <rect x="14" y="24" width="66" height="10" rx="3" fill="var(--ink)"/>
+          <circle cx="130" cy="29" r="6" fill="none" stroke="var(--ink-faint)" stroke-width="1.5"/>
+          <rect x="14" y="56" width="122" height="58" rx="12" fill="#ffffff0d"/>
+          <rect x="24" y="68" width="58" height="5" rx="2.5" fill="var(--ink-soft)"/>
+          <rect x="24" y="86" width="86" height="5" rx="2.5" fill="var(--ink-faint)"/>
+          <rect x="14" y="124" width="122" height="58" rx="12" fill="#ffffff0d"/>
+          <rect x="24" y="136" width="72" height="5" rx="2.5" fill="var(--ink-soft)"/>
+          <rect x="24" y="154" width="50" height="5" rx="2.5" fill="var(--ink-faint)"/>
+          <rect x="102" y="204" width="34" height="34" rx="11" fill="var(--signal)"/>
+          <path d="M119,213 v16 M111,221 h16" stroke="#0c0e11" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="2" y1="252" x2="148" y2="252" stroke="var(--rule)" stroke-width="1.5"/>
+          <rect x="24" y="262" width="30" height="16" rx="8" fill="var(--signal-soft)"/>
+          <circle cx="39" cy="270" r="5" fill="var(--signal)"/>
+          <circle cx="75" cy="270" r="5" fill="none" stroke="var(--ink-faint)" stroke-width="1.5"/>
+          <circle cx="111" cy="270" r="5" fill="none" stroke="var(--ink-faint)" stroke-width="1.5"/>
+        </svg>
+        <div class="cap">Android — app bar · cards · FAB · nav bar</div>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Intent</th><th>iOS · HIG (Liquid Glass era)</th><th>Android · Material 3 (Expressive)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Top-level nav</td><td>Tab bar, 2–5 tabs; floats over content, may minimize on scroll; never holds actions</td><td>Nav bar, 3–5 destinations (&lt;600dp); nav rail when wider — drawer is deprecated</td></tr>
+          <tr><td>Back</td><td>Chevron top-leading <em>plus</em> edge swipe — always both</td><td>System predictive back gesture — support the preview, never intercept</td></tr>
+          <tr><td>Primary action</td><td>Prominent (tinted) toolbar button or bottom CTA — one per view</td><td>One FAB per screen (56dp baseline), or bottom CTA — never for destructive acts</td></tr>
+          <tr><td>Choices after an action</td><td>Action sheet, destructive in red at top, Cancel at bottom</td><td>Modal bottom sheet with drag handle and swipe-dismiss</td></tr>
+          <tr><td>Interruptive decision</td><td>Alert — sparingly, never more than one</td><td>Dialog — max 2 actions, never stacked</td></tr>
+          <tr><td>Transient feedback</td><td>Haptics (notification/impact/selection) + inline status</td><td>Snackbar — one at a time, never for critical info</td></tr>
+          <tr><td>Search</td><td>Search tab in the tab bar, or bottom-toolbar field</td><td>Search bar (56dp) morphing into a full search view</td></tr>
+          <tr><td>Type</td><td>SF Pro · Dynamic Type · Body 17pt, Large Title 34pt</td><td>Roboto · sp scale · Body L 16sp, Headline L 32sp</td></tr>
+          <tr><td>Touch target</td><td>≥ 44 × 44 pt</td><td>≥ 48 × 48 dp, 8dp spacing</td></tr>
+          <tr><td>Color</td><td>Semantic colors; monochromatic bars; tint one prominent action only</td><td>Color roles (primary/container/surface…); dynamic color from the user’s wallpaper</td></tr>
+          <tr><td>Surface hierarchy</td><td>Liquid Glass functional layer floating above the content layer</td><td>surfaceContainer tonal ladder (Lowest → Highest); shadows only for truly floating parts</td></tr>
+          <tr><td>Motion</td><td>Brief, purposeful, cancelable; honor Reduce Motion</td><td>Spring physics — Expressive scheme for hero moments, Standard for utility</td></tr>
+          <tr><td>Settings</td><td>Inset grouped lists with chevrons</td><td>Preference list with switches</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="entries" style="margin-top:2.5rem">
+      <div class="entry"><span class="n">9.1</span><div><h3>The iOS accent, in one breath</h3><p>Controls float above content on Liquid Glass; the content owns the screen.</p><p class="apply">No custom bar backgrounds or tints — use the scroll edge effect. Monochromatic bar icons, one tinted prominent action. Large titles that collapse on scroll. Sheets with medium/large detents for scoped tasks. Semantic colors, both appearances, always.</p></div></div>
+      <div class="entry"><span class="n">9.2</span><div><h3>The Android accent, in one breath</h3><p>Build on tokens — color roles, type scale, shape scale — so the app inherits Material You personalization for free.</p><p class="apply">Nav bar → rail as the window widens. The FAB carries <em>the</em> action. Bottom sheets over menus on compact. Predictive back everywhere. Save expressive moves — springs, shape morphs, emphasized type — for one or two hero moments.</p></div></div>
+      <div class="entry"><span class="n">9.3</span><div><h3>Desktop is not a big phone</h3><p class="apply">Density, hover, multi-window, drag-and-drop, and keyboard-first flows are desktop’s native strengths. A stretched mobile layout on a 27″ display wastes the medium.</p></div></div>
+      <div class="entry"><span class="n">9.4</span><div><h3>Web is the ambiguous middle</h3><p class="apply">Assume both touch and cursor. Deep-linkable URLs, working browser back, and responsive reflow are the web’s conventions — break them and the platform breaks you.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 DESIGN SYSTEMS ============ -->
+<section id="systems">
+  <div class="sec-head reveal">
+    <div class="sec-num">10</div>
+    <h2>Design Systems</h2>
+    <p class="kicker">Decisions made once, so screens don’t relitigate them</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>A design system is the product’s design memory: every choice that shouldn’t be re-made per screen — captured as tokens, components, patterns, and the rules for using them. Its value isn’t beauty; it’s that a hundred screens stay coherent while ten people ship them.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 168" width="360" role="img" aria-label="The system stack: tokens at the base, then components, then patterns, then screens">
+        <rect x="10" y="126" width="340" height="32" rx="5" fill="var(--signal-soft)" stroke="var(--signal)" stroke-width="1.3"/>
+        <text x="24" y="146" font-family="Menlo, monospace" font-size="9.5" fill="var(--ink)">TOKENS</text>
+        <text x="346" y="146" text-anchor="end" font-family="Menlo, monospace" font-size="8" fill="var(--ink-faint)">NAMED DECISIONS</text>
+        <rect x="50" y="86" width="260" height="32" rx="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.3"/>
+        <text x="64" y="106" font-family="Menlo, monospace" font-size="9.5" fill="var(--ink)">COMPONENTS</text>
+        <text x="306" y="106" text-anchor="end" font-family="Menlo, monospace" font-size="8" fill="var(--ink-faint)">DECISIONS ASSEMBLED</text>
+        <rect x="90" y="46" width="180" height="32" rx="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.3"/>
+        <text x="104" y="66" font-family="Menlo, monospace" font-size="9.5" fill="var(--ink)">PATTERNS</text>
+        <text x="266" y="66" text-anchor="end" font-family="Menlo, monospace" font-size="8" fill="var(--ink-faint)">HABITS</text>
+        <rect x="130" y="6" width="100" height="32" rx="5" fill="none" stroke="var(--ink-faint)" stroke-width="1.3" stroke-dasharray="4 4"/>
+        <text x="180" y="26" text-anchor="middle" font-family="Menlo, monospace" font-size="9.5" fill="var(--ink-soft)">SCREENS</text>
+      </svg>
+      <div class="cap">Change flows upward — fix the token, and every layer above inherits it</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">10.1</span>
+        <div>
+          <h3>A system is rules, not a UI kit</h3>
+          <p>A Figma library without usage guidance is a parts bin. The system is the components <em>plus</em> when-to-use, when-not-to, and who decides.</p>
+          <p class="apply">Every component ships with its anti-patterns: “segmented control — 2–5 options, never 1” is the documentation format. If a component needs a meeting to use correctly, the docs failed.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.2</span>
+        <div>
+          <h3>Start from the platform’s system</h3>
+          <p>HIG components and Material 3 are mature, accessible, user-tested design systems you get for free — with dark mode, Dynamic Type, and predictive back already solved.</p>
+          <p class="apply">Wrap and theme system components; rebuild only where the product’s differentiation lives (Jakob’s law economics, 2.3). Every custom control is a maintenance contract with no expiry date.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.3</span>
+        <div>
+          <h3>Detach rate is the health metric</h3>
+          <p>When designers keep overriding a component or spawning one-off variants, that isn’t indiscipline — it’s the system telling you a decision is wrong or missing.</p>
+          <p class="apply">Audit the one-offs quarterly. Three teams hacking the same card variant means the system owes them that variant; promote it, don’t police them.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.4</span>
+        <div>
+          <h3>One system, two dialects</h3>
+          <p>The system mirrors chapter 09: a shared semantic layer (tokens, naming, patterns) with per-platform component implementations.</p>
+          <p class="apply">One token sheet feeds both platforms; “primary action” resolves to a prominent toolbar button on iOS and a FAB or filled button on Android. Share the decision, not the pixels.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.5</span>
+        <div>
+          <h3>Governance or decay — pick one</h3>
+          <p>A system nobody can change becomes a cage; a system anybody can change becomes noise. Both end with teams ignoring it.</p>
+          <p class="apply">Name an owner. Provide a lightweight contribution path (propose → review → promote). Version it, deprecate loudly, and never break existing screens silently.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 DESIGN TOKENS ============ -->
+<section id="tokens">
+  <div class="sec-head reveal">
+    <div class="sec-num">11</div>
+    <h2>Design Tokens</h2>
+    <p class="kicker">Name the decision, not the value — the value will change</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>A token is a named design decision: <code>color.action.primary</code>, not <code>#4cc2ff</code>. The name captures intent; the value is an implementation detail that can be swapped per theme, platform, or brand without touching a single screen.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 78" width="360" role="img" aria-label="Token cascade: primitive value to semantic token to component token to rendered button">
+        <rect x="6" y="18" width="88" height="34" rx="5" fill="none" stroke="var(--ink-faint)" stroke-width="1.2"/>
+        <text x="50" y="33" text-anchor="middle" font-family="Menlo, monospace" font-size="8" fill="var(--ink-soft)">#4CC2FF</text>
+        <text x="50" y="46" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">PRIMITIVE</text>
+        <path d="M96,35 h14" stroke="var(--signal)" stroke-width="1.5"/>
+        <rect x="112" y="18" width="98" height="34" rx="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.2"/>
+        <text x="161" y="33" text-anchor="middle" font-family="Menlo, monospace" font-size="8" fill="var(--ink)">color.accent</text>
+        <text x="161" y="46" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SEMANTIC</text>
+        <path d="M212,35 h14" stroke="var(--signal)" stroke-width="1.5"/>
+        <rect x="228" y="18" width="92" height="34" rx="5" fill="none" stroke="var(--ink-soft)" stroke-width="1.2"/>
+        <text x="274" y="33" text-anchor="middle" font-family="Menlo, monospace" font-size="8" fill="var(--ink)">button.fill</text>
+        <text x="274" y="46" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">COMPONENT</text>
+        <path d="M322,35 h12" stroke="var(--signal)" stroke-width="1.5"/>
+        <rect x="336" y="24" width="20" height="22" rx="6" fill="var(--signal)"/>
+      </svg>
+      <div class="cap">Components reference semantic tokens — never primitives directly</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">11.1</span>
+        <div>
+          <h3>Three tiers, strict direction</h3>
+          <p>Primitives hold raw values (<code>blue-500</code>, <code>space-4</code>). Semantic tokens give them meaning (<code>color.accent</code>, <code>space.inset.card</code>). Component tokens bind them to parts (<code>button.fill</code>).</p>
+          <p class="apply">References flow one way: component → semantic → primitive. A screen that reaches past the semantic layer to grab <code>blue-500</code> has re-made a decision the system already made.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">11.2</span>
+        <div>
+          <h3>Name by role, never by value</h3>
+          <p>If the name would be wrong after the value changes, the name is wrong now. <code>accent</code> survives a rebrand; <code>blue</code> doesn’t.</p>
+          <p class="apply">The platforms are already role-named token systems — <code>secondaryLabel</code> and semantic colors on iOS, <code>primary</code>/<code>onSurfaceVariant</code> color roles and the type scale in M3. Map your brand onto those roles rather than inventing a parallel vocabulary.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">11.3</span>
+        <div>
+          <h3>Tokens make theming free</h3>
+          <p>Dark mode, Material You dynamic color, high-contrast, density, white-labeling — each is just a different value set behind the same names.</p>
+          <p class="apply">This page is the demo: it went paper-and-vermilion → carbon → graphite-and-ice-blue by editing a handful of CSS variables, zero markup changes. If a retheme requires touching screens, tokens were bypassed somewhere.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">11.4</span>
+        <div>
+          <h3>Tokenize more than color</h3>
+          <p>Type styles, the spacing scale, corner radii, elevation, motion durations and springs, z-order — anything decided more than once deserves a name.</p>
+          <p class="apply">Spacing on a 4pt/4dp base scale; radii mapped to the platform shape scale (M3: none → full); motion as tokens (M3’s spatial/effects springs, fast/default/slow) so “how things move” is one decision, not fifty.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12 ANTI-PATTERNS ============ -->
+<section id="antipatterns">
+  <div class="sec-head reveal">
+    <div class="sec-num">12</div>
+    <h2>What Not To Do</h2>
+    <p class="kicker">Universal sins, plus the don’ts Apple and Google spell out themselves</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Anti-patterns are cheaper to memorize than principles — you can veto a bad idea in seconds. The platform-specific ones below come straight from the HIG and Material 3 documentation.</p>
+
+    <div class="subhead">Universal — any platform</div>
+    <div class="entries">
+      <div class="entry"><span class="n x">✕</span><div><h3>Mystery-meat navigation</h3><p class="apply fix">Label the icons. An unlabeled hamburger, kebab, or abstract glyph forces a guess on every visit; recognition beats recall (3.6).</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Gesture-only features</h3><p class="apply fix">Every swipe, long-press, or shake needs a visible path to the same outcome. Gestures are accelerators, not doors.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Login wall before value</h3><p class="apply fix">Let people taste the product first. Ask for the account when it protects something of theirs, not before.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Dark patterns</h3><p class="apply fix">No confirmshaming (“No thanks, I hate saving money”), no hidden unsubscribe, no disguised ads, no pre-ticked upsells. They convert once and churn forever — and increasingly, they’re illegal.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Disabled buttons with no explanation</h3><p class="apply fix">Say what’s missing, next to the button, or keep it enabled and validate on tap with a precise message.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Color as the only signal</h3><p class="apply fix">Pair color with an icon, label, or weight change. Both Apple and Google call this out — it fails color-blind users and dark-mode edge cases alike.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Fighting the system</h3><p class="apply fix">No app-level light/dark toggle, no hijacked back gesture, no custom-drawn fake-native controls. The OS always wins; users side with the OS.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Modal inside modal</h3><p class="apply fix">A modal is a scoped task, not an app-within-the-app. One level, an obvious way out, and confirmation only when data would be lost.</p></div></div>
+    </div>
+
+    <div class="subhead">iOS — Apple’s own don’ts</div>
+    <div class="entries">
+      <div class="entry"><span class="n x">✕</span><div><h3>Actions in the tab bar</h3><p class="apply fix">Tabs are places, not verbs. Actions belong in toolbars. Never hide the tab bar during navigation, and avoid the More tab — fewer, better tabs.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Custom bar backgrounds &amp; tints</h3><p class="apply fix">Liquid Glass adapts to the content beneath it; painting over it breaks the system look. Use the scroll edge effect for separation and keep bar icons monochromatic.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Glass in the content layer</h3><p class="apply fix">Liquid Glass is for the floating functional layer only. Content uses standard materials (ultraThin → thick) with vibrant label colors.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Full-width and over-prominent buttons</h3><p class="apply fix">Inset buttons from the margins, concentric with the hardware corners. At most two prominent buttons per view — and a destructive action is never the primary one.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Stacked alerts and sheets</h3><p class="apply fix">One modal at a time, one alert ever on screen. A “Back” text label instead of the chevron, or Done without Cancel, reads as broken to iOS hands.</p></div></div>
+    </div>
+
+    <div class="subhead">Android — Google’s own don’ts</div>
+    <div class="entries">
+      <div class="entry"><span class="n x">✕</span><div><h3>Navigation drawers in new designs</h3><p class="apply fix">M3 Expressive deprecates the drawer — use the expanded navigation rail. Bottom bar holds 3–5 destinations; more than that means the IA needs work, not a drawer.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>FAB misuse</h3><p class="apply fix">One FAB, for the screen’s single most important constructive action. Never multiple, never minor, never destructive. Related sub-actions → FAB menu.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Critical info in a snackbar</h3><p class="apply fix">Snackbars vanish. Anything the user must see or decide gets a dialog; anything ongoing gets inline status. One snackbar at a time.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Chips as buttons</h3><p class="apply fix">Chips are dynamic and contextual (filters, suggestions, tokens); buttons are fixed CTAs. Swapping them confuses both roles.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Hard-coded colors</h3><p class="apply fix">Hex literals break dynamic color and dark theme in one stroke. Everything maps to a color role — that’s what makes Material You work.</p></div></div>
+      <div class="entry"><span class="n x">✕</span><div><h3>Expressive everywhere</h3><p class="apply fix">Bounce, shape morphs, and emphasized type are for one or two hero moments. High-frequency, utilitarian flows use the Standard motion scheme.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13 TRADE-OFFS ============ -->
+<section id="tradeoffs">
+  <div class="sec-head reveal">
+    <div class="sec-num">13</div>
+    <h2>The Honest Trade-offs</h2>
+    <p class="kicker">Where the pin sits by default — and what moves it</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>These axes have no correct answer, only a considered position. The pin marks the default stance; the note says what justifies moving it.</p>
+
+    <div class="tradeoff" style="margin-top:1.5rem">
+      <div class="axis"><span>Convention</span><span>Novelty</span></div>
+      <div class="axis-bar"><span class="pin" style="left:30%"></span></div>
+      <p><b>Default: lean conventional.</b> Novelty is a budget, not a virtue — spend it only on the interaction that defines the product. Everything else should be instantly familiar. Move right only when differentiation <em>is</em> the strategy and onboarding can carry the cost.</p>
+    </div>
+
+    <div class="tradeoff">
+      <div class="axis"><span>Clarity</span><span>Density</span></div>
+      <div class="axis-bar"><span class="pin" style="left:35%"></span></div>
+      <p><b>Default: clarity.</b> Whitespace is not wasted space; it is structure. Move right for expert tools used hours daily — traders, dispatchers, IDE users — where re-finding information costs more than visual calm.</p>
+    </div>
+
+    <div class="tradeoff">
+      <div class="axis"><span>Discoverability</span><span>Aesthetics</span></div>
+      <div class="axis-bar"><span class="pin" style="left:25%"></span></div>
+      <p><b>Default: discoverability.</b> A beautiful interface no one can operate is a sculpture. Labels beat mystery-meat icons; visible affordances beat hidden gestures. Move right only after usage data proves the pattern is learned.</p>
+    </div>
+
+    <div class="tradeoff">
+      <div class="axis"><span>Guided flow</span><span>User freedom</span></div>
+      <div class="axis-bar"><span class="pin" style="left:50%"></span></div>
+      <p><b>Default: genuinely split.</b> Guide first-run and high-stakes flows (payments, deletion, setup); free everything else. A wizard for a task users repeat daily becomes a cage by week two.</p>
+    </div>
+
+    <div class="tradeoff">
+      <div class="axis"><span>Speed to ship</span><span>Polish</span></div>
+      <div class="axis-bar"><span class="pin" style="left:40%"></span></div>
+      <p><b>Default: ship, then polish the peaks.</b> Per the peak–end rule, concentrate polish on the success moment and the ending. A uniformly 80%-polished app beats one perfect screen among six rough ones.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14 CHECKLIST ============ -->
+<section id="checklist">
+  <div class="sec-head reveal">
+    <div class="sec-num">14</div>
+    <h2>The Screen Audit</h2>
+    <p class="kicker">Run any screen through these twelve — click to check off</p>
+  </div>
+  <div class="sec-body reveal">
+    <ol class="checklist">
+      <li><b>One primary action?</b> If two elements compete for “most important,” neither wins.</li>
+      <li><b>Obvious in 5 seconds?</b> A stranger can say what the screen is for and what to do next.</li>
+      <li><b>Thumb test passed?</b> Primary action reachable one-handed; destructive actions out of casual reach.</li>
+      <li><b>Targets ≥ 44pt/48dp?</b> Including the gaps between them.</li>
+      <li><b>Every state designed?</b> Empty, loading, error, partial, offline — not just the happy path.</li>
+      <li><b>Feedback within 100 ms?</b> Every tap acknowledged; anything over 1 s gets a progress indicator.</li>
+      <li><b>Undo over confirm?</b> Reversibility designed in before confirmation dialogs bolted on.</li>
+      <li><b>Recognition over recall?</b> No information carried between screens in the user’s head.</li>
+      <li><b>Contrast &amp; type accessible?</b> 4.5:1 for body text; layout survives 200% text scaling.</li>
+      <li><b>Keyboard respected?</b> Focused field visible, right input type, submit reachable (mobile); full tab order (web/desktop).</li>
+      <li><b>Platform dialect spoken?</b> Back works the native way; controls feel at home on this OS.</li>
+      <li><b>State survives interruption?</b> Rotation, backgrounding, a phone call — nothing typed is lost.</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <span><b>UX/FM-02</b> · Compiled 2026-07 · Self-contained, no network required</span>
+  <span>Nielsen · Fitts · Hick · Wertheimer · Apple HIG (Liquid Glass) · Material 3 (Expressive)</span>
+</footer>
+
+<script>
+  // Scroll-reveal
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Active nav tracking
+  const links = [...document.querySelectorAll('nav a')];
+  const secObs = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    }
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
+
+  // Checklist toggling (session-only, deliberately ephemeral)
+  document.querySelectorAll('.checklist li').forEach(li => {
+    li.addEventListener('click', () => li.classList.toggle('done'));
+  });
+</script>
+
+</body>
+</html>

@@ -722,6 +722,7 @@
       <li><a href="#motion"><b>21</b>Motion &amp; Feedback</a></li>
       <li><a href="#onboarding"><b>22</b>Onboarding &amp; First-Run</a></li>
       <li><a href="#notifications"><b>23</b>Notifications &amp; Interruptions</a></li>
+      <li><a href="#i18n"><b>24</b>Internationalization</a></li>
       <li class="part-head">Part V — Judgment</li>
       <li><a href="#antipatterns"><b>26</b>What Not To Do</a></li>
       <li><a href="#tradeoffs"><b>27</b>The Honest Trade-offs</a></li>
@@ -2627,6 +2628,87 @@
           <h3>Badges must tell the truth</h3>
           <p>A badge is a count of things the user can actually resolve. A badge that won’t clear, counts marketing, or reads “1” forever trains the eye to ignore it — and the red dot’s power, once spent, is gone app-wide.</p>
           <p class="apply">Badge only user-resolvable items, clear it the moment they’re seen, and let users turn it off per type. In-app announcements belong in an inbox surface, not on the app icon.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 24 INTERNATIONALIZATION ============ -->
+<section id="i18n">
+  <div class="sec-head reveal">
+    <div class="sec-num">24</div>
+    <h2>Internationalization</h2>
+    <p class="kicker">A layout that only works in English isn’t finished — it’s untested</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Most of the world doesn’t read your source language, and some of it reads right-to-left. Internationalization isn’t translation — it’s designing so translation can’t break anything: elastic layouts, mirrored flows, and formats that come from the locale, not from the designer’s habits.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 150" width="360" role="img" aria-label="The same button in English, German which runs 35 percent longer, a truncated German version marked wrong, and Arabic right-to-left with mirrored alignment">
+        <rect x="10" y="8" width="96" height="26" rx="7" fill="var(--signal)"/>
+        <text x="58" y="25" text-anchor="middle" font-family="-apple-system, Helvetica, sans-serif" font-size="10.5" font-weight="600" fill="#0c0e11">Add plant</text>
+        <text x="120" y="25" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">EN — THE WIDTH YOU DESIGNED</text>
+        <rect x="10" y="44" width="164" height="26" rx="7" fill="none" stroke="var(--signal)" stroke-width="1.4"/>
+        <text x="92" y="61" text-anchor="middle" font-family="-apple-system, Helvetica, sans-serif" font-size="10.5" fill="var(--ink)">Pflanze hinzufügen</text>
+        <text x="186" y="61" font-family="Menlo, monospace" font-size="7.5" fill="var(--signal)">DE — +35% · THE BUTTON GREW ✓</text>
+        <rect x="10" y="80" width="96" height="26" rx="7" fill="none" stroke="var(--ink-faint)" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="58" y="97" text-anchor="middle" font-family="-apple-system, Helvetica, sans-serif" font-size="10.5" fill="var(--ink-faint)">Pflanze hi…</text>
+        <text x="120" y="97" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">DE IN A FIXED BOX — TRUNCATED ✕</text>
+        <rect x="254" y="116" width="96" height="26" rx="7" fill="var(--signal)"/>
+        <text x="302" y="133" text-anchor="middle" font-family="-apple-system, Helvetica, sans-serif" font-size="11" font-weight="600" fill="#0c0e11">أضف نبتة</text>
+        <text x="10" y="133" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">AR — RTL: THE WHOLE LAYOUT MIRRORS →</text>
+      </svg>
+      <div class="cap">Same intent, four realities — design the container, not the string</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">24.1</span>
+        <div>
+          <h3>Text expands — plan for +35%</h3>
+          <p>German runs about a third longer than English; short strings can double; Finnish and Russian bring their own surprises. Every fixed-width label is a truncation waiting for a locale.</p>
+          <p class="apply">Buttons, tabs, and rows size themselves from their content with room to grow; text wraps or the container stretches — it never silently ellipsizes a verb (7.2’s rule, new cause). The one-word tab labels from 8.3 earn their keep here.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">24.2</span>
+        <div>
+          <h3>RTL mirrors the flow, not the world</h3>
+          <p>In Arabic and Hebrew the reading direction reverses, and with it the layout: navigation chevrons, back gestures, progress bars, list alignments. But clocks, phone numbers, media-playback controls, and musical timelines stay put.</p>
+          <p class="apply">Think and build in <em>leading/trailing</em>, never left/right — then the mirror is free on both platforms. Audit icons for directionality: a “send” arrow flips; a checkmark doesn’t. Test with a real RTL locale, not just the debug flag.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">24.3</span>
+        <div>
+          <h3>Formats are locale data, not style choices</h3>
+          <p>03/04/2026 is March in one country and April in another; “1,500” differs by a factor of a thousand across a border. Dates, numbers, currency, units, name order, and week-start are all facts about the locale.</p>
+          <p class="apply">Always format through the platform’s locale APIs — never hand-assemble a date string or hardcode a currency symbol. Sorting too: alphabetical order is locale-dependent, and “Å” files differently in Oslo and in Ohio.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">24.4</span>
+        <div>
+          <h3>Never build sentences from parts</h3>
+          <p>“You have ” + count + “ plants” breaks the moment a language changes word order or has three plural forms — and many do.</p>
+          <p class="apply">Full-sentence templates with named placeholders, plural rules handled by the platform (ICU/stringsdict), and a context note for the translator on every ambiguous string (“Water” the verb, not the noun). Concatenation is how apps end up speaking broken everything.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">24.5</span>
+        <div>
+          <h3>Culture rides along with color and symbol</h3>
+          <p>Red is danger in one market and celebration in another; an owl is wisdom or ill omen; hand gestures are a minefield; idioms (“home run”, “slam dunk”) simply don’t travel.</p>
+          <p class="apply">Keep source copy idiom-free and concrete (19.2 helps), don’t let color alone carry meaning (7.4 — now for a second reason), and have market reviewers sanity-check imagery before a launch, not after the screenshots go viral.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">24.6</span>
+        <div>
+          <h3>Pseudo-localize before you translate</h3>
+          <p>One build with elongated accented strings (“Àððð þļåñţ~~~”) and forced RTL finds the truncations, clippings, and concatenations before a single translator is paid.</p>
+          <p class="apply">Run pseudo-localization as part of the screen audit (28) for any app going multilingual. And remember language ≠ region: a user can want English with metric units and euros — respect the system’s separate settings, and never guess locale from IP.</p>
         </div>
       </div>
     </div>

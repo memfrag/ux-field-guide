@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UX Field Manual — Cheat Sheet</title>
+<meta name="description" content="One printable page: the laws, the screen audit, the thumb map, and the iOS/Android dialect table from the UX Field Manual.">
+<meta name="theme-color" content="#0c0e11">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='13'%20fill='%230c0e11'/%3E%3Crect%20x='2'%20y='2'%20width='60'%20height='60'%20rx='11'%20fill='none'%20stroke='%234cc2ff'%20stroke-width='3'/%3E%3Ctext%20x='32'%20y='43.5'%20text-anchor='middle'%20font-family='Menlo,Consolas,monospace'%20font-weight='700'%20font-size='26'%20letter-spacing='1'%20fill='%234cc2ff'%3EUX%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --paper: #0c0e11;
+    --ink: #e3e8ee;
+    --ink-soft: #9aa4b1;
+    --ink-faint: #5b6470;
+    --signal: #4cc2ff;
+    --rule: #e3e8ee1f;
+    --mono: "SF Mono", Menlo, Consolas, monospace;
+    --display: "Futura", "Avenir Next", "Century Gothic", sans-serif;
+    --body: "Charter", "Iowan Old Style", Georgia, serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 12px;
+    line-height: 1.45;
+    padding: 2rem 2.5vw;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 3px solid var(--signal);
+    padding-bottom: .6rem; margin-bottom: 1.2rem;
+    flex-wrap: wrap; gap: .5rem;
+  }
+  header h1 { font-family: var(--display); font-weight: 500; text-transform: uppercase; font-size: 1.4rem; letter-spacing: .02em; }
+  header h1 em { font-style: normal; color: var(--signal); }
+  header a, footer a { color: var(--signal); text-decoration: none; font-family: var(--mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }
+  header a:hover, footer a:hover { text-decoration: underline; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.4rem 1.8rem; }
+  .box h2 {
+    font-family: var(--mono); font-size: .62rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal);
+    border-bottom: 1px solid var(--rule); padding-bottom: .35em; margin-bottom: .5em;
+  }
+  ul { list-style: none; }
+  li { padding: .22em 0; color: var(--ink-soft); border-bottom: 1px dotted var(--rule); }
+  li:last-child { border-bottom: 0; }
+  li b { color: var(--ink); font-family: var(--display); font-weight: 600; font-size: .95em; }
+  .kv { display: flex; justify-content: space-between; gap: .8em; }
+  .kv span:last-child { color: var(--ink); text-align: right; }
+  table { width: 100%; border-collapse: collapse; font-size: .95em; }
+  th { font-family: var(--mono); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; text-align: left; color: var(--ink); border-bottom: 1.5px solid var(--signal); padding: .25em .4em .3em 0; }
+  td { padding: .3em .4em .3em 0; border-bottom: 1px dotted var(--rule); color: var(--ink-soft); vertical-align: top; }
+  td:first-child { font-family: var(--display); font-weight: 600; color: var(--ink); white-space: nowrap; font-size: .92em; }
+  .check li::before { content: "☐ "; color: var(--signal); }
+  footer { margin-top: 1.4rem; padding-top: .6rem; border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+    font-family: var(--mono); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+
+  @media print {
+    :root { --paper: #fff; --ink: #111; --ink-soft: #333; --ink-faint: #666; --signal: #c33c14; --rule: #11111133; }
+    body { padding: 0; font-size: 8.6pt; }
+    .grid { gap: .8rem 1.1rem; }
+    a { color: var(--ink-faint) !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>UX Field <em>Cheat Sheet</em></h1>
+  <a href="https://memfrag.github.io/ux-field-guide/">Full manual → memfrag.github.io/ux-field-guide</a>
+</header>
+
+<div class="grid">
+
+  <div class="box">
+    <h2>Laws of Interaction · ch. 02</h2>
+    <ul>
+      <li><b>Fitts</b> — big targets, near the thumb; edges are infinite</li>
+      <li><b>Hick</b> — every extra option taxes every user, every time</li>
+      <li><b>Jakob</b> — users arrive trained by other apps; spend novelty on one thing</li>
+      <li><b>Miller</b> — 4–7 chunks; never carry info between screens by memory</li>
+      <li><b>Tesler</b> — complexity moves, never vanishes; absorb it into defaults</li>
+      <li><b>Peak–end</b> — polish the best moment and the ending hardest</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>Nielsen’s Ten · ch. 03</h2>
+    <ul>
+      <li>1 Status visible · 2 Real-world language</li>
+      <li>3 Undo &amp; exits · 4 Consistency</li>
+      <li>5 Prevent errors · 6 Recognition &gt; recall</li>
+      <li>7 Expert accelerators · 8 Minimalist</li>
+      <li>9 Recoverable errors · 10 Contextual help</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>Hierarchy Levers · ch. 05</h2>
+    <ul>
+      <li><b>Size</b> — one hero per screen</li>
+      <li><b>Weight/contrast</b> — gray before smaller</li>
+      <li><b>Space</b> — margin is a spotlight</li>
+      <li><b>Position</b> — message top, action bottom</li>
+      <li><b>Color</b> — one accent, spent like money</li>
+      <li><b>Verify</b> — squint test: 3 levels survive</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>The Hand &amp; The Numbers · ch. 06–07</h2>
+    <ul>
+      <li class="kv"><span>Touch targets</span><span>≥44pt iOS · ≥48dp Android</span></li>
+      <li class="kv"><span>Thumb zone</span><span>primary bottom · destructive far</span></li>
+      <li class="kv"><span>Contrast, body text</span><span>≥4.5:1 (aim 7:1)</span></li>
+      <li class="kv"><span>Contrast, large/UI</span><span>≥3:1</span></li>
+      <li class="kv"><span>Type test</span><span>largest AX size — no truncation</span></li>
+      <li class="kv"><span>Feedback</span><span>&lt;100ms ack · &gt;1s indicator · &gt;10s escape</span></li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>The Process · ch. 08</h2>
+    <ul>
+      <li>1 Frame it in one sentence</li>
+      <li>2 Map top-3 flows as intentions</li>
+      <li>3 Choose the IA (the expensive call)</li>
+      <li>4 Wireframe the core loop, real content</li>
+      <li>5 Split into HIG / M3 dialects</li>
+      <li>6 Design empty · error · offline · first-run</li>
+      <li>7 Audit, test with 5, loop</li>
+    </ul>
+  </div>
+
+  <div class="box" style="grid-column: span 1;">
+    <h2>Dialects · ch. 11</h2>
+    <table>
+      <thead><tr><th>Intent</th><th>iOS</th><th>Android</th></tr></thead>
+      <tbody>
+        <tr><td>Nav</td><td>Tab bar 2–5</td><td>Nav bar 3–5 / rail</td></tr>
+        <tr><td>Back</td><td>Chevron + edge swipe</td><td>Predictive back</td></tr>
+        <tr><td>Hero act</td><td>Toolbar prominent</td><td>FAB</td></tr>
+        <tr><td>Choices</td><td>Action sheet</td><td>Bottom sheet</td></tr>
+        <tr><td>Feedback</td><td>Haptics + inline</td><td>Snackbar + undo</td></tr>
+        <tr><td>Type</td><td>SF Pro · 17pt body</td><td>Roboto · 16sp body</td></tr>
+        <tr><td>Casing</td><td>Title Case</td><td>Sentence case</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box">
+    <h2>First Session · ch. 22–23</h2>
+    <ul>
+      <li>Value → first win → <em>then</em> sign-up → permission in context</li>
+      <li>Empty states: teach / celebrate / redirect</li>
+      <li>Push bar: theirs · timely · actionable</li>
+      <li>Never batch permission dialogs at launch</li>
+    </ul>
+  </div>
+
+  <div class="box" style="grid-column: 1 / -1;">
+    <h2>The Screen Audit · ch. 28 — run on every screen</h2>
+    <div class="grid" style="gap:.2rem 1.8rem;">
+      <ul class="check">
+        <li>One primary action?</li>
+        <li>Obvious in 5 seconds?</li>
+        <li>Thumb test passed?</li>
+        <li>Targets ≥ 44pt / 48dp?</li>
+      </ul>
+      <ul class="check">
+        <li>Every state designed?</li>
+        <li>Feedback within 100 ms?</li>
+        <li>Undo over confirm?</li>
+        <li>Recognition over recall?</li>
+      </ul>
+      <ul class="check">
+        <li>Contrast &amp; type accessible?</li>
+        <li>Keyboard respected?</li>
+        <li>Platform dialect spoken?</li>
+        <li>State survives interruption?</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span><b style="color:var(--signal)">UX/FM-02</b> · Cheat sheet — condensed from the full manual</span>
+  <a href="https://memfrag.github.io/ux-field-guide/">memfrag.github.io/ux-field-guide</a>
+</footer>
+
+</body>
+</html>

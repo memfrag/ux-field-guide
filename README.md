@@ -69,5 +69,7 @@ Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's M
 - **Deep links.** Every numbered entry is linkable (e.g. [§7.4](https://memfrag.github.io/ux-field-guide/#s7-4)).
 - **Printable.** A print stylesheet converts it to a light, paginated document.
 - **The checklist remembers.** Screen-audit ticks persist in `localStorage`.
+- **Cheat sheet.** [`cheatsheet.html`](https://memfrag.github.io/ux-field-guide/cheatsheet.html) is a print-first one-pager: laws, audit, numbers, dialect table.
+- **Auto-versioned.** The Pages deploy stamps the footer with the git date, revision count, and SHA.
 
 To work on it: open `index.html` in a browser. That's the whole toolchain.

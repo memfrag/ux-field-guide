@@ -98,16 +98,22 @@ def restore_style(html, style_content):
 
 
 def read_sections(html):
-    """Return sections in document order: id, current label, title."""
+    """Return sections in document order: id, current label, full title,
+    and toc_title (the short form for the nav dropdown, if the <h2> carries
+    a data-toc="..." override — e.g. <h2 data-toc="Nielsen's Ten">Nielsen's
+    Ten, Condensed</h2> — otherwise the full title is reused)."""
     pat = re.compile(
         r'<section id="([a-z0-9]+)">\s*<div class="sec-head reveal">\s*'
-        r'<div class="sec-num">([A-Za-z0-9-]+)</div>\s*<h2>(.*?)</h2>',
+        r'<div class="sec-num">([A-Za-z0-9-]+)</div>\s*'
+        r'<h2(?:\s+data-toc="([^"]*)")?>(.*?)</h2>',
         re.S,
     )
-    return [
-        {"id": m.group(1), "label": m.group(2), "title": m.group(3).strip()}
-        for m in pat.finditer(html)
-    ]
+    out = []
+    for m in pat.finditer(html):
+        title = m.group(4).strip()
+        toc_title = m.group(3).strip() if m.group(3) else title
+        out.append({"id": m.group(1), "label": m.group(2), "title": title, "toc_title": toc_title})
+    return out
 
 
 def read_parts(html):
@@ -227,7 +233,7 @@ def apply_safe_shifts(html, mapping):
             stats["ch_dot"] += 1
             return f"{lead}. {zpad(a)}–{zpad(b)}"
         stats["ch_dot"] += 1
-        return f"{lead}. {a}"
+        return f"{lead}. {zpad(a)}"
 
     html = re.sub(
         rf'([Cc]h)\. ({label_alt}){no_decimal_tail}(?:–({label_alt}))?',
@@ -313,19 +319,35 @@ PART_ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
 
 def regenerate_toc(html, sections, mapping, parts):
     id_to_new = {}
+    id_to_toc_title = {}
     for s in sections:
         new = mapping.get(s["label"])
         id_to_new[s["id"]] = "A" if s["label"] == "A" else zpad(new)
+        id_to_toc_title[s["id"]] = s["toc_title"]
 
-    lines = ['    <ol class="toc-grid">']
+    # Only parts that actually contain a numbered (non-appendix) chapter get
+    # a roman numeral and a "Part N — Name" label; the appendix's trailing
+    # part bucket (see read_parts) keeps its bare name, matching how the
+    # appendix has always rendered with no part divider of its own.
+    # first line has no leading indent: the regex match starts exactly at
+    # "<ol", so whatever indentation precedes it in the original document
+    # is preserved automatically and must not be duplicated here.
+    lines = ['<ol class="toc-grid">']
+    roman_i = 0
     for part in parts:
-        lines.append(f'      <li class="part-head">{part["name"]}</li>')
+        has_numbered = any(id_to_new.get(sid, "A") != "A" for sid in part["section_ids"])
+        if has_numbered:
+            roman_i += 1
+            label = f"Part {PART_ROMAN[roman_i - 1]} — {part['name']}"
+        else:
+            label = part["name"]
+        lines.append(f'      <li class="part-head">{label}</li>')
         for sid in part["section_ids"]:
-            title = next((s["title"] for s in sections if s["id"] == sid), None)
-            if title is None:
+            if sid not in id_to_new:
                 continue
-            num = id_to_new[sid]
-            lines.append(f'      <li><a href="#{sid}"><b>{num}</b>{title}</a></li>')
+            lines.append(
+                f'      <li><a href="#{sid}"><b>{id_to_new[sid]}</b>{id_to_toc_title[sid]}</a></li>'
+            )
     lines.append("    </ol>")
     new_block = "\n".join(lines)
 

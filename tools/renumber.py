@@ -118,17 +118,22 @@ def read_sections(html):
 
 def read_parts(html):
     """Return part dividers in document order with the section id each
-    one immediately precedes (used to attribute chapters to parts)."""
-    div_pat = re.compile(r'<div class="part" id="(part-\d+)">.*?<h2>([^<]+)</h2>', re.S)
+    one immediately precedes (used to attribute chapters to parts), plus
+    each part's tagline (the descriptive text before the "· ch. NN–MM"
+    range in its <p>, e.g. "How people perceive, decide, and touch")."""
+    div_pat = re.compile(
+        r'<div class="part" id="(part-\d+)">.*?<h2>([^<]+)</h2>\s*<p>(.*?)</p>', re.S
+    )
     sec_pat = re.compile(r'<section id="([a-z0-9]+)">')
-    markers = [(m.start(), "part", m.group(1), m.group(2)) for m in div_pat.finditer(html)]
-    markers += [(m.start(), "section", m.group(1), None) for m in sec_pat.finditer(html)]
+    markers = [(m.start(), "part", m.group(1), m.group(2), m.group(3)) for m in div_pat.finditer(html)]
+    markers += [(m.start(), "section", m.group(1), None, None) for m in sec_pat.finditer(html)]
     markers.sort(key=lambda x: x[0])
 
     parts, current = [], None
-    for _, kind, ident, name in markers:
+    for _, kind, ident, name, tagline_raw in markers:
         if kind == "part":
-            current = {"id": ident, "name": name, "section_ids": []}
+            tagline = re.sub(r'\s*·\s*ch\.\s*\d+(–\d+)?\s*$', '', tagline_raw or '').strip()
+            current = {"id": ident, "name": name, "tagline": tagline, "section_ids": []}
             parts.append(current)
         elif current is not None:
             current["section_ids"].append(ident)
@@ -372,7 +377,10 @@ def regenerate_part_ranges(html, sections, mapping, parts):
 
 
 def regenerate_readme_table(readme_text, sections, mapping, parts):
-    id_to_title = {s["id"]: s["title"] for s in sections}
+    # the README's title column mirrors the ToC's SHORT title (toc_title),
+    # not the full <h2> — that's what the existing description lookup below
+    # is keyed against, and what a human skimming the table expects.
+    id_to_title = {s["id"]: s["toc_title"] for s in sections}
     id_to_new = {s["id"]: ("A" if s["label"] == "A" else zpad(mapping.get(s["label"])))
                  for s in sections}
 
@@ -386,8 +394,17 @@ def regenerate_readme_table(readme_text, sections, mapping, parts):
         return re.sub(r"<[^>]+>", "", s).replace("&amp;", "&")
 
     blocks = []
+    roman_i = 0
     for part in parts:
-        blocks.append(f'**{part["name"]}**\n')
+        has_numbered = any(id_to_new.get(sid, "A") != "A" for sid in part["section_ids"])
+        if has_numbered:
+            roman_i += 1
+            heading = f'**Part {PART_ROMAN[roman_i - 1]} — {part["name"]}**'
+            if part["tagline"]:
+                heading += f' · {part["tagline"]}'
+        else:
+            heading = f'**{part["name"]}**'
+        blocks.append(f'{heading}\n')
         blocks.append("| # | Chapter | |")
         blocks.append("|---|---------|---|")
         for sid in part["section_ids"]:

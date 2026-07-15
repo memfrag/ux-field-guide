@@ -6,61 +6,62 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 
 ## What's inside
 
-**Part I — Foundations** · how people perceive, decide, and touch
+**Part I — Foundations** · How people perceive, decide, and touch
 
 | # | Chapter | |
 |---|---------|---|
 | 01 | Working Posture | the default stance behind every decision |
 | 02 | Laws of Interaction | Fitts, Hick, Jakob, Miller, Tesler, peak–end |
-| 03 | Nielsen's Ten | the evaluation checklist, condensed |
+| 03 | Nielsen’s Ten | the evaluation checklist, condensed |
 | 04 | Gestalt Principles | how the eye groups before the mind reads |
 | 05 | Visual Hierarchy | the five levers, with worked examples |
 | 06 | Grid Systems | the invisible structure behind consistent hierarchy |
 | 07 | Mobile Instincts | thumb zones, touch targets, interruptions |
 | 08 | Accessibility | contrast, type scaling, screen readers, focus |
 
-**Part II — Method** · from idea to iteration
+**Part II — Method** · From idea to iteration — how the work gets done
 
 | # | Chapter | |
 |---|---------|---|
 | 09 | The Process | app idea → shipped design, in order |
-| 10 | Four Modes of Work | critique · diagnose · reason · produce |
-| 11 | Research & Testing | tasks not opinions, five users, severity |
+| 10 | Mapping Methods | empathy maps, journey maps, experience maps, blueprints |
+| 11 | Four Modes of Work | critique · diagnose · reason · produce |
+| 12 | Research & Testing | tasks not opinions, five users, severity |
 
-**Part III — Platforms** · one design, expressed natively twice
-
-| # | Chapter | |
-|---|---------|---|
-| 12 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
-| 13 | Navigation | back semantics, tabs, modality, deep links |
-| 14 | Adaptive Layout | size classes, list-detail, foldables |
-| 15 | Iconography & Imagery | SF Symbols vs Material Symbols, app icons |
-| 16 | SwiftUI ↔ Compose | the dialect table as it compiles |
-| 17 | Widgets & Live Surfaces | WidgetKit, Live Activities, Live Updates |
-
-**Part IV — Systems & Craft** · the details that decide whether it ships well
+**Part III — Platforms** · One design, expressed natively twice
 
 | # | Chapter | |
 |---|---------|---|
-| 18 | Design Systems | decisions made once |
-| 19 | Design Tokens | name the decision, not the value |
-| 20 | Forms & Input | where most apps actually lose people |
-| 21 | UX Writing | buttons, errors, tone of voice, platform casing |
-| 22 | Empty & Loading States | blank and waiting are where trust is won |
-| 23 | Motion & Feedback | animation is information — or it's in the way |
-| 24 | Onboarding & First-Run | the shortest path to the first win |
-| 25 | Notifications & Interruptions | the trust economy of the lock screen |
-| 26 | Internationalization | text expansion, RTL, locale formats |
-| 27 | AI Interface Patterns | the autonomy ladder, streaming, uncertainty |
+| 13 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
+| 14 | Navigation | back semantics, tabs, modality, deep links |
+| 15 | Adaptive Layout | size classes, list-detail, foldables |
+| 16 | Iconography & Imagery | SF Symbols vs Material Symbols, app icons |
+| 17 | SwiftUI ↔ Compose | the dialect table as it compiles |
+| 18 | Widgets & Live Surfaces | WidgetKit, Live Activities, Live Updates |
 
-**Part V — Judgment** · what to avoid, what to weigh, how to check
+**Part IV — Systems &amp; Craft** · The details that decide whether it ships well
 
 | # | Chapter | |
 |---|---------|---|
-| 28 | What Not To Do | universal, iOS, and Android anti-patterns |
-| 29 | The Honest Trade-offs | where the pin sits, and what moves it |
-| 30 | The Screen Audit | a 12-point interactive checklist |
-| 31 | A Worked Example | one app idea, the whole process, both dialects |
+| 19 | Design Systems | decisions made once |
+| 20 | Design Tokens | name the decision, not the value |
+| 21 | Forms & Input | where most apps actually lose people |
+| 22 | UX Writing | buttons, errors, tone of voice, platform casing |
+| 23 | Empty & Loading States | blank and waiting are where trust is won |
+| 24 | Motion & Feedback | animation is information — or it's in the way |
+| 25 | Onboarding & First-Run | the shortest path to the first win |
+| 26 | Notifications & Interruptions | the trust economy of the lock screen |
+| 27 | Internationalization | text expansion, RTL, locale formats |
+| 28 | AI Interface Patterns | the autonomy ladder, streaming, uncertainty |
+
+**Part V — Judgment** · What to avoid, what to weigh, how to check
+
+| # | Chapter | |
+|---|---------|---|
+| 29 | What Not To Do | universal, iOS, and Android anti-patterns |
+| 30 | The Honest Trade-offs | where the pin sits, and what moves it |
+| 31 | The Screen Audit | a 12-point interactive checklist |
+| 32 | A Worked Example | one app idea, the whole process, both dialects |
 | A | Sources & Further Reading | HIG, Material 3, WCAG, NN/g, the books |
 
 Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's Material 3 (Expressive).

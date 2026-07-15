@@ -708,31 +708,32 @@
       <li><a href="#accessibility"><b>08</b>Accessibility</a></li>
       <li class="part-head">Part II — Method</li>
       <li><a href="#process"><b>09</b>The Process</a></li>
-      <li><a href="#modes"><b>10</b>Four Modes of Work</a></li>
-      <li><a href="#research"><b>11</b>Research &amp; Testing</a></li>
+      <li><a href="#mapping"><b>10</b>Mapping Methods</a></li>
+      <li><a href="#modes"><b>11</b>Four Modes of Work</a></li>
+      <li><a href="#research"><b>12</b>Research &amp; Testing</a></li>
       <li class="part-head">Part III — Platforms</li>
-      <li><a href="#platforms"><b>12</b>One Design, Two Dialects</a></li>
-      <li><a href="#navigation"><b>13</b>Navigation</a></li>
-      <li><a href="#adaptive"><b>14</b>Adaptive Layout</a></li>
-      <li><a href="#icons"><b>15</b>Iconography &amp; Imagery</a></li>
-      <li><a href="#components"><b>16</b>SwiftUI ↔ Compose</a></li>
-      <li><a href="#widgets"><b>17</b>Widgets &amp; Live Surfaces</a></li>
+      <li><a href="#platforms"><b>13</b>One Design, Two Dialects</a></li>
+      <li><a href="#navigation"><b>14</b>Navigation</a></li>
+      <li><a href="#adaptive"><b>15</b>Adaptive Layout</a></li>
+      <li><a href="#icons"><b>16</b>Iconography &amp; Imagery</a></li>
+      <li><a href="#components"><b>17</b>SwiftUI ↔ Compose</a></li>
+      <li><a href="#widgets"><b>18</b>Widgets &amp; Live Surfaces</a></li>
       <li class="part-head">Part IV — Systems &amp; Craft</li>
-      <li><a href="#systems"><b>18</b>Design Systems</a></li>
-      <li><a href="#tokens"><b>19</b>Design Tokens</a></li>
-      <li><a href="#forms"><b>20</b>Forms &amp; Input</a></li>
-      <li><a href="#writing"><b>21</b>UX Writing</a></li>
-      <li><a href="#states"><b>22</b>Empty &amp; Loading States</a></li>
-      <li><a href="#motion"><b>23</b>Motion &amp; Feedback</a></li>
-      <li><a href="#onboarding"><b>24</b>Onboarding &amp; First-Run</a></li>
-      <li><a href="#notifications"><b>25</b>Notifications &amp; Interruptions</a></li>
-      <li><a href="#i18n"><b>26</b>Internationalization</a></li>
-      <li><a href="#ai"><b>27</b>AI Interface Patterns</a></li>
+      <li><a href="#systems"><b>19</b>Design Systems</a></li>
+      <li><a href="#tokens"><b>20</b>Design Tokens</a></li>
+      <li><a href="#forms"><b>21</b>Forms &amp; Input</a></li>
+      <li><a href="#writing"><b>22</b>UX Writing</a></li>
+      <li><a href="#states"><b>23</b>Empty &amp; Loading States</a></li>
+      <li><a href="#motion"><b>24</b>Motion &amp; Feedback</a></li>
+      <li><a href="#onboarding"><b>25</b>Onboarding &amp; First-Run</a></li>
+      <li><a href="#notifications"><b>26</b>Notifications &amp; Interruptions</a></li>
+      <li><a href="#i18n"><b>27</b>Internationalization</a></li>
+      <li><a href="#ai"><b>28</b>AI Interface Patterns</a></li>
       <li class="part-head">Part V — Judgment</li>
-      <li><a href="#antipatterns"><b>28</b>What Not To Do</a></li>
-      <li><a href="#tradeoffs"><b>29</b>The Honest Trade-offs</a></li>
-      <li><a href="#checklist"><b>30</b>The Screen Audit</a></li>
-      <li><a href="#example"><b>31</b>A Worked Example</a></li>
+      <li><a href="#antipatterns"><b>29</b>What Not To Do</a></li>
+      <li><a href="#tradeoffs"><b>30</b>The Honest Trade-offs</a></li>
+      <li><a href="#checklist"><b>31</b>The Screen Audit</a></li>
+      <li><a href="#example"><b>32</b>A Worked Example</a></li>
       <li><a href="#sources"><b>A</b>Sources &amp; Further Reading</a></li>
     </ol>
   </div>
@@ -1155,7 +1156,7 @@
         <span class="n">6.2</span>
         <div>
           <h3>One baseline unit, multiplied</h3>
-          <p>Margins, padding, icon sizes, row heights — all multiples of one small number, almost always <b>4pt / 4dp</b>. This is what actually makes a spacing token scale (ch. 19) coherent rather than arbitrary: <code>space.sm</code>, <code>space.md</code>, <code>space.lg</code> are just 2×, 4×, 6× the same unit.</p>
+          <p>Margins, padding, icon sizes, row heights — all multiples of one small number, almost always <b>4pt / 4dp</b>. This is what actually makes a spacing token scale (ch. 20) coherent rather than arbitrary: <code>space.sm</code>, <code>space.md</code>, <code>space.lg</code> are just 2×, 4×, 6× the same unit.</p>
           <p class="apply">Off-grid values — a 13px gap next to a 15px gap — read as sloppy even when no one can say why. If a spacing value isn’t a clean multiple of the base unit, it’s a mistake, not a design choice.</p>
         </div>
       </div>
@@ -1163,8 +1164,8 @@
         <span class="n">6.3</span>
         <div>
           <h3>Columns scale with the window, not the whim</h3>
-          <p>Phones run close to a single flexible column with fixed margins (Material’s spec: 4 columns, 16dp margins, on compact widths); medium and expanded windows earn real columns to arrange panes in (ch. 14).</p>
-          <p class="apply">Don’t invent a column count per screen — inherit it from the size class. The grid is one more thing that should be a token (ch. 19), not a per-screen judgment call.</p>
+          <p>Phones run close to a single flexible column with fixed margins (Material’s spec: 4 columns, 16dp margins, on compact widths); medium and expanded windows earn real columns to arrange panes in (ch. 15).</p>
+          <p class="apply">Don’t invent a column count per screen — inherit it from the size class. The grid is one more thing that should be a token (ch. 20), not a per-screen judgment call.</p>
         </div>
       </div>
       <div class="entry">
@@ -1180,7 +1181,7 @@
         <div>
           <h3>Break it on purpose, rarely</h3>
           <p>An element that ignores the grid — bleeding to the edge, sitting off-column — reads as deliberate emphasis <em>only</em> because everything else obeys the rule. The break is the accent color of layout (5.5): powerful exactly because it’s spent rarely.</p>
-          <p class="apply">Reserve grid-breaks for the one hero moment (23.5) — a full-bleed hero image, a celebratory illustration. A screen that breaks the grid twice has stopped having one.</p>
+          <p class="apply">Reserve grid-breaks for the one hero moment (24.5) — a full-bleed hero image, a celebratory illustration. A screen that breaks the grid twice has stopped having one.</p>
         </div>
       </div>
     </div>
@@ -1321,7 +1322,7 @@
   <span class="roman">II</span>
   <div>
     <h2>Method</h2>
-    <p>From idea to iteration — how the work gets done · ch. 09–11</p>
+    <p>From idea to iteration — how the work gets done · ch. 09–12</p>
   </div>
 </div>
 
@@ -1333,7 +1334,7 @@
     <p class="kicker">From app idea to shipped design — in order, no skipping</p>
   </div>
   <div class="sec-body reveal">
-    <p>Screens are the last thing you draw, not the first. This sequence front-loads the decisions that are expensive to change (what it is, how it’s organized) and defers the ones that are cheap (colors, corner radii). Chapter 31 runs the whole sequence on one app idea, end to end.</p>
+    <p>Screens are the last thing you draw, not the first. This sequence front-loads the decisions that are expensive to change (what it is, how it’s organized) and defers the ones that are cheap (colors, corner radii). Chapter 32 runs the whole sequence on one app idea, end to end.</p>
     <div class="entries">
       <div class="entry">
         <span class="n">9.1</span>
@@ -1372,7 +1373,7 @@
         <div>
           <h3>Split into dialects</h3>
           <p>One shared core — IA, flows, vocabulary, brand — expressed through two idiomatic layers: HIG for iOS, Material 3 for Android.</p>
-          <p class="apply">The user should recognize the app across platforms but never feel it was ported. Chapter 12 is the mapping table.</p>
+          <p class="apply">The user should recognize the app across platforms but never feel it was ported. Chapter 13 is the mapping table.</p>
           <div class="dia">
             <svg viewBox="0 0 360 120" width="360" role="img" aria-label="One shared core forks into an iOS HIG layer and an Android Material 3 layer">
               <rect x="10" y="38" width="120" height="44" rx="6" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
@@ -1400,7 +1401,7 @@
         <span class="n">9.7</span>
         <div>
           <h3>Audit, test, iterate</h3>
-          <p>Run the screen audit (ch. 30), the thumb map (ch. 07), and put it in front of real people.</p>
+          <p>Run the screen audit (ch. 31), the thumb map (ch. 07), and put it in front of real people.</p>
           <p class="apply">Five users surface most usability problems — test the wireframe, not the polished mockup, so findings are cheap to act on. Then loop back to 9.4.</p>
         </div>
       </div>
@@ -1408,10 +1409,107 @@
   </div>
 </section>
 
-<!-- ============ 10 MODES ============ -->
-<section id="modes">
+<!-- ============ 10 MAPPING METHODS ============ -->
+<section id="mapping">
   <div class="sec-head reveal">
     <div class="sec-num">10</div>
+    <h2>Mapping Methods</h2>
+    <p class="kicker">Four ways to see the problem before you design for it</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Step ch. 010.2 of the process (mapping the flows) says “boxes are user intentions, not screens” — this chapter is the toolkit behind that sentence. Four distinct artifacts, each answering a different question about the same problem; none of them is “the” map, and most real projects layer more than one.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 148" width="360" role="img" aria-label="A customer journey map on top and a service blueprint below it, separated by a line of interaction, showing the same timeline from the customer's view and the organization's view">
+        <text x="10" y="16" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">CUSTOMER JOURNEY MAP — FRONT-STAGE</text>
+        <g fill="none" stroke="var(--signal)" stroke-width="1.3">
+          <rect x="10" y="24" width="78" height="28" rx="5"/>
+          <rect x="98" y="24" width="78" height="28" rx="5"/>
+          <rect x="186" y="24" width="78" height="28" rx="5"/>
+          <rect x="274" y="24" width="76" height="28" rx="5"/>
+        </g>
+        <g font-family="Menlo, monospace" font-size="7" fill="var(--ink)">
+          <text x="49" y="41" text-anchor="middle">Search</text>
+          <text x="137" y="41" text-anchor="middle">Compare</text>
+          <text x="225" y="41" text-anchor="middle">Book</text>
+          <text x="312" y="41" text-anchor="middle">Confirm</text>
+        </g>
+        <line x1="6" y1="66" x2="354" y2="66" stroke="var(--ink-faint)" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="10" y="78" font-family="Menlo, monospace" font-size="6.5" fill="var(--ink-faint)">LINE OF INTERACTION</text>
+        <text x="10" y="98" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">SERVICE BLUEPRINT — BACKSTAGE</text>
+        <g fill="none" stroke="var(--ink-soft)" stroke-width="1.1">
+          <rect x="10" y="104" width="78" height="26" rx="4"/>
+          <rect x="98" y="104" width="78" height="26" rx="4"/>
+          <rect x="186" y="104" width="78" height="26" rx="4"/>
+          <rect x="274" y="104" width="76" height="26" rx="4"/>
+        </g>
+        <g font-family="Menlo, monospace" font-size="6.5" fill="var(--ink-soft)">
+          <text x="49" y="120" text-anchor="middle">Index prices</text>
+          <text x="137" y="120" text-anchor="middle">Rank results</text>
+          <text x="225" y="120" text-anchor="middle">Hold seat</text>
+          <text x="312" y="120" text-anchor="middle">Send receipt</text>
+        </g>
+      </svg>
+      <div class="cap">Same timeline, two views — the journey finds the pain, the blueprint finds the cause</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">10.1</span>
+        <div>
+          <h3>Empathy maps: says, thinks, feels, does</h3>
+          <p>Non-chronological — four quadrants capturing what a user says, thinks, feels, and does, built fast in a workshop from what the team already believes.</p>
+          <p class="apply">Use it to open a project: it turns scattered assumptions into one visible artifact the whole team can argue with. It’s a hypothesis, not evidence — treat every quadrant as a claim to verify (ch. 12), not a finding to design from.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.2</span>
+        <div>
+          <h3>Journey maps: this product, this sequence</h3>
+          <p>Chronological and product-specific — the steps a real user takes through <em>this</em> app, with their friction and emotion marked at each one.</p>
+          <p class="apply">This is what step ch. 010.2 of the process actually produces. Built right, it points straight at the funnel drop-offs analytics later confirms (12.6) — the map predicts where the data will hurt.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.3</span>
+        <div>
+          <h3>Experience maps: the same journey, zoomed out</h3>
+          <p>Chronological like a journey map, but generalized across products and competitors rather than tied to one — “how people find a place to eat,” not “how people use <em>this</em> app.”</p>
+          <p class="apply">Draw one before you’ve committed to what you’re building, to find the opportunity; draw a journey map after, to design the specific path. Confusing the two produces a map too vague to design from or too narrow to reveal anything new.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.4</span>
+        <div>
+          <h3>Service blueprints: what the customer never sees</h3>
+          <p>The same timeline as the journey map, flipped to the organization’s side of the line of interaction — the systems, staff, and handoffs that produce what the customer experiences.</p>
+          <p class="apply">Pull one out when the journey map finds a pain point but not a cause: a slow “Confirm” step is a front-stage symptom of a backstage queue, a broken integration, or a manual handoff. The blueprint is where that root cause actually lives.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.5</span>
+        <div>
+          <h3>Three axes decide which map, and how polished</h3>
+          <p>Current state or future state. Team hypothesis or user research. Sticky notes or a polished deck. These are independent choices, not a fidelity ladder you climb once.</p>
+          <p class="apply">Start hypothesis-based, current-state, low-fidelity — cheap, fast, and disposable. Layer in research and fidelity as conviction grows; a map redrawn three times as evidence accumulates is working as intended, not failing.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">10.6</span>
+        <div>
+          <h3>Combine them; don’t pick one forever</h3>
+          <p>An empathy map opens the project, an experience map finds the opportunity, a journey map designs the path, a blueprint fixes what’s broken behind it. Different questions, not competing answers.</p>
+          <p class="apply">If a mapping session stalls on “which one should we use,” the honest answer is usually two of them, in sequence — not a longer debate about which single artifact is correct.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 MODES ============ -->
+<section id="modes">
+  <div class="sec-head reveal">
+    <div class="sec-num">11</div>
     <h2>Four Modes of Work</h2>
     <p class="kicker">Every design engagement is one of these — know which one you’re in</p>
   </div>
@@ -1448,7 +1546,7 @@
         <h3>Reason a decision</h3>
         <p>“Should we do X or Y?” — a principle question in disguise.</p>
         <ol>
-          <li>Name the trade-off axis it sits on (ch. 29)</li>
+          <li>Name the trade-off axis it sits on (ch. 30)</li>
           <li>Find the governing law or heuristic</li>
           <li>Check three best-in-class apps — Jakob’s law sets expectations</li>
           <li>Decide, and write the reasoning down</li>
@@ -1471,10 +1569,10 @@
   </div>
 </section>
 
-<!-- ============ 11 RESEARCH & TESTING ============ -->
+<!-- ============ 12 RESEARCH & TESTING ============ -->
 <section id="research">
   <div class="sec-head reveal">
-    <div class="sec-num">11</div>
+    <div class="sec-num">12</div>
     <h2>Research &amp; Testing</h2>
     <p class="kicker">Opinions are hypotheses — here’s how they get tested</p>
   </div>
@@ -1498,7 +1596,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">11.1</span>
+        <span class="n">12.1</span>
         <div>
           <h3>Test tasks, not opinions</h3>
           <p>“Do you like it?” produces politeness. “Book the cheapest room for Friday” produces behavior — and behavior is the only honest witness.</p>
@@ -1506,7 +1604,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">11.2</span>
+        <span class="n">12.2</span>
         <div>
           <h3>Don’t lead the witness</h3>
           <p>The moderator’s job is silence. Every hint, every “what do you think that button does?”, every rescued participant destroys the data they were recruited to provide.</p>
@@ -1514,7 +1612,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">11.3</span>
+        <span class="n">12.3</span>
         <div>
           <h3>Five users, then fix, then five more</h3>
           <p>Five users surface most usability problems <em>of the version they saw</em>. The power isn’t the number — it’s the iteration: test, fix, retest beats one large study every time.</p>
@@ -1522,7 +1620,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">11.4</span>
+        <span class="n">12.4</span>
         <div>
           <h3>Severity beats vote-counting</h3>
           <p>“Two of five users struggled” is not a statistic — the sample is too small for math. Findings are judged by severity: does it block the task, slow it, or merely annoy?</p>
@@ -1530,7 +1628,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">11.5</span>
+        <span class="n">12.5</span>
         <div>
           <h3>A/B tests answer “which,” not “why”</h3>
           <p>Production experiments are the bottom rung of the ladder — the strongest evidence, but only for comparing variants you already believed in. They can’t generate the insight that produces the variants.</p>
@@ -1538,10 +1636,10 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">11.6</span>
+        <span class="n">12.6</span>
         <div>
           <h3>Analytics is the always-on usability test</h3>
-          <p>Funnels, drop-off points, rage taps, and dead-end screens are behavioral findings arriving continuously — Mode 2 (ch. 10) runs on them.</p>
+          <p>Funnels, drop-off points, rage taps, and dead-end screens are behavioral findings arriving continuously — Mode 2 (ch. 11) runs on them.</p>
           <p class="apply">Instrument the flows you mapped in 9.2 — step by step, not just endpoints — so “where do we lose people?” has an answer before anyone asks. Then watch three real session recordings before believing any hypothesis; numbers locate, sessions explain.</p>
         </div>
       </div>
@@ -1553,14 +1651,14 @@
   <span class="roman">III</span>
   <div>
     <h2>Platforms</h2>
-    <p>One design, expressed natively twice · ch. 12–17</p>
+    <p>One design, expressed natively twice · ch. 13–18</p>
   </div>
 </div>
 
-<!-- ============ 12 DIALECTS ============ -->
+<!-- ============ 13 DIALECTS ============ -->
 <section id="platforms">
   <div class="sec-head reveal">
-    <div class="sec-num">12</div>
+    <div class="sec-num">13</div>
     <h2>One Design, Two Dialects</h2>
     <p class="kicker">HIG for iOS · Material 3 for Android — same app, native accent</p>
   </div>
@@ -1658,18 +1756,18 @@
       </table>
     </div>
     <div class="entries" style="margin-top:2.5rem">
-      <div class="entry"><span class="n">12.1</span><div><h3>The iOS accent, in one breath</h3><p>Controls float above content on Liquid Glass; the content owns the screen.</p><p class="apply">No custom bar backgrounds or tints — use the scroll edge effect. Monochromatic bar icons, one tinted prominent action. Large titles that collapse on scroll. Sheets with medium/large detents for scoped tasks. Semantic colors, both appearances, always.</p></div></div>
-      <div class="entry"><span class="n">12.2</span><div><h3>The Android accent, in one breath</h3><p>Build on tokens — color roles, type scale, shape scale — so the app inherits Material You personalization for free.</p><p class="apply">Nav bar → rail as the window widens. The FAB carries <em>the</em> action. Bottom sheets over menus on compact. Predictive back everywhere. Save expressive moves — springs, shape morphs, emphasized type — for one or two hero moments.</p></div></div>
-      <div class="entry"><span class="n">12.3</span><div><h3>Desktop is not a big phone</h3><p class="apply">Density, hover, multi-window, drag-and-drop, and keyboard-first flows are desktop’s native strengths. A stretched mobile layout on a 27″ display wastes the medium.</p></div></div>
-      <div class="entry"><span class="n">12.4</span><div><h3>Web is the ambiguous middle</h3><p class="apply">Assume both touch and cursor. Deep-linkable URLs, working browser back, and responsive reflow are the web’s conventions — break them and the platform breaks you.</p></div></div>
+      <div class="entry"><span class="n">13.1</span><div><h3>The iOS accent, in one breath</h3><p>Controls float above content on Liquid Glass; the content owns the screen.</p><p class="apply">No custom bar backgrounds or tints — use the scroll edge effect. Monochromatic bar icons, one tinted prominent action. Large titles that collapse on scroll. Sheets with medium/large detents for scoped tasks. Semantic colors, both appearances, always.</p></div></div>
+      <div class="entry"><span class="n">13.2</span><div><h3>The Android accent, in one breath</h3><p>Build on tokens — color roles, type scale, shape scale — so the app inherits Material You personalization for free.</p><p class="apply">Nav bar → rail as the window widens. The FAB carries <em>the</em> action. Bottom sheets over menus on compact. Predictive back everywhere. Save expressive moves — springs, shape morphs, emphasized type — for one or two hero moments.</p></div></div>
+      <div class="entry"><span class="n">13.3</span><div><h3>Desktop is not a big phone</h3><p class="apply">Density, hover, multi-window, drag-and-drop, and keyboard-first flows are desktop’s native strengths. A stretched mobile layout on a 27″ display wastes the medium.</p></div></div>
+      <div class="entry"><span class="n">13.4</span><div><h3>Web is the ambiguous middle</h3><p class="apply">Assume both touch and cursor. Deep-linkable URLs, working browser back, and responsive reflow are the web’s conventions — break them and the platform breaks you.</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- ============ 13 NAVIGATION ============ -->
+<!-- ============ 14 NAVIGATION ============ -->
 <section id="navigation">
   <div class="sec-head reveal">
-    <div class="sec-num">13</div>
+    <div class="sec-num">14</div>
     <h2>Navigation</h2>
     <p class="kicker">Where am I · how do I get back · where else can I go</p>
   </div>
@@ -1716,7 +1814,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">13.1</span>
+        <span class="n">14.1</span>
         <div>
           <h3>The three questions, answered on-screen</h3>
           <p>Where am I (a title and a lit-up tab), how do I get back (a visible affordance plus the system gesture), where else can I go (persistent destinations). Any answer that lives in the user’s memory instead of on the screen is a defect (3.6).</p>
@@ -1724,7 +1822,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">13.2</span>
+        <span class="n">14.2</span>
         <div>
           <h3>The content’s shape picks the model</h3>
           <p>Flat peer sections → tab/nav bar. A deep catalog → drill-down stack. One dominant workspace with occasional tasks → hub plus modals. A linear commitment (checkout, onboarding) → pipeline with progress.</p>
@@ -1732,15 +1830,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">13.3</span>
+        <span class="n">14.3</span>
         <div>
           <h3>Back is sacred — and means different things</h3>
           <p>Android has <em>one universal back</em>: a system gesture that works everywhere, now with a predictive preview of where it lands. iOS has <em>contextual backs</em>: edge-swipe and chevron on stacks, swipe-down on sheets — each surface carries its own exit.</p>
-          <p class="apply">Never intercept, repurpose, or “are you sure?” the back gesture; guard unsaved work at the moment of loss, not the moment of leaving. On Android, support predictive back rather than fighting it; on iOS, every modal needs a visible dismiss <em>and</em> the gesture (28 ✕).</p>
+          <p class="apply">Never intercept, repurpose, or “are you sure?” the back gesture; guard unsaved work at the moment of loss, not the moment of leaving. On Android, support predictive back rather than fighting it; on iOS, every modal needs a visible dismiss <em>and</em> the gesture (29 ✕).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">13.4</span>
+        <span class="n">14.4</span>
         <div>
           <h3>Tabs are places, not steps</h3>
           <p>A tab is a room, not a doorway in a corridor. Each keeps its own stack and scroll position; switching away and back must return the user exactly where they were.</p>
@@ -1748,15 +1846,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">13.5</span>
+        <span class="n">14.5</span>
         <div>
           <h3>Modality is a promise</h3>
           <p>A push says “you’re traveling deeper.” A modal says “brief detour — you’ll return to exactly where you were.” Breaking that promise (modals that navigate away, sheets hiding whole hierarchies) breaks the user’s map.</p>
-          <p class="apply">Modal for scoped tasks with a clear end — compose, edit, pick, pay. Push for browsing. A modal whose internal stack runs more than two screens deep wanted to be a push (28 ✕: app-within-app).</p>
+          <p class="apply">Modal for scoped tasks with a clear end — compose, edit, pick, pay. Push for browsing. A modal whose internal stack runs more than two screens deep wanted to be a push (29 ✕: app-within-app).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">13.6</span>
+        <span class="n">14.6</span>
         <div>
           <h3>Deep links define the address space</h3>
           <p>Notifications, widgets, share sheets, and system search all land people mid-hierarchy. Navigation state is data: every screen needs an address, and arriving at one must still answer “how do I get back?”</p>
@@ -1764,42 +1862,42 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">13.7</span>
+        <span class="n">14.7</span>
         <div>
           <h3>Don’t invent navigation</h3>
           <p>Radial menus, gesture-only spatial canvases, hamburger-hidden everything: novel navigation spends the entire novelty budget (2.3) on the one thing users need to be boring.</p>
-          <p class="apply">Users learned tabs, stacks, and sheets from every other app on their phone. Spend creativity inside the rooms — never on the corridors between them. If the product’s differentiation genuinely <em>is</em> navigation (maps, canvases, games), that’s a deliberate ch. 29 trade, made with eyes open.</p>
+          <p class="apply">Users learned tabs, stacks, and sheets from every other app on their phone. Spend creativity inside the rooms — never on the corridors between them. If the product’s differentiation genuinely <em>is</em> navigation (maps, canvases, games), that’s a deliberate ch. 30 trade, made with eyes open.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">13.8</span>
+        <span class="n">14.8</span>
         <div>
           <h3>Search is teleportation — treat it as navigation</h3>
           <p>Search bypasses the hierarchy entirely, which makes it the pressure valve for deep IA — and a navigation surface with its own rules, not a text field with results.</p>
-          <p class="apply">The zero-state shows recents and suggestions before a character is typed (3.6); results land like deep links — with a working way back and the query preserved for refinement. Placement is a dialect choice (ch. 12): a search tab or bottom-toolbar field on iOS, the morphing search bar on Android. If analytics show search carrying your main flows, the hierarchy is failing — fix the IA, don’t just polish the escape hatch.</p>
+          <p class="apply">The zero-state shows recents and suggestions before a character is typed (3.6); results land like deep links — with a working way back and the query preserved for refinement. Placement is a dialect choice (ch. 13): a search tab or bottom-toolbar field on iOS, the morphing search bar on Android. If analytics show search carrying your main flows, the hierarchy is failing — fix the IA, don’t just polish the escape hatch.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">13.9</span>
+        <span class="n">14.9</span>
         <div>
           <h3>Voice and shortcuts are another front door</h3>
-          <p>Siri Shortcuts and App Intents (iOS) and App Actions (Android) let the system itself — Spotlight, Siri, the Assistant, a suggested-shortcut chip — launch straight into one specific task, no app icon tapped at all. It’s a fourth entry point alongside deep links, notifications, and widgets (13.6), and it inherits the same obligation: land the user in a coherent, navigable state, not a dead end.</p>
-          <p class="apply">Donate the app’s real intents — “Water Monstera”, not a generic “Open Sprout” — so the shortcut is worth suggesting. These are the same App Intents that make widget buttons work (17.3); model the action once, and the phrase, the widget tap, and the shortcut all drive it identically.</p>
+          <p>Siri Shortcuts and App Intents (iOS) and App Actions (Android) let the system itself — Spotlight, Siri, the Assistant, a suggested-shortcut chip — launch straight into one specific task, no app icon tapped at all. It’s a fourth entry point alongside deep links, notifications, and widgets (14.6), and it inherits the same obligation: land the user in a coherent, navigable state, not a dead end.</p>
+          <p class="apply">Donate the app’s real intents — “Water Monstera”, not a generic “Open Sprout” — so the shortcut is worth suggesting. These are the same App Intents that make widget buttons work (18.3); model the action once, and the phrase, the widget tap, and the shortcut all drive it identically.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 14 ADAPTIVE LAYOUT ============ -->
+<!-- ============ 15 ADAPTIVE LAYOUT ============ -->
 <section id="adaptive">
   <div class="sec-head reveal">
-    <div class="sec-num">14</div>
+    <div class="sec-num">15</div>
     <h2>Adaptive Layout</h2>
     <p class="kicker">Tablets, foldables, split screens — design for size classes, not devices</p>
   </div>
   <div class="sec-body reveal">
-    <p>A tablet is not a big phone (12.3’s cousin: a stretched phone layout on a 13″ screen wastes the medium twice — empty acres <em>and</em> unreachable controls). Both platforms hand you the same abstraction: the window’s size class, not the device’s name, decides the layout.</p>
+    <p>A tablet is not a big phone (13.3’s cousin: a stretched phone layout on a 13″ screen wastes the medium twice — empty acres <em>and</em> unreachable controls). Both platforms hand you the same abstraction: the window’s size class, not the device’s name, decides the layout.</p>
 
     <div class="dia" style="margin-top:2rem">
       <svg viewBox="0 0 360 160" width="360" role="img" aria-label="The same app at three window size classes: compact phone with bottom navigation, medium tablet with a navigation rail, expanded with list and detail panes side by side">
@@ -1845,7 +1943,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">14.1</span>
+        <span class="n">15.1</span>
         <div>
           <h3>Size classes, not devices</h3>
           <p>Material’s window classes (compact &lt;600dp, medium, expanded ≥840dp) and iOS’s horizontal compact/regular describe the <em>window</em> — and windows change: rotation, split screen, Stage Manager, a foldable unfolding.</p>
@@ -1853,23 +1951,23 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">14.2</span>
+        <span class="n">15.2</span>
         <div>
           <h3>Spend width on structure, not stretching</h3>
           <p>Wider windows buy panes, not longer lines. The canonical layouts — list-detail, supporting pane, feed grid — are the honest ways to spend the space.</p>
-          <p class="apply">Cap text measure (~70ch) and let panes absorb the rest: master list + detail, content + inspector, feed at higher column count. A form that grows 900dp-wide inputs didn’t adapt; it inflated (20.2 still applies).</p>
+          <p class="apply">Cap text measure (~70ch) and let panes absorb the rest: master list + detail, content + inspector, feed at higher column count. A form that grows 900dp-wide inputs didn’t adapt; it inflated (21.2 still applies).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">14.3</span>
+        <span class="n">15.3</span>
         <div>
           <h3>List–detail has rules</h3>
           <p>The pattern everyone reaches for, with the details everyone forgets: selection must be visibly persistent, the empty detail pane must say something, and back must mean the right thing in each class.</p>
-          <p class="apply">On expanded, highlight the selected row and give the unselected detail pane a purpose (“Select a plant”). On compact, the same navigation becomes push-and-back. <code>NavigationSplitView</code> and <code>ListDetailPaneScaffold</code> both encode this — let them (ch. 16).</p>
+          <p class="apply">On expanded, highlight the selected row and give the unselected detail pane a purpose (“Select a plant”). On compact, the same navigation becomes push-and-back. <code>NavigationSplitView</code> and <code>ListDetailPaneScaffold</code> both encode this — let them (ch. 17).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">14.4</span>
+        <span class="n">15.4</span>
         <div>
           <h3>The thumb map doesn’t transfer</h3>
           <p>Tablets are held by the edges with two hands — now the <em>corners and edges</em> are reachable and the bottom-center is far. The phone’s thumb zones (ch. 07) invert.</p>
@@ -1877,7 +1975,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">14.5</span>
+        <span class="n">15.5</span>
         <div>
           <h3>Foldables fold; state must not</h3>
           <p>Unfolding mid-task is a live window resize. Tabletop and book postures add a hinge that content must respect — and everything in 7.4 (state survives interruption) applies at double intensity.</p>
@@ -1885,7 +1983,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">14.6</span>
+        <span class="n">15.6</span>
         <div>
           <h3>Big screens attract other inputs</h3>
           <p>Tablets come with keyboards, trackpads, and styluses attached. The moment a window widens, assume a pointer might arrive with it.</p>
@@ -1896,10 +1994,10 @@
   </div>
 </section>
 
-<!-- ============ 15 ICONOGRAPHY & IMAGERY ============ -->
+<!-- ============ 16 ICONOGRAPHY & IMAGERY ============ -->
 <section id="icons">
   <div class="sec-head reveal">
-    <div class="sec-num">15</div>
+    <div class="sec-num">16</div>
     <h2>Iconography &amp; Imagery</h2>
     <p class="kicker">Icons are vocabulary, images are evidence — neither is decoration</p>
   </div>
@@ -1937,7 +2035,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">15.1</span>
+        <span class="n">16.1</span>
         <div>
           <h3>Use the system dictionary first</h3>
           <p>Thousands of symbols, drawn on the platform’s text metrics, scaling with Dynamic Type, animating for free (SF Symbols), or varying along weight/fill/grade axes as a variable font (Material Symbols).</p>
@@ -1945,15 +2043,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">15.2</span>
+        <span class="n">16.2</span>
         <div>
           <h3>Icons label, or icons lie</h3>
-          <p>Perhaps a dozen symbols are truly universal — search, back, share, settings, play. Everything else is a guess the user makes on your behalf (28 ✕: mystery meat).</p>
+          <p>Perhaps a dozen symbols are truly universal — search, back, share, settings, play. Everything else is a guess the user makes on your behalf (29 ✕: mystery meat).</p>
           <p class="apply">Pair icons with text labels in tab bars and nav bars, always. An icon-only toolbar is acceptable only when every glyph is in the universal dozen — and even then, accessibility labels are non-negotiable (8.3).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">15.3</span>
+        <span class="n">16.3</span>
         <div>
           <h3>The fill convention is grammar</h3>
           <p>Outline means resting; fill means selected or active. Both platforms teach this in their tab bars, so users read it without thinking — until an app breaks the rule and every state becomes a riddle.</p>
@@ -1961,7 +2059,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">15.4</span>
+        <span class="n">16.4</span>
         <div>
           <h3>The app icon is the smallest billboard</h3>
           <p>It’s the brand at 60px, judged in a grid of rivals, re-tinted by the OS: iOS renders layered icons in default/dark/clear/tinted modes (Icon Composer); Android’s themed icons take Material You’s wallpaper tint via a monochrome layer.</p>
@@ -1969,7 +2067,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">15.5</span>
+        <span class="n">16.5</span>
         <div>
           <h3>Photos are evidence, illustration is explanation</h3>
           <p>Photography asserts a specific reality — the user’s actual plant, the actual product for sale. Illustration explains concepts, softens empty states, and carries brand where there’s nothing yet to show.</p>
@@ -1977,15 +2075,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">15.6</span>
+        <span class="n">16.6</span>
         <div>
           <h3>Image discipline</h3>
           <p>Images are the heaviest, slowest, most layout-hostile content on any screen — treat them as a managed material.</p>
-          <p class="apply">Fixed aspect-ratio containers so nothing jumps when they arrive (22.3); meaningful images get real accessibility descriptions and decorative ones get hidden (8.3); check every image against dark mode — a white-matte logo on graphite is the classic miss.</p>
+          <p class="apply">Fixed aspect-ratio containers so nothing jumps when they arrive (23.3); meaningful images get real accessibility descriptions and decorative ones get hidden (8.3); check every image against dark mode — a white-matte logo on graphite is the classic miss.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">15.7</span>
+        <span class="n">16.7</span>
         <div>
           <h3>The two dictionaries barely overlap — and that’s fine</h3>
           <p>SF Symbols runs past 7,000 glyphs; Material Symbols sits around 2,500–3,800 depending on how the variable-axis styles are counted. Only a few hundred are formally mapped one-to-one between them — cross-platform tooling like Expo’s symbol system ships roughly 570 confirmed pairs. That’s a small, concentrated core inside two much larger, mostly disjoint libraries.</p>
@@ -2002,7 +2100,7 @@
               <text x="187" y="78" text-anchor="middle" font-family="Menlo, monospace" font-size="7.5" fill="var(--signal)">~570</text>
               <text x="187" y="88" text-anchor="middle" font-family="Menlo, monospace" font-size="6" fill="var(--signal)">MAPPED 1:1</text>
               <text x="30" y="132" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SEARCH · GEAR · TRASH · HEART · STAR — CONVERGENT METAPHOR</text>
-              <text x="30" y="144" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SHARE — SAME MEANING, DIFFERENT GLYPH (15.8)</text>
+              <text x="30" y="144" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SHARE — SAME MEANING, DIFFERENT GLYPH (16.8)</text>
             </svg>
             <div class="cap">A small mapped core inside two mostly-disjoint libraries — depth diverges by design</div>
           </div>
@@ -2010,26 +2108,26 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">15.8</span>
+        <span class="n">16.8</span>
         <div>
           <h3>Same meaning, different glyph: share is the tell</h3>
           <p>iOS draws share as a box with an arrow escaping upward — an object leaving through an opening, tied to the Action-sheet model since iOS 7. Android draws three connected dots forming a triangle with radiating lines — a one-to-many broadcast, inherited from a 2006 browser plugin. Same user intent, genuinely different mental model, not just a style difference.</p>
-          <p class="apply">This is the load-bearing example for chapter 12 (One Design, Two Dialects): render the platform’s own share glyph, never the other one. Recognition testing on the Android icon alone has landed around half — importing it into an iOS screen would cost that recognition twice over. When in doubt, ship the native symbol and let the dialect (ch. 12) do its job.</p>
+          <p class="apply">This is the load-bearing example for chapter 13 (One Design, Two Dialects): render the platform’s own share glyph, never the other one. Recognition testing on the Android icon alone has landed around half — importing it into an iOS screen would cost that recognition twice over. When in doubt, ship the native symbol and let the dialect (ch. 13) do its job.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 16 SWIFTUI ↔ COMPOSE ============ -->
+<!-- ============ 17 SWIFTUI ↔ COMPOSE ============ -->
 <section id="components">
   <div class="sec-head reveal">
-    <div class="sec-num">16</div>
+    <div class="sec-num">17</div>
     <h2>SwiftUI ↔ Compose</h2>
     <p class="kicker">The dialect table as it compiles — iOS 26 SDK · Compose Material 3 1.4</p>
   </div>
   <div class="sec-body reveal">
-    <p>Chapter 12 mapped intents to components; this chapter maps them to the APIs you actually type. Both frameworks are declarative state-driven trees — the difference is what each gives you for free, and what each refuses to give you at all.</p>
+    <p>Chapter 13 mapped intents to components; this chapter maps them to the APIs you actually type. Both frameworks are declarative state-driven trees — the difference is what each gives you for free, and what each refuses to give you at all.</p>
 
     <div class="table-scroll">
       <table>
@@ -2063,7 +2161,7 @@
 
     <div class="entries" style="margin-top:2.5rem">
       <div class="entry">
-        <span class="n">16.1</span>
+        <span class="n">17.1</span>
         <div>
           <h3>Same paradigm, different gifts</h3>
           <p>Both are declarative trees re-rendered from state. What differs is the free lunch: SwiftUI gives platform behavior implicitly — Dynamic Type, edge-swipe back, Liquid Glass, dark mode. Compose gives Material behavior explicitly through <code>Scaffold</code> slots — snackbars, FAB placement, predictive back, dynamic color.</p>
@@ -2071,7 +2169,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">16.2</span>
+        <span class="n">17.2</span>
         <div>
           <h3>Styling vs. slots</h3>
           <p>SwiftUI customizes by <em>restyling semantics</em> — one <code>Button</code>, many <code>ButtonStyle</code>s. Compose customizes by <em>filling slots</em> — distinct composables per emphasis level, each with content lambdas.</p>
@@ -2079,29 +2177,29 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">16.3</span>
+        <span class="n">17.3</span>
         <div>
           <h3>The gaps run in opposite directions — on purpose</h3>
-          <p>SwiftUI has no FAB and no snackbar; Compose has no stepper and no grouped-list style. These aren’t omissions — they’re the dialects (ch. 12) enforced at the API level.</p>
+          <p>SwiftUI has no FAB and no snackbar; Compose has no stepper and no grouped-list style. These aren’t omissions — they’re the dialects (ch. 13) enforced at the API level.</p>
           <p class="apply">Reaching for a component the framework refuses to provide is a design smell: you’re usually importing the other platform’s idiom. Check the intent row in the table above and use the native answer instead.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">16.4</span>
+        <span class="n">17.4</span>
         <div>
           <h3>One codebase means one dialect</h3>
-          <p>Compose Multiplatform renders Material on iPhones; Flutter renders Flutter everywhere. Write-once UI buys speed by giving every user the same dialect — which is precisely what chapter 12 spends itself avoiding.</p>
-          <p class="apply">A legitimate trade for tools, prototypes, and brand-heavy apps where the product <em>is</em> the interface everywhere. Make it as a decision (ch. 29), not as a default — and know Jakob’s law bills iOS users for Material controls either way.</p>
+          <p>Compose Multiplatform renders Material on iPhones; Flutter renders Flutter everywhere. Write-once UI buys speed by giving every user the same dialect — which is precisely what chapter 13 spends itself avoiding.</p>
+          <p class="apply">A legitimate trade for tools, prototypes, and brand-heavy apps where the product <em>is</em> the interface everywhere. Make it as a decision (ch. 30), not as a default — and know Jakob’s law bills iOS users for Material controls either way.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 17 WIDGETS & LIVE SURFACES ============ -->
+<!-- ============ 18 WIDGETS & LIVE SURFACES ============ -->
 <section id="widgets">
   <div class="sec-head reveal">
-    <div class="sec-num">17</div>
+    <div class="sec-num">18</div>
     <h2>Widgets &amp; Live Surfaces</h2>
     <p class="kicker">The app you’re not currently in — home screen, lock screen, notification tray</p>
   </div>
@@ -2131,23 +2229,23 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">17.1</span>
+        <span class="n">18.1</span>
         <div>
           <h3>Glanceable, not interactive</h3>
-          <p>These surfaces are read-mostly. A tap opens the app at the right place (deep links, 13.6); the surface itself isn’t a mini-app with its own navigation, forms, or scroll.</p>
+          <p>These surfaces are read-mostly. A tap opens the app at the right place (deep links, 14.6); the surface itself isn’t a mini-app with its own navigation, forms, or scroll.</p>
           <p class="apply">One hero datum per surface (5.1) — Sprout’s widget says <em>which plant, what to do</em>, nothing else. If the design needs a second screen to make sense, it’s not a widget anymore.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">17.2</span>
+        <span class="n">18.2</span>
         <div>
           <h3>Widgets are timelines, not live views</h3>
           <p>iOS WidgetKit renders from a <code>TimelineProvider</code> — a schedule of pre-computed snapshots at target dates, refreshed on a budget the system controls, not a continuous feed. Android’s Jetpack Glance (the modern replacement for hand-written <code>RemoteViews</code>) works the same way: periodic, not push-driven.</p>
-          <p class="apply">Design for the <em>stalest</em> state the timeline might show, not the freshest — a watering widget refreshed six hours ago should still read as true, or say when it last checked (22.6’s logic, applied to a widget instead of a screen).</p>
+          <p class="apply">Design for the <em>stalest</em> state the timeline might show, not the freshest — a watering widget refreshed six hours ago should still read as true, or say when it last checked (23.6’s logic, applied to a widget instead of a screen).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">17.3</span>
+        <span class="n">18.3</span>
         <div>
           <h3>Interactivity is one intent, not a gesture</h3>
           <p>Modern widgets can hold a real <code>Button</code> or <code>Toggle</code> — but only wired to an App Intent that runs in the background, never a raw deep link, and never a scroll or pan. The surface completes one action or it launches the app; there’s no in-between.</p>
@@ -2155,7 +2253,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">17.4</span>
+        <span class="n">18.4</span>
         <div>
           <h3>Rendering mode is the system’s call</h3>
           <p>Widgets render in full color, <b>accented</b> (two flat color groups, opted into via <code>.widgetAccentable()</code>), or <b>vibrant</b> (desaturated, for the Lock Screen) — the OS picks the mode; the design has to survive all three. Android widgets pull Material You dynamic color through <code>GlanceTheme</code> the same way an in-app screen does.</p>
@@ -2163,15 +2261,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">17.5</span>
+        <span class="n">18.5</span>
         <div>
           <h3>Live Activities: bounded, ending, real</h3>
           <p>ActivityKit is for a real-world process with a start and an end — delivery tracking, a workout, a timer, a score. All three Dynamic Island presentations — <b>compact</b> (leading/trailing beside the camera), <b>minimal</b> (a detached circle when a second Activity is also live), and <b>expanded</b> (long-press) — have to read correctly, because the system chooses among them, not the app.</p>
-          <p class="apply">An Activity auto-expires after 8 hours active and 4 more stale; design the natural end, don’t fight it. App Review 4.5.3 and the HIG both bar using Live Activities for upsells or “come back” nudges — this is chapter 25.1’s trust economy at its most literal: the Dynamic Island is borrowed space, not owned space.</p>
+          <p class="apply">An Activity auto-expires after 8 hours active and 4 more stale; design the natural end, don’t fight it. App Review 4.5.3 and the HIG both bar using Live Activities for upsells or “come back” nudges — this is chapter 26.1’s trust economy at its most literal: the Dynamic Island is borrowed space, not owned space.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">17.6</span>
+        <span class="n">18.6</span>
         <div>
           <h3>Android’s answer: Live Updates, not a fake heartbeat</h3>
           <p>Android’s direct analog is <b>Live Updates</b> — ongoing notifications built on <code>Notification.ProgressStyle</code>, requesting promoted placement via <code>setRequestPromotedOngoing()</code>. Google scopes it explicitly: active navigation, rideshare, delivery tracking, ongoing calls and workouts — the same bounded-event rule as Live Activities, enforced by policy rather than left to taste.</p>
@@ -2179,7 +2277,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">17.7</span>
+        <span class="n">18.7</span>
         <div>
           <h3>Complications: the same discipline, one glance from the wrist</h3>
           <p>Apple Watch complications were folded into WidgetKit as of watchOS 9–10 — largely the same code, families, and timeline model as a phone widget, rendered at an even smaller scale.</p>
@@ -2194,14 +2292,14 @@
   <span class="roman">IV</span>
   <div>
     <h2>Systems &amp; Craft</h2>
-    <p>The details that decide whether it ships well · ch. 18–27</p>
+    <p>The details that decide whether it ships well · ch. 19–28</p>
   </div>
 </div>
 
-<!-- ============ 18 DESIGN SYSTEMS ============ -->
+<!-- ============ 19 DESIGN SYSTEMS ============ -->
 <section id="systems">
   <div class="sec-head reveal">
-    <div class="sec-num">18</div>
+    <div class="sec-num">19</div>
     <h2>Design Systems</h2>
     <p class="kicker">Decisions made once, so screens don’t relitigate them</p>
   </div>
@@ -2227,7 +2325,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">18.1</span>
+        <span class="n">19.1</span>
         <div>
           <h3>A system is rules, not a UI kit</h3>
           <p>A Figma library without usage guidance is a parts bin. The system is the components <em>plus</em> when-to-use, when-not-to, and who decides.</p>
@@ -2235,7 +2333,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">18.2</span>
+        <span class="n">19.2</span>
         <div>
           <h3>Start from the platform’s system</h3>
           <p>HIG components and Material 3 are mature, accessible, user-tested design systems you get for free — with dark mode, Dynamic Type, and predictive back already solved.</p>
@@ -2243,7 +2341,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">18.3</span>
+        <span class="n">19.3</span>
         <div>
           <h3>Detach rate is the health metric</h3>
           <p>When designers keep overriding a component or spawning one-off variants, that isn’t indiscipline — it’s the system telling you a decision is wrong or missing.</p>
@@ -2251,15 +2349,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">18.4</span>
+        <span class="n">19.4</span>
         <div>
           <h3>One system, two dialects</h3>
-          <p>The system mirrors chapter 12: a shared semantic layer (tokens, naming, patterns) with per-platform component implementations.</p>
+          <p>The system mirrors chapter 13: a shared semantic layer (tokens, naming, patterns) with per-platform component implementations.</p>
           <p class="apply">One token sheet feeds both platforms; “primary action” resolves to a prominent toolbar button on iOS and a FAB or filled button on Android. Share the decision, not the pixels.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">18.5</span>
+        <span class="n">19.5</span>
         <div>
           <h3>Governance or decay — pick one</h3>
           <p>A system nobody can change becomes a cage; a system anybody can change becomes noise. Both end with teams ignoring it.</p>
@@ -2267,29 +2365,29 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">18.6</span>
+        <span class="n">19.6</span>
         <div>
           <h3>Every setting is a decision you refused to make</h3>
           <p>A preference toggle is the design team outsourcing a choice to thousands of people less equipped to make it. Some settings are legitimate — accessibility, notification volume, genuinely divergent contexts. Most are surrender.</p>
-          <p class="apply">Before adding a setting, exhaust the alternatives: a better default (20.6), smart detection, or simply deciding. When one survives, organize by user goal (“Notifications”, “Privacy”), never by engineering module — and let the app follow the system (theme, text size) instead of duplicating OS settings inside it (28 ✕).</p>
+          <p class="apply">Before adding a setting, exhaust the alternatives: a better default (21.6), smart detection, or simply deciding. When one survives, organize by user goal (“Notifications”, “Privacy”), never by engineering module — and let the app follow the system (theme, text size) instead of duplicating OS settings inside it (29 ✕).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">18.7</span>
+        <span class="n">19.7</span>
         <div>
           <h3>Privacy is a design decision, not a legal one</h3>
-          <p>Consent is a moment the user actually experiences, not a checkbox legal signed off on. Treated as a system-level default — like tokens (ch. 19) or settings (18.6) — it stays consistent instead of being reinvented, and re-weakened, screen by screen.</p>
-          <p class="apply">Ask for data at the point of use, not at install (24.2); state what it’s for in the same sentence as the ask; default every optional collection to off. One honest permission screen beats a privacy policy nobody reads — and “Ask App Not to Track” worded as a trap is the dark-pattern line this manual already refuses to cross (28 ✕).</p>
+          <p>Consent is a moment the user actually experiences, not a checkbox legal signed off on. Treated as a system-level default — like tokens (ch. 20) or settings (19.6) — it stays consistent instead of being reinvented, and re-weakened, screen by screen.</p>
+          <p class="apply">Ask for data at the point of use, not at install (25.2); state what it’s for in the same sentence as the ask; default every optional collection to off. One honest permission screen beats a privacy policy nobody reads — and “Ask App Not to Track” worded as a trap is the dark-pattern line this manual already refuses to cross (29 ✕).</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 19 DESIGN TOKENS ============ -->
+<!-- ============ 20 DESIGN TOKENS ============ -->
 <section id="tokens">
   <div class="sec-head reveal">
-    <div class="sec-num">19</div>
+    <div class="sec-num">20</div>
     <h2>Design Tokens</h2>
     <p class="kicker">Name the decision, not the value — the value will change</p>
   </div>
@@ -2317,7 +2415,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">19.1</span>
+        <span class="n">20.1</span>
         <div>
           <h3>Three tiers, strict direction</h3>
           <p>Primitives hold raw values (<code>blue-500</code>, <code>space-4</code>). Semantic tokens give them meaning (<code>color.accent</code>, <code>space.inset.card</code>). Component tokens bind them to parts (<code>button.fill</code>).</p>
@@ -2325,7 +2423,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">19.2</span>
+        <span class="n">20.2</span>
         <div>
           <h3>Name by role, never by value</h3>
           <p>If the name would be wrong after the value changes, the name is wrong now. <code>accent</code> survives a rebrand; <code>blue</code> doesn’t.</p>
@@ -2333,7 +2431,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">19.3</span>
+        <span class="n">20.3</span>
         <div>
           <h3>Tokens make theming free</h3>
           <p>Dark mode, Material You dynamic color, high-contrast, density, white-labeling — each is just a different value set behind the same names.</p>
@@ -2341,7 +2439,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">19.4</span>
+        <span class="n">20.4</span>
         <div>
           <h3>Tokenize more than color</h3>
           <p>Type styles, the spacing scale, corner radii, elevation, motion durations and springs, z-order — anything decided more than once deserves a name.</p>
@@ -2352,10 +2450,10 @@
   </div>
 </section>
 
-<!-- ============ 20 FORMS & INPUT ============ -->
+<!-- ============ 21 FORMS & INPUT ============ -->
 <section id="forms">
   <div class="sec-head reveal">
-    <div class="sec-num">20</div>
+    <div class="sec-num">21</div>
     <h2>Forms &amp; Input</h2>
     <p class="kicker">Where most apps actually lose people</p>
   </div>
@@ -2387,7 +2485,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">20.1</span>
+        <span class="n">21.1</span>
         <div>
           <h3>Ask less</h3>
           <p>Every field costs completions. Derive what you can — card type from its number, city from the postcode — and treat “optional” as a synonym for “cut it.”</p>
@@ -2395,7 +2493,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">20.2</span>
+        <span class="n">21.2</span>
         <div>
           <h3>One column, labels on top</h3>
           <p>Multi-column forms break the scan line (4.5) and get skipped fields; placeholder-as-label vanishes the moment typing starts — a recall burden mid-task (2.4).</p>
@@ -2403,7 +2501,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">20.3</span>
+        <span class="n">21.3</span>
         <div>
           <h3>The right keyboard, the right autofill</h3>
           <p>An email field that opens the default keyboard, or a code field that blocks paste, is self-inflicted friction.</p>
@@ -2411,23 +2509,23 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">20.4</span>
+        <span class="n">21.4</span>
         <div>
           <h3>Validate at the right moment</h3>
           <p>Keystroke validation yells at half-typed input; submit-only validation ambushes at the end. Neither is a conversation.</p>
-          <p class="apply">Format checks on blur, cross-field checks on submit, and quiet positive ticks on hard fields (IBAN, password rules). Keep submit enabled — let the tap point precisely at what’s missing rather than leaving a dead button to decode (28 ✕).</p>
+          <p class="apply">Format checks on blur, cross-field checks on submit, and quiet positive ticks on hard fields (IBAN, password rules). Keep submit enabled — let the tap point precisely at what’s missing rather than leaving a dead button to decode (29 ✕).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">20.5</span>
+        <span class="n">21.5</span>
         <div>
           <h3>Errors are directions, not verdicts</h3>
           <p>An error state has one job: get the user to the fixed state with everything they typed intact.</p>
-          <p class="apply">Never clear the form. Name the field, the problem, and the fix, next to the field (“One digit short — card numbers have 16”), not in a toast that vanishes. “Something went wrong” is a shrug, not a message (see ch. 21).</p>
+          <p class="apply">Never clear the form. Name the field, the problem, and the fix, next to the field (“One digit short — card numbers have 16”), not in a toast that vanishes. “Something went wrong” is a shrug, not a message (see ch. 22).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">20.6</span>
+        <span class="n">21.6</span>
         <div>
           <h3>Defaults do the work</h3>
           <p>Tesler’s law (2.5) applied: every default the system supplies is a decision the user doesn’t make.</p>
@@ -2435,7 +2533,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">20.7</span>
+        <span class="n">21.7</span>
         <div>
           <h3>Pick the control by its answer shape</h3>
           <p>Checkbox, radio, toggle, stepper, slider, and picker aren’t interchangeable skins on the same idea — each implies a different question, and using the wrong one makes the user translate before they can answer.</p>
@@ -2446,10 +2544,10 @@
   </div>
 </section>
 
-<!-- ============ 21 UX WRITING ============ -->
+<!-- ============ 22 UX WRITING ============ -->
 <section id="writing">
   <div class="sec-head reveal">
-    <div class="sec-num">21</div>
+    <div class="sec-num">22</div>
     <h2>UX Writing</h2>
     <p class="kicker">Strip the visuals and an interface is words — write them like a designer</p>
   </div>
@@ -2474,7 +2572,7 @@
 
     <div class="entries" style="margin-top:2.5rem">
       <div class="entry">
-        <span class="n">21.1</span>
+        <span class="n">22.1</span>
         <div>
           <h3>Buttons say what they do</h3>
           <p>Verb + object. A person should know the outcome from the button alone, without reading the dialog above it — because that’s exactly how dialogs get read.</p>
@@ -2482,7 +2580,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">21.2</span>
+        <span class="n">22.2</span>
         <div>
           <h3>Front-load every string</h3>
           <p>Scanning eyes take the first two words and move on (5.4). The meaning must live there.</p>
@@ -2490,7 +2588,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">21.3</span>
+        <span class="n">22.3</span>
         <div>
           <h3>Errors: what, why-it-matters, next</h3>
           <p>The template is three moves: what happened, the consequence the user cares about, the next step. Plain language, no codes, no blame.</p>
@@ -2498,15 +2596,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">21.4</span>
+        <span class="n">22.4</span>
         <div>
           <h3>Empty states teach</h3>
-          <p>The first-run empty screen is the onboarding most users actually read. A blank list reads as broken (31.7 learned this the hard way).</p>
+          <p>The first-run empty screen is the onboarding most users actually read. A blank list reads as broken (32.7 learned this the hard way).</p>
           <p class="apply">Say what will live here and hand over the first action: “Your plants will appear here — add your first one.” Success-empty states celebrate instead: “All watered — see you Thursday.”</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">21.5</span>
+        <span class="n">22.5</span>
         <div>
           <h3>Speak the platform’s casing</h3>
           <p>Even capitalization is a dialect: iOS uses Title Case for buttons, tabs, and nav titles; Material uses sentence case nearly everywhere. Both say “tap,” never “click.”</p>
@@ -2514,7 +2612,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">21.6</span>
+        <span class="n">22.6</span>
         <div>
           <h3>Tone is four dials, not one switch</h3>
           <p>“Friendly” isn’t a setting — tone moves independently along at least four axes (Nielsen Norman Group’s model): <b>formal↔casual</b>, <b>serious↔funny</b>, <b>respectful↔irreverent</b>, <b>matter-of-fact↔enthusiastic</b>. Two messages can carry identical information and land completely differently depending on where each dial sits.</p>
@@ -2535,11 +2633,11 @@
             <div class="axis-bar"><span class="pin" style="left:55%"></span></div>
             <p>Sprout’s four dials — casual and warm, but rarely joking, never irreverent, and enthusiasm reserved for genuine wins.</p>
           </div>
-          <p class="apply">Plot the product’s position on each axis deliberately, in the design system (ch. 18), before anyone writes a line of copy. An undefined dial doesn’t stay neutral — it drifts differently in every screen a different person writes.</p>
+          <p class="apply">Plot the product’s position on each axis deliberately, in the design system (ch. 19), before anyone writes a line of copy. An undefined dial doesn’t stay neutral — it drifts differently in every screen a different person writes.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">21.7</span>
+        <span class="n">22.7</span>
         <div>
           <h3>One message, many possible tones</h3>
           <p>The same failure, two settings of Sprout’s own dials:</p>
@@ -2549,7 +2647,7 @@
               <text x="14" y="17" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">TOO FAR RIGHT — OFF-DIAL</text>
               <text x="14" y="32" font-family="-apple-system, Helvetica, sans-serif" font-size="10.5" font-style="italic" fill="var(--ink-soft)">“Yikes 😬 we totally dropped the ball on your reminder.”</text>
               <rect x="0" y="50" width="360" height="40" rx="7" fill="var(--signal-soft)"/>
-              <text x="14" y="67" font-family="Menlo, monospace" font-size="7" fill="var(--signal)">SPROUT’S DIALS — 21.6</text>
+              <text x="14" y="67" font-family="Menlo, monospace" font-size="7" fill="var(--signal)">SPROUT’S DIALS — 22.6</text>
               <text x="14" y="82" font-family="-apple-system, Helvetica, sans-serif" font-size="10.5" fill="var(--ink)">“Your reminder didn’t send. Monstera may need water today.”</text>
             </svg>
             <div class="cap">Same failure — one apologizes for the brand’s feelings, one respects the user’s plant</div>
@@ -2561,10 +2659,10 @@
   </div>
 </section>
 
-<!-- ============ 22 EMPTY & LOADING STATES ============ -->
+<!-- ============ 23 EMPTY & LOADING STATES ============ -->
 <section id="states">
   <div class="sec-head reveal">
-    <div class="sec-num">22</div>
+    <div class="sec-num">23</div>
     <h2>Empty &amp; Loading States</h2>
     <p class="kicker">The screens you didn’t design are the ones users remember</p>
   </div>
@@ -2601,15 +2699,15 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">22.1</span>
+        <span class="n">23.1</span>
         <div>
           <h3>Empty states come in species</h3>
           <p>First-run empty (nothing exists yet), success-empty (the user cleared it), and no-results (a search or filter found nothing). One generic “Nothing here” fails all three.</p>
-          <p class="apply">First-run <em>teaches</em>: what will live here, plus the first action (21.4). Success-empty <em>celebrates</em>: “All watered — see you Thursday.” No-results <em>redirects</em>: echo the query, offer the loosened filter. Each species gets its own copy and its own call to action.</p>
+          <p class="apply">First-run <em>teaches</em>: what will live here, plus the first action (22.4). Success-empty <em>celebrates</em>: “All watered — see you Thursday.” No-results <em>redirects</em>: echo the query, offer the loosened filter. Each species gets its own copy and its own call to action.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">22.2</span>
+        <span class="n">23.2</span>
         <div>
           <h3>No-results is a fork, not a wall</h3>
           <p>An empty search result is the system saying “try differently” — so say <em>how</em>. A dead-end here sends the user to a competitor with a better shrug.</p>
@@ -2617,7 +2715,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">22.3</span>
+        <span class="n">23.3</span>
         <div>
           <h3>Skeletons over spinners</h3>
           <p>A spinner measures the delay; a skeleton promises the structure. Skeletons read as faster because the layout arrives instantly and the content merely fills in.</p>
@@ -2625,7 +2723,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">22.4</span>
+        <span class="n">23.4</span>
         <div>
           <h3>Don’t flash, don’t strobe</h3>
           <p>A spinner that appears for 80ms is visual noise; five per screen is a seizure of uncertainty. Loading indication has its own hierarchy (ch. 05).</p>
@@ -2633,15 +2731,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">22.5</span>
+        <span class="n">23.5</span>
         <div>
           <h3>Optimistic UI, honest rollback</h3>
           <p>For actions that almost always succeed — like, rename, mark watered — act as if they succeeded instantly and reconcile in the background. Waiting for the server to permit a heart animation is borrowed sluggishness.</p>
-          <p class="apply">Sprout marks a plant watered on tap (31.5): instant tick, haptic, snackbar-undo on Android. On failure, revert visibly and say why. Reserve blocking, pessimistic waits for money and destruction — exactly where optimism would lie.</p>
+          <p class="apply">Sprout marks a plant watered on tap (32.5): instant tick, haptic, snackbar-undo on Android. On failure, revert visibly and say why. Reserve blocking, pessimistic waits for money and destruction — exactly where optimism would lie.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">22.6</span>
+        <span class="n">23.6</span>
         <div>
           <h3>Offline is a state, not an error</h3>
           <p>“No connection” with a sad cloud treats a normal condition — elevators, flights, dead zones — as a catastrophe.</p>
@@ -2652,10 +2750,10 @@
   </div>
 </section>
 
-<!-- ============ 23 MOTION & FEEDBACK ============ -->
+<!-- ============ 24 MOTION & FEEDBACK ============ -->
 <section id="motion">
   <div class="sec-head reveal">
-    <div class="sec-num">23</div>
+    <div class="sec-num">24</div>
     <h2>Motion &amp; Feedback</h2>
     <p class="kicker">Animation is information — or it’s in the way</p>
   </div>
@@ -2684,7 +2782,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">23.1</span>
+        <span class="n">24.1</span>
         <div>
           <h3>Motion is causality</h3>
           <p>A transition’s job is to explain the state change it accompanies: the sheet rose <em>from the bottom</em> (so swipe it back down), the deleted row collapsed <em>into nothing</em>, the card expanded <em>into the detail screen</em>.</p>
@@ -2692,15 +2790,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">23.2</span>
+        <span class="n">24.2</span>
         <div>
           <h3>The 100ms contract</h3>
-          <p>Feedback and completion are different events. The press state, highlight, or haptic acknowledges the tap <em>now</em>; the result arrives whenever it arrives (22.5 handles the gap).</p>
+          <p>Feedback and completion are different events. The press state, highlight, or haptic acknowledges the tap <em>now</em>; the result arrives whenever it arrives (23.5 handles the gap).</p>
           <p class="apply">Every interactive element gets a visible pressed state — custom buttons included (Apple’s own “don’t”: a custom button with no press state reads as a broken screen). Acknowledge in &lt;100ms even when the work takes seconds (3.1).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">23.3</span>
+        <span class="n">24.3</span>
         <div>
           <h3>Duration scales with distance</h3>
           <p>Small elements snap (~100–200ms); full-screen surfaces take ~300–400ms; nothing in a daily-use flow should exceed that. Enters decelerate, exits accelerate — arrivals earn attention, departures get out of the way.</p>
@@ -2708,7 +2806,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">23.4</span>
+        <span class="n">24.4</span>
         <div>
           <h3>Haptics are a vocabulary, not a garnish</h3>
           <p>iOS defines meanings: notification (success/warning/error), impact (light→heavy), selection ticks. Android exposes equivalent haptic constants. Users learn these meanings across the whole OS — use them as defined.</p>
@@ -2716,7 +2814,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">23.5</span>
+        <span class="n">24.5</span>
         <div>
           <h3>One hero moment</h3>
           <p>Expressive motion is a budget, like novelty (2.3) and color (5.5). M3 Expressive says it outright: bounce and shape-morphing belong to one or two hero moments; everything utilitarian runs the standard scheme.</p>
@@ -2724,7 +2822,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">23.6</span>
+        <span class="n">24.6</span>
         <div>
           <h3>Motion is optional — still</h3>
           <p>Chapter 8.5 is law here too: Reduce Motion replaces movement with cross-fades, and no meaning may travel by motion alone.</p>
@@ -2732,7 +2830,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">23.7</span>
+        <span class="n">24.7</span>
         <div>
           <h3>Sound is a channel — the quietest one you have</h3>
           <p>Sound reaches users when their eyes are elsewhere, which is exactly why it must be spent like the accent color (5.5): message received, payment confirmed, timer done — moments that matter away from the screen.</p>
@@ -2743,10 +2841,10 @@
   </div>
 </section>
 
-<!-- ============ 24 ONBOARDING & FIRST-RUN ============ -->
+<!-- ============ 25 ONBOARDING & FIRST-RUN ============ -->
 <section id="onboarding">
   <div class="sec-head reveal">
-    <div class="sec-num">24</div>
+    <div class="sec-num">25</div>
     <h2>Onboarding &amp; First-Run</h2>
     <p class="kicker">Most apps die in the first session — design the first five minutes hardest</p>
   </div>
@@ -2789,7 +2887,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">24.1</span>
+        <span class="n">25.1</span>
         <div>
           <h3>Name the aha moment, then shorten the road</h3>
           <p>Every product has one event after which people tend to stay — the first watering logged, the first message answered, the first file synced. That event, not the install, is what onboarding delivers.</p>
@@ -2797,31 +2895,31 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">24.2</span>
+        <span class="n">25.2</span>
         <div>
           <h3>Value before identity</h3>
-          <p>A sign-up wall before any value is the app demanding trust it hasn’t earned (28 ✕). Let people taste the product anonymously wherever the architecture allows.</p>
-          <p class="apply">Ask for the account when it protects something of <em>theirs</em> — their plants, their history, their sync — and say so in the ask: “Create an account to keep your garden safe.” Offer the platform’s one-tap sign-in so the toll is one tap, not a form (20.1).</p>
+          <p>A sign-up wall before any value is the app demanding trust it hasn’t earned (29 ✕). Let people taste the product anonymously wherever the architecture allows.</p>
+          <p class="apply">Ask for the account when it protects something of <em>theirs</em> — their plants, their history, their sync — and say so in the ask: “Create an account to keep your garden safe.” Offer the platform’s one-tap sign-in so the toll is one tap, not a form (21.1).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">24.3</span>
+        <span class="n">25.3</span>
         <div>
           <h3>Teach by doing, not by carousel</h3>
           <p>Three-swipe intro tours are skipped by the users who need them and forgotten by the ones who read them. Instruction that arrives before the situation it explains is noise.</p>
-          <p class="apply">The first-run empty state is the real syllabus (22.1): it says what belongs here and hands over the first action. Contextual hints appear at first contact with a feature — once, dismissible, never again (3.10).</p>
+          <p class="apply">The first-run empty state is the real syllabus (23.1): it says what belongs here and hands over the first action. Contextual hints appear at first contact with a feature — once, dismissible, never again (3.10).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">24.4</span>
+        <span class="n">25.4</span>
         <div>
           <h3>One permission, one moment, one reason</h3>
           <p>A cold-launch stack of system dialogs is answered <em>no</em> in self-defense — and iOS gives you exactly one shot at each. The system dialog is the contract; your priming screen is the pitch.</p>
-          <p class="apply">Ask at the moment the feature needs it, primed with the user’s own context: “Want a nudge when Monstera is thirsty?” (31.6). If they decline the pitch, don’t burn the system dialog — leave the door open in settings.</p>
+          <p class="apply">Ask at the moment the feature needs it, primed with the user’s own context: “Want a nudge when Monstera is thirsty?” (32.6). If they decline the pitch, don’t burn the system dialog — leave the door open in settings.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">24.5</span>
+        <span class="n">25.5</span>
         <div>
           <h3>Disclose power progressively</h3>
           <p>Advanced features shown on day one are clutter; the same features surfaced at the moment of relevance are delight (2.2, 7.1).</p>
@@ -2829,7 +2927,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">24.6</span>
+        <span class="n">25.6</span>
         <div>
           <h3>Returning is also a first run</h3>
           <p>Reinstalls, new phones, and second devices outnumber true first-times for mature products — and nothing insults a returning user like a welcome tour.</p>
@@ -2840,15 +2938,15 @@
   </div>
 </section>
 
-<!-- ============ 25 NOTIFICATIONS & INTERRUPTIONS ============ -->
+<!-- ============ 26 NOTIFICATIONS & INTERRUPTIONS ============ -->
 <section id="notifications">
   <div class="sec-head reveal">
-    <div class="sec-num">25</div>
+    <div class="sec-num">26</div>
     <h2>Notifications &amp; Interruptions</h2>
     <p class="kicker">Permission to interrupt is a loan — every pointless push is a missed repayment</p>
   </div>
   <div class="sec-body reveal">
-    <p>A notification reaches through someone’s day, past their attention, into their pocket. That access was granted once (24.4) and is silently revoked in the settings you’ll never see. The design question is never “can we send this?” — it’s “would the user have asked for this?”</p>
+    <p>A notification reaches through someone’s day, past their attention, into their pocket. That access was granted once (25.4) and is silently revoked in the settings you’ll never see. The design question is never “can we send this?” — it’s “would the user have asked for this?”</p>
 
     <div class="dia" style="margin-top:2rem">
       <svg viewBox="0 0 360 158" width="360" role="img" aria-label="Decision tree: is the event about this user right now? If no, in-app feed. If yes, is it worth an interruption? If no, silent or summary. If yes, send an actionable deep-linked push">
@@ -2883,7 +2981,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">25.1</span>
+        <span class="n">26.1</span>
         <div>
           <h3>The trust economy</h3>
           <p>Users don’t complain about bad notifications — they mute the channel, bury the app, or delete it. Each pointless push spends permission you cannot buy back with a good one.</p>
@@ -2891,7 +2989,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">25.2</span>
+        <span class="n">26.2</span>
         <div>
           <h3>The bar: theirs, timely, actionable</h3>
           <p>“Monstera is thirsty” clears it: about <em>their</em> plant, on the right day, fixable in one tap. “We miss you! 🌱” fails all three — it’s about the app’s retention curve, not the user’s life.</p>
@@ -2899,7 +2997,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">25.3</span>
+        <span class="n">26.3</span>
         <div>
           <h3>Channels and levels are the user’s volume knob</h3>
           <p>Android notification channels let users tune each type independently; iOS interruption levels (passive → active → time-sensitive → critical) decide what pierces Focus modes. Both work only if you classify honestly.</p>
@@ -2907,7 +3005,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">25.4</span>
+        <span class="n">26.4</span>
         <div>
           <h3>Group, summarize, respect the pile</h3>
           <p>Five likes are one event, not five interruptions. Both platforms thread and group; iOS adds scheduled summaries for the merely-interesting.</p>
@@ -2915,15 +3013,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">25.5</span>
+        <span class="n">26.5</span>
         <div>
           <h3>Actionable at the edge</h3>
           <p>A notification is a miniature UI: with actions attached, the task completes without ever opening the app — which is the highest compliment a notification can pay.</p>
-          <p class="apply">“Mark watered” and “Snooze” ride on Sprout’s push; reply rides on a message. When the user does tap through, deep-link to the exact screen with back behaving correctly (13.6) — landing on a home screen after a specific push is a broken promise.</p>
+          <p class="apply">“Mark watered” and “Snooze” ride on Sprout’s push; reply rides on a message. When the user does tap through, deep-link to the exact screen with back behaving correctly (14.6) — landing on a home screen after a specific push is a broken promise.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">25.6</span>
+        <span class="n">26.6</span>
         <div>
           <h3>Badges must tell the truth</h3>
           <p>A badge is a count of things the user can actually resolve. A badge that won’t clear, counts marketing, or reads “1” forever trains the eye to ignore it — and the red dot’s power, once spent, is gone app-wide.</p>
@@ -2934,10 +3032,10 @@
   </div>
 </section>
 
-<!-- ============ 26 INTERNATIONALIZATION ============ -->
+<!-- ============ 27 INTERNATIONALIZATION ============ -->
 <section id="i18n">
   <div class="sec-head reveal">
-    <div class="sec-num">26</div>
+    <div class="sec-num">27</div>
     <h2>Internationalization</h2>
     <p class="kicker">A layout that only works in English isn’t finished — it’s untested</p>
   </div>
@@ -2964,7 +3062,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">26.1</span>
+        <span class="n">27.1</span>
         <div>
           <h3>Text expands — plan for +35%</h3>
           <p>German runs about a third longer than English; short strings can double; Finnish and Russian bring their own surprises. Every fixed-width label is a truncation waiting for a locale.</p>
@@ -2972,7 +3070,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">26.2</span>
+        <span class="n">27.2</span>
         <div>
           <h3>RTL mirrors the flow, not the world</h3>
           <p>In Arabic and Hebrew the reading direction reverses, and with it the layout: navigation chevrons, back gestures, progress bars, list alignments. But clocks, phone numbers, media-playback controls, and musical timelines stay put.</p>
@@ -2980,7 +3078,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">26.3</span>
+        <span class="n">27.3</span>
         <div>
           <h3>Formats are locale data, not style choices</h3>
           <p>03/04/2026 is March in one country and April in another; “1,500” differs by a factor of a thousand across a border. Dates, numbers, currency, units, name order, and week-start are all facts about the locale.</p>
@@ -2988,7 +3086,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">26.4</span>
+        <span class="n">27.4</span>
         <div>
           <h3>Never build sentences from parts</h3>
           <p>“You have ” + count + “ plants” breaks the moment a language changes word order or has three plural forms — and many do.</p>
@@ -2996,29 +3094,29 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">26.5</span>
+        <span class="n">27.5</span>
         <div>
           <h3>Culture rides along with color and symbol</h3>
           <p>Red is danger in one market and celebration in another; an owl is wisdom or ill omen; hand gestures are a minefield; idioms (“home run”, “slam dunk”) simply don’t travel.</p>
-          <p class="apply">Keep source copy idiom-free and concrete (21.2 helps), don’t let color alone carry meaning (8.4 — now for a second reason), and have market reviewers sanity-check imagery before a launch, not after the screenshots go viral.</p>
+          <p class="apply">Keep source copy idiom-free and concrete (22.2 helps), don’t let color alone carry meaning (8.4 — now for a second reason), and have market reviewers sanity-check imagery before a launch, not after the screenshots go viral.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">26.6</span>
+        <span class="n">27.6</span>
         <div>
           <h3>Pseudo-localize before you translate</h3>
           <p>One build with elongated accented strings (“Àððð þļåñţ~~~”) and forced RTL finds the truncations, clippings, and concatenations before a single translator is paid.</p>
-          <p class="apply">Run pseudo-localization as part of the screen audit (ch. 30) for any app going multilingual. And remember language ≠ region: a user can want English with metric units and euros — respect the system’s separate settings, and never guess locale from IP.</p>
+          <p class="apply">Run pseudo-localization as part of the screen audit (ch. 31) for any app going multilingual. And remember language ≠ region: a user can want English with metric units and euros — respect the system’s separate settings, and never guess locale from IP.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 27 AI INTERFACE PATTERNS ============ -->
+<!-- ============ 28 AI INTERFACE PATTERNS ============ -->
 <section id="ai">
   <div class="sec-head reveal">
-    <div class="sec-num">27</div>
+    <div class="sec-num">28</div>
     <h2>AI Interface Patterns</h2>
     <p class="kicker">Probabilistic features need deterministic UX</p>
   </div>
@@ -3049,7 +3147,7 @@
 
     <div class="entries" style="margin-top:2.2rem">
       <div class="entry">
-        <span class="n">27.1</span>
+        <span class="n">28.1</span>
         <div>
           <h3>Autonomy is earned per action, not per model</h3>
           <p>How capable the model is doesn’t matter; how costly a mistake is does. A spelling fix can run autonomously; filing and tagging act with undo; an email is drafted; money only ever gets suggested.</p>
@@ -3057,15 +3155,15 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">27.2</span>
+        <span class="n">28.2</span>
         <div>
           <h3>Streaming is a loading state — design it</h3>
-          <p>Tokens arriving live beat a spinner (20’s ladder applies: generation usually lives in the 1–10s band), but streaming text is content that moves — the thing 22.3 forbids.</p>
+          <p>Tokens arriving live beat a spinner (20’s ladder applies: generation usually lives in the 1–10s band), but streaming text is content that moves — the thing 23.3 forbids.</p>
           <p class="apply">Reserve stable space for the response, keep actions pinned so nothing shifts under a poised finger, always show a Stop button, and cover pre-stream latency with a skeleton, not silence. When generation fails mid-stream, keep the partial and say so.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">27.3</span>
+        <span class="n">28.3</span>
         <div>
           <h3>Uncertainty is content, not fine print</h3>
           <p>Models state guesses in the grammar of facts. The interface has to restore the difference — because the user can’t hear the model’s confidence, only its tone.</p>
@@ -3073,7 +3171,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">27.4</span>
+        <span class="n">28.4</span>
         <div>
           <h3>Show the work, keep the receipt</h3>
           <p>When AI acts — renames, files, edits, replies — the user needs to see <em>what changed</em> and reverse it as one unit. Undo beats confirmation here more than anywhere (3.3), because confirmations would arrive constantly and get dismissed blindly.</p>
@@ -3081,7 +3179,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">27.5</span>
+        <span class="n">28.5</span>
         <div>
           <h3>Chat is the fallback, not the default</h3>
           <p>A blank prompt box is Hick’s law inverted — infinite options produce paralysis, then three-word prompts, then disappointment. Chat earns its place only where intent is genuinely open-ended.</p>
@@ -3089,11 +3187,11 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">27.6</span>
+        <span class="n">28.6</span>
         <div>
           <h3>Label the machine, own its mistakes</h3>
           <p>AI-generated content is labeled as such — not to cover the vendor, but because authorship is context users need. And when the model is wrong in your product, it’s your product that was wrong.</p>
-          <p class="apply">Mark generated content at the point of consumption, wire feedback controls to something real, and design the failure path with the same care as success (18.3): “I couldn’t tell from this photo — try one in daylight” beats a hallucinated diagnosis every single time.</p>
+          <p class="apply">Mark generated content at the point of consumption, wire feedback controls to something real, and design the failure path with the same care as success (19.3): “I couldn’t tell from this photo — try one in daylight” beats a hallucinated diagnosis every single time.</p>
         </div>
       </div>
     </div>
@@ -3104,14 +3202,14 @@
   <span class="roman">V</span>
   <div>
     <h2>Judgment</h2>
-    <p>What to avoid, what to weigh, how to check · ch. 28–31</p>
+    <p>What to avoid, what to weigh, how to check · ch. 29–32</p>
   </div>
 </div>
 
-<!-- ============ 28 ANTI-PATTERNS ============ -->
+<!-- ============ 29 ANTI-PATTERNS ============ -->
 <section id="antipatterns">
   <div class="sec-head reveal">
-    <div class="sec-num">28</div>
+    <div class="sec-num">29</div>
     <h2>What Not To Do</h2>
     <p class="kicker">Universal sins, plus the don’ts Apple and Google spell out themselves</p>
   </div>
@@ -3151,10 +3249,10 @@
   </div>
 </section>
 
-<!-- ============ 29 TRADE-OFFS ============ -->
+<!-- ============ 30 TRADE-OFFS ============ -->
 <section id="tradeoffs">
   <div class="sec-head reveal">
-    <div class="sec-num">29</div>
+    <div class="sec-num">30</div>
     <h2>The Honest Trade-offs</h2>
     <p class="kicker">Where the pin sits by default — and what moves it</p>
   </div>
@@ -3193,10 +3291,10 @@
   </div>
 </section>
 
-<!-- ============ 30 CHECKLIST ============ -->
+<!-- ============ 31 CHECKLIST ============ -->
 <section id="checklist">
   <div class="sec-head reveal">
-    <div class="sec-num">30</div>
+    <div class="sec-num">31</div>
     <h2>The Screen Audit</h2>
     <p class="kicker">Run any screen through these twelve — click to check off</p>
   </div>
@@ -3218,10 +3316,10 @@
   </div>
 </section>
 
-<!-- ============ 31 WORKED EXAMPLE ============ -->
+<!-- ============ 32 WORKED EXAMPLE ============ -->
 <section id="example">
   <div class="sec-head reveal">
-    <div class="sec-num">31</div>
+    <div class="sec-num">32</div>
     <h2>A Worked Example</h2>
     <p class="kicker">The whole manual, run once — “Sprout,” a plant-care tracker, from idea to two dialects</p>
   </div>
@@ -3230,7 +3328,7 @@
 
     <div class="entries" style="margin-top:1.5rem">
       <div class="entry">
-        <span class="n">31.1</span>
+        <span class="n">32.1</span>
         <div>
           <h3>Frame it <span style="color:var(--ink-faint)">— runs 9.1</span></h3>
           <p>“For apartment plant owners who forget care schedules, Sprout tracks watering and feeding — and it is brilliant at answering <em>what needs me today?</em>”</p>
@@ -3239,7 +3337,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">31.2</span>
+        <span class="n">32.2</span>
         <div>
           <h3>Map the flows <span style="color:var(--ink-faint)">— runs 9.2</span></h3>
           <p>Three journeys: the daily loop (check &amp; mark done), setup (add a plant), and the occasional rescue (diagnose a sad plant). The daily loop is the 80% flow, so it gets the step budget.</p>
@@ -3264,7 +3362,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">31.3</span>
+        <span class="n">32.3</span>
         <div>
           <h3>Choose the IA <span style="color:var(--ink-faint)">— runs 9.3</span></h3>
           <p>Three peer destinations, each one word: <b>Today</b> (the loop), <b>Plants</b> (the collection), <b>Learn</b> (the rescue guides). Tab/nav-bar model on both platforms.</p>
@@ -3273,7 +3371,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">31.4</span>
+        <span class="n">32.4</span>
         <div>
           <h3>Wireframe the core loop <span style="color:var(--ink-faint)">— runs 9.4</span></h3>
           <p>One grayscale, platform-neutral pass with real content — real plant names, real task verbs.</p>
@@ -3304,10 +3402,10 @@
       </div>
 
       <div class="entry">
-        <span class="n">31.5</span>
+        <span class="n">32.5</span>
         <div>
           <h3>Split into dialects <span style="color:var(--ink-faint)">— runs 9.5</span></h3>
-          <p>Same core — same three rows, same words, same reading order — expressed twice. Every visible difference below is a chapter 12 table row, not a whim.</p>
+          <p>Same core — same three rows, same words, same reading order — expressed twice. Every visible difference below is a chapter 13 table row, not a whim.</p>
           <div class="plat-figs">
             <div class="plat-fig">
               <svg viewBox="0 0 190 380" width="190" role="img" aria-label="Sprout on iOS: large title Today, inset grouped task list with tinted check circles, toolbar plus button, floating Liquid Glass tab bar">
@@ -3387,7 +3485,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">31.6</span>
+        <span class="n">32.6</span>
         <div>
           <h3>Design the edges <span style="color:var(--ink-faint)">— runs 9.6</span></h3>
           <p>The two edge states that matter most here: the <em>success-empty</em> state (all plants tended — Today’s most common state in a healthy habit) and the notification permission ask.</p>
@@ -3396,10 +3494,10 @@
       </div>
 
       <div class="entry">
-        <span class="n">31.7</span>
+        <span class="n">32.7</span>
         <div>
           <h3>Audit &amp; iterate <span style="color:var(--ink-faint)">— runs 9.7</span></h3>
-          <p>Running the chapter 30 checklist against the mockups caught three real issues before any polish was spent.</p>
+          <p>Running the chapter 31 checklist against the mockups caught three real issues before any polish was spent.</p>
           <p class="apply">① “Delete plant” initially sat as a swipe action on Today rows — destructive within thumb reach of the daily tap; moved into the plant detail screen behind a confirm. ② Check circles were 32pt — below target; hit areas padded to 44/48 while glyphs stayed small. ③ The empty state failed the 5-second test (a blank list reads as “broken”) and gained its celebratory copy. Then back to 9.4 with the findings.</p>
         </div>
       </div>
@@ -3421,15 +3519,15 @@
     <div class="entries">
       <div class="entry"><span class="n">A.1</span><div><h3><a href="https://developer.apple.com/design/human-interface-guidelines/">Apple Human Interface Guidelines</a></h3><p>The iOS dialect’s constitution — components, patterns, Liquid Glass, and Apple’s own don’ts. Chapters 11, 15, and 26 lean on it heavily.</p></div></div>
       <div class="entry"><span class="n">A.2</span><div><h3><a href="https://m3.material.io/">Material Design 3</a></h3><p>The Android dialect — color roles, type scale, components, motion physics, and M3 Expressive guidance.</p></div></div>
-      <div class="entry"><span class="n">A.3</span><div><h3><a href="https://developer.android.com/design/ui">Android UI design hub</a></h3><p>Predictive back, window size classes, canonical layouts, and the adaptive guidance behind chapter 14.</p></div></div>
+      <div class="entry"><span class="n">A.3</span><div><h3><a href="https://developer.android.com/design/ui">Android UI design hub</a></h3><p>Predictive back, window size classes, canonical layouts, and the adaptive guidance behind chapter 15.</p></div></div>
       <div class="entry"><span class="n">A.4</span><div><h3><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a></h3><p>The contrast ratios, target sizes, and success criteria that chapter 8 turns into working rules.</p></div></div>
     </div>
 
     <div class="subhead">Research &amp; heuristics</div>
     <div class="entries">
-      <div class="entry"><span class="n">A.5</span><div><h3><a href="https://www.nngroup.com/">Nielsen Norman Group</a></h3><p>The ten heuristics (ch. 03), the five-user argument (ch. 11), and decades of pattern research with receipts.</p></div></div>
-      <div class="entry"><span class="n">A.6</span><div><h3><a href="https://www.nngroup.com/articles/design-pattern-guidelines/">NN/g Design-Pattern Guidelines</a></h3><p>An index into NN/g’s component-level research — checkboxes vs. radio buttons, menus, breadcrumbs, tooltips. The source behind 20.7’s control-selection rule; go here for the pattern this manual didn’t have room to cover.</p></div></div>
-      <div class="entry"><span class="n">A.7</span><div><h3><a href="https://www.nngroup.com/articles/tone-of-voice-dimensions/">NN/g — The Four Dimensions of Tone of Voice</a></h3><p>Formal↔casual, serious↔funny, respectful↔irreverent, matter-of-fact↔enthusiastic. The model behind 21.6–21.7.</p></div></div>
+      <div class="entry"><span class="n">A.5</span><div><h3><a href="https://www.nngroup.com/">Nielsen Norman Group</a></h3><p>The ten heuristics (ch. 03), the five-user argument (ch. 12), and decades of pattern research with receipts.</p></div></div>
+      <div class="entry"><span class="n">A.6</span><div><h3><a href="https://www.nngroup.com/articles/design-pattern-guidelines/">NN/g Design-Pattern Guidelines</a></h3><p>An index into NN/g’s component-level research — checkboxes vs. radio buttons, menus, breadcrumbs, tooltips. The source behind 21.7’s control-selection rule; go here for the pattern this manual didn’t have room to cover.</p></div></div>
+      <div class="entry"><span class="n">A.7</span><div><h3><a href="https://www.nngroup.com/articles/tone-of-voice-dimensions/">NN/g — The Four Dimensions of Tone of Voice</a></h3><p>Formal↔casual, serious↔funny, respectful↔irreverent, matter-of-fact↔enthusiastic. The model behind 22.6–22.7.</p></div></div>
       <div class="entry"><span class="n">A.8</span><div><h3><a href="https://www.nngroup.com/articles/cards-component/">NN/g — Cards Have Two Sides</a></h3><p>Browsing vs. searching vs. comparing, and the eyetracking evidence behind it. The source behind 4.4.</p></div></div>
       <div class="entry"><span class="n">A.9</span><div><h3><a href="https://lawsofux.com/">Laws of UX</a></h3><p>Fitts, Hick, Jakob, Miller, Tesler, and the peak–end rule (ch. 02), each traced to its original study.</p></div></div>
     </div>

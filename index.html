@@ -745,11 +745,17 @@
       <li><a href="#notifications"><b>26</b>Notifications &amp; Interruptions</a></li>
       <li><a href="#i18n"><b>27</b>Internationalization</a></li>
       <li><a href="#ai"><b>28</b>AI Interface Patterns</a></li>
-      <li class="part-head">Part V — Judgment</li>
-      <li><a href="#antipatterns"><b>29</b>What Not To Do</a></li>
-      <li><a href="#tradeoffs"><b>30</b>The Honest Trade-offs</a></li>
-      <li><a href="#checklist"><b>31</b>The Screen Audit</a></li>
-      <li><a href="#example"><b>32</b>A Worked Example</a></li>
+      <li class="part-head">Part V — Visual Craft</li>
+      <li><a href="#typography"><b>29</b>Typography Systems</a></li>
+      <li><a href="#color"><b>30</b>Color Systems</a></li>
+      <li><a href="#elevation"><b>31</b>Elevation &amp; Depth</a></li>
+      <li><a href="#dataviz"><b>32</b>Data Visualization</a></li>
+      <li><a href="#illustration"><b>33</b>Illustration &amp; Empty-State Art</a></li>
+      <li class="part-head">Part VI — Judgment</li>
+      <li><a href="#antipatterns"><b>34</b>What Not To Do</a></li>
+      <li><a href="#tradeoffs"><b>35</b>The Honest Trade-offs</a></li>
+      <li><a href="#checklist"><b>36</b>The Screen Audit</a></li>
+      <li><a href="#example"><b>37</b>A Worked Example</a></li>
       <li><a href="#sources"><b>A</b>Sources &amp; Further Reading</a></li>
     </ol>
   </div>
@@ -1350,7 +1356,7 @@
     <p class="kicker">From app idea to shipped design — in order, no skipping</p>
   </div>
   <div class="sec-body reveal">
-    <p>Screens are the last thing you draw, not the first. This sequence front-loads the decisions that are expensive to change (what it is, how it’s organized) and defers the ones that are cheap (colors, corner radii). Chapter 32 runs the whole sequence on one app idea, end to end.</p>
+    <p>Screens are the last thing you draw, not the first. This sequence front-loads the decisions that are expensive to change (what it is, how it’s organized) and defers the ones that are cheap (colors, corner radii). Chapter 37 runs the whole sequence on one app idea, end to end.</p>
     <div class="entries">
       <div class="entry">
         <span class="n">9.1</span>
@@ -1417,7 +1423,7 @@
         <span class="n">9.7</span>
         <div>
           <h3>Audit, test, iterate</h3>
-          <p>Run the screen audit (ch. 31), the thumb map (ch. 07), and put it in front of real people.</p>
+          <p>Run the screen audit (ch. 36), the thumb map (ch. 07), and put it in front of real people.</p>
           <p class="apply">Five users surface most usability problems — test the wireframe, not the polished mockup, so findings are cheap to act on. Then loop back to 9.4.</p>
         </div>
       </div>
@@ -1562,7 +1568,7 @@
         <h3>Reason a decision</h3>
         <p>“Should we do X or Y?” — a principle question in disguise.</p>
         <ol>
-          <li>Name the trade-off axis it sits on (ch. 30)</li>
+          <li>Name the trade-off axis it sits on (ch. 35)</li>
           <li>Find the governing law or heuristic</li>
           <li>Check three best-in-class apps — Jakob’s law sets expectations</li>
           <li>Decide, and write the reasoning down</li>
@@ -1850,7 +1856,7 @@
         <div>
           <h3>Back is sacred — and means different things</h3>
           <p>Android has <em>one universal back</em>: a system gesture that works everywhere, now with a predictive preview of where it lands. iOS has <em>contextual backs</em>: edge-swipe and chevron on stacks, swipe-down on sheets — each surface carries its own exit.</p>
-          <p class="apply">Never intercept, repurpose, or “are you sure?” the back gesture; guard unsaved work at the moment of loss, not the moment of leaving. On Android, support predictive back rather than fighting it; on iOS, every modal needs a visible dismiss <em>and</em> the gesture (29 ✕).</p>
+          <p class="apply">Never intercept, repurpose, or “are you sure?” the back gesture; guard unsaved work at the moment of loss, not the moment of leaving. On Android, support predictive back rather than fighting it; on iOS, every modal needs a visible dismiss <em>and</em> the gesture (34 ✕).</p>
         </div>
       </div>
       <div class="entry">
@@ -1866,7 +1872,7 @@
         <div>
           <h3>Modality is a promise</h3>
           <p>A push says “you’re traveling deeper.” A modal says “brief detour — you’ll return to exactly where you were.” Breaking that promise (modals that navigate away, sheets hiding whole hierarchies) breaks the user’s map.</p>
-          <p class="apply">Modal for scoped tasks with a clear end — compose, edit, pick, pay. Push for browsing. A modal whose internal stack runs more than two screens deep wanted to be a push (29 ✕: app-within-app).</p>
+          <p class="apply">Modal for scoped tasks with a clear end — compose, edit, pick, pay. Push for browsing. A modal whose internal stack runs more than two screens deep wanted to be a push (34 ✕: app-within-app).</p>
         </div>
       </div>
       <div class="entry">
@@ -1882,7 +1888,7 @@
         <div>
           <h3>Don’t invent navigation</h3>
           <p>Radial menus, gesture-only spatial canvases, hamburger-hidden everything: novel navigation spends the entire novelty budget (2.3) on the one thing users need to be boring.</p>
-          <p class="apply">Users learned tabs, stacks, and sheets from every other app on their phone. Spend creativity inside the rooms — never on the corridors between them. If the product’s differentiation genuinely <em>is</em> navigation (maps, canvases, games), that’s a deliberate ch. 30 trade, made with eyes open.</p>
+          <p class="apply">Users learned tabs, stacks, and sheets from every other app on their phone. Spend creativity inside the rooms — never on the corridors between them. If the product’s differentiation genuinely <em>is</em> navigation (maps, canvases, games), that’s a deliberate ch. 35 trade, made with eyes open.</p>
         </div>
       </div>
       <div class="entry">
@@ -2062,7 +2068,7 @@
         <span class="n">16.2</span>
         <div>
           <h3>Icons label, or icons lie</h3>
-          <p>Perhaps a dozen symbols are truly universal — search, back, share, settings, play. Everything else is a guess the user makes on your behalf (29 ✕: mystery meat).</p>
+          <p>Perhaps a dozen symbols are truly universal — search, back, share, settings, play. Everything else is a guess the user makes on your behalf (34 ✕: mystery meat).</p>
           <p class="apply">Pair icons with text labels in tab bars and nav bars, always. An icon-only toolbar is acceptable only when every glyph is in the universal dozen — and even then, accessibility labels are non-negotiable (8.3).</p>
         </div>
       </div>
@@ -2205,7 +2211,7 @@
         <div>
           <h3>One codebase means one dialect</h3>
           <p>Compose Multiplatform renders Material on iPhones; Flutter renders Flutter everywhere. Write-once UI buys speed by giving every user the same dialect — which is precisely what chapter 13 spends itself avoiding.</p>
-          <p class="apply">A legitimate trade for tools, prototypes, and brand-heavy apps where the product <em>is</em> the interface everywhere. Make it as a decision (ch. 30), not as a default — and know Jakob’s law bills iOS users for Material controls either way.</p>
+          <p class="apply">A legitimate trade for tools, prototypes, and brand-heavy apps where the product <em>is</em> the interface everywhere. Make it as a decision (ch. 35), not as a default — and know Jakob’s law bills iOS users for Material controls either way.</p>
         </div>
       </div>
     </div>
@@ -2385,7 +2391,7 @@
         <div>
           <h3>Every setting is a decision you refused to make</h3>
           <p>A preference toggle is the design team outsourcing a choice to thousands of people less equipped to make it. Some settings are legitimate — accessibility, notification volume, genuinely divergent contexts. Most are surrender.</p>
-          <p class="apply">Before adding a setting, exhaust the alternatives: a better default (21.6), smart detection, or simply deciding. When one survives, organize by user goal (“Notifications”, “Privacy”), never by engineering module — and let the app follow the system (theme, text size) instead of duplicating OS settings inside it (29 ✕).</p>
+          <p class="apply">Before adding a setting, exhaust the alternatives: a better default (21.6), smart detection, or simply deciding. When one survives, organize by user goal (“Notifications”, “Privacy”), never by engineering module — and let the app follow the system (theme, text size) instead of duplicating OS settings inside it (34 ✕).</p>
         </div>
       </div>
       <div class="entry">
@@ -2393,7 +2399,7 @@
         <div>
           <h3>Privacy is a design decision, not a legal one</h3>
           <p>Consent is a moment the user actually experiences, not a checkbox legal signed off on. Treated as a system-level default — like tokens (ch. 20) or settings (19.6) — it stays consistent instead of being reinvented, and re-weakened, screen by screen.</p>
-          <p class="apply">Ask for data at the point of use, not at install (25.2); state what it’s for in the same sentence as the ask; default every optional collection to off. One honest permission screen beats a privacy policy nobody reads — and “Ask App Not to Track” worded as a trap is the dark-pattern line this manual already refuses to cross (29 ✕).</p>
+          <p class="apply">Ask for data at the point of use, not at install (25.2); state what it’s for in the same sentence as the ask; default every optional collection to off. One honest permission screen beats a privacy policy nobody reads — and “Ask App Not to Track” worded as a trap is the dark-pattern line this manual already refuses to cross (34 ✕).</p>
         </div>
       </div>
     </div>
@@ -2529,7 +2535,7 @@
         <div>
           <h3>Validate at the right moment</h3>
           <p>Keystroke validation yells at half-typed input; submit-only validation ambushes at the end. Neither is a conversation.</p>
-          <p class="apply">Format checks on blur, cross-field checks on submit, and quiet positive ticks on hard fields (IBAN, password rules). Keep submit enabled — let the tap point precisely at what’s missing rather than leaving a dead button to decode (29 ✕).</p>
+          <p class="apply">Format checks on blur, cross-field checks on submit, and quiet positive ticks on hard fields (IBAN, password rules). Keep submit enabled — let the tap point precisely at what’s missing rather than leaving a dead button to decode (34 ✕).</p>
         </div>
       </div>
       <div class="entry">
@@ -2615,7 +2621,7 @@
         <span class="n">22.4</span>
         <div>
           <h3>Empty states teach</h3>
-          <p>The first-run empty screen is the onboarding most users actually read. A blank list reads as broken (32.7 learned this the hard way).</p>
+          <p>The first-run empty screen is the onboarding most users actually read. A blank list reads as broken (37.7 learned this the hard way).</p>
           <p class="apply">Say what will live here and hand over the first action: “Your plants will appear here — add your first one.” Success-empty states celebrate instead: “All watered — see you Thursday.”</p>
         </div>
       </div>
@@ -2751,7 +2757,7 @@
         <div>
           <h3>Optimistic UI, honest rollback</h3>
           <p>For actions that almost always succeed — like, rename, mark watered — act as if they succeeded instantly and reconcile in the background. Waiting for the server to permit a heart animation is borrowed sluggishness.</p>
-          <p class="apply">Sprout marks a plant watered on tap (32.5): instant tick, haptic, snackbar-undo on Android. On failure, revert visibly and say why. Reserve blocking, pessimistic waits for money and destruction — exactly where optimism would lie.</p>
+          <p class="apply">Sprout marks a plant watered on tap (37.5): instant tick, haptic, snackbar-undo on Android. On failure, revert visibly and say why. Reserve blocking, pessimistic waits for money and destruction — exactly where optimism would lie.</p>
         </div>
       </div>
       <div class="entry">
@@ -2914,7 +2920,7 @@
         <span class="n">25.2</span>
         <div>
           <h3>Value before identity</h3>
-          <p>A sign-up wall before any value is the app demanding trust it hasn’t earned (29 ✕). Let people taste the product anonymously wherever the architecture allows.</p>
+          <p>A sign-up wall before any value is the app demanding trust it hasn’t earned (34 ✕). Let people taste the product anonymously wherever the architecture allows.</p>
           <p class="apply">Ask for the account when it protects something of <em>theirs</em> — their plants, their history, their sync — and say so in the ask: “Create an account to keep your garden safe.” Offer the platform’s one-tap sign-in so the toll is one tap, not a form (21.1).</p>
         </div>
       </div>
@@ -2931,7 +2937,7 @@
         <div>
           <h3>One permission, one moment, one reason</h3>
           <p>A cold-launch stack of system dialogs is answered <em>no</em> in self-defense — and iOS gives you exactly one shot at each. The system dialog is the contract; your priming screen is the pitch.</p>
-          <p class="apply">Ask at the moment the feature needs it, primed with the user’s own context: “Want a nudge when Monstera is thirsty?” (32.6). If they decline the pitch, don’t burn the system dialog — leave the door open in settings.</p>
+          <p class="apply">Ask at the moment the feature needs it, primed with the user’s own context: “Want a nudge when Monstera is thirsty?” (37.6). If they decline the pitch, don’t burn the system dialog — leave the door open in settings.</p>
         </div>
       </div>
       <div class="entry">
@@ -3122,7 +3128,7 @@
         <div>
           <h3>Pseudo-localize before you translate</h3>
           <p>One build with elongated accented strings (“Àððð þļåñţ~~~”) and forced RTL finds the truncations, clippings, and concatenations before a single translator is paid.</p>
-          <p class="apply">Run pseudo-localization as part of the screen audit (ch. 31) for any app going multilingual. And remember language ≠ region: a user can want English with metric units and euros — respect the system’s separate settings, and never guess locale from IP.</p>
+          <p class="apply">Run pseudo-localization as part of the screen audit (ch. 36) for any app going multilingual. And remember language ≠ region: a user can want English with metric units and euros — respect the system’s separate settings, and never guess locale from IP.</p>
         </div>
       </div>
     </div>
@@ -3217,15 +3223,437 @@
 <div class="part" id="part-5">
   <span class="roman">V</span>
   <div>
-    <h2>Judgment</h2>
-    <p>What to avoid, what to weigh, how to check · ch. 29–32</p>
+    <h2>Visual Craft</h2>
+    <p>Type, color, depth, data, and image — the layer under the interaction · ch. 29–33</p>
   </div>
 </div>
 
-<!-- ============ 29 ANTI-PATTERNS ============ -->
-<section id="antipatterns">
+<!-- ============ 29 TYPOGRAPHY SYSTEMS ============ -->
+<section id="typography">
   <div class="sec-head reveal">
     <div class="sec-num">29</div>
+    <h2>Typography Systems</h2>
+    <p class="kicker">A type system is a set of decisions, made once — not a font picked per screen</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Every chapter up to here has treated type sizes as a given — “Body 17pt,” “Headline L 32sp.” This chapter is where those numbers come from: not chosen per screen, but derived once from a display face, a body face, and a ratio, the same way ch. 06 derives spacing from one baseline unit.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 140" width="360" role="img" aria-label="A modular type scale: each size is the previous size multiplied by a fixed ratio, producing a geometric ladder from caption up to display">
+        <line x1="16" y1="128" x2="344" y2="128" stroke="var(--rule)" stroke-width="1"/>
+        <text x="16" y="20" font-family="-apple-system, Helvetica, sans-serif" font-weight="800" font-size="26" fill="var(--ink)">Display</text>
+        <text x="16" y="46" font-family="-apple-system, Helvetica, sans-serif" font-weight="700" font-size="20" fill="var(--ink)">Headline</text>
+        <text x="16" y="68" font-family="-apple-system, Helvetica, sans-serif" font-weight="600" font-size="16" fill="var(--ink-soft)">Title</text>
+        <text x="16" y="86" font-family="-apple-system, Helvetica, sans-serif" font-size="13" fill="var(--ink-soft)">Body</text>
+        <text x="16" y="100" font-family="-apple-system, Helvetica, sans-serif" font-size="10.5" fill="var(--ink-faint)">Caption</text>
+        <text x="240" y="20" font-family="Menlo, monospace" font-size="8" fill="var(--signal)">26pt</text>
+        <text x="240" y="46" font-family="Menlo, monospace" font-size="8" fill="var(--signal)">20pt</text>
+        <text x="240" y="68" font-family="Menlo, monospace" font-size="8" fill="var(--signal)">16pt</text>
+        <text x="240" y="86" font-family="Menlo, monospace" font-size="8" fill="var(--signal)">13pt</text>
+        <text x="240" y="100" font-family="Menlo, monospace" font-size="8" fill="var(--signal)">10.5pt</text>
+        <text x="16" y="120" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">EACH STEP × 1.25 — A MODULAR SCALE, NOT FIVE GUESSES</text>
+      </svg>
+      <div class="cap">One ratio, applied five times — the scale iOS and Material both ship as tokens (ch. 20)</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">29.1</span>
+        <div>
+          <h3>Two typefaces, one job each</h3>
+          <p>A display face carries character — the thing a reader notices before they read a word. A body face carries legibility — the thing they stop noticing the moment they start reading. One of each; a third only for code or data, and only as a monospace utility.</p>
+          <p class="apply">Pair by contrast, not similarity: a geometric or characterful display face against a quiet, high-legibility body face (SF Pro / Roboto and their peers exist precisely because they disappear at body sizes). Two display faces fighting for attention is 5.5’s accent budget spent twice.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">29.2</span>
+        <div>
+          <h3>The scale is a ratio, not a guess</h3>
+          <p>A modular scale multiplies one base size by a fixed ratio (1.125, 1.25, 1.333…) to generate every step. The platform scales already do this — it’s why Large Title and Body don’t feel arbitrary next to each other.</p>
+          <p class="apply">Pick one ratio for the whole product and derive every size from it. A 13px label next to a 15px label is the typographic version of grid ch. 06’s off-grid spacing — nobody can say why it’s wrong, but it reads as sloppy.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">29.3</span>
+        <div>
+          <h3>Line-height and measure are part of the size</h3>
+          <p>Line-height tightens as size grows (display type needs less breathing room per line) and loosens as size shrinks (small body text needs more). Measure — the line length — has its own ceiling regardless of container width.</p>
+          <p class="apply">Cap body measure around 45–75 characters; a paragraph stretched across a tablet’s full width is unreadable no matter how correct the font size is. This is the same discipline as ch. 06’s column-width cap, applied to text instead of layout.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">29.4</span>
+        <div>
+          <h3>Optical sizing is not vanity</h3>
+          <p>A typeface drawn for a headline and the same typeface drawn for a caption need different strokes — thin hairlines that look crisp at 34pt turn brittle at 11pt. Variable fonts expose this as an optical-size axis; SF Pro ships Display and Text opticals for the same reason.</p>
+          <p class="apply">Use the optical variant the platform provides rather than just scaling one master down. A caption rendered in the Display optical is the typographic equivalent of a blurry photo — technically the right content, visibly the wrong craft.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">29.5</span>
+        <div>
+          <h3>Dynamic Type is where the system gets tested</h3>
+          <p>Chapter 8 covers text scaling as an accessibility requirement; this is the same mechanism viewed as a craft problem. At the largest accessibility sizes, does Headline still read as bigger than Title? Does the ratio survive, or does everything collapse toward the same size?</p>
+          <p class="apply">Test the type scale at maximum Dynamic Type / font scale before calling it done — a hierarchy that only works at the default size was never really a hierarchy, just a snapshot of one.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">29.6</span>
+        <div>
+          <h3>Tracking is a small, specific tool</h3>
+          <p>Letter-spacing earns its keep in exactly two places: tightened slightly on large display type (big letters have proportionally more space between them), and opened slightly on small caps or all-caps labels (which otherwise clump).</p>
+          <p class="apply">Never touch body text tracking — it’s tuned by the type designer for exactly the size it ships at. If body text “feels off,” the fix is almost always the size or the face, not the spacing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 30 COLOR SYSTEMS ============ -->
+<section id="color">
+  <div class="sec-head reveal">
+    <div class="sec-num">30</div>
+    <h2>Color Systems</h2>
+    <p class="kicker">One brand hue becomes a system — tints, roles, and a dark-mode twin</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Chapter 20 says color lives behind roles, never hex values. This chapter is how those roles get their values in the first place — derived from one seed color into a full ramp, not ten unrelated swatches picked to “look nice together.”</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 130" width="360" role="img" aria-label="One seed hue expands into a ten-step tonal ramp from light to dark, then specific steps are mapped to semantic roles: primary, on-primary, primary-container, on-primary-container">
+        <g>
+          <rect x="10" y="16" width="28" height="28" rx="4" fill="#e8f6ff"/>
+          <rect x="40" y="16" width="28" height="28" rx="4" fill="#c3e9ff"/>
+          <rect x="70" y="16" width="28" height="28" rx="4" fill="#8fd6ff"/>
+          <rect x="100" y="16" width="28" height="28" rx="4" fill="#4cc2ff"/>
+          <rect x="130" y="16" width="28" height="28" rx="4" fill="#1a9bdc"/>
+          <rect x="160" y="16" width="28" height="28" rx="4" fill="#0d6ea3"/>
+          <rect x="190" y="16" width="28" height="28" rx="4" fill="#0a4e73"/>
+        </g>
+        <text x="10" y="58" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">ONE SEED HUE — TEN TONAL STEPS (LIGHT → DARK)</text>
+        <path d="M114,50 v14" stroke="var(--ink-faint)" stroke-width="1" stroke-dasharray="3 3"/>
+        <path d="M24,50 v14" stroke="var(--ink-faint)" stroke-width="1" stroke-dasharray="3 3"/>
+        <rect x="10" y="80" width="80" height="34" rx="6" fill="#4cc2ff"/>
+        <text x="50" y="94" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="#0c0e11">PRIMARY</text>
+        <text x="50" y="106" text-anchor="middle" font-family="Menlo, monospace" font-size="6.5" fill="#0c0e11">ON-PRIMARY: WHITE</text>
+        <rect x="98" y="80" width="90" height="34" rx="6" fill="#e8f6ff"/>
+        <text x="143" y="94" text-anchor="middle" font-family="Menlo, monospace" font-size="6.5" fill="#0a4e73">PRIMARY-CONTAINER</text>
+        <text x="143" y="106" text-anchor="middle" font-family="Menlo, monospace" font-size="6.5" fill="#0a4e73">ON-CONTAINER: STEP 9</text>
+      </svg>
+      <div class="cap">The ramp is derived once — every role after that is just “which step”</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">30.1</span>
+        <div>
+          <h3>Start from one seed, derive the rest</h3>
+          <p>A tonal ramp is one hue walked through a scale of lightness (and usually a little chroma correction, so mid-tones don’t look muddy) — ten-ish steps from near-white to near-black, all recognizably the same color.</p>
+          <p class="apply">Generate the ramp algorithmically (HSL lightness steps at minimum; HCT/OKLCH if the tooling supports it) rather than hand-picking swatches. Ten related steps read as a system; ten hand-picked colors read as a mood board.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">30.2</span>
+        <div>
+          <h3>Roles are just “which step”</h3>
+          <p>Once the ramp exists, every semantic role (ch. 20) is a pointer into it: <code>primary</code> might be step 5, <code>primaryContainer</code> step 9, <code>onPrimaryContainer</code> step 1. The system doesn’t invent new colors per role — it points at the ramp it already has.</p>
+          <p class="apply">Build one ramp per semantic hue (primary, secondary, tertiary, error) plus one neutral ramp for surfaces — five ramps, dozens of roles, zero hand-picked one-off colors.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">30.3</span>
+        <div>
+          <h3>Dark mode is a second derivation, not an inversion</h3>
+          <p>Flipping light-mode colors (white background → black, dark text → light) produces harsh, over-saturated results. Dark mode picks <em>different steps</em> of the same ramps — usually desaturated slightly, with elevation communicated by lighter surface steps rather than pure black.</p>
+          <p class="apply">Generate both appearances from the same ramps at build time, not by hand-tuning a parallel palette. If the ramp is right, dark mode is a lookup, not a redesign.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">30.4</span>
+        <div>
+          <h3>The accent budget, in ramp terms</h3>
+          <p>5.5 says the accent is spent like money; in a real ramp that usually means three or four steps actually ship: the default, a pressed/hover step one tone darker, a light container step, and its on-container text. The other six steps of the ramp exist for math, not for screens.</p>
+          <p class="apply">Audit a shipped screen for how many distinct accent steps appear — more than four is usually the color system leaking into decoration rather than signal.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">30.5</span>
+        <div>
+          <h3>60-30-10 as a first pass</h3>
+          <p>A rough starting distribution — 60% dominant neutral (background/surface), 30% secondary neutral (cards, dividers, secondary text), 10% accent — keeps a first draft from drowning in color before the roles are even finalized.</p>
+          <p class="apply">Treat the ratio as scaffolding, not a rule to defend later. Once real screens exist, let actual accent usage (5.5) — not a percentage — decide whether the balance is right.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">30.6</span>
+        <div>
+          <h3>Validate for real vision, not assumption</h3>
+          <p>Whether a color pairing is distinguishable to color-vision-deficient users is a computable fact, not a matter of taste — the same discipline data visualization uses to check categorical palettes (ch. 32) applies to any adjacent pair of role colors in the interface.</p>
+          <p class="apply">Check adjacent interactive colors (an active vs. inactive tab, a selected vs. unselected state) the same way — simulate or measure the contrast, don’t eyeball it once under good office lighting and call it done.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 31 ELEVATION & DEPTH ============ -->
+<section id="elevation">
+  <div class="sec-head reveal">
+    <div class="sec-num">31</div>
+    <h2>Elevation &amp; Depth</h2>
+    <p class="kicker">Shadows and blur are spatial claims — floating, resting, or receding</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>A shadow tells the eye something specific: this is closer to you, and probably more important or more interactive, than what it’s casting a shadow on. Figure/ground (4.6) is the perception principle; elevation is the system that applies it consistently instead of per-component guesswork.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 150" width="360" role="img" aria-label="Two elevation systems compared: tonal elevation using progressively lighter flat surfaces, and directional elevation using progressively larger drop shadows, at matching levels 0 2 and 4">
+        <text x="10" y="16" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">TONAL — LIGHTNESS STEPS, NO SHADOW</text>
+        <rect x="10" y="24" width="70" height="40" rx="6" fill="#14171c"/>
+        <text x="45" y="48" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">LEVEL 0</text>
+        <rect x="94" y="24" width="70" height="40" rx="6" fill="#1c2028"/>
+        <text x="129" y="48" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-soft)">LEVEL 2</text>
+        <rect x="178" y="24" width="70" height="40" rx="6" fill="#262b35"/>
+        <text x="213" y="48" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink)">LEVEL 4</text>
+        <text x="10" y="92" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">DIRECTIONAL — SAME FLAT SURFACE, GROWING SHADOW</text>
+        <rect x="10" y="100" width="70" height="40" rx="6" fill="#181b21"/>
+        <rect x="94" y="100" width="70" height="40" rx="6" fill="#181b21" filter="url(#sh1)"/>
+        <rect x="178" y="100" width="70" height="40" rx="6" fill="#181b21" filter="url(#sh2)"/>
+        <defs>
+          <filter id="sh1" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity=".5"/></filter>
+          <filter id="sh2" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000" flood-opacity=".55"/></filter>
+        </defs>
+      </svg>
+      <div class="cap">Two honest systems, same claim — pick one logic per platform, never mix them on one surface</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">31.1</span>
+        <div>
+          <h3>Elevation is hierarchy, not decoration</h3>
+          <p>A drop shadow on a static label is a lie — it claims the label floats above content it doesn’t actually interact with. Elevation should always answer a real question: is this element interactive, temporary, or above the normal reading plane?</p>
+          <p class="apply">Reserve elevation for things that earn it — floating actions, menus, dialogs, dragged items. A screen where every card casts a shadow has an elevation system that means nothing, because nothing is more elevated than anything else.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">31.2</span>
+        <div>
+          <h3>Two honest systems: tonal and directional</h3>
+          <p>Material’s <code>surfaceContainer</code> ladder signals elevation through lightness alone — no shadow, just a progressively brighter surface as you go “up.” iOS’s system uses directional shadow and blur, implying a light source from above. Both are internally consistent; mixing them on one surface isn’t.</p>
+          <p class="apply">Pick the logic that matches the platform dialect (ch. 13) and apply it everywhere — a tonal surface with a shadow bolted on reads as a mistake, not a hybrid style.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">31.3</span>
+        <div>
+          <h3>Build the scale, don’t invent per component</h3>
+          <p>A small fixed ladder — level 0, 1, 3, 6, 8, 12 (or whatever steps the platform ships) — reused everywhere is the elevation equivalent of ch. 06’s baseline unit: one decision, applied consistently, instead of a fresh shadow value invented for every new card.</p>
+          <p class="apply">Tokenize elevation exactly like color and spacing (ch. 20): <code>elevation.card</code>, <code>elevation.dialog</code>, <code>elevation.dragged</code> — never a raw shadow value typed inline.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">31.4</span>
+        <div>
+          <h3>Blur and glass are elevation’s newest dialect</h3>
+          <p>Liquid Glass and other frosted-material treatments (ch. 18) are a third elevation language — depth communicated by translucency and refraction rather than shadow or flat lightness. The content behind the glass still has to win the figure/ground contest (4.6); glass that fails contrast is elevation that fails its one job.</p>
+          <p class="apply">Test glass and blur materials over the busiest real content they’ll sit above, not a calm placeholder gradient — that’s where legibility actually breaks.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">31.5</span>
+        <div>
+          <h3>Z-index follows elevation, not the other way around</h3>
+          <p>Stacking order should be a direct consequence of the elevation token, not a separately hand-set number. When the two drift apart, a visually “lower” element can end up rendering on top of a “higher” one — a bug that looks like a design decision until someone traces it back.</p>
+          <p class="apply">Derive z-index from the elevation scale programmatically wherever the platform allows it, so the two can never silently disagree.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 32 DATA VISUALIZATION ============ -->
+<section id="dataviz">
+  <div class="sec-head reveal">
+    <div class="sec-num">32</div>
+    <h2>Data Visualization</h2>
+    <p class="kicker">A chart is read by people and executed by you — form first, color last</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Charts inside a product UI answer to the same hierarchy discipline (ch. 05) as everything else, plus a few rules specific to representing numbers honestly. Color comes last in this process — most bad charts pick color first and back into a form that fits it.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 130" width="360" role="img" aria-label="Choosing a chart form by the data's job: magnitude comparison uses bars, change over time uses lines, polarity uses a diverging bar, and a single important number uses a stat tile with no chart at all">
+        <g font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">
+          <text x="10" y="16">MAGNITUDE</text>
+          <text x="100" y="16">CHANGE OVER TIME</text>
+          <text x="220" y="16">POLARITY</text>
+          <text x="300" y="16">ONE NUMBER</text>
+        </g>
+        <g fill="var(--signal)">
+          <rect x="14" y="60" width="10" height="24"/><rect x="28" y="46" width="10" height="38"/><rect x="42" y="70" width="10" height="14"/>
+        </g>
+        <path d="M100,50 C120,70 140,34 160,58 S190,44 200,60" fill="none" stroke="var(--signal)" stroke-width="2"/>
+        <g>
+          <rect x="222" y="60" width="14" height="14" fill="var(--signal)"/>
+          <rect x="222" y="60" width="14" height="-20" fill="#e0724a"/>
+          <rect x="222" y="40" width="14" height="20" fill="#e0724a"/>
+          <line x1="216" y1="60" x2="252" y2="60" stroke="var(--ink-faint)" stroke-width="1"/>
+        </g>
+        <text x="290" y="72" font-family="-apple-system, Helvetica, sans-serif" font-size="22" font-weight="800" fill="var(--ink)">86%</text>
+        <text x="10" y="112" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">BARS · LINE · DIVERGING BAR · STAT TILE — CHOSEN BY THE JOB, NOT TASTE</text>
+      </svg>
+      <div class="cap">Pick the form from the data’s job; the “no chart” answer is valid and often correct</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">32.1</span>
+        <div>
+          <h3>Pick the form before the color</h3>
+          <p>The data’s job — magnitude, identity, polarity, change over time, or a single headline number — decides the chart type. Sometimes the honest answer isn’t a chart at all: one important number is a stat tile, not a bar chart with one bar.</p>
+          <p class="apply">Name the job in one word before opening a charting library. If no word fits cleanly, the data probably needs to be split into two charts, not forced into one clever one.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">32.2</span>
+        <div>
+          <h3>Color has exactly four jobs</h3>
+          <p><b>Categorical</b> (identity — fixed hue order, never cycled or reassigned when a filter changes the series count). <b>Sequential</b> (magnitude — one hue, light to dark). <b>Diverging</b> (polarity — two hues plus a neutral midpoint, never a hue sitting at zero). <b>Status</b> (state — reserved colors, never reused for “series 4”).</p>
+          <p class="apply">Decide which job a chart’s color is doing before picking a single hex value. A rainbow palette on a magnitude chart is a diverging palette borrowed for the wrong job — decorative, not encoding anything.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">32.3</span>
+        <div>
+          <h3>One axis, always</h3>
+          <p>A dual-axis chart — two y-scales sharing one plot — lets two unrelated numbers appear correlated by accident of scaling. It’s the single most common chart mistake, and it’s always fixable another way.</p>
+          <p class="apply">Two measures of different scale become two charts, small multiples, or one measure indexed to a common base (percent change from day one) — never a second y-axis.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">32.4</span>
+        <div>
+          <h3>Validate, don’t eyeball</h3>
+          <p>Whether a categorical palette is distinguishable to color-vision-deficient readers is computable — run it through a validator, don’t reason about it by feel (the same discipline color-role pairs deserve, ch. 30).</p>
+          <p class="apply">Check every adjacent color pair in a legend against a real contrast/CVD threshold before shipping. A palette that “looks fine” to full-color vision routinely fails for a meaningful share of readers.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">32.5</span>
+        <div>
+          <h3>Marks stay thin, labels stay selective</h3>
+          <p>Thin lines and bars, a legend present whenever there are two or more series (none needed for one — the title already names it), and direct labels on a few points, never every point.</p>
+          <p class="apply">Text wears text tokens, never the series color — values and labels stay in ink colors; the colored mark next to them is what carries identity. A number rendered IN the series color duplicates the encoding and usually fails contrast.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">32.6</span>
+        <div>
+          <h3>The hover layer isn’t optional</h3>
+          <p>A chart embedded in a product is interactive by default, not a static image — a crosshair-and-tooltip on line/area charts, a per-mark tooltip on bar/dot/cell charts. The only form that skips this is a bare stat tile with nothing to hover.</p>
+          <p class="apply">Make hit targets bigger than the visible mark (Fitts, 2.1) and put filters in one row above the chart, not scattered around it. A table-view fallback covers the case charts always miss: someone who can’t use the visual encoding at all.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 33 ILLUSTRATION & EMPTY-STATE ART ============ -->
+<section id="illustration">
+  <div class="sec-head reveal">
+    <div class="sec-num">33</div>
+    <h2>Illustration &amp; Empty-State Art</h2>
+    <p class="kicker">The style that isn’t UI at all — brand made visible where the interface goes quiet</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Chapter 16 covers icons — small, functional, system-provided vocabulary. Illustration is the opposite register: bigger, bespoke, carrying personality rather than function. Confusing the two produces either a cluttered toolbar or a sterile empty state.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 128" width="360" role="img" aria-label="Two illustration sets: one with consistent line weight and a palette drawn from the product tokens reading as one style, another mixing filled shapes, outlines, and off-palette colors reading as unrelated clip art">
+        <text x="10" y="16" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">CONSISTENT — ONE LINE WEIGHT, ON-PALETTE</text>
+        <g stroke="var(--signal)" stroke-width="2" fill="none">
+          <circle cx="34" cy="50" r="16"/>
+          <path d="M26,50 h16 M34,42 v16"/>
+        </g>
+        <g stroke="var(--signal)" stroke-width="2" fill="none">
+          <rect x="70" y="36" width="30" height="28" rx="6"/>
+          <path d="M78,50 h14"/>
+        </g>
+        <g stroke="var(--signal)" stroke-width="2" fill="none">
+          <path d="M124,64 l14,-26 14,26 z"/>
+        </g>
+        <text x="10" y="94" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">INCONSISTENT — MIXED WEIGHT, MIXED FILL, OFF-PALETTE</text>
+        <g>
+          <circle cx="34" cy="112" r="14" fill="#e0724a"/>
+        </g>
+        <g stroke="var(--ink-soft)" stroke-width="1">
+          <rect x="66" y="100" width="26" height="24" rx="3"/>
+        </g>
+        <g stroke="#7bd88f" stroke-width="3.5" fill="none">
+          <path d="M118,124 l12,-22 12,22 z"/>
+        </g>
+      </svg>
+      <div class="cap">Same three shapes — one reads as a set, one reads as three different downloads</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">33.1</span>
+        <div>
+          <h3>Illustration explains, icons label</h3>
+          <p>An icon is vocabulary — small, instantly recognizable, chosen from a system dictionary (ch. 16). Illustration is a scene — bigger, custom-drawn, built to carry a feeling a glyph can’t. Using illustration where an icon belongs clutters the interface; using an icon where illustration belongs under-serves the moment.</p>
+          <p class="apply">If it needs to be recognized in under a second at 24px, it’s an icon. If it has room to be looked at for a moment, it can be illustration.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">33.2</span>
+        <div>
+          <h3>One style, every time</h3>
+          <p>Consistent line weight, a palette drawn from the product’s actual color ramps (ch. 30) rather than invented per piece, and consistent character proportions. A mismatched illustration reads as a different app that wandered in.</p>
+          <p class="apply">Write the style down as explicitly as a component spec — stroke width, corner treatment, palette subset, allowed complexity — so a second illustrator (or a second year of the same illustrator) matches the first.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">33.3</span>
+        <div>
+          <h3>Earn the cost</h3>
+          <p>Illustration is expensive to produce and expensive to localize — a scene with culturally specific objects or gestures (ch. 27) needs review per market, unlike a string. Reserve it for moments that matter: first-run, empty states, genuine celebration.</p>
+          <p class="apply">If an illustration appears on a screen a user sees fifty times, it earns near-zero attention by the third visit — spend the budget on the screens people see once, at the moments peak–end (2.6) actually rewards.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">33.4</span>
+        <div>
+          <h3>Empty states are illustration’s home ground</h3>
+          <p>Chapter 23 names three empty-state species — first-run, success-empty, no-results — and illustration should match the species: teaching art for first-run, a celebratory scene for success-empty, nothing elaborate for no-results (that one wants speed, not delight).</p>
+          <p class="apply">Never reuse one generic “empty box” illustration across all three species — a first-run screen and a success screen are opposite emotional moments wearing the same picture.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">33.5</span>
+        <div>
+          <h3>Illustration is content, and content needs a fallback</h3>
+          <p>Meaning-carrying illustration needs real accessibility description (ch. 08), not a filename. And every asset needs a dark-mode and RTL plan — recolored properly for the surface it sits on, mirrored where the scene implies direction, never just multiply-blended and hoped for.</p>
+          <p class="apply">Test every illustration asset in dark mode before shipping — a light-background piece dropped onto graphite with no adaptation is the illustration equivalent of the white-matte-logo mistake ch. 16 already warns against.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="part" id="part-6">
+  <span class="roman">VI</span>
+  <div>
+    <h2>Judgment</h2>
+    <p>What to avoid, what to weigh, how to check · ch. 34–37</p>
+  </div>
+</div>
+
+<!-- ============ 34 ANTI-PATTERNS ============ -->
+<section id="antipatterns">
+  <div class="sec-head reveal">
+    <div class="sec-num">34</div>
     <h2>What Not To Do</h2>
     <p class="kicker">Universal sins, plus the don’ts Apple and Google spell out themselves</p>
   </div>
@@ -3265,10 +3693,10 @@
   </div>
 </section>
 
-<!-- ============ 30 TRADE-OFFS ============ -->
+<!-- ============ 35 TRADE-OFFS ============ -->
 <section id="tradeoffs">
   <div class="sec-head reveal">
-    <div class="sec-num">30</div>
+    <div class="sec-num">35</div>
     <h2>The Honest Trade-offs</h2>
     <p class="kicker">Where the pin sits by default — and what moves it</p>
   </div>
@@ -3307,10 +3735,10 @@
   </div>
 </section>
 
-<!-- ============ 31 CHECKLIST ============ -->
+<!-- ============ 36 CHECKLIST ============ -->
 <section id="checklist">
   <div class="sec-head reveal">
-    <div class="sec-num">31</div>
+    <div class="sec-num">36</div>
     <h2>The Screen Audit</h2>
     <p class="kicker">Run any screen through these twelve — click to check off</p>
   </div>
@@ -3332,10 +3760,10 @@
   </div>
 </section>
 
-<!-- ============ 32 WORKED EXAMPLE ============ -->
+<!-- ============ 37 WORKED EXAMPLE ============ -->
 <section id="example">
   <div class="sec-head reveal">
-    <div class="sec-num">32</div>
+    <div class="sec-num">37</div>
     <h2>A Worked Example</h2>
     <p class="kicker">The whole manual, run once — “Sprout,” a plant-care tracker, from idea to two dialects</p>
   </div>
@@ -3344,7 +3772,7 @@
 
     <div class="entries" style="margin-top:1.5rem">
       <div class="entry">
-        <span class="n">32.1</span>
+        <span class="n">37.1</span>
         <div>
           <h3>Frame it <span style="color:var(--ink-faint)">— runs 9.1</span></h3>
           <p>“For apartment plant owners who forget care schedules, Sprout tracks watering and feeding — and it is brilliant at answering <em>what needs me today?</em>”</p>
@@ -3353,7 +3781,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">32.2</span>
+        <span class="n">37.2</span>
         <div>
           <h3>Map the flows <span style="color:var(--ink-faint)">— runs 9.2</span></h3>
           <p>Three journeys: the daily loop (check &amp; mark done), setup (add a plant), and the occasional rescue (diagnose a sad plant). The daily loop is the 80% flow, so it gets the step budget.</p>
@@ -3378,7 +3806,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">32.3</span>
+        <span class="n">37.3</span>
         <div>
           <h3>Choose the IA <span style="color:var(--ink-faint)">— runs 9.3</span></h3>
           <p>Three peer destinations, each one word: <b>Today</b> (the loop), <b>Plants</b> (the collection), <b>Learn</b> (the rescue guides). Tab/nav-bar model on both platforms.</p>
@@ -3387,7 +3815,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">32.4</span>
+        <span class="n">37.4</span>
         <div>
           <h3>Wireframe the core loop <span style="color:var(--ink-faint)">— runs 9.4</span></h3>
           <p>One grayscale, platform-neutral pass with real content — real plant names, real task verbs.</p>
@@ -3418,7 +3846,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">32.5</span>
+        <span class="n">37.5</span>
         <div>
           <h3>Split into dialects <span style="color:var(--ink-faint)">— runs 9.5</span></h3>
           <p>Same core — same three rows, same words, same reading order — expressed twice. Every visible difference below is a chapter 13 table row, not a whim.</p>
@@ -3501,7 +3929,7 @@
       </div>
 
       <div class="entry">
-        <span class="n">32.6</span>
+        <span class="n">37.6</span>
         <div>
           <h3>Design the edges <span style="color:var(--ink-faint)">— runs 9.6</span></h3>
           <p>The two edge states that matter most here: the <em>success-empty</em> state (all plants tended — Today’s most common state in a healthy habit) and the notification permission ask.</p>
@@ -3510,10 +3938,10 @@
       </div>
 
       <div class="entry">
-        <span class="n">32.7</span>
+        <span class="n">37.7</span>
         <div>
           <h3>Audit &amp; iterate <span style="color:var(--ink-faint)">— runs 9.7</span></h3>
-          <p>Running the chapter 31 checklist against the mockups caught three real issues before any polish was spent.</p>
+          <p>Running the chapter 36 checklist against the mockups caught three real issues before any polish was spent.</p>
           <p class="apply">① “Delete plant” initially sat as a swipe action on Today rows — destructive within thumb reach of the daily tap; moved into the plant detail screen behind a confirm. ② Check circles were 32pt — below target; hit areas padded to 44/48 while glyphs stayed small. ③ The empty state failed the 5-second test (a blank list reads as “broken”) and gained its celebratory copy. Then back to 9.4 with the findings.</p>
         </div>
       </div>
@@ -3546,7 +3974,7 @@
       <div class="entry"><span class="n">A.7</span><div><h3><a href="https://www.nngroup.com/articles/tone-of-voice-dimensions/">NN/g — The Four Dimensions of Tone of Voice</a></h3><p>Formal↔casual, serious↔funny, respectful↔irreverent, matter-of-fact↔enthusiastic. The model behind 22.6–22.7.</p></div></div>
       <div class="entry"><span class="n">A.8</span><div><h3><a href="https://www.nngroup.com/articles/cards-component/">NN/g — Cards Have Two Sides</a></h3><p>Browsing vs. searching vs. comparing, and the eyetracking evidence behind it. The source behind 4.4.</p></div></div>
       <div class="entry"><span class="n">A.9</span><div><h3><a href="https://www.nngroup.com/articles/ux-mapping-cheat-sheet/">NN/g — UX Mapping Cheat Sheet</a></h3><p>Empathy maps, journey maps, experience maps, service blueprints, and the three axes for choosing between them. The source behind chapter 10.</p></div></div>
-      <div class="entry"><span class="n">A.10</span><div><h3><a href="https://www.nngroup.com/articles/ten-usability-heuristics/">Jakob’s Ten Usability Heuristics (poster)</a></h3><p>The same ten heuristics as chapter 03, each paired with a physical-world analogy. The source behind 03.1–03.10’s “Like” lines.</p></div></div>
+      <div class="entry"><span class="n">A.10</span><div><h3><a href="https://www.nngroup.com/articles/ten-usability-heuristics/">Jakob’s Ten Usability Heuristics (poster)</a></h3><p>The same ten heuristics as chapter 3, each paired with a physical-world analogy. The source behind 03.1–03.10’s “Like” lines.</p></div></div>
       <div class="entry"><span class="n">A.11</span><div><h3><a href="https://lawsofux.com/">Laws of UX</a></h3><p>Fitts, Hick, Jakob, Miller, Tesler, and the peak–end rule (ch. 02), each traced to its original study.</p></div></div>
     </div>
 

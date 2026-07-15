@@ -3300,6 +3300,27 @@
       <div class="entry">
         <span class="n">29.6</span>
         <div>
+          <h3>Name the style, don’t set the size</h3>
+          <p>Both platforms ship the modular scale as named, semantic tokens — not raw point sizes. Reaching for the token instead of a number is what makes scaling automatic instead of a maintenance chore.</p>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Role</th><th>SwiftUI (<code>Font.TextStyle</code>)</th><th>Compose (M3 <code>Typography</code>)</th></tr></thead>
+              <tbody>
+                <tr><td>Hero</td><td><code>.largeTitle</code> — 34/41</td><td><code>displayLarge</code> — 57/64</td></tr>
+                <tr><td>Section</td><td><code>.title</code> / <code>.title2</code> / <code>.title3</code></td><td><code>headlineLarge/Medium/Small</code></td></tr>
+                <tr><td>Emphasis</td><td><code>.headline</code> — 17/22, semibold</td><td><code>titleLarge/Medium/Small</code></td></tr>
+                <tr><td>Body</td><td><code>.body</code> — 17/22</td><td><code>bodyLarge</code> — 16/24</td></tr>
+                <tr><td>Secondary</td><td><code>.subheadline</code>, <code>.callout</code></td><td><code>bodyMedium</code>, <code>labelLarge</code></td></tr>
+                <tr><td>Meta</td><td><code>.footnote</code>, <code>.caption</code>, <code>.caption2</code></td><td><code>labelMedium</code>, <code>labelSmall</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="apply">A developer who hardcodes <code>.system(size: 17)</code> instead of <code>.body</code> ships a number that looks identical today and silently opts out of Dynamic Type tomorrow — the same trap chapter 17’s API table warns against for components, here applied to type. Name the style; let the platform own the number.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">29.7</span>
+        <div>
           <h3>Tracking is a small, specific tool</h3>
           <p>Letter-spacing earns its keep in exactly two places: tightened slightly on large display type (big letters have proportionally more space between them), and opened slightly on small caps or all-caps labels (which otherwise clump).</p>
           <p class="apply">Never touch body text tracking — it’s tuned by the type designer for exactly the size it ships at. If body text “feels off,” the fix is almost always the size or the face, not the spacing.</p>

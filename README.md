@@ -32,6 +32,7 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 |---|---------|---|
 | 11 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
 | 12 | Navigation | back semantics, tabs, modality, deep links |
+| 13 | Adaptive Layout | size classes, list-detail, foldables |
 | 15 | SwiftUI ↔ Compose | the dialect table as it compiles |
 
 **Part IV — Systems & Craft** · the details that decide whether it ships well

@@ -710,6 +710,7 @@
       <li class="part-head">Part III — Platforms</li>
       <li><a href="#platforms"><b>11</b>One Design, Two Dialects</a></li>
       <li><a href="#navigation"><b>12</b>Navigation</a></li>
+      <li><a href="#adaptive"><b>13</b>Adaptive Layout</a></li>
       <li><a href="#components"><b>15</b>SwiftUI ↔ Compose</a></li>
       <li class="part-head">Part IV — Systems &amp; Craft</li>
       <li><a href="#systems"><b>16</b>Design Systems</a></li>
@@ -1673,6 +1674,111 @@
           <h3>Don’t invent navigation</h3>
           <p>Radial menus, gesture-only spatial canvases, hamburger-hidden everything: novel navigation spends the entire novelty budget (2.3) on the one thing users need to be boring.</p>
           <p class="apply">Users learned tabs, stacks, and sheets from every other app on their phone. Spend creativity inside the rooms — never on the corridors between them. If the product’s differentiation genuinely <em>is</em> navigation (maps, canvases, games), that’s a deliberate ch. 27 trade, made with eyes open.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13 ADAPTIVE LAYOUT ============ -->
+<section id="adaptive">
+  <div class="sec-head reveal">
+    <div class="sec-num">13</div>
+    <h2>Adaptive Layout</h2>
+    <p class="kicker">Tablets, foldables, split screens — design for size classes, not devices</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>A tablet is not a big phone (11.3’s cousin: a stretched phone layout on a 13″ screen wastes the medium twice — empty acres <em>and</em> unreachable controls). Both platforms hand you the same abstraction: the window’s size class, not the device’s name, decides the layout.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 160" width="360" role="img" aria-label="The same app at three window size classes: compact phone with bottom navigation, medium tablet with a navigation rail, expanded with list and detail panes side by side">
+        <g>
+          <rect x="10" y="10" width="66" height="118" rx="8" fill="#14171c" stroke="var(--ink-soft)" stroke-width="1.5"/>
+          <rect x="16" y="18" width="34" height="6" rx="3" fill="var(--ink-soft)"/>
+          <rect x="16" y="32" width="54" height="12" rx="3" fill="#ffffff0d"/>
+          <rect x="16" y="48" width="54" height="12" rx="3" fill="#ffffff0d"/>
+          <rect x="16" y="64" width="54" height="12" rx="3" fill="#ffffff0d"/>
+          <line x1="10" y1="108" x2="76" y2="108" stroke="var(--rule)" stroke-width="1"/>
+          <circle cx="27" cy="118" r="3.5" fill="var(--signal)"/>
+          <circle cx="43" cy="118" r="3.5" fill="none" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <circle cx="59" cy="118" r="3.5" fill="none" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <text x="43" y="146" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-soft)">COMPACT &lt;600DP</text>
+          <text x="43" y="156" text-anchor="middle" font-family="Menlo, monospace" font-size="6.5" fill="var(--ink-faint)">NAV BAR</text>
+        </g>
+        <g>
+          <rect x="104" y="10" width="98" height="118" rx="8" fill="#14171c" stroke="var(--ink-soft)" stroke-width="1.5"/>
+          <line x1="126" y1="10" x2="126" y2="128" stroke="var(--rule)" stroke-width="1"/>
+          <circle cx="115" cy="26" r="3.5" fill="var(--signal)"/>
+          <circle cx="115" cy="42" r="3.5" fill="none" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <circle cx="115" cy="58" r="3.5" fill="none" stroke="var(--ink-faint)" stroke-width="1.2"/>
+          <rect x="134" y="20" width="60" height="14" rx="3" fill="#ffffff0d"/>
+          <rect x="134" y="38" width="60" height="14" rx="3" fill="#ffffff0d"/>
+          <rect x="134" y="56" width="60" height="14" rx="3" fill="#ffffff0d"/>
+          <text x="153" y="146" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-soft)">MEDIUM ≥600DP</text>
+          <text x="153" y="156" text-anchor="middle" font-family="Menlo, monospace" font-size="6.5" fill="var(--ink-faint)">NAV RAIL</text>
+        </g>
+        <g>
+          <rect x="230" y="10" width="120" height="118" rx="8" fill="#14171c" stroke="var(--ink-soft)" stroke-width="1.5"/>
+          <line x1="278" y1="10" x2="278" y2="128" stroke="var(--rule)" stroke-width="1"/>
+          <rect x="238" y="20" width="32" height="10" rx="3" fill="var(--signal-soft)" stroke="var(--signal)" stroke-width="1"/>
+          <rect x="238" y="36" width="32" height="10" rx="3" fill="#ffffff0d"/>
+          <rect x="238" y="52" width="32" height="10" rx="3" fill="#ffffff0d"/>
+          <rect x="288" y="20" width="52" height="8" rx="3" fill="var(--ink-soft)"/>
+          <rect x="288" y="34" width="52" height="60" rx="4" fill="#ffffff0d"/>
+          <text x="290" y="146" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-soft)">EXPANDED ≥840DP</text>
+          <text x="290" y="156" text-anchor="middle" font-family="Menlo, monospace" font-size="6.5" fill="var(--ink-faint)">LIST–DETAIL</text>
+        </g>
+      </svg>
+      <div class="cap">One app, three window classes — navigation and panes morph, content and IA never do</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">13.1</span>
+        <div>
+          <h3>Size classes, not devices</h3>
+          <p>Material’s window classes (compact &lt;600dp, medium, expanded ≥840dp) and iOS’s horizontal compact/regular describe the <em>window</em> — and windows change: rotation, split screen, Stage Manager, a foldable unfolding.</p>
+          <p class="apply">Design one layout per class, not per device. A phone in landscape video, an iPad in one-third Split View, and a folded flip phone are all “compact” — if the layout only asks “is this an iPad?”, it’s already wrong somewhere.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">13.2</span>
+        <div>
+          <h3>Spend width on structure, not stretching</h3>
+          <p>Wider windows buy panes, not longer lines. The canonical layouts — list-detail, supporting pane, feed grid — are the honest ways to spend the space.</p>
+          <p class="apply">Cap text measure (~70ch) and let panes absorb the rest: master list + detail, content + inspector, feed at higher column count. A form that grows 900dp-wide inputs didn’t adapt; it inflated (18.2 still applies).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">13.3</span>
+        <div>
+          <h3>List–detail has rules</h3>
+          <p>The pattern everyone reaches for, with the details everyone forgets: selection must be visibly persistent, the empty detail pane must say something, and back must mean the right thing in each class.</p>
+          <p class="apply">On expanded, highlight the selected row and give the unselected detail pane a purpose (“Select a plant”). On compact, the same navigation becomes push-and-back. <code>NavigationSplitView</code> and <code>ListDetailPaneScaffold</code> both encode this — let them (15).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">13.4</span>
+        <div>
+          <h3>The thumb map doesn’t transfer</h3>
+          <p>Tablets are held by the edges with two hands — now the <em>corners and edges</em> are reachable and the bottom-center is far. The phone’s thumb zones (06) invert.</p>
+          <p class="apply">Primary actions move toward the leading/trailing edges and top bar; two-hand symmetric layouts (rail left, actions right) beat centered bottom bars. Test holding the tablet, not pointing at it on a desk.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">13.5</span>
+        <div>
+          <h3>Foldables fold; state must not</h3>
+          <p>Unfolding mid-task is a live window resize. Tabletop and book postures add a hinge that content must respect — and everything in 6.4 (state survives interruption) applies at double intensity.</p>
+          <p class="apply">Scroll position, form input, selection, and media playback all survive the fold/unfold transition. In tabletop posture, split content above the hinge and controls below; never place a tap target <em>on</em> the crease.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">13.6</span>
+        <div>
+          <h3>Big screens attract other inputs</h3>
+          <p>Tablets come with keyboards, trackpads, and styluses attached. The moment a window widens, assume a pointer might arrive with it.</p>
+          <p class="apply">Hover states, keyboard shortcuts (⌘-based on iPad), focus order (7.6), and right-click/secondary-click menus stop being desktop luxuries at medium width and up. A tablet app with no shortcuts feels like a kiosk.</p>
         </div>
       </div>
     </div>

@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Stamp the revision (commit date · rNNN · short sha) into the page.
+      # The repo copy keeps a static fallback between <!--REV--> markers,
+      # so the file stays fully self-contained for local viewing.
+      - name: Stamp revision from git
+        run: |
+          REV="$(git log -1 --format=%cs) · r$(git rev-list --count HEAD) ($(git rev-parse --short HEAD))"
+          sed -i "s|<!--REV-->[^<]*<!--/REV-->|<!--REV-->${REV}<!--/REV-->|g" index.html
+          echo "Stamped: ${REV}"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -639,6 +639,8 @@
     color: var(--ink-faint);
   }
   footer b { color: var(--signal); font-weight: 600; }
+  footer a { color: var(--signal); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
 
   /* ---------- reveal on scroll ---------- */
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
@@ -676,7 +678,7 @@
 <body>
 
 <header>
-  <span class="doc-id"><b>UX/FM-02</b> · Field Manual · Rev. 2026-07</span>
+  <span class="doc-id"><b>UX/FM-02</b> · Field Manual · Rev. <!--REV-->2026-07-15<!--/REV--></span>
   <span class="doc-id">Mobile · Web · Desktop</span>
 </header>
 
@@ -2468,7 +2470,7 @@
 </section>
 
 <footer>
-  <span><b>UX/FM-02</b> · Compiled 2026-07 · Self-contained, no network required</span>
+  <span><b>UX/FM-02</b> · Rev. <!--REV-->2026-07-15<!--/REV--> · Self-contained, no network required · <a href="https://github.com/memfrag/ux-field-guide/commits/main">changelog</a></span>
   <span>Nielsen · Fitts · Hick · Wertheimer · Apple HIG (Liquid Glass) · Material 3 (Expressive)</span>
 </footer>
 

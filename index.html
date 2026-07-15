@@ -721,6 +721,7 @@
       <li><a href="#states"><b>20</b>Empty &amp; Loading States</a></li>
       <li><a href="#motion"><b>21</b>Motion &amp; Feedback</a></li>
       <li><a href="#onboarding"><b>22</b>Onboarding &amp; First-Run</a></li>
+      <li><a href="#notifications"><b>23</b>Notifications &amp; Interruptions</a></li>
       <li class="part-head">Part V — Judgment</li>
       <li><a href="#antipatterns"><b>26</b>What Not To Do</a></li>
       <li><a href="#tradeoffs"><b>27</b>The Honest Trade-offs</a></li>
@@ -2532,6 +2533,100 @@
           <h3>Returning is also a first run</h3>
           <p>Reinstalls, new phones, and second devices outnumber true first-times for mature products — and nothing insults a returning user like a welcome tour.</p>
           <p class="apply">Detect the existing account and lead with restore: “Welcome back — your 12 plants are safe.” Skip the teaching, keep the permission re-asks (a new device reset them), and never make someone rebuild what sync should have carried.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 23 NOTIFICATIONS & INTERRUPTIONS ============ -->
+<section id="notifications">
+  <div class="sec-head reveal">
+    <div class="sec-num">23</div>
+    <h2>Notifications &amp; Interruptions</h2>
+    <p class="kicker">Permission to interrupt is a loan — every pointless push is a missed repayment</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>A notification reaches through someone’s day, past their attention, into their pocket. That access was granted once (22.4) and is silently revoked in the settings you’ll never see. The design question is never “can we send this?” — it’s “would the user have asked for this?”</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 158" width="360" role="img" aria-label="Decision tree: is the event about this user right now? If no, in-app feed. If yes, is it worth an interruption? If no, silent or summary. If yes, send an actionable deep-linked push">
+        <rect x="10" y="10" width="64" height="22" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.2"/>
+        <text x="42" y="24" text-anchor="middle" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink)">EVENT</text>
+        <path d="M74,21 h22" stroke="var(--ink-faint)" stroke-width="1.2"/>
+        <rect x="96" y="6" width="126" height="30" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.2"/>
+        <text x="159" y="19" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink)">ABOUT THIS USER,</text>
+        <text x="159" y="30" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink)">RELEVANT RIGHT NOW?</text>
+        <path d="M222,21 h30" stroke="var(--ink-faint)" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="228" y="15" font-family="Menlo, monospace" font-size="6.5" fill="var(--ink-faint)">NO</text>
+        <rect x="254" y="6" width="96" height="30" rx="4" fill="none" stroke="var(--ink-faint)" stroke-width="1.1" stroke-dasharray="3 3"/>
+        <text x="302" y="24" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">IN-APP FEED · BADGE</text>
+        <path d="M159,36 v24" stroke="var(--signal)" stroke-width="1.3"/>
+        <text x="166" y="52" font-family="Menlo, monospace" font-size="6.5" fill="var(--signal)">YES</text>
+        <rect x="96" y="60" width="126" height="30" rx="4" fill="none" stroke="var(--ink-soft)" stroke-width="1.2"/>
+        <text x="159" y="73" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink)">WORTH BREAKING INTO</text>
+        <text x="159" y="84" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink)">THEIR DAY FOR?</text>
+        <path d="M222,75 h30" stroke="var(--ink-faint)" stroke-width="1.2" stroke-dasharray="3 3"/>
+        <text x="228" y="69" font-family="Menlo, monospace" font-size="6.5" fill="var(--ink-faint)">NO</text>
+        <rect x="254" y="60" width="96" height="30" rx="4" fill="none" stroke="var(--ink-faint)" stroke-width="1.1" stroke-dasharray="3 3"/>
+        <text x="302" y="73" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SILENT DELIVERY ·</text>
+        <text x="302" y="84" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SCHEDULED SUMMARY</text>
+        <path d="M159,90 v24" stroke="var(--signal)" stroke-width="1.3"/>
+        <text x="166" y="106" font-family="Menlo, monospace" font-size="6.5" fill="var(--signal)">YES</text>
+        <rect x="66" y="114" width="186" height="30" rx="4" fill="var(--signal-soft)" stroke="var(--signal)" stroke-width="1.3"/>
+        <text x="159" y="127" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink)">PUSH — ACTIONABLE,</text>
+        <text x="159" y="138" text-anchor="middle" font-family="Menlo, monospace" font-size="7" fill="var(--ink)">DEEP-LINKED, GROUPED</text>
+      </svg>
+      <div class="cap">Two honest questions before every push — most events fail the first one</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">23.1</span>
+        <div>
+          <h3>The trust economy</h3>
+          <p>Users don’t complain about bad notifications — they mute the channel, bury the app, or delete it. Each pointless push spends permission you cannot buy back with a good one.</p>
+          <p class="apply">Track opt-out, mute, and “deliver quietly” rates per notification type as first-class health metrics, exactly like crash rates. A notification type nobody would miss is a notification type to delete.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">23.2</span>
+        <div>
+          <h3>The bar: theirs, timely, actionable</h3>
+          <p>“Monstera is thirsty” clears it: about <em>their</em> plant, on the right day, fixable in one tap. “We miss you! 🌱” fails all three — it’s about the app’s retention curve, not the user’s life.</p>
+          <p class="apply">Every push must name something of the user’s and arrive when acting on it makes sense. Marketing goes in a channel the user explicitly opted into — piggybacking promo onto a transactional channel is a dark pattern wearing a bell.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">23.3</span>
+        <div>
+          <h3>Channels and levels are the user’s volume knob</h3>
+          <p>Android notification channels let users tune each type independently; iOS interruption levels (passive → active → time-sensitive → critical) decide what pierces Focus modes. Both work only if you classify honestly.</p>
+          <p class="apply">One channel per genuine type — reminders, replies, promotions — never one bucket for everything (muting one thing shouldn’t require muting all). And never inflate levels: a sale marked time-sensitive teaches the OS, and the user, that you lie.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">23.4</span>
+        <div>
+          <h3>Group, summarize, respect the pile</h3>
+          <p>Five likes are one event, not five interruptions. Both platforms thread and group; iOS adds scheduled summaries for the merely-interesting.</p>
+          <p class="apply">Group by conversation or object (“3 plants need you today”, one push), coalesce bursts server-side, and route low-urgency types to quiet delivery or a daily digest. The lock screen is shared real estate — apps that pile get evicted.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">23.5</span>
+        <div>
+          <h3>Actionable at the edge</h3>
+          <p>A notification is a miniature UI: with actions attached, the task completes without ever opening the app — which is the highest compliment a notification can pay.</p>
+          <p class="apply">“Mark watered” and “Snooze” ride on Sprout’s push; reply rides on a message. When the user does tap through, deep-link to the exact screen with back behaving correctly (12.6) — landing on a home screen after a specific push is a broken promise.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">23.6</span>
+        <div>
+          <h3>Badges must tell the truth</h3>
+          <p>A badge is a count of things the user can actually resolve. A badge that won’t clear, counts marketing, or reads “1” forever trains the eye to ignore it — and the red dot’s power, once spent, is gone app-wide.</p>
+          <p class="apply">Badge only user-resolvable items, clear it the moment they’re seen, and let users turn it off per type. In-app announcements belong in an inbox surface, not on the app icon.</p>
         </div>
       </div>
     </div>

@@ -3292,13 +3292,57 @@
       <div class="entry">
         <span class="n">29.5</span>
         <div>
+          <h3>Alignment means baseline, not center or box</h3>
+          <p>Grid alignment (6.4) is horizontal — a shared left edge. This is the harder, vertical half: when elements of different sizes, weights, or shapes share a row, mathematically-equal positioning routinely looks wrong. The eye aligns by baseline and optical weight, not by bounding box.</p>
+          <div class="dia">
+            <svg viewBox="0 0 360 118" width="360" role="img" aria-label="A price reading twelve dollars ninety nine cents, with the dollar sign and cents smaller but sharing one baseline with the larger number, versus a broken version where the smaller text is vertically centered instead and floats off the baseline. Below, a checkmark icon optically aligned to a label's x-height versus the same icon centered in its own square bounding box, sitting visibly too high">
+              <text x="10" y="34" font-family="-apple-system, Helvetica, sans-serif" font-size="14" font-weight="600" fill="var(--signal)">$</text>
+              <text x="24" y="34" font-family="-apple-system, Helvetica, sans-serif" font-size="26" font-weight="700" fill="var(--ink)">12</text>
+              <text x="58" y="34" font-family="-apple-system, Helvetica, sans-serif" font-size="14" font-weight="600" fill="var(--ink-soft)">.99</text>
+              <text x="90" y="34" font-family="Menlo, monospace" font-size="8" fill="var(--signal)">✓ ONE SHARED BASELINE</text>
+              <text x="10" y="60" font-family="-apple-system, Helvetica, sans-serif" font-size="14" font-weight="600" fill="var(--ink-faint)">$</text>
+              <text x="24" y="66" font-family="-apple-system, Helvetica, sans-serif" font-size="26" font-weight="700" fill="var(--ink-faint)">12</text>
+              <text x="58" y="60" font-family="-apple-system, Helvetica, sans-serif" font-size="14" font-weight="600" fill="var(--ink-faint)">.99</text>
+              <text x="90" y="64" font-family="Menlo, monospace" font-size="8" fill="var(--ink-faint)">✕ VERTICALLY CENTERED — FLOATS</text>
+              <line x1="10" y1="90" x2="350" y2="90" stroke="var(--rule)" stroke-width="1"/>
+              <path d="M14,101 l4,5 8,-10" fill="none" stroke="var(--signal)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="34" y="107" font-family="-apple-system, Helvetica, sans-serif" font-size="13" fill="var(--ink)">Watered today</text>
+              <text x="150" y="107" font-family="Menlo, monospace" font-size="8" fill="var(--signal)">✓ ALIGNED TO X-HEIGHT</text>
+              <path d="M244,94 l4,5 8,-10" fill="none" stroke="var(--ink-faint)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="264" y="107" font-family="-apple-system, Helvetica, sans-serif" font-size="13" fill="var(--ink)">Watered today</text>
+              <text x="264" y="118" font-family="Menlo, monospace" font-size="8" fill="var(--ink-faint)">✕ CENTERED IN ITS OWN BOX — TOO HIGH</text>
+            </svg>
+            <div class="cap">Same characters, same icon — the only difference is what they’re aligned to</div>
+          </div>
+          <p class="apply">Set mixed-size type on one baseline, never vertically centered — a smaller “.99” centered against a large “12” drifts upward and reads as misaligned even when the math is correct. Nudge icons to the label’s x-height or cap-height, not their own bounding-box center; SF Symbols and Material Symbols both expose baseline-alignment metadata for exactly this adjustment — use it.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">29.6</span>
+        <div>
+          <h3>Optical size beats mathematical size</h3>
+          <p>A circle and a square with identical bounding-box dimensions don’t look the same size — round and pointed shapes read as smaller, so real icon systems quietly overshoot them a pixel or two beyond the square’s edge to compensate. The same correction applies to type: a round bowl (O, o, 0) is drawn very slightly taller than a flat cap (H, E) at the same nominal size, or it looks shorter.</p>
+          <p class="apply">Trust the platform’s own icons and type rather than hand-correcting — this overshoot is already baked into SF Symbols, Material Symbols, and every serious typeface. The one place to apply it yourself is custom iconography (ch. 16): a hand-drawn circular icon sized identically to its square neighbors will look wrong until it’s nudged past the shared boundary.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">29.7</span>
+        <div>
+          <h3>A baseline grid ties rows together vertically</h3>
+          <p>The column grid (ch. 06) aligns things horizontally; a baseline grid does the same job vertically — every line of text across the whole layout, in every column or card, lands on one of a small set of shared horizontal lines.</p>
+          <p class="apply">Set body line-height as a clean multiple of the base spacing unit (4pt/4dp) so text naturally lands on the grid without special-casing. Rows that drift off the baseline grid by a pixel or two are invisible individually and add up to a layout that reads as unconsidered.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">29.8</span>
+        <div>
           <h3>Dynamic Type is where the system gets tested</h3>
           <p>Chapter 08 covers text scaling as an accessibility requirement; this is the same mechanism viewed as a craft problem. At the largest accessibility sizes, does Headline still read as bigger than Title? Does the ratio survive, or does everything collapse toward the same size?</p>
           <p class="apply">Test the type scale at maximum Dynamic Type / font scale before calling it done — a hierarchy that only works at the default size was never really a hierarchy, just a snapshot of one.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">29.6</span>
+        <span class="n">29.9</span>
         <div>
           <h3>Name the style, don’t set the size</h3>
           <p>Both platforms ship the modular scale as named, semantic tokens — not raw point sizes. Reaching for the token instead of a number is what makes scaling automatic instead of a maintenance chore.</p>
@@ -3319,7 +3363,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">29.7</span>
+        <span class="n">29.10</span>
         <div>
           <h3>Tracking is a small, specific tool</h3>
           <p>Letter-spacing earns its keep in exactly two places: tightened slightly on large display type (big letters have proportionally more space between them), and opened slightly on small caps or all-caps labels (which otherwise clump).</p>

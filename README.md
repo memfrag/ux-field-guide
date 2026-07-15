@@ -59,6 +59,7 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 27 | The Honest Trade-offs | where the pin sits, and what moves it |
 | 28 | The Screen Audit | a 12-point interactive checklist |
 | 29 | A Worked Example | one app idea, the whole process, both dialects |
+| A | Sources & Further Reading | HIG, Material 3, WCAG, NN/g, the books |
 
 Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's Material 3 (Expressive).
 

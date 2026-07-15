@@ -267,6 +267,8 @@
 
   .sec-body > p { max-width: var(--measure); color: var(--ink-soft); }
   .sec-body > p + p { margin-top: 1rem; }
+  .sec-body a { color: var(--signal); text-decoration: none; }
+  .sec-body a:hover { text-decoration: underline; }
 
   /* ---------- entry cards (numbered law/heuristic entries) ---------- */
   .entries { margin-top: 1.5rem; }
@@ -729,6 +731,7 @@
       <li><a href="#tradeoffs"><b>27</b>The Honest Trade-offs</a></li>
       <li><a href="#checklist"><b>28</b>The Screen Audit</a></li>
       <li><a href="#example"><b>29</b>A Worked Example</a></li>
+      <li><a href="#sources"><b>A</b>Sources &amp; Further Reading</a></li>
     </ol>
   </div>
 </nav>
@@ -3128,6 +3131,39 @@
           <p class="apply">① “Delete plant” initially sat as a swipe action on Today rows — destructive within thumb reach of the daily tap; moved into the plant detail screen behind a confirm. ② Check circles were 32pt — below target; hit areas padded to 44/48 while glyphs stayed small. ③ The empty state failed the 5-second test (a blank list reads as “broken”) and gained its celebratory copy. Then back to 8.4 with the findings.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPENDIX: SOURCES ============ -->
+<section id="sources">
+  <div class="sec-head reveal">
+    <div class="sec-num">A</div>
+    <h2>Sources &amp; Further Reading</h2>
+    <p class="kicker">Where the rules come from — go to the originals</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>This manual condenses; the sources below are the full text. When a chapter here and a platform document disagree, trust the newer platform document — dialects evolve.</p>
+
+    <div class="subhead">Platform documents</div>
+    <div class="entries">
+      <div class="entry"><span class="n">A.1</span><div><h3><a href="https://developer.apple.com/design/human-interface-guidelines/">Apple Human Interface Guidelines</a></h3><p>The iOS dialect’s constitution — components, patterns, Liquid Glass, and Apple’s own don’ts. Chapters 11, 15, and 26 lean on it heavily.</p></div></div>
+      <div class="entry"><span class="n">A.2</span><div><h3><a href="https://m3.material.io/">Material Design 3</a></h3><p>The Android dialect — color roles, type scale, components, motion physics, and M3 Expressive guidance.</p></div></div>
+      <div class="entry"><span class="n">A.3</span><div><h3><a href="https://developer.android.com/design/ui">Android UI design hub</a></h3><p>Predictive back, window size classes, canonical layouts, and the adaptive guidance behind chapter 13.</p></div></div>
+      <div class="entry"><span class="n">A.4</span><div><h3><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a></h3><p>The contrast ratios, target sizes, and success criteria that chapter 07 turns into working rules.</p></div></div>
+    </div>
+
+    <div class="subhead">Research &amp; heuristics</div>
+    <div class="entries">
+      <div class="entry"><span class="n">A.5</span><div><h3><a href="https://www.nngroup.com/">Nielsen Norman Group</a></h3><p>The ten heuristics (ch. 03), the five-user argument (ch. 10), and decades of pattern research with receipts.</p></div></div>
+      <div class="entry"><span class="n">A.6</span><div><h3><a href="https://lawsofux.com/">Laws of UX</a></h3><p>Fitts, Hick, Jakob, Miller, Tesler, and the peak–end rule (ch. 02), each traced to its original study.</p></div></div>
+    </div>
+
+    <div class="subhead">Books that survive rereading</div>
+    <div class="entries">
+      <div class="entry"><span class="n">A.7</span><div><h3>Don Norman — <em>The Design of Everyday Things</em></h3><p>Affordances, signifiers, and mappings — the vocabulary underneath every chapter in Part I.</p></div></div>
+      <div class="entry"><span class="n">A.8</span><div><h3>Steve Krug — <em>Don’t Make Me Think</em></h3><p>The five-second test, self-evident screens, and testing without ceremony — chapters 05 and 10 in a friendlier voice.</p></div></div>
+      <div class="entry"><span class="n">A.9</span><div><h3>Josef Müller-Brockmann — <em>Grid Systems in Graphic Design</em></h3><p>Where alignment, hierarchy, and typographic discipline come from — the tradition this page’s own design borrows.</p></div></div>
     </div>
   </div>
 </section>

@@ -711,6 +711,7 @@
       <li><a href="#platforms"><b>11</b>One Design, Two Dialects</a></li>
       <li><a href="#navigation"><b>12</b>Navigation</a></li>
       <li><a href="#adaptive"><b>13</b>Adaptive Layout</a></li>
+      <li><a href="#icons"><b>14</b>Iconography &amp; Imagery</a></li>
       <li><a href="#components"><b>15</b>SwiftUI ↔ Compose</a></li>
       <li class="part-head">Part IV — Systems &amp; Craft</li>
       <li><a href="#systems"><b>16</b>Design Systems</a></li>
@@ -1779,6 +1780,98 @@
           <h3>Big screens attract other inputs</h3>
           <p>Tablets come with keyboards, trackpads, and styluses attached. The moment a window widens, assume a pointer might arrive with it.</p>
           <p class="apply">Hover states, keyboard shortcuts (⌘-based on iPad), focus order (7.6), and right-click/secondary-click menus stop being desktop luxuries at medium width and up. A tablet app with no shortcuts feels like a kiosk.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14 ICONOGRAPHY & IMAGERY ============ -->
+<section id="icons">
+  <div class="sec-head reveal">
+    <div class="sec-num">14</div>
+    <h2>Iconography &amp; Imagery</h2>
+    <p class="kicker">Icons are vocabulary, images are evidence — neither is decoration</p>
+  </div>
+  <div class="sec-body reveal">
+    <p>Icons are the interface’s shared vocabulary, and each platform publishes its own dictionary: SF Symbols on iOS, Material Symbols on Android. Using them isn’t laziness — it’s speaking words users already know, drawn on metrics the system text already uses.</p>
+
+    <div class="dia" style="margin-top:2rem">
+      <svg viewBox="0 0 360 150" width="360" role="img" aria-label="SF Symbols offer nine weights matched to text; Material Symbols vary weight, fill, grade and optical size; both share the convention that outline means resting and fill means selected">
+        <g stroke="var(--ink-soft)" fill="none">
+          <path d="M20,16 h14 v20 l-7,-6 l-7,6 z" stroke-width="1"/>
+          <path d="M48,16 h14 v20 l-7,-6 l-7,6 z" stroke-width="1.8"/>
+          <path d="M76,16 h14 v20 l-7,-6 l-7,6 z" stroke-width="2.8"/>
+        </g>
+        <path d="M104,16 h14 v20 l-7,-6 l-7,6 z" fill="var(--signal)"/>
+        <text x="20" y="54" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-soft)">SF SYMBOLS — 9 WEIGHTS,</text>
+        <text x="20" y="65" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">DRAWN TO MATCH SF PRO TEXT</text>
+        <g stroke="var(--ink-soft)" fill="none">
+          <path d="M212,16 h14 v20 l-7,-6 l-7,6 z" stroke-width="1.8"/>
+        </g>
+        <path d="M240,16 h14 v20 l-7,-6 l-7,6 z" fill="var(--ink-soft)" opacity=".45"/>
+        <path d="M268,16 h14 v20 l-7,-6 l-7,6 z" fill="var(--ink-soft)"/>
+        <path d="M296,16 h14 v20 l-7,-6 l-7,6 z" fill="var(--signal)"/>
+        <text x="212" y="54" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-soft)">MATERIAL SYMBOLS — WEIGHT ·</text>
+        <text x="212" y="65" font-family="Menlo, monospace" font-size="7.5" fill="var(--ink-faint)">FILL · GRADE · OPTICAL SIZE AXES</text>
+        <line x1="20" y1="84" x2="340" y2="84" stroke="var(--rule)" stroke-width="1"/>
+        <g>
+          <path d="M120,100 h14 v20 l-7,-6 l-7,6 z" fill="none" stroke="var(--ink-faint)" stroke-width="1.6"/>
+          <text x="127" y="136" text-anchor="middle" font-family="Menlo, monospace" font-size="6.5" fill="var(--ink-faint)">RESTING</text>
+          <path d="M220,100 h14 v20 l-7,-6 l-7,6 z" fill="var(--signal)"/>
+          <text x="227" y="136" text-anchor="middle" font-family="Menlo, monospace" font-size="6.5" fill="var(--signal)">SELECTED</text>
+        </g>
+      </svg>
+      <div class="cap">Two dictionaries, one shared grammar — outline rests, fill selects</div>
+    </div>
+
+    <div class="entries" style="margin-top:2.2rem">
+      <div class="entry">
+        <span class="n">14.1</span>
+        <div>
+          <h3>Use the system dictionary first</h3>
+          <p>Thousands of symbols, drawn on the platform’s text metrics, scaling with Dynamic Type, animating for free (SF Symbols), or varying along weight/fill/grade axes as a variable font (Material Symbols).</p>
+          <p class="apply">Reach for a custom glyph only when the domain concept genuinely isn’t in the library — then draw it on the same grid, at the same weights, so it doesn’t read as a foreign word. Test custom icons at the largest Dynamic Type size the bar will meet.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.2</span>
+        <div>
+          <h3>Icons label, or icons lie</h3>
+          <p>Perhaps a dozen symbols are truly universal — search, back, share, settings, play. Everything else is a guess the user makes on your behalf (26 ✕: mystery meat).</p>
+          <p class="apply">Pair icons with text labels in tab bars and nav bars, always. An icon-only toolbar is acceptable only when every glyph is in the universal dozen — and even then, accessibility labels are non-negotiable (7.3).</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.3</span>
+        <div>
+          <h3>The fill convention is grammar</h3>
+          <p>Outline means resting; fill means selected or active. Both platforms teach this in their tab bars, so users read it without thinking — until an app breaks the rule and every state becomes a riddle.</p>
+          <p class="apply">Use the outline↔fill pair of the <em>same</em> symbol for state, never two different symbols. And don’t invert the rule for style — a filled resting state reads as “already on.”</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.4</span>
+        <div>
+          <h3>The app icon is the smallest billboard</h3>
+          <p>It’s the brand at 60px, judged in a grid of rivals, re-tinted by the OS: iOS renders layered icons in default/dark/clear/tinted modes (Icon Composer); Android’s themed icons take Material You’s wallpaper tint via a monochrome layer.</p>
+          <p class="apply">One bold shape, no words, no photos, no screenshots of the UI (Apple’s own don’ts). Design the layers and the monochrome variant from day one — an icon that ignores dark and tinted modes looks abandoned on a 2026 home screen.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.5</span>
+        <div>
+          <h3>Photos are evidence, illustration is explanation</h3>
+          <p>Photography asserts a specific reality — the user’s actual plant, the actual product for sale. Illustration explains concepts, softens empty states, and carries brand where there’s nothing yet to show.</p>
+          <p class="apply">Match the medium to the claim: never stock photos where users expect their own data, never abstract illustration where a real photo would answer the question. Decoration that pushes content below the fold is paying rent with the user’s time.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">14.6</span>
+        <div>
+          <h3>Image discipline</h3>
+          <p>Images are the heaviest, slowest, most layout-hostile content on any screen — treat them as a managed material.</p>
+          <p class="apply">Fixed aspect-ratio containers so nothing jumps when they arrive (20.3); meaningful images get real accessibility descriptions and decorative ones get hidden (7.3); check every image against dark mode — a white-matte logo on graphite is the classic miss.</p>
         </div>
       </div>
     </div>

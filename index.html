@@ -317,6 +317,22 @@
     color: var(--signal);
   }
   .entry .apply.fix::before { content: "Instead — "; }
+  .entry .analogy {
+    margin-top: .4rem;
+    padding-left: .9rem;
+    font-size: .82rem;
+    font-style: italic;
+    color: var(--ink-faint);
+  }
+  .entry .analogy b {
+    font-style: normal;
+    font-family: var(--mono);
+    font-size: .62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-right: .4em;
+  }
   .entry .n.x { font-size: .95rem; color: var(--signal); }
   .subhead {
     font-family: var(--mono);
@@ -905,16 +921,16 @@
   </div>
   <div class="sec-body reveal">
     <div class="entries">
-      <div class="entry"><span class="n">3.1</span><div><h3>Visibility of system status</h3><p class="apply">Every action gets feedback within 100 ms. Loading states, progress, confirmation. Silence is a bug.</p></div></div>
-      <div class="entry"><span class="n">3.2</span><div><h3>Match the real world</h3><p class="apply">Speak the user’s vocabulary, not the schema’s. “Trip” not “itinerary_record”.</p></div></div>
-      <div class="entry"><span class="n">3.3</span><div><h3>User control &amp; freedom</h3><p class="apply">Undo beats confirmation dialogs. Every wizard needs an exit. Every destructive action needs a way back.</p></div></div>
-      <div class="entry"><span class="n">3.4</span><div><h3>Consistency &amp; standards</h3><p class="apply">Internal consistency first, platform convention second, industry pattern third. Break ties in that order.</p></div></div>
-      <div class="entry"><span class="n">3.5</span><div><h3>Error prevention</h3><p class="apply">Disable the invalid, constrain the input, confirm the irreversible. Design so the error can’t happen, then handle it anyway.</p></div></div>
-      <div class="entry"><span class="n">3.6</span><div><h3>Recognition over recall</h3><p class="apply">Show options, history, and context inline. The interface remembers so the user doesn’t have to.</p></div></div>
-      <div class="entry"><span class="n">3.7</span><div><h3>Flexibility &amp; efficiency</h3><p class="apply">Accelerators for experts — shortcuts, gestures, recents — that stay invisible to novices.</p></div></div>
-      <div class="entry"><span class="n">3.8</span><div><h3>Aesthetic &amp; minimalist design</h3><p class="apply">Every element competes with every other element. If it doesn’t serve the task, it costs the task.</p></div></div>
-      <div class="entry"><span class="n">3.9</span><div><h3>Help users recover from errors</h3><p class="apply">Error messages state what happened, why, and the next step — in plain language, near the problem.</p></div></div>
-      <div class="entry"><span class="n">3.10</span><div><h3>Help &amp; documentation</h3><p class="apply">The best help is contextual and just-in-time. If users need the manual, the screen has already failed once.</p></div></div>
+      <div class="entry"><span class="n">3.1</span><div><h3>Visibility of system status</h3><p class="apply">Every action gets feedback within 100 ms. Loading states, progress, confirmation. Silence is a bug.</p><p class="analogy"><b>Like</b>a mall directory marking “you are here” before it shows you anywhere else.</p></div></div>
+      <div class="entry"><span class="n">3.2</span><div><h3>Match the real world</h3><p class="apply">Speak the user’s vocabulary, not the schema’s. “Trip” not “itinerary_record”.</p><p class="analogy"><b>Like</b>a stovetop where each knob sits directly above the burner it controls — no legend required.</p></div></div>
+      <div class="entry"><span class="n">3.3</span><div><h3>User control &amp; freedom</h3><p class="apply">Undo beats confirmation dialogs. Every wizard needs an exit. Every destructive action needs a way back.</p><p class="analogy"><b>Like</b>a marked emergency exit — not just the door you came in through.</p></div></div>
+      <div class="entry"><span class="n">3.4</span><div><h3>Consistency &amp; standards</h3><p class="apply">Internal consistency first, platform convention second, industry pattern third. Break ties in that order.</p><p class="analogy"><b>Like</b>hotel check-in desks always sitting near the entrance — you never have to search for one.</p></div></div>
+      <div class="entry"><span class="n">3.5</span><div><h3>Error prevention</h3><p class="apply">Disable the invalid, constrain the input, confirm the irreversible. Design so the error can’t happen, then handle it anyway.</p><p class="analogy"><b>Like</b>a guardrail on a mountain road, not a sign after the drop.</p></div></div>
+      <div class="entry"><span class="n">3.6</span><div><h3>Recognition over recall</h3><p class="apply">Show options, history, and context inline. The interface remembers so the user doesn’t have to.</p><p class="analogy"><b>Like</b>not needing to recall that Lisbon is Portugal’s capital when the map just shows you.</p></div></div>
+      <div class="entry"><span class="n">3.7</span><div><h3>Flexibility &amp; efficiency</h3><p class="apply">Accelerators for experts — shortcuts, gestures, recents — that stay invisible to novices.</p><p class="analogy"><b>Like</b>the marked route serving tourists while locals take the shortcut — both reach the same place.</p></div></div>
+      <div class="entry"><span class="n">3.8</span><div><h3>Aesthetic &amp; minimalist design</h3><p class="apply">Every element competes with every other element. If it doesn’t serve the task, it costs the task.</p><p class="analogy"><b>Like</b>a three-legged stool — nothing left to remove, and still a place to sit.</p></div></div>
+      <div class="entry"><span class="n">3.9</span><div><h3>Help users recover from errors</h3><p class="apply">Error messages state what happened, why, and the next step — in plain language, near the problem.</p><p class="analogy"><b>Like</b>a wrong-way sign — it names the problem and points to the fix in the same glance.</p></div></div>
+      <div class="entry"><span class="n">3.10</span><div><h3>Help &amp; documentation</h3><p class="apply">The best help is contextual and just-in-time. If users need the manual, the screen has already failed once.</p><p class="analogy"><b>Like</b>an airport information kiosk — help arrives exactly where and when it’s needed, not in a manual back home.</p></div></div>
     </div>
   </div>
 </section>
@@ -3529,14 +3545,16 @@
       <div class="entry"><span class="n">A.6</span><div><h3><a href="https://www.nngroup.com/articles/design-pattern-guidelines/">NN/g Design-Pattern Guidelines</a></h3><p>An index into NN/g’s component-level research — checkboxes vs. radio buttons, menus, breadcrumbs, tooltips. The source behind 21.7’s control-selection rule; go here for the pattern this manual didn’t have room to cover.</p></div></div>
       <div class="entry"><span class="n">A.7</span><div><h3><a href="https://www.nngroup.com/articles/tone-of-voice-dimensions/">NN/g — The Four Dimensions of Tone of Voice</a></h3><p>Formal↔casual, serious↔funny, respectful↔irreverent, matter-of-fact↔enthusiastic. The model behind 22.6–22.7.</p></div></div>
       <div class="entry"><span class="n">A.8</span><div><h3><a href="https://www.nngroup.com/articles/cards-component/">NN/g — Cards Have Two Sides</a></h3><p>Browsing vs. searching vs. comparing, and the eyetracking evidence behind it. The source behind 4.4.</p></div></div>
-      <div class="entry"><span class="n">A.9</span><div><h3><a href="https://lawsofux.com/">Laws of UX</a></h3><p>Fitts, Hick, Jakob, Miller, Tesler, and the peak–end rule (ch. 02), each traced to its original study.</p></div></div>
+      <div class="entry"><span class="n">A.9</span><div><h3><a href="https://www.nngroup.com/articles/ux-mapping-cheat-sheet/">NN/g — UX Mapping Cheat Sheet</a></h3><p>Empathy maps, journey maps, experience maps, service blueprints, and the three axes for choosing between them. The source behind chapter 10.</p></div></div>
+      <div class="entry"><span class="n">A.10</span><div><h3><a href="https://www.nngroup.com/articles/ten-usability-heuristics/">Jakob’s Ten Usability Heuristics (poster)</a></h3><p>The same ten heuristics as chapter 03, each paired with a physical-world analogy. The source behind 03.1–03.10’s “Like” lines.</p></div></div>
+      <div class="entry"><span class="n">A.11</span><div><h3><a href="https://lawsofux.com/">Laws of UX</a></h3><p>Fitts, Hick, Jakob, Miller, Tesler, and the peak–end rule (ch. 02), each traced to its original study.</p></div></div>
     </div>
 
     <div class="subhead">Books that survive rereading</div>
     <div class="entries">
-      <div class="entry"><span class="n">A.10</span><div><h3>Don Norman — <em>The Design of Everyday Things</em></h3><p>Affordances, signifiers, and mappings — the vocabulary underneath every chapter in Part I.</p></div></div>
-      <div class="entry"><span class="n">A.11</span><div><h3>Steve Krug — <em>Don’t Make Me Think</em></h3><p>The five-second test, self-evident screens, and testing without ceremony — chapters 05 and 10 in a friendlier voice.</p></div></div>
-      <div class="entry"><span class="n">A.12</span><div><h3>Josef Müller-Brockmann — <em>Grid Systems in Graphic Design</em></h3><p>Where alignment, hierarchy, and typographic discipline come from — the tradition this page’s own design borrows.</p></div></div>
+      <div class="entry"><span class="n">A.12</span><div><h3>Don Norman — <em>The Design of Everyday Things</em></h3><p>Affordances, signifiers, and mappings — the vocabulary underneath every chapter in Part I.</p></div></div>
+      <div class="entry"><span class="n">A.13</span><div><h3>Steve Krug — <em>Don’t Make Me Think</em></h3><p>The five-second test, self-evident screens, and testing without ceremony — chapters 05 and 10 in a friendlier voice.</p></div></div>
+      <div class="entry"><span class="n">A.14</span><div><h3>Josef Müller-Brockmann — <em>Grid Systems in Graphic Design</em></h3><p>Where alignment, hierarchy, and typographic discipline come from — the tradition this page’s own design borrows.</p></div></div>
     </div>
   </div>
 </section>

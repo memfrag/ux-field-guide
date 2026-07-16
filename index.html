@@ -1307,13 +1307,21 @@
       <div class="entry">
         <span class="n">8.4</span>
         <div>
+          <h3>Structural navigation needs real structure</h3>
+          <p>VoiceOver’s Rotor and TalkBack’s reading controls let screen reader users jump by category — headings, links, form controls, landmarks — instead of swiping through every element one at a time. Neither works on text that merely <em>looks</em> like a heading; both read the actual semantic role.</p>
+          <p class="apply">Mark real headings as headings and use landmark/region roles where they exist — that’s literally what populates the Rotor’s Headings category. Audit test: open the Rotor (or TalkBack’s reading controls) on a real screen and check Headings — empty or wrong entries mean the hierarchy exists visually (ch. 05) but not structurally, and a screen reader user is stuck swiping linearly through everything.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">8.5</span>
+        <div>
           <h3>Color never carries meaning alone</h3>
           <p>About 1 in 12 men has a color-vision deficiency; every user loses color fidelity in sunlight. Red-vs-green as the only signal is invisible to millions.</p>
           <p class="apply">Pair color with a second channel — icon, label, weight, position. An error is a red border <em>plus</em> an icon <em>plus</em> a message. Verify by viewing the screen in grayscale; the meaning should survive.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">8.5</span>
+        <span class="n">8.6</span>
         <div>
           <h3>Motion is optional</h3>
           <p>Parallax, zooms, and springs can trigger vestibular disorders. Both platforms expose a Reduce Motion setting; honoring it is not negotiable.</p>
@@ -1321,7 +1329,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">8.6</span>
+        <span class="n">8.7</span>
         <div>
           <h3>Focus is navigation too</h3>
           <p>Hardware keyboards on iPads, switch control, full keyboard access, and every web user who tabs: focus order is a first-class navigation path.</p>
@@ -1329,7 +1337,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">8.7</span>
+        <span class="n">8.8</span>
         <div>
           <h3>Built-ins are accessible by default</h3>
           <p>System components ship with labels, roles, focus behavior, Dynamic Type, and contrast-checked colors. Every custom control re-earns all of it by hand — or silently ships without it.</p>
@@ -2009,7 +2017,7 @@
         <div>
           <h3>Big screens attract other inputs</h3>
           <p>Tablets come with keyboards, trackpads, and styluses attached. The moment a window widens, assume a pointer might arrive with it.</p>
-          <p class="apply">Hover states, keyboard shortcuts (⌘-based on iPad), focus order (8.6), and right-click/secondary-click menus stop being desktop luxuries at medium width and up. A tablet app with no shortcuts feels like a kiosk.</p>
+          <p class="apply">Hover states, keyboard shortcuts (⌘-based on iPad), focus order (8.7), and right-click/secondary-click menus stop being desktop luxuries at medium width and up. A tablet app with no shortcuts feels like a kiosk.</p>
         </div>
       </div>
     </div>
@@ -2847,7 +2855,7 @@
         <span class="n">24.6</span>
         <div>
           <h3>Motion is optional — still</h3>
-          <p>Chapter 8.5 is law here too: Reduce Motion replaces movement with cross-fades, and no meaning may travel by motion alone.</p>
+          <p>Chapter 8.6 is law here too: Reduce Motion replaces movement with cross-fades, and no meaning may travel by motion alone.</p>
           <p class="apply">Pair every motion cue with a state change that survives its removal — the row is checked, not just bounced. Test the app with Reduce Motion on; if anything becomes confusing, motion was carrying information it never should have carried alone.</p>
         </div>
       </div>
@@ -2856,7 +2864,7 @@
         <div>
           <h3>Sound is a channel — the quietest one you have</h3>
           <p>Sound reaches users when their eyes are elsewhere, which is exactly why it must be spent like the accent color (5.5): message received, payment confirmed, timer done — moments that matter away from the screen.</p>
-          <p class="apply">Respect the silent switch and Focus modes absolutely; pair every sound with a visual and usually a haptic (never the sole channel, 8.5’s sibling); use the platform’s semantic sounds before inventing your own. An app that clicks on every tap is an app that gets muted with the whole phone.</p>
+          <p class="apply">Respect the silent switch and Focus modes absolutely; pair every sound with a visual and usually a haptic (never the sole channel, 8.6’s sibling); use the platform’s semantic sounds before inventing your own. An app that clicks on every tap is an app that gets muted with the whole phone.</p>
         </div>
       </div>
     </div>
@@ -3120,7 +3128,7 @@
         <div>
           <h3>Culture rides along with color and symbol</h3>
           <p>Red is danger in one market and celebration in another; an owl is wisdom or ill omen; hand gestures are a minefield; idioms (“home run”, “slam dunk”) simply don’t travel.</p>
-          <p class="apply">Keep source copy idiom-free and concrete (22.2 helps), don’t let color alone carry meaning (8.4 — now for a second reason), and have market reviewers sanity-check imagery before a launch, not after the screenshots go viral.</p>
+          <p class="apply">Keep source copy idiom-free and concrete (22.2 helps), don’t let color alone carry meaning (8.5 — now for a second reason), and have market reviewers sanity-check imagery before a launch, not after the screenshots go viral.</p>
         </div>
       </div>
       <div class="entry">

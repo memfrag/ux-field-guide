@@ -1,12 +1,12 @@
 # The UX/UI Field Manual
 
-An opinionated, self-contained reference for mobile-first UX/UI design — the working principles behind every critique and recommendation, interaction and visual craft both, and a process for taking an app idea to designs that feel native on **both iOS and Android**.
+An opinionated, self-contained reference for mobile-first UX/UI design: the working principles behind every critique and recommendation, interaction and visual craft both, plus a process for taking an app idea to designs that feel native on **both iOS and Android**.
 
 **Read it here: https://memfrag.github.io/ux-field-guide/**
 
 ## What's inside
 
-**Part I — Foundations** · How people perceive, decide, and touch
+**Part I: Foundations** · How people perceive, decide, and touch
 
 | # | Chapter | |
 |---|---------|---|
@@ -19,7 +19,7 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 07 | Mobile Instincts | thumb zones, touch targets, interruptions |
 | 08 | Accessibility | contrast, type scaling, screen readers, focus |
 
-**Part II — Method** · From idea to iteration — how the work gets done
+**Part II: Method** · From idea to iteration: how the work gets done
 
 | # | Chapter | |
 |---|---------|---|
@@ -29,7 +29,7 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 12 | Wireframes & Mockups | fidelity matched to the question, honest handoff |
 | 13 | Research & Testing | tasks not opinions, five users, severity |
 
-**Part III — Platforms** · One design, expressed natively twice
+**Part III: Platforms** · One design, expressed natively twice
 
 | # | Chapter | |
 |---|---------|---|
@@ -40,7 +40,7 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 18 | SwiftUI ↔ Compose | the dialect table as it compiles |
 | 19 | Widgets & Live Surfaces | WidgetKit, Live Activities, Live Updates |
 
-**Part IV — Systems &amp; Craft** · The details that decide whether it ships well
+**Part IV: Systems &amp; Craft** · The details that decide whether it ships well
 
 | # | Chapter | |
 |---|---------|---|
@@ -49,14 +49,14 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 22 | Forms & Input | where most apps actually lose people |
 | 23 | UX Writing | buttons, errors, tone of voice, platform casing |
 | 24 | Empty & Loading States | blank and waiting are where trust is won |
-| 25 | Motion & Feedback | animation is information — or it's in the way |
+| 25 | Motion & Feedback | animation is information, or it's in the way |
 | 26 | Flow & Transition Design | shared elements, progress, flows as one artifact |
 | 27 | Onboarding & First-Run | the shortest path to the first win |
 | 28 | Notifications & Interruptions | the trust economy of the lock screen |
 | 29 | Internationalization | text expansion, RTL, locale formats |
 | 30 | AI Interface Patterns | the autonomy ladder, streaming, uncertainty |
 
-**Part V — Visual Craft** · Type, color, depth, data, and image — the layer under the interaction
+**Part V: Visual Craft** · Type, color, depth, data, and image: the layer under the interaction
 
 | # | Chapter | |
 |---|---------|---|
@@ -69,7 +69,7 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 37 | Data Visualization | form first, color last, validated not eyeballed |
 | 38 | Illustration & Empty-State Art | one consistent style, earned not decorative |
 
-**Part VI — Judgment** · What to avoid, what to weigh, how to check
+**Part VI: Judgment** · What to avoid, what to weigh, how to check
 
 | # | Chapter | |
 |---|---------|---|
@@ -83,7 +83,7 @@ Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's M
 
 ## Notes
 
-- **One file.** `index.html` is fully self-contained: no build step, no external fonts, scripts, or images — all illustrations are inline SVG themed by CSS variables.
+- **One file.** `index.html` is fully self-contained: no build step, no external fonts, scripts, or images. All illustrations are inline SVG themed by CSS variables.
 - **Deep links.** Every numbered entry is linkable (e.g. [§8.4](https://memfrag.github.io/ux-field-guide/#s8-4)).
 - **Printable.** A print stylesheet converts it to a light, paginated document.
 - **The checklist remembers.** Screen-audit ticks persist in `localStorage`.

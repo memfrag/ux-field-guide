@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-renumber.py — deterministic chapter renumbering for the UX Field Manual.
+renumber.py: deterministic chapter renumbering for the UX Field Manual.
 
 WHY THIS EXISTS
 ----------------
@@ -9,7 +9,7 @@ one (or more, if inserting several at once). Doing that by hand means finding
 every sec-num div, every HTML section comment, every "class="n">NN.M<" entry
 span, every "(NN.M)" prose cross-reference, every "ch. NN" / "Chapter NN" /
 "NN ✕" mention, the nav dropdown, the five part-divider ranges, the README
-table, and the cheat sheet — and getting every single one right, including
+table, and the cheat sheet, and getting every single one right, including
 the ones that LOOK like a chapter reference but aren't (a screen-size "6.7″",
 a contrast ratio "7.5:1", a CSS "scale(1.05)"). A hand pass on 2026-07-16
 caught nine straggler bugs after the "automated" regex pass. This script
@@ -21,7 +21,7 @@ HOW A CHAPTER'S "LABEL" WORKS
 Existing chapters are labeled by their current numeric sec-num ("16", "07").
 A chapter you are INSERTING should be labeled with a placeholder token of the
 form "NEW-<section-id>" (e.g. "NEW-grid") wherever its number would otherwise
-go — the sec-num div, the HTML comment, and every entry span prefix
+go: the sec-num div, the HTML comment, and every entry span prefix
 ("NEW-grid.1", "NEW-grid.2", ...). Cross-references TO a new chapter (from
 anywhere in the document, including forward-references written before the
 new chapter exists) also use the placeholder: "(ch. NEW-grid)" or
@@ -34,12 +34,12 @@ WORKFLOW
    position in the document (i.e. document order = final chapter order).
    Use the NEW-<id> placeholder token everywhere that section's chapter
    number would appear. Do NOT touch the nav ToC, part-divider ranges, or
-   any cross-references elsewhere in the document by hand — the script
+   any cross-references elsewhere in the document by hand. The script
    handles those.
-2. Run `renumber.py check index.html` — a dry run. It prints the computed
+2. Run `renumber.py check index.html`, a dry run. It prints the computed
    old/placeholder → final-number mapping, regenerates nothing, and flags
-   any bare "(NN)" parenthetical it finds (these are inherently ambiguous —
-   could be a chapter ref, could be a footnote, a percentage, anything — so
+   any bare "(NN)" parenthetical it finds (these are inherently ambiguous:
+   could be a chapter ref, could be a footnote, a percentage, anything, so
    they are never auto-applied, only reported for manual fix-up before you
    run apply).
 3. Fix anything `check` flagged, by hand, using the printed mapping.
@@ -63,12 +63,12 @@ Only patterns that cannot plausibly mean anything else:
   - <div class="sec-num">NN</div>
   - <!-- ============ NN TITLE ============ -->
 Decimal refs are excluded when immediately followed by a quote, inch mark,
-colon, or percent sign — these are the real false positives found in this
+colon, or percent sign: these are the real false positives found in this
 document (screen sizes in inches, WCAG contrast ratios). All of this is
 scoped to TEXT NODES only (never inside a tag's attributes) and the
 <style> block is treated as fully opaque, so CSS numbers are never at risk.
 
-Bare "(NN)" integers are NEVER auto-shifted — only reported. Going forward,
+Bare "(NN)" integers are NEVER auto-shifted, only reported. Going forward,
 write cross-references as "ch. NN" or a decimal entry ref, never a bare
 "(NN)"; `check` will flag any bare parenthetical integer still in the
 document as a reminder of this convention.
@@ -100,8 +100,8 @@ def restore_style(html, style_content):
 def read_sections(html):
     """Return sections in document order: id, current label, full title,
     and toc_title (the short form for the nav dropdown, if the <h2> carries
-    a data-toc="..." override — e.g. <h2 data-toc="Nielsen's Ten">Nielsen's
-    Ten, Condensed</h2> — otherwise the full title is reused)."""
+    a data-toc="..." override, e.g. <h2 data-toc="Nielsen's Ten">Nielsen's
+    Ten, Condensed</h2>; otherwise the full title is reused)."""
     pat = re.compile(
         r'<section id="([a-z0-9]+)">\s*<div class="sec-head reveal">\s*'
         r'<div class="sec-num">([A-Za-z0-9-]+)</div>\s*'
@@ -166,12 +166,12 @@ def zpad(n):
 
 def make_shifter(mapping):
     """old label (numeric string or 'NEW-id') -> new number, or None if
-    the label isn't in the mapping (leave it alone — likely unrelated).
+    the label isn't in the mapping (leave it alone, likely unrelated).
 
     Mapping keys are the label exactly as it appears in each section's
     sec-num div, which is always zero-padded ("02", "16"). References
     found in prose are NOT zero-padded ("2.1" not "02.1", "Chapter 8" not
-    "Chapter 08") — so every lookup tries the exact string first, then a
+    "Chapter 08"), so every lookup tries the exact string first, then a
     zero-padded 2-digit form, before giving up."""
 
     def shift(label):
@@ -216,9 +216,9 @@ def apply_safe_shifts(html, mapping):
     parts = [seg if seg.startswith("<") else shift_in_text(seg) for seg in parts]
     html = "".join(parts)
 
-    # "ch. NN[–MM]" and "chapter NN" — case-insensitive, numeric or placeholder.
+    # "ch. NN[-MM]" and "chapter NN": case-insensitive, numeric or placeholder.
     # Both exclude a trailing ".digit" (e.g. the "Chapter 8.5" stylistic
-    # phrasing that means entry 8.5) — that continuation belongs to the
+    # phrasing that means entry 8.5): that continuation belongs to the
     # decimal pass above; without this guard the two passes fight over the
     # same text and the second one double-shifts an already-shifted number.
     label_alt = r'(?:' + re.escape(NEW_PREFIX) + r'[a-z0-9]+|\d+)'
@@ -244,7 +244,7 @@ def apply_safe_shifts(html, mapping):
     # fails the no_decimal_tail lookahead can backtrack to a SHORTER digit
     # sequence that spuriously satisfies it (e.g. "ch. NEW-mapping.2" backs
     # off to "ch. NEW-mappin", or "ch. 10.2" backs off to "ch. 1", leaving
-    # "0.2" as literal trailing text — producing "ch. 010.2"). Mid-number is
+    # "0.2" as literal trailing text, producing "ch. 010.2"). Mid-number is
     # not a word boundary, so \b blocks exactly that spurious backtrack.
     html = re.sub(
         rf'([Cc]h)\. ({label_alt}){no_decimal_tail}\b(?:–({label_alt}))?',
@@ -258,7 +258,7 @@ def apply_safe_shifts(html, mapping):
             return m.group(0)
         stats["chapter_word"] += 1
         # zero-padded to match "ch. NN" and the page's sec-num badges
-        # ("01".."37" everywhere) — a bare "Chapter 8" reads inconsistent
+        # ("01".."37" everywhere): a bare "Chapter 8" reads inconsistent
         # right next to those.
         return f"{m.group(1)} {zpad(new)}"
 
@@ -278,7 +278,7 @@ def apply_safe_shifts(html, mapping):
 
     html = re.sub(rf'\b({label_alt}) ✕', cross_repl, html)
 
-    # sec-num divs — "A" (the appendix) is pinned and never shifted.
+    # sec-num divs: "A" (the appendix) is pinned and never shifted.
     def secnum_repl(m):
         label = m.group(1)
         if label == "A":
@@ -292,7 +292,7 @@ def apply_safe_shifts(html, mapping):
 
     html = re.sub(r'<div class="sec-num">([A-Za-z0-9-]+)</div>', secnum_repl, html)
 
-    # HTML section comments — charset must allow hyphens (this was the bug
+    # HTML section comments: charset must allow hyphens (this was the bug
     # that silently dropped 3 comments in the 2026-07-16 hand renumbering).
     def comment_repl(m):
         new = shift(m.group(1))
@@ -312,7 +312,7 @@ def apply_safe_shifts(html, mapping):
 
 
 def find_bare_parens(html):
-    """Report (never auto-fix) bare integer parentheticals like '(11)' —
+    """Report (never auto-fix) bare integer parentheticals like '(11)':
     ambiguous, could be a stale chapter ref or something unrelated."""
     _, style_content = isolate_style(html)
     body = html.replace(style_content, "")
@@ -340,7 +340,7 @@ def regenerate_toc(html, sections, mapping, parts):
         id_to_toc_title[s["id"]] = s["toc_title"]
 
     # Only parts that actually contain a numbered (non-appendix) chapter get
-    # a roman numeral and a "Part N — Name" label; the appendix's trailing
+    # a roman numeral and a "Part N: Name" label; the appendix's trailing
     # part bucket (see read_parts) keeps its bare name, matching how the
     # appendix has always rendered with no part divider of its own.
     # first line has no leading indent: the regex match starts exactly at
@@ -352,7 +352,7 @@ def regenerate_toc(html, sections, mapping, parts):
         has_numbered = any(id_to_new.get(sid, "A") != "A" for sid in part["section_ids"])
         if has_numbered:
             roman_i += 1
-            label = f"Part {PART_ROMAN[roman_i - 1]} — {part['name']}"
+            label = f"Part {PART_ROMAN[roman_i - 1]}: {part['name']}"
         else:
             label = part["name"]
         lines.append(f'      <li class="part-head">{label}</li>')
@@ -387,7 +387,7 @@ def regenerate_part_ranges(html, sections, mapping, parts):
 
 def regenerate_readme_table(readme_text, sections, mapping, parts):
     # the README's title column mirrors the ToC's SHORT title (toc_title),
-    # not the full <h2> — that's what the existing description lookup below
+    # not the full <h2>: that's what the existing description lookup below
     # is keyed against, and what a human skimming the table expects.
     id_to_title = {s["id"]: s["toc_title"] for s in sections}
     id_to_new = {s["id"]: ("A" if s["label"] == "A" else zpad(mapping.get(s["label"])))
@@ -408,7 +408,7 @@ def regenerate_readme_table(readme_text, sections, mapping, parts):
         has_numbered = any(id_to_new.get(sid, "A") != "A" for sid in part["section_ids"])
         if has_numbered:
             roman_i += 1
-            heading = f'**Part {PART_ROMAN[roman_i - 1]} — {part["name"]}**'
+            heading = f'**Part {PART_ROMAN[roman_i - 1]}: {part["name"]}**'
             if part["tagline"]:
                 heading += f' · {part["tagline"]}'
         else:
@@ -511,7 +511,7 @@ def cmd_check(args):
 
     bare = find_bare_parens(html)
     print(f"\nBare '(NN)' parentheticals found: {len(bare)} "
-          f"(never auto-fixed — review each before running apply)")
+          f"(never auto-fixed: review each before running apply)")
     for num, ctx in bare:
         print(f"  ({num})  ...{ctx}...")
 
@@ -534,7 +534,7 @@ def cmd_apply(args):
 
     new_html, stats = apply_safe_shifts(html, mapping)
     if stats["unresolved"]:
-        print("REFUSING TO WRITE — unresolved references found:")
+        print("REFUSING TO WRITE: unresolved references found:")
         for u in stats["unresolved"]:
             print(f"  - {u}")
         sys.exit(1)
@@ -546,7 +546,7 @@ def cmd_apply(args):
     if problems:
         review_path = path.with_suffix(".renumbered-review.html")
         review_path.write_text(new_html, encoding="utf-8")
-        print(f"VERIFICATION FAILED — original file left untouched.")
+        print(f"VERIFICATION FAILED. Original file left untouched.")
         print(f"Output written for inspection to {review_path}")
         for p in problems:
             print(f"  - {p}")
@@ -562,7 +562,7 @@ def cmd_apply(args):
 
     bare = find_bare_parens(new_html)
     if bare:
-        print(f"\nReminder: {len(bare)} bare '(NN)' parentheticals remain — "
+        print(f"\nReminder: {len(bare)} bare '(NN)' parentheticals remain, "
               f"these were NOT touched (ambiguous). Review by hand:")
         for num, ctx in bare:
             print(f"  ({num})  ...{ctx}...")
@@ -582,7 +582,7 @@ def cmd_apply(args):
         cs_text, cstats = apply_safe_shifts(cs_text, mapping)
         cs_path.write_text(cs_text, encoding="utf-8")
         print(f"{cs_path}: {cstats['decimal'] + cstats['ch_dot'] + cstats['chapter_word']} "
-              f"prose refs shifted (title/structure NOT auto-updated — hand-authored).")
+              f"prose refs shifted (title/structure NOT auto-updated, hand-authored).")
 
 
 def main():

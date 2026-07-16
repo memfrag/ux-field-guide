@@ -26,55 +26,56 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 | 09 | The Process | app idea → shipped design, in order |
 | 10 | Mapping Methods | empathy maps, journey maps, experience maps, blueprints |
 | 11 | Four Modes of Work | critique · diagnose · reason · produce |
-| 12 | Research & Testing | tasks not opinions, five users, severity |
+| 12 | Wireframes & Mockups | fidelity matched to the question, honest handoff |
+| 13 | Research & Testing | tasks not opinions, five users, severity |
 
 **Part III — Platforms** · One design, expressed natively twice
 
 | # | Chapter | |
 |---|---------|---|
-| 13 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
-| 14 | Navigation | back semantics, tabs, modality, deep links |
-| 15 | Adaptive Layout | size classes, list-detail, foldables |
-| 16 | Iconography & Imagery | SF Symbols vs Material Symbols, app icons |
-| 17 | SwiftUI ↔ Compose | the dialect table as it compiles |
-| 18 | Widgets & Live Surfaces | WidgetKit, Live Activities, Live Updates |
+| 14 | One Design, Two Dialects | shared core vs. HIG / Material 3 layers |
+| 15 | Navigation | back semantics, tabs, modality, deep links |
+| 16 | Adaptive Layout | size classes, list-detail, foldables |
+| 17 | Iconography & Imagery | SF Symbols vs Material Symbols, app icons |
+| 18 | SwiftUI ↔ Compose | the dialect table as it compiles |
+| 19 | Widgets & Live Surfaces | WidgetKit, Live Activities, Live Updates |
 
 **Part IV — Systems &amp; Craft** · The details that decide whether it ships well
 
 | # | Chapter | |
 |---|---------|---|
-| 19 | Design Systems | decisions made once |
-| 20 | Design Tokens | name the decision, not the value |
-| 21 | Forms & Input | where most apps actually lose people |
-| 22 | UX Writing | buttons, errors, tone of voice, platform casing |
-| 23 | Empty & Loading States | blank and waiting are where trust is won |
-| 24 | Motion & Feedback | animation is information — or it's in the way |
-| 25 | Onboarding & First-Run | the shortest path to the first win |
-| 26 | Notifications & Interruptions | the trust economy of the lock screen |
-| 27 | Internationalization | text expansion, RTL, locale formats |
-| 28 | AI Interface Patterns | the autonomy ladder, streaming, uncertainty |
+| 20 | Design Systems | decisions made once |
+| 21 | Design Tokens | name the decision, not the value |
+| 22 | Forms & Input | where most apps actually lose people |
+| 23 | UX Writing | buttons, errors, tone of voice, platform casing |
+| 24 | Empty & Loading States | blank and waiting are where trust is won |
+| 25 | Motion & Feedback | animation is information — or it's in the way |
+| 26 | Onboarding & First-Run | the shortest path to the first win |
+| 27 | Notifications & Interruptions | the trust economy of the lock screen |
+| 28 | Internationalization | text expansion, RTL, locale formats |
+| 29 | AI Interface Patterns | the autonomy ladder, streaming, uncertainty |
 
 **Part V — Visual Craft** · Type, color, depth, data, and image — the layer under the interaction
 
 | # | Chapter | |
 |---|---------|---|
-| 29 | Typography Systems | modular scales, pairing, optical sizing |
-| 30 | Color Systems | one seed hue to a full role-based palette |
-| 31 | Shape Language & Corner Radius | concentric corners, a radius scale |
-| 32 | Elevation & Depth | tonal vs. directional, shadow as a spatial claim |
-| 33 | Buttons & Controls | padding, radius, and the full state matrix |
-| 34 | Data Tables & Dense Lists | alignment, density, and truncation done right |
-| 35 | Data Visualization | form first, color last, validated not eyeballed |
-| 36 | Illustration & Empty-State Art | one consistent style, earned not decorative |
+| 30 | Typography Systems | modular scales, pairing, optical sizing |
+| 31 | Color Systems | one seed hue to a full role-based palette |
+| 32 | Shape Language & Corner Radius | concentric corners, a radius scale |
+| 33 | Elevation & Depth | tonal vs. directional, shadow as a spatial claim |
+| 34 | Buttons & Controls | padding, radius, and the full state matrix |
+| 35 | Data Tables & Dense Lists | alignment, density, and truncation done right |
+| 36 | Data Visualization | form first, color last, validated not eyeballed |
+| 37 | Illustration & Empty-State Art | one consistent style, earned not decorative |
 
 **Part VI — Judgment** · What to avoid, what to weigh, how to check
 
 | # | Chapter | |
 |---|---------|---|
-| 37 | What Not To Do | universal, iOS, and Android anti-patterns |
-| 38 | The Honest Trade-offs | where the pin sits, and what moves it |
-| 39 | The Screen Audit | a 12-point interactive checklist |
-| 40 | A Worked Example | one app idea, the whole process, both dialects |
+| 38 | What Not To Do | universal, iOS, and Android anti-patterns |
+| 39 | The Honest Trade-offs | where the pin sits, and what moves it |
+| 40 | The Screen Audit | a 12-point interactive checklist |
+| 41 | A Worked Example | one app idea, the whole process, both dialects |
 | A | Sources & Further Reading | HIG, Material 3, WCAG, NN/g, the books |
 
 Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's Material 3 (Expressive).

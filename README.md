@@ -60,18 +60,21 @@ An opinionated, self-contained reference for mobile-first UX/UI design — the w
 |---|---------|---|
 | 29 | Typography Systems | modular scales, pairing, optical sizing |
 | 30 | Color Systems | one seed hue to a full role-based palette |
-| 31 | Elevation & Depth | tonal vs. directional, shadow as a spatial claim |
-| 32 | Data Visualization | form first, color last, validated not eyeballed |
-| 33 | Illustration & Empty-State Art | one consistent style, earned not decorative |
+| 31 | Shape Language & Corner Radius | concentric corners, a radius scale |
+| 32 | Elevation & Depth | tonal vs. directional, shadow as a spatial claim |
+| 33 | Buttons & Controls | padding, radius, and the full state matrix |
+| 34 | Data Tables & Dense Lists | alignment, density, and truncation done right |
+| 35 | Data Visualization | form first, color last, validated not eyeballed |
+| 36 | Illustration & Empty-State Art | one consistent style, earned not decorative |
 
 **Part VI — Judgment** · What to avoid, what to weigh, how to check
 
 | # | Chapter | |
 |---|---------|---|
-| 34 | What Not To Do | universal, iOS, and Android anti-patterns |
-| 35 | The Honest Trade-offs | where the pin sits, and what moves it |
-| 36 | The Screen Audit | a 12-point interactive checklist |
-| 37 | A Worked Example | one app idea, the whole process, both dialects |
+| 37 | What Not To Do | universal, iOS, and Android anti-patterns |
+| 38 | The Honest Trade-offs | where the pin sits, and what moves it |
+| 39 | The Screen Audit | a 12-point interactive checklist |
+| 40 | A Worked Example | one app idea, the whole process, both dialects |
 | A | Sources & Further Reading | HIG, Material 3, WCAG, NN/g, the books |
 
 Grounded in Apple's Human Interface Guidelines (Liquid Glass era) and Google's Material 3 (Expressive).

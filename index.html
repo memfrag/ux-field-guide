@@ -2078,13 +2078,21 @@
       <div class="entry">
         <span class="n">16.2</span>
         <div>
+          <h3>Draw custom icons on the same grid</h3>
+          <p>A custom glyph earns its place only if it can’t be told apart from the system dictionary next to it — same keyline square (typically 24×24 with a smaller live area inside it), same stroke weight, same corner radii (ch. 31), same optical alignment (29.5) as SF Symbols or Material Symbols.</p>
+          <p class="apply">Build the grid once — outer frame, live area, stroke weight, corner radius — and design every custom icon inside it. A set drawn freehand, one at a time, drifts in weight and size within a dozen icons; a set drawn on a shared grid doesn’t.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">16.3</span>
+        <div>
           <h3>Icons label, or icons lie</h3>
           <p>Perhaps a dozen symbols are truly universal — search, back, share, settings, play. Everything else is a guess the user makes on your behalf (37 ✕: mystery meat).</p>
           <p class="apply">Pair icons with text labels in tab bars and nav bars, always. An icon-only toolbar is acceptable only when every glyph is in the universal dozen — and even then, accessibility labels are non-negotiable (8.3).</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">16.3</span>
+        <span class="n">16.4</span>
         <div>
           <h3>The fill convention is grammar</h3>
           <p>Outline means resting; fill means selected or active. Both platforms teach this in their tab bars, so users read it without thinking — until an app breaks the rule and every state becomes a riddle.</p>
@@ -2092,7 +2100,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">16.4</span>
+        <span class="n">16.5</span>
         <div>
           <h3>The app icon is the smallest billboard</h3>
           <p>It’s the brand at 60px, judged in a grid of rivals, re-tinted by the OS: iOS renders layered icons in default/dark/clear/tinted modes (Icon Composer); Android’s themed icons take Material You’s wallpaper tint via a monochrome layer.</p>
@@ -2100,7 +2108,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">16.5</span>
+        <span class="n">16.6</span>
         <div>
           <h3>Photos are evidence, illustration is explanation</h3>
           <p>Photography asserts a specific reality — the user’s actual plant, the actual product for sale. Illustration explains concepts, softens empty states, and carries brand where there’s nothing yet to show.</p>
@@ -2108,7 +2116,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">16.6</span>
+        <span class="n">16.7</span>
         <div>
           <h3>Image discipline</h3>
           <p>Images are the heaviest, slowest, most layout-hostile content on any screen — treat them as a managed material.</p>
@@ -2116,7 +2124,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">16.7</span>
+        <span class="n">16.8</span>
         <div>
           <h3>The two dictionaries barely overlap — and that’s fine</h3>
           <p>SF Symbols runs past 7,000 glyphs; Material Symbols sits around 2,500–3,800 depending on how the variable-axis styles are counted. Only a few hundred are formally mapped one-to-one between them — cross-platform tooling like Expo’s symbol system ships roughly 570 confirmed pairs. That’s a small, concentrated core inside two much larger, mostly disjoint libraries.</p>
@@ -2133,7 +2141,7 @@
               <text x="187" y="78" text-anchor="middle" font-family="Menlo, monospace" font-size="7.5" fill="var(--signal)">~570</text>
               <text x="187" y="88" text-anchor="middle" font-family="Menlo, monospace" font-size="6" fill="var(--signal)">MAPPED 1:1</text>
               <text x="30" y="132" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SEARCH · GEAR · TRASH · HEART · STAR — CONVERGENT METAPHOR</text>
-              <text x="30" y="144" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SHARE — SAME MEANING, DIFFERENT GLYPH (16.8)</text>
+              <text x="30" y="144" font-family="Menlo, monospace" font-size="7" fill="var(--ink-faint)">SHARE — SAME MEANING, DIFFERENT GLYPH (16.9)</text>
             </svg>
             <div class="cap">A small mapped core inside two mostly-disjoint libraries — depth diverges by design</div>
           </div>
@@ -2141,7 +2149,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">16.8</span>
+        <span class="n">16.9</span>
         <div>
           <h3>Same meaning, different glyph: share is the tell</h3>
           <p>iOS draws share as a box with an arrow escaping upward — an object leaving through an opening, tied to the Action-sheet model since iOS 7. Android draws three connected dots forming a triangle with radiating lines — a one-to-many broadcast, inherited from a 2006 browser plugin. Same user intent, genuinely different mental model, not just a style difference.</p>

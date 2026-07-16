@@ -2282,7 +2282,7 @@
         <div>
           <h3>Widgets are timelines, not live views</h3>
           <p>iOS WidgetKit renders from a <code>TimelineProvider</code> — a schedule of pre-computed snapshots at target dates, refreshed on a budget the system controls, not a continuous feed. Android’s Jetpack Glance (the modern replacement for hand-written <code>RemoteViews</code>) works the same way: periodic, not push-driven.</p>
-          <p class="apply">Design for the <em>stalest</em> state the timeline might show, not the freshest — a watering widget refreshed six hours ago should still read as true, or say when it last checked (23.6’s logic, applied to a widget instead of a screen).</p>
+          <p class="apply">Design for the <em>stalest</em> state the timeline might show, not the freshest — a watering widget refreshed six hours ago should still read as true, or say when it last checked (23.7’s logic, applied to a widget instead of a screen).</p>
         </div>
       </div>
       <div class="entry">
@@ -2766,13 +2766,21 @@
       <div class="entry">
         <span class="n">23.4</span>
         <div>
+          <h3>A shimmer matches the content it’s replacing</h3>
+          <p>A skeleton is only as convincing as its shapes: a generic row of gray bars, reused across a text list, a card grid, and a profile header, breaks the promise 23.3 depends on. The shimmer sweep itself is a small, specific animation, not a placeholder for one.</p>
+          <p class="apply">Trace the skeleton from the real component’s geometry — same corner radii (ch. 31), same relative proportions, same image aspect ratios — not a generic box. Sweep the shimmer in one direction, roughly 1.5–2s per pass, low contrast against the base tone; a fast or high-contrast shimmer reads as urgent rather than patient.</p>
+        </div>
+      </div>
+      <div class="entry">
+        <span class="n">23.5</span>
+        <div>
           <h3>Don’t flash, don’t strobe</h3>
           <p>A spinner that appears for 80ms is visual noise; five per screen is a seizure of uncertainty. Loading indication has its own hierarchy (ch. 05).</p>
           <p class="apply">Delay indicators ~200–300ms so fast loads show nothing at all. One indicator per surface — skeleton the whole region, don’t spin every card. For waits under 5s on Android, M3’s shape-morphing <code>LoadingIndicator</code> is the idiom; keep spinners for genuinely unknown waits.</p>
         </div>
       </div>
       <div class="entry">
-        <span class="n">23.5</span>
+        <span class="n">23.6</span>
         <div>
           <h3>Optimistic UI, honest rollback</h3>
           <p>For actions that almost always succeed — like, rename, mark watered — act as if they succeeded instantly and reconcile in the background. Waiting for the server to permit a heart animation is borrowed sluggishness.</p>
@@ -2780,7 +2788,7 @@
         </div>
       </div>
       <div class="entry">
-        <span class="n">23.6</span>
+        <span class="n">23.7</span>
         <div>
           <h3>Offline is a state, not an error</h3>
           <p>“No connection” with a sad cloud treats a normal condition — elevators, flights, dead zones — as a catastrophe.</p>
@@ -2834,7 +2842,7 @@
         <span class="n">24.2</span>
         <div>
           <h3>The 100ms contract</h3>
-          <p>Feedback and completion are different events. The press state, highlight, or haptic acknowledges the tap <em>now</em>; the result arrives whenever it arrives (23.5 handles the gap).</p>
+          <p>Feedback and completion are different events. The press state, highlight, or haptic acknowledges the tap <em>now</em>; the result arrives whenever it arrives (23.6 handles the gap).</p>
           <p class="apply">Every interactive element gets a visible pressed state — custom buttons included (Apple’s own “don’t”: a custom button with no press state reads as a broken screen). Acknowledge in &lt;100ms even when the work takes seconds (3.1).</p>
         </div>
       </div>
